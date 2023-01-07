@@ -1,0 +1,49 @@
+@import '../../sass/base/variables.scss';
+@import '../../sass/base/title.scss';
+
+.header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__menu{
+        ul{
+            display: flex;
+        }
+        &-item{
+            font-size: 13px;
+            margin: 0 10px;
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: 0.3s;
+            &:first-child{
+                margin-left: 0;
+            }
+            &:hover{
+                border: 1px solid $main-color;
+            }
+            &_active{
+                background-color: $main-color;
+            }
+        }
+    }
+    &__profile{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+    }
+    &__info{
+        font-size: 10px;
+        font-weight: 300;
+        color: white;
+        margin-bottom: 2px;
+        &-fz11{
+            font-size: 8px;
+            font-weight: 700;
+        }
+    }
+}

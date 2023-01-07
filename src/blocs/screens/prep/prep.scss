@@ -1,0 +1,116 @@
+@import '../../../sass/base/variables.scss';
+@import '../../../sass/base/title.scss';
+
+
+.filter{
+    width: 100%;
+    border-radius: 15px;
+    border: 2px solid $main-color;
+    padding: 30px;
+
+    &__inputs{
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+    }
+    &__wrap{
+        display: flex;
+        position: relative;
+    }
+    &__input{
+        width: 135px;
+        align-items: flex-end;
+        height: 21px;
+        padding: 7px;
+        font-size: 10px;
+        border-radius: 5px;
+        border: 1px solid $main-color;
+        box-shadow: inset 0px 0px 4px rgb(166, 166, 166);
+
+        &:focus {  
+            outline-color: transparent;
+        }
+    }
+    &__label{
+        position: absolute;
+        font-size: 7px;
+        top: -11px;
+        left: 7px;
+    }
+    
+    &__btn{
+        background-color: $main-color;
+        width: 21px;
+        height: 21px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 2px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    &__condition{
+        display: flex;
+    }
+    &__condition{
+        margin-top: 25px;
+        display: flex;
+        align-items: flex-start;
+    }
+    &__row{
+        position: relative;
+        margin-right: 50px;
+        width: 100px;
+    }
+    &__parameter{
+        position: absolute;
+        font-size: 7px;
+        top: -10px;
+        left: 7px;
+    }
+
+}
+.prep{
+    &__table{
+        width: 100%;
+        font-size: 9px;
+        border-collapse: collapse;
+
+        thead{
+            padding: 8px;
+            th{
+                padding: 8px;
+                border-bottom:1px solid $main-color;
+                text-align: left;
+                padding-bottom: 8px;
+            }
+        }
+        tbody{
+            td{
+                padding: 6px;
+            }
+            tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+                
+            }
+        }
+         
+    }
+    &__name{
+        font-size: 11px;
+        line-height: 19px;
+        color: $utility-color;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+    &__producer{
+        font-size: 8px;
+    }
+    &__table-row{
+        &_active{
+            background-color: $main-color;
+            color: white;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+@import '../base/variables.scss';
+@import '../base/title.scss';
+
+.desc{
+    height: 100%;
+    width: 40%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: $main-shadow;
+}
