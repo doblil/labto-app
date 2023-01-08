@@ -1,0 +1,75 @@
+@import '../base/variables.scss';
+@import '../base/title.scss';
+
+.table{
+    margin-top: 20px;
+    &__wrap{
+        width: 100%;
+        font-size: 9px;
+        border-collapse: collapse;
+
+        thead{
+            padding: 8px;
+            th{
+                padding: 8px;
+                // border-bottom:1px solid $main-color;
+                text-align: left;
+                padding-bottom: 8px;
+                &:first-child{
+                    padding-left: 23px;
+                }
+            }
+        }
+        tbody{
+            td{
+                padding: 6px;
+                &:first-child{
+                    padding-left: 23px;
+                }
+            }
+            tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+            }
+        }
+         
+    }
+    &__name{
+        font-size: 11px;
+        line-height: 19px;
+        color: $utility-color;
+        font-weight: 700;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    &__star{
+        position: absolute;
+        left: -6px;
+        top: 8px;
+    }
+    &__producer{
+        font-size: 8px;
+    }
+    &__row{
+        margin: -10px;
+        position: relative;
+        z-index: 1;
+        &_active{
+            color: white;
+            &::after{
+                content: '';
+                height: 90%;
+                width: 97%;
+                position: absolute;
+                left: 10px;
+                top: 2px;
+                border-radius: 10px;
+                background-color: $main-color;
+                color: white;
+                z-index: -2;
+            }
+        }
+    }
+    &__item{
+        position: relative;
+    }
+}

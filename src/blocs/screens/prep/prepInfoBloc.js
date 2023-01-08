@@ -1,5 +1,6 @@
 import './prep.scss'
 import '../../../sass/sassTemplates/info.scss'
+import '../../../sass/sassTemplates/table.scss'
 import { PrepReagItem } from './prepReagItem'
 import { useState } from 'react'
 
@@ -58,14 +59,14 @@ export const PrepInfoBloc = () => {
                         <label className="custom-checkbox__text" for="chb-fit">Годен</label>
                     </div>
 
-                    <div className="filter__row">
+                    <div className="filter__row favorite">
                         <input className="custom-checkbox" type="checkbox" id="chb-favorite" name="chb-favorite"/>
                         <label className="custom-checkbox__text" for="chb-favorite">Избранное (13)</label> <br />
                     </div>
                 </div>
             </div>
-            <div className="prep">
-                <table className="prep__table">
+            <div className="table">
+                <table className="table__wrap">
                 
                     <thead>
                         <tr>
@@ -80,9 +81,9 @@ export const PrepInfoBloc = () => {
                     </thead>
                     
                     <tbody>
-                        <PrepReagItem active={true}/>
                         <PrepReagItem/>
-                        <PrepReagItem/>
+                        <PrepReagItem favorite={true}/>
+                        <PrepReagItem favorite={true} active={true}/>
                         <PrepReagItem/>
                     </tbody>
 

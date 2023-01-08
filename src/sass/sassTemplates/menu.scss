@@ -2,21 +2,20 @@
 @import '../base/title.scss';
 
 .menu{
-    width: 220px;
+    width: 196px;
     margin-right: -30px;
     background-color: $main-color;
     border-radius: 15px;
     box-shadow: $main-shadow;
-    padding: 15px 20px;
+    padding: 15px 17px;
     &__title{
         font-weight: 700;
-        padding: 0 14px;
         font-size: 13px;
         margin-bottom: 10px;
     }
     &__stripe{
         height: 2px;
-        width: 150px;
+        width: 124px;
         background-color:white;
     }
     &__subtitle{
@@ -25,13 +24,15 @@
         font-weight: 700;
     }
     &__item{
-        width: 130px;
-        padding: 7px 10px;
+        font-weight: 700;
+        width: 124px;
+        padding: 9px 10px;
         margin: 5px 0;
         border-radius: 10px;
-        font-size: 13px;
+        font-size: 12px;
         border: 1px solid transparent;
         cursor: pointer;
+        transition: all 0.3s;
         &:hover{
             border: 1px solid white;
         }

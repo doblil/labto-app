@@ -3,10 +3,12 @@
 
 
 .filter{
-    width: 100%;
+    width: calc(100% - 30px);
     border-radius: 15px;
     border: 2px solid $main-color;
     padding: 30px;
+    padding-bottom: 12px;
+    margin: 0 auto;
 
     &__inputs{
         display: flex;
@@ -18,7 +20,7 @@
         position: relative;
     }
     &__input{
-        width: 135px;
+        width: 145px;
         align-items: flex-end;
         height: 21px;
         padding: 7px;
@@ -33,9 +35,9 @@
     }
     &__label{
         position: absolute;
-        font-size: 7px;
-        top: -11px;
-        left: 7px;
+        font-size: 9px;
+        top: -16px;
+        left: 0px;
     }
     
     &__btn{
@@ -54,63 +56,20 @@
         display: flex;
     }
     &__condition{
-        margin-top: 25px;
+        margin-top: 33px;
         display: flex;
         align-items: flex-start;
     }
     &__row{
         position: relative;
-        margin-right: 50px;
-        width: 100px;
+        margin-right: 20px;
+        width: 130px;
     }
     &__parameter{
         position: absolute;
-        font-size: 7px;
-        top: -10px;
-        left: 7px;
-    }
-
-}
-.prep{
-    &__table{
-        width: 100%;
         font-size: 9px;
-        border-collapse: collapse;
+        top: -14px;
+        left: 0px;
+    }
 
-        thead{
-            padding: 8px;
-            th{
-                padding: 8px;
-                border-bottom:1px solid $main-color;
-                text-align: left;
-                padding-bottom: 8px;
-            }
-        }
-        tbody{
-            td{
-                padding: 6px;
-            }
-            tr:nth-of-type(even) {
-                background-color: #f3f3f3;
-                
-            }
-        }
-         
-    }
-    &__name{
-        font-size: 11px;
-        line-height: 19px;
-        color: $utility-color;
-        font-weight: 700;
-        text-decoration: underline;
-    }
-    &__producer{
-        font-size: 8px;
-    }
-    &__table-row{
-        &_active{
-            background-color: $main-color;
-            color: white;
-        }
-    }
 }
