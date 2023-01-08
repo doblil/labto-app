@@ -16,7 +16,7 @@ function App() {
     <div className="App">
             <Header/>
             <Screen/>
-            <ContentRouter/>
+            {/* <ContentRouter/> */}
             <ServerMessage/>
             <Footer/> 
     </div>

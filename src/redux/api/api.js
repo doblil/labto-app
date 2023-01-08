@@ -1,8 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { setCredentials, clearStore } from '../authSlice';
+import { setCredentials, clearStore } from '../store/authSlice';
 import c from '../../config.json'
-import { sMessageCh } from '../sMessageSlice';
-
+import { sMessageCh } from '../store/sMessageSlice';
 let baseUrl = (c.mode === 'dev' ? c.baseLocalApiUrl :  c.baseApiUrl)
 
 
