@@ -7,4 +7,198 @@
     background-color: white;
     border-radius: 15px;
     box-shadow: $main-shadow;
+    position: relative;
+    padding: 20px;
+    &__close{
+        font-size: 20px;
+        position: absolute;
+        right: 8px;
+        top: 2px;
+        color: $utility-color;
+        cursor: pointer;
+    }
+    &__top{
+        height: 47px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__heading{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    &__title{
+        font-size: 10px;
+        color: gray;
+    }
+    &__name{
+        font-size: 13px;
+        font-weight: 700;
+        color: $utility-color;
+
+    }
+    &__status{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding: 5px 0;
+    }
+    &__presence{
+        font-size: 9px;
+        color: rgb(0, 217, 0);
+        font-weight: 700;
+        cursor: default;
+    }
+    &__favorite{
+        cursor: pointer;
+    }
+}
+
+
+.grid{
+    margin-top: 18px;
+    display: grid;
+    grid-template: 85px 125px 77px/ 97px 82px auto 87px 35px;
+    gap:9px 12px;
+    justify-content: space-between;
+    grid-template-areas:
+        "a b c d e"
+        "f f g g e"
+        "h h h h h";
+    &__box{
+        border: 1px solid $main-color;
+        border-radius: 5px;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+    }
+    &__heading{
+        font-size: 7px;
+        font-weight: 700;
+        color: gray;
+        position: absolute;
+        top: 6px;
+        &_white{
+            color: white;
+        }
+    }
+    &__value{
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+        line-height: 15px;
+        position: relative;
+        &_row{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+    }
+    &__descr{
+        width: 100%;
+        position: absolute;
+        font-size: 7px;
+        font-weight: 700;
+        text-align: center;
+        bottom: 4px;
+    }
+    &__quantity{
+        width: 100%;
+        font-size: 21px;
+        text-align: left;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: white;
+    }
+    &__jar{
+        position: absolute;
+        right: 15px;
+        height: 52px;
+    }
+    &__jar-scale{
+        height: 56%;
+        width: 50px;
+        background-color: rgb(47, 239, 159);
+        position: absolute;
+        bottom: -23px;
+        right: 5px;
+        border-radius: 10px;
+    }
+    &__img{
+        height: 80px;
+    }
+    &__btn{
+        position: absolute;
+        bottom: 10px;
+        padding: 8px;
+        color: $utility-color;
+        background-color: white;
+        height: 21px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 700;
+    }
+    &__doc{
+        font-size: 17px;
+        text-align: left;
+        color: white;
+        text-decoration: underline;
+        margin: 10px 0;
+        cursor: pointer;
+    }
+    &__history{
+        font-size: 11px;
+        color: white;
+    }
+    &__icon{
+        height: 13px;
+        width: 13px;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+    }
+}
+.item-a{
+    grid-area: a;
+}
+.item-b{
+    grid-area: b;
+}
+.item-c{
+    grid-area: c;
+}
+.item-d{
+    grid-area: d;
+}
+.item-e{
+    grid-area: e;
+}
+.item-f{
+    grid-area: f;
+    background-color: $main-color;
+    border: none;
+}
+.item-g{
+    grid-area: g;
+    background-color: rgb(0, 122, 162);
+    border: none;
+}
+.item-h{
+    grid-area: h;
+    background-color: rgb(0, 122, 162);
+    border: none;
 }

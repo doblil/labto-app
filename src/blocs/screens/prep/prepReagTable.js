@@ -67,7 +67,7 @@ export const PrepTable = (props) => {
 
 const coloumns = props.coloumns.map(item => <th>item</th>)
   return(
-    <table className="prep__table">
+    <table className="table__wrap">
                 
     <thead>
         <tr>
