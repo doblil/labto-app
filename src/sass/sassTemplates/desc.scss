@@ -2,13 +2,15 @@
 @import '../base/title.scss';
 
 .desc{
-    height: 100%;
     width: 40%;
     background-color: white;
     border-radius: 15px;
     box-shadow: $main-shadow;
     position: relative;
-    padding: 20px;
+    padding: 20px 5px 15px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     &__close{
         font-size: 20px;
         position: absolute;
@@ -23,6 +25,9 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding-right: 15px;
+        margin-bottom: 20px;
+        position: relative;
     }
     &__heading{
         height: 100%;
@@ -58,14 +63,19 @@
     &__favorite{
         cursor: pointer;
     }
+    &__flow-wrap{
+        padding-right: 15px;
+    }
+    &__overflow{
+        margin-right: 15px;
+    }
 }
 
 
 .grid{
-    margin-top: 18px;
     display: grid;
-    grid-template: 85px 125px 77px/ 97px 82px auto 87px 35px;
-    gap:9px 12px;
+    grid-template: 80px 135px 80px/ minmax(95px, 1fr) minmax(80px, 1fr)  minmax(150px, 3fr) minmax(82px, 1fr) minmax(20px, 1fr);
+    gap:10px 15px;
     justify-content: space-between;
     grid-template-areas:
         "a b c d e"
@@ -138,7 +148,7 @@
     }
     &__btn{
         position: absolute;
-        bottom: 10px;
+        bottom: 9px;
         padding: 8px;
         color: $utility-color;
         background-color: white;
@@ -161,7 +171,7 @@
         cursor: pointer;
     }
     &__history{
-        font-size: 11px;
+        font-size: 10px;
         color: white;
     }
     &__icon{
@@ -186,6 +196,16 @@
 }
 .item-e{
     grid-area: e;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    img{
+        height: 35px;
+        margin: 2px 0;
+    }
 }
 .item-f{
     grid-area: f;

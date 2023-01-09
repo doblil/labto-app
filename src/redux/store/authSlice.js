@@ -14,7 +14,7 @@ const authSlice = createSlice({
             const {email, accessToken, role} = action.payload;
             state.email = email;
             state.token = accessToken;
-            state.role = role;;
+            state.role = role;
         },
         clearStore: (state) => {
             state.email = null;
