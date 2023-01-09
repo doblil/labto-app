@@ -17,17 +17,23 @@ export const FlowForm = () => {
 
                 <div className="flow__destination">
                     <div className="flow__label">Вид испытания</div>
-                    <textarea type="text" class="chat__input-text" placeholder="Описание анализа"></textarea>
+                    <textarea type="text" class="flow__input-text" placeholder="Описание анализа"></textarea>
                 </div>
 
                 <div className="flow__destination">
                     <div className="flow__label">Количество</div>
-                    <input type="text" class="filter__input"/>
+                    <div className="flow__wrap">
+                        <input type="text" class="flow__input"/>
+                        <div className="flow__inner">
+                            <div className="flow__label">Дата</div>
+                            <input type="text" class="flow__input flow__input-mini"/>
+                        </div>
+                    </div>
                 </div>
 
-                <div className="flow__destination">
-                    <div className="flow__label">Дата</div>
-                    <input type="text" class="filter__input"/>
+                <div className="flow__btn-wrap">
+                    <button className="flow__btn">В черновик</button>
+                    <button className="flow__btn">Списать</button>
                 </div>
 
             </div>
