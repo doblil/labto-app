@@ -62,62 +62,71 @@ export const PrepDescBloc = () => {
                 </div>
             </div>
 
-            <div className="grid">
-                <div className="grid__box item-a">
-                    <div className="grid__heading">Партия</div>
-                    <div className="grid__value">{lot}</div>
-                </div>
+            <div className="overflow">
+                <div className="descr__overflow">
+                    <div className="grid">
+                    <div className="grid__box item-a">
+                        <div className="grid__heading">Партия</div>
+                        <div className="grid__value">{lot}</div>
+                    </div>
 
-                <div className="grid__box item-b">
-                    <div className="grid__heading">Упаковка</div>
-                    <div className="grid__value">{container} {units}</div>
-                    <img className="grid__icon" src="icons/scales.svg" alt="document" />
-                </div>
-                <div className="grid__box item-c" >
-                    <div className="grid__heading">Дата производства - <br /> годен до</div>
-                    <div className="grid__value">{fromDate} - {toDate}</div>
-                    <div className="grid__descr">осталось {(toDate - Date.now)/1000/60/60/24} суток</div>
-                    <img className="grid__icon" src="icons/date.svg" alt="document" />
-                </div>
-                <div className="grid__box item-d">
-                    <div className="grid__heading">Расположение</div>
-                    <div className="grid__value">шкаф 2 <br /> полка 3</div>
-                    <img className="grid__icon" src="icons/location.svg" alt="location" />
-                </div>
-                <div className="grid__box item-e">
-                <img className="grid__icon" />
-                </div>
-                <div className="grid__box item-f">
-                    <div className="grid__heading grid__heading_white">Наличие</div>
-                    <div className="grid__value">
-                        <div className="grid__quantity">{Math.floor(restUnits/container*100)}%</div>
-                        <div className="grid__quantity">{restUnits} {units}</div>
+                    <div className="grid__box item-b">
+                        <div className="grid__heading">Упаковка</div>
+                        <div className="grid__value">{container} {units}</div>
+                        <img className="grid__icon" src="icons/scales.svg" alt="document" />
                     </div>
-                    <div className="grid__jar">
-                        <img className="grid__img" src="icons/jar.svg" alt="jar" />
-                        <div className="grid__jar-scale" style={{backgroundColor: handleJarColor(container, restUnits), height: `${Math.floor(restUnits/container*100)}%`}}></div>
+                    <div className="grid__box item-c" >
+                        <div className="grid__heading">Дата производства - <br /> годен до</div>
+                        <div className="grid__value">{fromDate} - {toDate}</div>
+                        <div className="grid__descr">осталось {(toDate - Date.now)/1000/60/60/24} суток</div>
+                        <img className="grid__icon" src="icons/date.svg" alt="document" />
                     </div>
-                    <div className="grid__icon"></div>
-                    <button className="grid__btn">Заказать</button>
+                    <div className="grid__box item-d">
+                        <div className="grid__heading">Расположение</div>
+                        <div className="grid__value">шкаф 2 <br /> полка 3</div>
+                        <img className="grid__icon" src="icons/location.svg" alt="location" />
+                    </div>
+                    <div className="grid__box item-e">
+                    <img src="icons/danger/corrosive.svg" alt="corrosive" />
+                        <img src="icons/danger/environmentally_hazardous.svg" alt="environmentally_hazardous" />
+                        <img src="icons/danger/harmful.svg" alt="harmful" />
+                        <img src="icons/danger/health _hazard.svg" alt="health _hazard" />
+                        <img src="icons/danger/oxidizing.svg" alt="oxidizing" />
+                        <img src="icons/danger/toxic.svg" alt="toxic" />
+                    </div>
+                    <div className="grid__box item-f">
+                        <div className="grid__heading grid__heading_white">Наличие</div>
+                        <div className="grid__value">
+                            <div className="grid__quantity">{Math.floor(restUnits/container*100)}%</div>
+                            <div className="grid__quantity">{restUnits} {units}</div>
+                        </div>
+                        <div className="grid__jar">
+                            <img className="grid__img" src="icons/jar.svg" alt="jar" />
+                            <div className="grid__jar-scale" style={{backgroundColor: handleJarColor(container, restUnits), height: `${Math.floor(restUnits/container*100)}%`}}></div>
+                        </div>
+                        <div className="grid__icon"></div>
+                        <button className="grid__btn">Заказать</button>
+                    </div>
+                    <div className="grid__box item-g">
+                        <div className="grid__heading grid__heading_white">Документы</div>
+                        <div className="grid__value">
+                            <div className="grid__doc">Паспорт</div>
+                            <div className="grid__doc">SDS</div>
+                            <div className="grid__doc">TDS</div>
+                        </div>
+                        <img className="grid__icon" src="icons/document.svg" alt="document" />
+                    </div>
+                    <div className="grid__box item-h">
+                        <div className="grid__heading grid__heading_white">Последний пользователь</div>
+                        <div className="grid__value grid__value_row">
+                            <div className="grid__history">Добровльскяа Лилия</div>
+                            <div className="grid__history">отдел разработки</div>
+                            <div className="grid__history">12.29.2022</div>
+                        </div>
+                        <img className="grid__icon" src="icons/person.svg" alt="document" />
+                        <button className="grid__btn">Смотреть развернутую историю списаний &#10095;&#10095;</button>
+                    </div>
                 </div>
-                <div className="grid__box item-g">
-                    <div className="grid__heading grid__heading_white">Документы</div>
-                    <div className="grid__value">
-                        <div className="grid__doc">Паспорт</div>
-                        <div className="grid__doc">SDS</div>
-                        <div className="grid__doc">TDS</div>
-                    </div>
-                    <img className="grid__icon" src="icons/document.svg" alt="document" />
-                </div>
-                <div className="grid__box item-h">
-                    <div className="grid__heading grid__heading_white">Последний пользователь</div>
-                    <div className="grid__value grid__value_row">
-                        <div className="grid__history">Добровльскяа Лилия</div>
-                        <div className="grid__history">отдел разработки</div>
-                        <div className="grid__history">12.29.2022</div>
-                    </div>
-                    <img className="grid__icon" src="icons/person.svg" alt="document" />
-                    <button className="grid__btn">Смотреть развернутую историю списаний &#10095;&#10095;</button>
                 </div>
             </div>
         </>
