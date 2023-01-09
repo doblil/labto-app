@@ -41,7 +41,6 @@ export const AuthForm = (props) => {
             </form>
                 
             <button onClick={handleLogin} onEnter className="auth__action-btn" >Войти</button>
-            <button onClick={() => {props.handleIsRegister(0)}} className="auth__alt-btn">Зарегистрироваться</button>
         </div>
             
     );

@@ -8,13 +8,15 @@ const authSlice = createSlice({
         isAuth: false,
         userId: null,
         role: null,
+        favorite: [],
     },
     reducers: {
         setCredentials: (state, action) => {
-            const {email, accessToken, role} = action.payload;
+            const {email, accessToken, role, favorite} = action.payload;
             state.email = email;
             state.token = accessToken;
-            state.role = role;;
+            state.role = role;
+            state.favorite = favorite;
         },
         clearStore: (state) => {
             state.email = null;
@@ -27,11 +29,13 @@ const authSlice = createSlice({
         userIdCh: (state, action) => {
             const {userId} = action.payload;
             state.userId = userId;
-        }
+        },
+
+        favoriteCh: (state, action) => {state.favorite.push(action.payload)}
     } ,
 });
 
-export const { setCredentials, clearStore, isAuthCh, userIdCh } = authSlice.actions;
+export const { setCredentials, clearStore, isAuthCh, userIdCh, favoriteCh } = authSlice.actions;
 export default authSlice.reducer;
 
 export const selectCurrentEmail = (state) => state.auth.email;

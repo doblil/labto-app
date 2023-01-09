@@ -1,77 +1,48 @@
 import { PrepReagItem } from "./prepReagItem"
-import { PrepRSItem } from "./PrepRSItem"
-import { PrepSubstItem } from "./prepSubstItem"
+import { useGetReagentsQuery } from "../../../redux/api/reagentApi"
+import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { favoriteCh } from "../../../redux/store/authSlice"
+import { activeReagentCh } from "../../../redux/store/activeReagSlice"
 
-export const PrepTable = (props) => {
-    
-    const data = [
-        {
-            itemId: 92007,
-            name: "Муравьиная кислота",
-            cat: '',
-            lot: '',
-            manufacturer: '',
-            fromDate: '',
-            toDate: '',
-            units: '',
-            restUnits: '',
-            restPercent: '',
-            container: '',
-            passport: '',
-            inUse: [],
-            SDS: '',
-            TDS: '',
-            location: '',
-            danger: [],
-        },
-        {
-            itemId: 92007,
-            name: "Муравьиная кислота",
-            cat: '',
-            lot: '',
-            manufacturer: '',
-            fromDate: '',
-            toDate: '',
-            units: '',
-            restUnits: '',
-            restPercent: '',
-            container: '',
-            passport: '',
-            inUse: [],
-            SDS: '',
-            TDS: '',
-            location: '',
-            danger: [],
-        },
-        {
-            itemId: 92007,
-            name: "Муравьиная кислота",
-            cat: '',
-            lot: '',
-            manufacturer: '',
-            fromDate: '',
-            toDate: '',
-            units: '',
-            restUnits: '',
-            restPercent: '',
-            container: '',
-            passport: '',
-            inUse: [],
-            SDS: '',
-            TDS: '',
-            location: '',
-            danger: [],
-        },
-    ]
-    
 
-const coloumns = props.coloumns.map(item => <th>item</th>)
-  return(
+export const PrepReagTable = (props) => {
+
+const reqParams = {
+    type: 'reag',
+    carantin: 'false'
+}
+
+
+let content = <></>
+const dispatch = useDispatch();
+const { favorite } = useSelector(state => state.auth)
+const [activeItem, setActiveItem] = useState(null)
+const {data, isLoading, isSuccess} = useGetReagentsQuery(reqParams)
+
+const handleActiveItem = (id) => {
+    setActiveItem(id);
+    dispatch(activeReagentCh(id))
+}
+
+if (isLoading) {content = <h5>Загрузка...</h5>}
+if (isSuccess) {content = data.reagents
+.map(item => {
+    return <PrepReagItem
+        activeItem = {activeItem === item._id}
+        handleActiveItem = {handleActiveItem}
+        favorite = {favorite}
+        key = { item._id }
+        item = {item}
+    />
+})}
+
+
+return(
     <table className="table__wrap">
                 
     <thead>
         <tr>
-			{coloumns}
             <th>ID</th>
             <th>Наименование</th>
             <th>Партия</th>
@@ -83,14 +54,7 @@ const coloumns = props.coloumns.map(item => <th>item</th>)
     </thead>
 
     <tbody>
-        {/* {switch (props.type) {
-            case reag value:
-                <>
-                break;
-        
-            default:
-                break;
-        }} */}
+       {content}
     </tbody>
 
 </table>

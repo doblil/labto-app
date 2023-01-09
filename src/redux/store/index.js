@@ -3,11 +3,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import { api } from '../api/api';
 import sMessageReducer from './sMessageSlice'
 import authReducer from './authSlice'
+import activeReagentReducer from './activeReagSlice'
 
 const store = configureStore({
     reducer: {
         auth: authReducer,
         sMessage: sMessageReducer,
+        activeReagent: activeReagentReducer,
         [api.reducerPath]: api.reducer
     },
     middleware: getDefaultMiddleware => {

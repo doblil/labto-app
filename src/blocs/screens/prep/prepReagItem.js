@@ -1,25 +1,32 @@
+import { useSelector } from "react-redux";
 import { SVGstar } from "../../../svg/svg"
 
 export const PrepReagItem = (props) => {
+  
+  const {favorite} = useSelector(state => state.auth)
+  const { itemId, name, CAS, cat, lot, manufacturer, toDate, units, restUnits, container, _id } = props.item;
+
+
+
   return(
-    <tr className={props.active ? "table__row table__row_active" : "table__row"}>
-        <td className="table__item">92147</td>
+    <tr className={props.activeItem ? "table__row table__row_active" : "table__row"} onClick = {() => props.handleActiveItem(_id)}>
+        <td className="table__item">{itemId}</td>
         <td className="table__item">
-			{props.favorite && <SVGstar style={{
-				fill: `${props.active ? "white" : "#ffb027"}`,
+			{(favorite.includes(_id)) && <SVGstar style={{
+				fill: `${props.activeItem ? "white" : "#ffb027"}`,
 				position: 'absolute',
 				top: '9px',
 				left: '-9px'
 			}}/>}
-			<span className="table__name">Муравьиная кислота</span> 
+			<span className="table__name">{name}</span> 
 			<br /> 
-			<span className="prep__producer">Нева Реактив | ГОСТ 4166-76</span>
+			<span className="prep__producer">{manufacturer} | {cat}</span>
         </td>
-        <td className="table__item">1388/H10</td>
-        <td className="table__item">64-18-6</td>
-        <td className="table__item">70 мл</td>
-        <td className="table__item">35%</td>
-        <td className="table__item">12.12.2032</td>
+        <td className="table__item">{lot}</td>
+        <td className="table__item">{CAS}</td>
+        <td className="table__item">{restUnits} {units}</td>
+        <td className="table__item">{Math.floor(restUnits/container*100)}%</td>
+        <td className="table__item">{toDate}</td>
     </tr>
 )
 }

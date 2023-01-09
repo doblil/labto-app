@@ -7,16 +7,13 @@ import { ServerMessage } from '../blocs/serverMessage/serverMessage';
 
 import './app.scss'
 import '../sass/base/variables.scss'
-import { Screen } from '../blocs/screens/screen';
 
 
 
 function App() {
   return (
     <div className="App">
-            <Header/>
-            <Screen/>
-            {/* <ContentRouter/> */}
+            <ContentRouter/>
             <ServerMessage/>
             <Footer/> 
     </div>
