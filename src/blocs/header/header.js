@@ -1,8 +1,13 @@
 import './header.scss';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export const Header = () => {
-  return (
+  
+	const {isAuth, name, direction, department, position } = useSelector(state => state.auth);
+
+	
+	return (
     <div className="header">
       <nav className="header__menu">
         <ul>
@@ -13,11 +18,11 @@ export const Header = () => {
         </ul>
       </nav>
 
-      <div className="header__profile">
-        <span className="text header__info">Федорко Илья</span>
-        <span className="text header__info">химик-аналитик ОРАМ</span>
-        <span className="text header__info header__info-fz11">пользователь</span>
-      </div>
+      {isAuth && <div className="header__profile">
+        <span className="text header__info">{name}</span>
+        <span className="text header__info">{position} {department} {direction}</span>
+        <span className="text header__info header__info-fz11">{position}</span>
+      </div>}
     </div>
   )
 }

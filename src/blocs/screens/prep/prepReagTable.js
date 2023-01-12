@@ -8,10 +8,15 @@ import { activeReagentCh } from "../../../redux/store/activeReagSlice"
 
 export const PrepReagTable = (props) => {
 
-const reqParams = {
-    type: 'reag',
-    carantin: 'false'
-}
+    console.log('table render')
+
+    const {catSearch, nameSearch, casSearch, expSearch, favoriteSearch, restSearch} = props
+    
+
+    const reqParams = {
+        type: 'reag',
+        carantin: 'false'
+    }
 
 
 let content = <></>
@@ -25,9 +30,22 @@ const handleActiveItem = (id) => {
     dispatch(activeReagentCh(id))
 }
 
+const handleFilter = (arr = []) => {;
+    if (catSearch) arr = arr.filter(item => item.cat.toLowerCase().includes(catSearch.toLowerCase())) ;
+    if (casSearch) arr = arr.filter(item => item.cas.includes(casSearch)) ;
+    if (nameSearch) arr = arr.filter(item => item.name.toLowerCase().includes(nameSearch.toLowerCase())) ;
+    if (expSearch && expSearch === 'valid') arr = arr.filter(item => Date.parse(item.toDate) > Date.now()) ;
+    if (expSearch && expSearch === 'invalid') arr = arr.filter(item => Date.parse(item.toDate) < Date.now()) ;
+    if (favoriteSearch) arr = arr.filter(item => favorite.includes(item._id)) ;
+    if (restSearch && restSearch === 'null') arr = arr.filter(item => item.restUnits === 0);
+    if (restSearch && restSearch === 'instock') arr = arr.filter(item => item.restUnits > 0);
+    return arr
+} 
+
 if (isLoading) {content = <h5>Загрузка...</h5>}
-if (isSuccess) {content = data.reagents
+if (isSuccess) {content = handleFilter(data.reagents)
 .map(item => {
+    console.log(typeof item.toDate)
     return <PrepReagItem
         activeItem = {activeItem === item._id}
         handleActiveItem = {handleActiveItem}

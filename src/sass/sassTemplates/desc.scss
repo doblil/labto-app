@@ -52,16 +52,24 @@
         flex-direction: column;
         align-items: flex-end;
         justify-content: space-between;
-        padding: 5px 0;
     }
     &__presence{
         font-size: 9px;
         color: rgb(0, 217, 0);
         font-weight: 700;
         cursor: default;
+        position: relative;
     }
     &__favorite{
         cursor: pointer;
+        position: relative;
+        margin-top: 5px;
+    }
+    &__favorite-text{
+        position: absolute;
+        font-size: 11px;
+        right: 45px;
+        top: 20px;
     }
     &__flow-wrap{
         padding-right: 15px;

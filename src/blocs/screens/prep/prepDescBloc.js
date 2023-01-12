@@ -2,18 +2,26 @@ import './prep.scss'
 import '../../../sass/sassTemplates/desc.scss'
 import '../../../sass/sassTemplates/flow.scss'
 import { FlowForm } from './flowForm'
-import { useSelector } from 'react-redux'
-import { useGetOneReagentQuery } from '../../../redux/api/reagentApi'
+import { useDispatch, useSelector } from 'react-redux'
+import { useFavoriteReagentMutation, useGetOneReagentQuery, useUnfavoriteReagentMutation } from '../../../redux/api/reagentApi'
+import { SVGstar } from '../../../svg/svg'
+import { handleWarnImg } from '../../../services/sevices'
+import { useEffect } from 'react'
+import { favoriteCh } from '../../../redux/store/authSlice'
 
 export const PrepDescBloc = () => {
-    
+    const dispatch = useDispatch();
+
     let content = <></>
+    let isFavorite = false
+    const {favorite, userId} = useSelector(state => state.auth);
     
-  
     const { _id: target } = useSelector(state => state.activeReagent);
 
-    console.log(target)
+    if(favorite.includes(target)){isFavorite = true}
 
+    const [favoriteReagent, {isLoading: favoriteLoading, isSuccess: favoriteSuccess}] = useFavoriteReagentMutation()
+    const [unfavoriteReagent, {isLoading: unfavoriteLoading, isSuccess: unfavoriteSuccess}] = useUnfavoriteReagentMutation()
     const {data, isLoading, isSuccess} = useGetOneReagentQuery(target);
 
     const handleJarColor = (container, rest) => {
@@ -24,6 +32,18 @@ export const PrepDescBloc = () => {
         return 'crimson'
     }
     
+    const handleFavorite = () => {
+        if(favoriteLoading || unfavoriteLoading) return
+
+        if(!favorite.includes(target)){
+            favoriteReagent({userId, target})
+            dispatch(favoriteCh(target))
+        }
+        if(favorite.includes(target)){
+            unfavoriteReagent({userId, target})
+            dispatch(favoriteCh(target))
+        }
+    }
     
     if(!target){
         return(
@@ -31,11 +51,6 @@ export const PrepDescBloc = () => {
         )
     }
 
-    if(!target){
-        return(
-            <h5> Выберите строку в таблице</h5>
-        )
-    }
 
     if (isLoading){
         content = <h5>Загрузка...</h5>
@@ -48,7 +63,8 @@ export const PrepDescBloc = () => {
             toDate, units, restUnits, 
             inUse, warn, SDS, TDS, 
             passport} = data.reagent;
-
+        
+        const last = inUse[inUse.length - 1]
         content = <> 
             <div className="desc__top">
                 <div className="desc__heading">
@@ -58,12 +74,15 @@ export const PrepDescBloc = () => {
                 </div>
                 <div className="desc__status">
                     <div className="desc__presence">{restUnits > 0.1 && 'В наличии'}</div>
-                    <img src="icons/star.svg" className="desc__favorite" alt="star" />
+                    <div className="desc__favorite">
+                        {isFavorite && <SVGstar handleFavorite = {handleFavorite} style={{fill: "#ffb027", height:"25", width: "25"}}/>}
+                        {!isFavorite && <SVGstar handleFavorite = {handleFavorite} style={{fill: "#cdcdcd", height:"25", width: "25"}}/>}
+                    </div>
                 </div>
             </div>
 
             <div className="overflow">
-                <div className="descr__overflow">
+                <div className="desc__overflow">
                     <div className="grid">
                     <div className="grid__box item-a">
                         <div className="grid__heading">Партия</div>
@@ -87,12 +106,7 @@ export const PrepDescBloc = () => {
                         <img className="grid__icon" src="icons/location.svg" alt="location" />
                     </div>
                     <div className="grid__box item-e">
-                    <img src="icons/danger/corrosive.svg" alt="corrosive" />
-                        <img src="icons/danger/environmentally_hazardous.svg" alt="environmentally_hazardous" />
-                        <img src="icons/danger/harmful.svg" alt="harmful" />
-                        <img src="icons/danger/health _hazard.svg" alt="health _hazard" />
-                        <img src="icons/danger/oxidizing.svg" alt="oxidizing" />
-                        <img src="icons/danger/toxic.svg" alt="toxic" />
+                        {handleWarnImg(warn)}
                     </div>
                     <div className="grid__box item-f">
                         <div className="grid__heading grid__heading_white">Наличие</div>
@@ -111,7 +125,7 @@ export const PrepDescBloc = () => {
                         <div className="grid__heading grid__heading_white">Документы</div>
                         <div className="grid__value">
                             <div className="grid__doc">Паспорт</div>
-                            <div className="grid__doc">SDS</div>
+                            <div className="grid__doc">SDS</div> 
                             <div className="grid__doc">TDS</div>
                         </div>
                         <img className="grid__icon" src="icons/document.svg" alt="document" />
@@ -119,9 +133,11 @@ export const PrepDescBloc = () => {
                     <div className="grid__box item-h">
                         <div className="grid__heading grid__heading_white">Последний пользователь</div>
                         <div className="grid__value grid__value_row">
-                            <div className="grid__history">Добровльскяа Лилия</div>
-                            <div className="grid__history">отдел разработки</div>
-                            <div className="grid__history">12.29.2022</div>
+                            {inUse.length ?  <>
+                                <div className="grid__history">{last.name}</div>
+                                <div className="grid__history">{last.quan} {units}</div>
+                                <div className="grid__history">{last.date}</div>
+                            </> : <div className="grid__history">Похоже, никто не пользовался</div>}
                         </div>
                         <img className="grid__icon" src="icons/person.svg" alt="document" />
                         <button className="grid__btn">Смотреть развернутую историю списаний &#10095;&#10095;</button>

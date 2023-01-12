@@ -9,14 +9,24 @@ const authSlice = createSlice({
         userId: null,
         role: null,
         favorite: [],
+
+        name: '',
+        direction: '',
+        position: '',
+        irection: '',
     },
     reducers: {
         setCredentials: (state, action) => {
-            const {email, accessToken, role, favorite} = action.payload;
+            const {email, accessToken, role, favorite, name, direction, department, position,} = action.payload;
+        
             state.email = email;
             state.token = accessToken;
             state.role = role;
             state.favorite = favorite;
+            state.name = name;
+            state.direction = direction;
+            state.department = department;
+            state.position = position;
         },
         clearStore: (state) => {
             state.email = null;
@@ -24,6 +34,12 @@ const authSlice = createSlice({
             state.isAuth = false;
             state.userId = null;
             state.role = null
+
+            state.favorite = [];
+            state.name = '';
+            state.direction = '';
+            state.department = '';
+            state.position = '';
         },
         isAuthCh: (state, action) => {state.isAuth = action.payload},
         userIdCh: (state, action) => {
@@ -31,7 +47,14 @@ const authSlice = createSlice({
             state.userId = userId;
         },
 
-        favoriteCh: (state, action) => {state.favorite.push(action.payload)}
+        favoriteCh: (state, action) => {
+            if (state.favorite.includes(action.payload)){
+                state.favorite =  state.favorite.filter(item => item !== action.payload)
+            } else {
+                state.favorite.push(action.payload)
+            }
+        }
+        
     } ,
 });
 

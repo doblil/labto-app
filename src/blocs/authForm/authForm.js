@@ -7,8 +7,8 @@ import { sMessageCh } from '../../redux/store/sMessageSlice';
 
 export const AuthForm = (props) => {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('3@mail.ru');
+    const [password, setPassword] = useState('123123');
  
     const [login, {isLoading} ] = useLoginMutation();
     const dispatch = useDispatch();
