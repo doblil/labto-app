@@ -3,11 +3,27 @@
 
 .table{
     margin-top: 20px;
+    height:calc(100% - 140px);
+    overflow: auto;
+    &::-webkit-scrollbar {
+        width: 13px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: rgb(228, 228, 228);
+        border-radius: 8px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: gray;
+        border-radius: 6px;
+        border: 2px solid rgb(228, 228, 228);
+    }
+
     &__wrap{
         width: 100%;
         font-size: 9px;
         border-collapse: collapse;
-
         thead{
             padding: 8px;
             th{

@@ -62,9 +62,9 @@ export const PrepDescBloc = () => {
                 </div>
             </div>
 
-            <div className="overflow">
-                <div className="descr__overflow">
-                    <div className="grid">
+       <div className="desc__overflow">
+            <div className="desc__overflow-wrap">
+                <div className="grid">
                     <div className="grid__box item-a">
                         <div className="grid__heading">Партия</div>
                         <div className="grid__value">{lot}</div>

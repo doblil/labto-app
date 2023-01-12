@@ -2,11 +2,10 @@
 @import '../base/title.scss';
 
 .flow{
-    width: 100%;
     background-color: gray;
     color: white;
     margin-top: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 12px;
     margin-right: 15px;
     &__heading{
@@ -30,7 +29,7 @@
         width: 60%;
         height: 25px;
         &-mini{
-            width: 110px;
+            width: 140px;
             min-width: 40px;
         }
     }
