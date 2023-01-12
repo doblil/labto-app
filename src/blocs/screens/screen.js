@@ -7,6 +7,7 @@ import './screen.scss'
 import { useGetProjectsQuery } from "../../redux/api/projectApi"
 import { useDispatch, useSelector } from "react-redux"
 import { projectsCh } from "../../redux/store/projectSlice"
+import { AddReag } from "./prep/add/addReag"
 export const Screen = () => {
   const dispatch = useDispatch();
   const {projects} = useSelector(state => state.project)
@@ -23,8 +24,9 @@ export const Screen = () => {
       <Header/>
       <div className="screen">
           <PrepMenu/>
-          <PrepInfoBloc/>
-          <PrepDescBloc />
+          {/* <PrepInfoBloc/>
+          <PrepDescBloc /> */}
+          <AddReag/>
       </div>
     </>
   )

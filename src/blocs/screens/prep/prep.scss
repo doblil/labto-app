@@ -12,18 +12,20 @@
 
     &__inputs{
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
         position: relative;
     }
     &__wrap{
         display: flex;
         position: relative;
+        margin-bottom: 31px;
     }
 
     &__label{
         position: absolute;
         font-size: 9px;
-        top: -16px;
+        top: -14px;
         left: 0px;
     }
     
@@ -43,7 +45,6 @@
         display: flex;
     }
     &__condition{
-        margin-top: 33px;
         display: flex;
         align-items: flex-start;
     }

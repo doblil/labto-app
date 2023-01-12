@@ -2,7 +2,7 @@
 @import '../base/title.scss';
 
 .desc{
-    width: 40%;
+    width: 45%;
     background-color: white;
     border-radius: 15px;
     box-shadow: $main-shadow;
@@ -44,7 +44,6 @@
         font-size: 13px;
         font-weight: 700;
         color: $utility-color;
-
     }
     &__status{
         height: 100%;
@@ -58,12 +57,11 @@
         color: rgb(0, 217, 0);
         font-weight: 700;
         cursor: default;
-        position: relative;
+        margin-bottom: 3px;
     }
     &__favorite{
         cursor: pointer;
-        position: relative;
-        margin-top: 5px;
+        height: 21px;
     }
     &__favorite-text{
         position: absolute;
@@ -75,6 +73,25 @@
         padding-right: 15px;
     }
     &__overflow{
+        overflow: auto;
+        height: calc(100% - 70px);
+        min-height: 90px;
+        &::-webkit-scrollbar {
+            width: 13px;
+        }
+    
+        &::-webkit-scrollbar-track {
+            background-color: rgb(228, 228, 228);
+            border-radius: 8px;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background-color: gray;
+            border-radius: 6px;
+            border: 2px solid rgb(228, 228, 228);
+        }
+    }
+    &__overflow-wrap{
         margin-right: 15px;
     }
 }
@@ -186,7 +203,7 @@
         height: 13px;
         width: 13px;
         position: absolute;
-        right: 5px;
+        right: 3px;
         top: 5px;
     }
 }
@@ -212,7 +229,7 @@
     padding: 0;
     img{
         height: 35px;
-        margin: 2px 0;
+        margin: 1px 0;
     }
 }
 .item-f{
@@ -229,4 +246,41 @@
     grid-area: h;
     background-color: rgb(0, 122, 162);
     border: none;
+}
+@media (max-width: 1200px) {
+    .desc{
+        width: 45%;
+        min-width: 0;
+    }
+    .grid{
+        display: grid;
+        grid-template: 80px 135px 40px 80px/ minmax(85px, 1fr) minmax(75px, 1fr)  minmax(140px, 3fr) minmax(70px, 1fr);
+        gap:9px 13px;
+        grid-template-areas:
+            "a b c d "
+            "f f g g "
+            "e e e e"
+            "h h h h ";
+        &__jar{
+            right: 10px;
+        }
+        &__icon{
+            height: 13px;
+            width: 13px;
+            position: absolute;
+            right: 3px;
+            top: 5px;
+        }
+    }
+    .item-e{
+        flex-direction: row;
+        img{
+            margin:0 1px ;
+        }
+    }
+}
+@media (max-width: 991px) {}
+@media (max-width: 767px) {
+}
+@media (max-width: 575px) {
 }
