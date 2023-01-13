@@ -10,14 +10,23 @@
     &__heading{
         font-size: 13px;
         font-weight: 700;
+        padding: 5px;
+        margin-left: 30px;
     }
     &__wrap{
         display: flex;
+        flex-wrap: wrap;
     }
     &__destination{
         display: flex;
-        margin-top: 15px;
+        margin-top: 25px;
         align-items: center;
+        &_mt8{
+            margin-top: 8px;
+        }
+        &_top{
+            align-items: flex-start;
+        }
     }
     &__label{
         width: 150px;
@@ -27,40 +36,108 @@
         color: rgb(54, 54, 54);
     }
     &__input{
-        width: 200px;
-        height: 28px;
+        width: 230px;
+        height: 30px;
+        font-size: 13px;
     }
     &__choice{
-        width: 300px;
-        height: 300px;
+        width: 230px;
+        height: 250px;
         font-size: 10px;
         border-radius: 5px;
         border: 1px solid $main-color;
         box-shadow: inset 0px 0px 4px rgb(166, 166, 166);
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
         background-color: white;
     }
+    &__choice-heading{
+        padding: 5px 10px;
+        width: 100%;
+        font-size: 9px;
+        font-weight: 700;
+    }
     &__pict{
-        width: 79px;
-        height: 79px;
-        margin: 10px;
-        padding: 8px;
+        width: 70px;
+        height: 70px;
+        margin: 3px;
+        padding: 3px;
         border-radius: 5px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         cursor: pointer;
         transition: all 0.5s;
+        font-size: 8px;
+        line-height: 8px;
+        text-align: center;
         &:hover{
             box-shadow: $minor-shadow;
             border: 1px solid rgb(185, 185, 185);
         }
         img{
-            height: 50px;
-            margin-bottom: 5px;
+            height: 49px;
+            margin-bottom: 3px;
         }
+    }
+    &__document{
+        width: 230px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__document_form{
+        width: 65px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        background-color: $main-color;
+        color: white;
+        box-shadow: inset 0px 0px 4px rgb(166, 166, 166);
+        font-size: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s;
+        &:hover{
+            background-color: rgb(85, 85, 85);
+        }
+    }
+    &__document_success{
+        background-color: white;
+        box-shadow: $minor-shadow;
+        border: 1px solid rgb(185, 185, 185);
+        text-align: center;
+        word-break: break-all;
+        color: black;
+        &:hover{
+            background-color: rgb(244, 244, 244);
+        }
+    }
+    &__btn-wrap{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 11px;
+    }
+    &__btn{
+        height: 35px;
+        width: 105px;
+        color:white ;
+        background-color:$utility-color ;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 3px 7px;
+        margin-left: 20px;
     }
 }
 

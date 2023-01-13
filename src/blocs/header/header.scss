@@ -7,8 +7,15 @@
     align-items: center;
     justify-content: space-between;
     &__menu{
+        display: flex;
+        align-items: center;
+        img{
+            height: 25px;
+            margin-right: 45px;
+        }
         ul{
             display: flex;
+
         }
         &-item{
             font-size: 13px;

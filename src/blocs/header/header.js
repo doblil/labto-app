@@ -5,6 +5,7 @@ export const Header = () => {
   return (
     <div className="header">
       <nav className="header__menu">
+        <img src="icons/main_logo.svg" alt="" />
         <ul>
           <li className="title header__menu-item"><Link to="/" className="link">Профиль</Link></li>
           <li className="title header__menu-item header__menu-item_active"><Link to="/" className="link">Препараторская</Link></li>

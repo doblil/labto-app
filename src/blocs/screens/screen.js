@@ -11,8 +11,8 @@ export const Screen = () => {
       <Header/>
       <div className="screen">
           <PrepMenu/>
-          {/* <PrepInfoBloc/>
-          <PrepDescBloc /> */}
+          <PrepInfoBloc/>
+          <PrepDescBloc />
           <AddReag/>
       </div>
     </>
