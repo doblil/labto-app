@@ -8,6 +8,7 @@ import { Prep } from "../screens/prep/prep"
 import { AuthForm } from "../authForm/authForm"
 import { Screen } from "../screens/screen"
 import { ReagentTable } from "../screens/prep/reagentTable/reagentTable"
+import { AddReag } from '../screens/prep/add/addReag'
 export const ContentRouter = () => {
   
   const {isAuth} = useSelector(state => state.auth);
@@ -20,6 +21,7 @@ export const ContentRouter = () => {
       <Route path="/" element = {<Screen/>}>
         <Route path="/prep" element ={<Prep/>}>
           <Route path="/prep/reagentTable" element = {<ReagentTable/>}/>
+          <Route path="/prep/addReagent" element = {<AddReag/>}/>
         </Route>
       </Route>
 

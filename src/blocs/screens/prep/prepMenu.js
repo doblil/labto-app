@@ -10,19 +10,19 @@ export const PrepMenu = () => {
         <div className="menu__stripe"></div>
         <div className="menu__subtitle">Таблица</div>
         <ul>
-            <li className="menu__item menu__item_active"><Link to='/' children="Реактивы" className='link'/></li>
+            <li className="menu__item menu__item_active"><Link to='/prep/reagentTable' children="Реактивы" className='link'/></li>
             <li className="menu__item"><Link to='/' children="Стандартные образцы" className='link'/></li>
             <li className="menu__item"><Link to='/' children="Субстанции" className='link'/></li>
         </ul>
         <div className="menu__stripe"></div>
-        <div className="menu__subtitle">Таблица</div>
+        <div className="menu__subtitle">Внести</div>
         <ul>
-            <li className="menu__item"><Link to='/' children="Реактивы" className='link'/></li>
+            <li className="menu__item"><Link to='/prep/addReagent' children="Реактивы" className='link'/></li>
             <li className="menu__item"><Link to='/' children="Стандартные образцы" className='link'/></li>
             <li className="menu__item"><Link to='/' children="Субстанции" className='link'/></li>
         </ul>
         <div className="menu__stripe"></div>
-        <div className="menu__subtitle">Таблица</div>
+        <div className="menu__subtitle">Карантин</div>
         <ul>
             <li className="menu__item"><Link to='/' children="Реактивы" className='link'/></li>
             <li className="menu__item"><Link to='/' children="Стандартные образцы" className='link'/></li>

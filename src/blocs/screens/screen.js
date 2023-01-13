@@ -24,7 +24,6 @@ export const Screen = () => {
     <>
       <Header/>
       <div className="screen">
-          <AddReag/>
         <Outlet/>
       </div>
     </>
