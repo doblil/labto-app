@@ -1,5 +1,5 @@
-import { PrepDescBloc } from "./prep/prepDescBloc"
-import { PrepInfoBloc } from "./prep/prepInfoBloc"
+import { PrepDescBloc } from "./prep/reagentTable/prepDescBloc"
+import { PrepInfoBloc } from "./prep/reagentTable/prepInfoBloc"
 import { PrepMenu } from "./prep/prepMenu"
 import { Header } from "../header/header"
 
@@ -8,6 +8,7 @@ import { useGetProjectsQuery } from "../../redux/api/projectApi"
 import { useDispatch, useSelector } from "react-redux"
 import { projectsCh } from "../../redux/store/projectSlice"
 import { AddReag } from "./prep/add/addReag"
+import { Outlet } from "react-router-dom"
 export const Screen = () => {
   const dispatch = useDispatch();
   const {projects} = useSelector(state => state.project)
@@ -23,10 +24,7 @@ export const Screen = () => {
     <>
       <Header/>
       <div className="screen">
-          <PrepMenu/>
-          {/* <PrepInfoBloc/>
-          <PrepDescBloc /> */}
-          <AddReag/>
+        <Outlet/>
       </div>
     </>
   )

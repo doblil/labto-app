@@ -14,6 +14,9 @@ export const reagentApi = api.injectEndpoints({
                 url: `/api/reagent/getOne/${target}`,
             }),
             providesTags: ['Reagent'],
+            onQueryStarted: async () => {
+                
+            }
         }),
         takeReagent: builder.mutation({
             query: ({target, userId, body})=> ({

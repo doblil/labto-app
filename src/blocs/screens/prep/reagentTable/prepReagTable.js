@@ -1,14 +1,13 @@
 import { PrepReagItem } from "./prepReagItem"
-import { useGetReagentsQuery } from "../../../redux/api/reagentApi"
+import { useGetReagentsQuery } from "../../../../redux/api/reagentApi"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { favoriteCh } from "../../../redux/store/authSlice"
-import { activeReagentCh } from "../../../redux/store/activeReagSlice"
+import { favoriteCh } from "../../../../redux/store/authSlice"
+import { activeReagentCh } from "../../../../redux/store/activeReagSlice"
 
 
 export const PrepReagTable = (props) => {
 
-    console.log('table render')
 
     const {catSearch, nameSearch, casSearch, expSearch, favoriteSearch, restSearch} = props
     
@@ -45,7 +44,6 @@ const handleFilter = (arr = []) => {;
 if (isLoading) {content = <h5>Загрузка...</h5>}
 if (isSuccess) {content = handleFilter(data.reagents)
 .map(item => {
-    console.log(typeof item.toDate)
     return <PrepReagItem
         activeItem = {activeItem === item._id}
         handleActiveItem = {handleActiveItem}

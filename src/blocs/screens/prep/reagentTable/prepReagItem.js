@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { SVGstar } from "../../../svg/svg"
+import { SVGstar } from "../../../../svg/svg"
 
 export const PrepReagItem = (props) => {
   

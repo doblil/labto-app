@@ -1,6 +1,6 @@
-import './prep.scss'
-import '../../../sass/sassTemplates/info.scss'
-import '../../../sass/sassTemplates/table.scss'
+import '../prep.scss'
+import '../../../../sass/sassTemplates/info.scss'
+import '../../../../sass/sassTemplates/table.scss'
 import { useState } from 'react'
 import { PrepReagFilter } from './prepReagFilter'
 import { PrepReagTable } from './prepReagTable'
@@ -13,8 +13,7 @@ export const PrepInfoBloc = () => {
     const [restSearch, setRestSearch] = useState(''); // 'instock', 'null' 
     const [favoriteSearch, setFavoriteSearch] = useState(false);
     const [expSearch, setExpSearch] = useState(''); // 'valid', 'invalid'
-    
-    console.log(nameSearch, casSearch, restSearch, catSearch, favoriteSearch, expSearch)
+
 
 
     return(

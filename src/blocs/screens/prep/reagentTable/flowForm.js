@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux"
-import { useTakeReagentMutation } from "../../../redux/api/reagentApi";
-import { sMessageCh } from "../../../redux/store/sMessageSlice";
+import { useTakeReagentMutation } from "../../../../redux/api/reagentApi";
+import { sMessageCh } from "../../../../redux/store/sMessageSlice";
 
 
 export const FlowForm = () => {
@@ -15,7 +15,7 @@ export const FlowForm = () => {
 
     const [takeReagent, {isLoading}] = useTakeReagentMutation()
 
-    const options = projects.map(item => <option  value={item.code}>{item.code} {item.name}<hr/></option>)
+    const options = projects.map(item => <option  value={item.code}>{item.code} {item.name}</option>)
 
     const handleTakeReagent = async () => {
         if(!(date && quan && test && destination && name && userId)){

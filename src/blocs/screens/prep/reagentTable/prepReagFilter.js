@@ -6,6 +6,9 @@ export const PrepReagFilter = (props) => {
     const { setCasSearch, setCatSearch, setNameSearch, setExpSearch, setFavoriteSearch, setRestSearch, rest, exp, favorite } = props;
     const {favorite: favoriteList} = useSelector(state => state.auth)
 
+
+    console.log('from filter', favorite)
+
     return(
         <div className="filter">
                 <div className="filter__inputs">
@@ -111,7 +114,7 @@ export const PrepReagFilter = (props) => {
                             name="chb-allFavorite"
                             value={false}
                             checked={favorite === false}
-                            onChange = {(e) => setFavoriteSearch(e.target.value)}
+                            onChange = {(e) => setFavoriteSearch(false)}
                         />
                         <label className="custom-checkbox__text" for="chb-allFavorite">Все</label> <br />
                         <input 
@@ -121,7 +124,7 @@ export const PrepReagFilter = (props) => {
                             name="chb-favorite"
                             value={true}
                             checked={favorite === true}
-                            onChange = {(e) => setFavoriteSearch(e.target.value)}
+                            onChange = {(e) => setFavoriteSearch(true)}
                         />
                         <label className="custom-checkbox__text" for="chb-favorite">Избранное ({favoriteList.length})</label> <br />
                     </div>

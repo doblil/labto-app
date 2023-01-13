@@ -1,13 +1,13 @@
-import './prep.scss'
-import '../../../sass/sassTemplates/desc.scss'
-import '../../../sass/sassTemplates/flow.scss'
+import '../prep.scss'
+import '../../../../sass/sassTemplates/desc.scss'
+import '../../../../sass/sassTemplates/flow.scss'
 import { FlowForm } from './flowForm'
 import { useDispatch, useSelector } from 'react-redux'
-import { useFavoriteReagentMutation, useGetOneReagentQuery, useUnfavoriteReagentMutation } from '../../../redux/api/reagentApi'
-import { SVGstar } from '../../../svg/svg'
-import { handleWarnImg } from '../../../services/sevices'
+import { useFavoriteReagentMutation, useGetOneReagentQuery, useUnfavoriteReagentMutation } from '../../../../redux/api/reagentApi'
+import { SVGstar } from '../../../../svg/svg'
+import { handleWarnImg } from '../../../../services/sevices'
 import { useEffect } from 'react'
-import { favoriteCh } from '../../../redux/store/authSlice'
+import { favoriteCh } from '../../../../redux/store/authSlice'
 
 export const PrepDescBloc = () => {
     const dispatch = useDispatch();
@@ -32,15 +32,15 @@ export const PrepDescBloc = () => {
         return 'crimson'
     }
     
-    const handleFavorite = () => {
+    const handleFavorite = async () => {
         if(favoriteLoading || unfavoriteLoading) return
 
         if(!favorite.includes(target)){
-            favoriteReagent({userId, target})
+            await favoriteReagent({userId, target})
             dispatch(favoriteCh(target))
         }
         if(favorite.includes(target)){
-            unfavoriteReagent({userId, target})
+            await unfavoriteReagent({userId, target})
             dispatch(favoriteCh(target))
         }
     }
