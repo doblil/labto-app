@@ -1,28 +1,31 @@
+import { useSelector } from "react-redux"
 import { Route, Routes } from "react-router-dom"
-// import { PrepScreen } from "../prepScreen/prepScreen"
+import { Prep } from "../screens/prep/prep"
 // import { Profile } from "../profile/profile"
 // import { Reporting } from "../reporting/reporting"
 // import { Purchases } from "../purchases/purchases"
 // import { Employers } from "../employers/employers"
 import { AuthForm } from "../authForm/authForm"
 import { Screen } from "../screens/screen"
-import { Start } from "../start/start"
+import { ReagentTable } from "../screens/prep/reagentTable/reagentTable"
 export const ContentRouter = () => {
-  return (
-    <>
-    <Routes>
-      <Route index element = {<Start/>}/>       
-
   
-      {/* <Route index element = {<AuthForm/>}/>
-      <Route path="/preparator" element = {<PrepScreen/>}/>
-      <Route path="/profile" element={<Profile/>}/>
-      <Route path = "/reporting" element={<Reporting/>}/>
-      <Route path = "/purchases" element={<Purchases/>}/>
-      <Route path="/employers" element={<Employers/>}/> */}
+  const {isAuth} = useSelector(state => state.auth);
+  
+  if(!isAuth) return <AuthForm/>
 
+  return (
+    
+    <Routes>
+      <Route path="/" element = {<Screen/>}>
+        <Route path="/prep" element ={<Prep/>}>
+          <Route path="/prep/reagentTable" element = {<ReagentTable/>}/>
+        </Route>
+      </Route>
+
+      
 
     </Routes>
-    </>
+    
   )
 }

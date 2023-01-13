@@ -4,27 +4,35 @@ import { useDispatch } from 'react-redux';
 import { isAuthCh, setCredentials, userIdCh } from '../../redux/store/authSlice';
 import { useLoginMutation } from '../../redux/api/authApi';
 import { sMessageCh } from '../../redux/store/sMessageSlice';
+import { useNavigate } from 'react-router-dom';
 
 export const AuthForm = (props) => {
 
     const [email, setEmail] = useState('3@mail.ru');
     const [password, setPassword] = useState('123123');
  
-    const [login, {isLoading} ] = useLoginMutation();
+    const [login, {isSuccess} ] = useLoginMutation();
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const handleLogin = async () =>  {
+        
+        
+
         if(!email || !password){
             dispatch(sMessageCh('Введите e-mail и пароль'));
             return
         }
         try {
             const userData = await login({email, password}).unwrap();
+            const s = await isSuccess
             dispatch(setCredentials({...userData, email}));
             dispatch(isAuthCh(true));
             dispatch(userIdCh(userData));
             setEmail('');
             setPassword('');
+            navigate('/prep/reagentTable')
+            
         } catch (error) {
             console.error(error);
         }

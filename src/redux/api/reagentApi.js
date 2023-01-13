@@ -13,24 +13,34 @@ export const reagentApi = api.injectEndpoints({
             query: (target)=> ({
                 url: `/api/reagent/getOne/${target}`,
             }),
-        }),
-
-        createOrder: builder.mutation({
-            query: (orderData) => ({
-                url: `/api/order/create`,
-                method: 'POST',
-                body: orderData,
-            }),
-            invalidatesTags: ['Order'],
-            async onQueryStarted (_, {dispatch}){
-                try {
-                    // dispatch(orReset());
-                } catch (error) {
-                    console.error(error, ' couldnt reset orderState')
-                }
+            providesTags: ['Reagent'],
+            onQueryStarted: async () => {
+                
             }
-        })
+        }),
+        takeReagent: builder.mutation({
+            query: ({target, userId, body})=> ({
+                url: `/api/reagent/take/${userId}/${target}`,
+                method: 'PUT',
+                body
+            }),
+            invalidatesTags: ['Reagent'],
+        }),
+        favoriteReagent: builder.mutation({
+            query: ({target, userId})=> ({
+                url: `/api/reagent/favorite/${userId}/${target}`,
+                method: 'PATCH',
+            }),
+            invalidatesTags: ['Reagent'],
+        }),
+        unfavoriteReagent: builder.mutation({
+            query: ({target, userId})=> ({
+                url: `/api/reagent/unfavorite/${userId}/${target}`,
+                method: 'PATCH',
+            }),
+            invalidatesTags: ['Reagent'],
+        }),
     })
 })
 
-export const { useGetOneReagentQuery, useGetReagentsQuery } = reagentApi
+export const { useGetOneReagentQuery, useGetReagentsQuery, useTakeReagentMutation, useFavoriteReagentMutation, useUnfavoriteReagentMutation } = reagentApi

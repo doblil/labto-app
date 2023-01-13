@@ -4,9 +4,12 @@ import { api } from '../api/api';
 import sMessageReducer from './sMessageSlice'
 import authReducer from './authSlice'
 import activeReagentReducer from './activeReagSlice'
+import projectReducer from './projectSlice'
+
 
 const store = configureStore({
     reducer: {
+        project: projectReducer,
         auth: authReducer,
         sMessage: sMessageReducer,
         activeReagent: activeReagentReducer,

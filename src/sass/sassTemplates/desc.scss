@@ -63,6 +63,12 @@
         cursor: pointer;
         height: 21px;
     }
+    &__favorite-text{
+        position: absolute;
+        font-size: 11px;
+        right: 45px;
+        top: 20px;
+    }
     &__flow-wrap{
         padding-right: 15px;
     }
