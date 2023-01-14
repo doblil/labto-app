@@ -107,11 +107,14 @@ export const AddReag = () => {
                     </div>
                     <div className="add__destination add__destination_mt8">
                         <div className="add__label">Упаковка</div>
-                        <input type="text" class="add__input"
+                        <input type="text" class="add__input add__input-mini"
                             value={container}
                             onChange={(e)=>{dispatch(addContainerCh(e.target.value))}}
                         />
+                        <select class="add__input add__input-mini" ></select>
+
                     </div>
+                   
                     <div className="add__destination">
                         <div className="add__label">Дата производства</div>
                         <input type="text" class="add__input"

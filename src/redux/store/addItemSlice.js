@@ -30,6 +30,7 @@ const addItemSlice = createSlice({
         addTypeCh: (state, action) => {state.type = action.payload},
         addStandartTypeCh: (state, action) => {state.standartType = action.payload},
         addItemIdCh: (state, action) => {state.itemId = action.payload},
+        addNameCh: (state, action)=>{state.name = action.payload},
         addCatCh: (state, action) => {state.cat = action.payload},
         addCASCh: (state, action) => {state.CAS = action.payload},
         addLotCh: (state, action) => {state.lot = action.payload},
@@ -72,6 +73,6 @@ const addItemSlice = createSlice({
 
 export const { addItemReset, addCASCh, addCatCh, addContainerCh, addFromDateCh, addItemIdCh, addLotCh,
 addManufacturerCh, addPassportCh, addPriceCh, addSDSCh, addStandartTypeCh, addTDSCh, 
-addToDateCh, addTypeCh, addUnitsCh, addWarnCh, addLocationCh } = addItemSlice.actions;
+addToDateCh, addTypeCh, addUnitsCh, addWarnCh, addLocationCh, addNameCh } = addItemSlice.actions;
 export default addItemSlice.reducer;
 
