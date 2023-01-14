@@ -112,7 +112,6 @@ export const PrepReagFilter = (props) => {
                             className="custom-checkbox" 
                             type="checkbox"id="chb-allFavorite" 
                             name="chb-allFavorite"
-                            value={false}
                             checked={favorite === false}
                             onChange = {(e) => setFavoriteSearch(false)}
                         />
@@ -122,7 +121,6 @@ export const PrepReagFilter = (props) => {
                             type="checkbox" 
                             id="chb-favorite" 
                             name="chb-favorite"
-                            value={true}
                             checked={favorite === true}
                             onChange = {(e) => setFavoriteSearch(true)}
                         />

@@ -40,6 +40,13 @@ export const reagentApi = api.injectEndpoints({
             }),
             invalidatesTags: ['Reagent'],
         }),
+        addReagent: builder.mutation({
+            query: ({body, userId})=> ({
+                url: `/api/reagent/unfavorite/${userId}`,
+                method: 'POST',
+            }),
+            invalidatesTags: ['Reagent'],
+        }),
     })
 })
 

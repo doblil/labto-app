@@ -5,7 +5,7 @@ import { FlowForm } from './flowForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { useFavoriteReagentMutation, useGetOneReagentQuery, useUnfavoriteReagentMutation } from '../../../../redux/api/reagentApi'
 import { SVGstar } from '../../../../svg/svg'
-import { handleWarnImg } from '../../../../services/sevices'
+import { handleWarnImg, stringifyDate } from '../../../../services/sevices'
 import { useEffect } from 'react'
 import { favoriteCh } from '../../../../redux/store/authSlice'
 
@@ -28,8 +28,8 @@ export const PrepDescBloc = () => {
         const restPercent = Math.floor(rest/container*100)
         if(restPercent > 60) return 'lawnGreen'
         if(restPercent > 40) return 'yellow'
-        if(restPercent > 20) return 'orange'
-        return 'crimson'
+        if(restPercent > 20) return 'red'
+        return 'darkRed'
     }
     
     const handleFavorite = async () => {
@@ -96,8 +96,8 @@ export const PrepDescBloc = () => {
                     </div>
                     <div className="grid__box item-c" >
                         <div className="grid__heading">Дата производства - <br /> годен до</div>
-                        <div className="grid__value">{fromDate} - {toDate}</div>
-                        <div className="grid__descr">осталось {(toDate - Date.now)/1000/60/60/24} суток</div>
+                        <div className="grid__value">{stringifyDate(fromDate) } - {stringifyDate(toDate) }</div>
+                        <div className="grid__descr">осталось {(toDate - (+Date.now()))/1000/60/60/24} суток</div>
                         <img className="grid__icon" src="icons/date.svg" alt="document" />
                     </div>
                     <div className="grid__box item-d">
@@ -136,7 +136,7 @@ export const PrepDescBloc = () => {
                             {inUse.length ?  <>
                                 <div className="grid__history">{last.name}</div>
                                 <div className="grid__history">{last.quan} {units}</div>
-                                <div className="grid__history">{last.date}</div>
+                                <div className="grid__history">{stringifyDate(last.date, true)}</div>
                             </> : <div className="grid__history">Похоже, никто не пользовался</div>}
                         </div>
                         <img className="grid__icon" src="icons/person.svg" alt="document" />
