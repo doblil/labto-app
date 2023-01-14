@@ -1,0 +1,62 @@
+// @import '../../../../../src/sass/base/title.scss';
+@import '../../sass/base/variables.scss';
+
+.auth{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    img{
+        width: 140px;
+        margin-bottom: 20px;
+    }
+    &__wrapper{
+        width: 280px;
+        padding: 13px 23px 23px 23px;
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            label{
+                width: 180px;
+                font-size: 13px;
+                margin-top: 17px;
+            }
+            input{
+                width: 180px;
+                height: 34px;
+                margin-top: 4px;
+                font-size: 13px;
+            }
+        }
+    }
+    &__forgot{
+        font-size: 12px;
+        margin-top: 12px;
+        color: $utility-color;
+    }
+    &__action-btn{
+        height: 37px;
+        width: 120px;
+        color:white ;
+        background-color:$utility-color ;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 700;
+        margin-top: 17px;
+    }
+}

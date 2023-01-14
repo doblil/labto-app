@@ -2,8 +2,7 @@
 @import '../base/title.scss';
 
 .table{
-    margin-top: 20px;
-    height:calc(100% - 140px);
+    margin-top: 7px;
     overflow: auto;
     &::-webkit-scrollbar {
         width: 13px;

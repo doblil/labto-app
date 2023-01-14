@@ -1,5 +1,5 @@
-import { PrepDescBloc } from "./prep/reagentTable/prepDescBloc"
-import { PrepInfoBloc } from "./prep/reagentTable/prepInfoBloc"
+import { PrepDescBloc } from "./prep/table/prepDescBloc"
+import { PrepInfoBloc } from "./prep/table/prepInfoBloc"
 import { PrepMenu } from "./prep/prepMenu"
 import { Header } from "../header/header"
 

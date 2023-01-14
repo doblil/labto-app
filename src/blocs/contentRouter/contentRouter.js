@@ -7,7 +7,7 @@ import { Prep } from "../screens/prep/prep"
 // import { Employers } from "../employers/employers"
 import { AuthForm } from "../authForm/authForm"
 import { Screen } from "../screens/screen"
-import { ReagentTable } from "../screens/prep/reagentTable/reagentTable"
+import { ReagentTable } from "../screens/prep/table/reagentTable"
 import { AddReag } from '../screens/prep/add/addReag'
 export const ContentRouter = () => {
   

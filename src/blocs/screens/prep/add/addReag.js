@@ -22,8 +22,12 @@ export const AddReag = () => {
                         <input type="text" class="add__input"/>
                     </div>
                     <div className="add__destination">
-                        <div className="add__label">Упаковка</div>
-                        <input type="text" class="add__input"/>
+                        <div className="add__label">Упаковка (вес)</div>
+                        <div className="add__destination add__destination-mini">
+                            <input type="text" class="add__input add__input-mini"/>
+                            <select class="add__input add__input-mini" ></select>
+                        </div>
+                        
                     </div>
                     <div className="add__destination add__destination_mt8">
                         <div className="add__label">Партия</div>
@@ -69,14 +73,19 @@ export const AddReag = () => {
                             <div className="add__document_form">Добавить паспорт</div>
                             <div className="add__document_form">Добавить SDS</div>
                             {/* <div className="add__document_form">Добавить TDS</div> */}
-                            <div className="add__document_form add__document_success">
-                                name_file.doc
+                            <div className="add__document-wrap">
+                                <div className="add__document-title">TDS</div>
+                                <div className="add__document_form add__document_success">
+                                    <div className="add__document_cancel">x</div>
+                                    <div className="add__file"><p>name_file.docdfsdsfsdfdsfdsfdsfsdfdsfsdfdsfdfsdfghjkljhgfdxszxfcghjk</p></div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
                     
                     <div className="add__btn-wrap">
-                        <button className="add__btn">В черновик</button>
+                        <button className="add__btn add__btn_white">В черновик</button>
                         <button className="add__btn">Внести</button>
                     </div>
                 </div>

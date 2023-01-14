@@ -47,13 +47,15 @@ export const PrepDescBloc = () => {
     
     if(!target){
         return(
-            <h5> Выберите строку в таблице</h5>
+            <div className="desc__return">
+                Выберите строку в таблице
+            </div>
         )
     }
 
 
     if (isLoading){
-        content = <h5>Загрузка...</h5>
+        content = <div className="desc__return">Загрузка...</div>
     }
 
     if(isSuccess && data.reagent){

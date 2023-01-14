@@ -21,6 +21,12 @@
         display: flex;
         margin-top: 25px;
         align-items: center;
+        &-mini{
+            width: 230px;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0;
+        }
         &_mt8{
             margin-top: 8px;
         }
@@ -39,6 +45,9 @@
         width: 230px;
         height: 30px;
         font-size: 13px;
+        &-mini{
+            width: 110px;
+        }
     }
     &__choice{
         width: 230px;
@@ -88,40 +97,83 @@
         align-items: center;
         justify-content: space-between;
     }
+    &__document-wrap{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 65px;
+        height: 56px;
+        font-size: 12px;
+        position: relative;
+    }
     &__document_form{
         width: 65px;
         height: 56px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        padding-top: 15px;
         border-radius: 5px;
         background-color: $main-color;
         color: white;
         box-shadow: inset 0px 0px 4px rgb(166, 166, 166);
         font-size: 10px;
         text-align: center;
-        cursor: pointer;
         transition: all 0.4s;
+        cursor: pointer;
         &:hover{
             background-color: rgb(85, 85, 85);
         }
     }
     &__document_success{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 65px;
+        height: 41px;
         background-color: white;
         box-shadow: $minor-shadow;
         border: 1px solid rgb(185, 185, 185);
         text-align: center;
-        word-break: break-all;
         color: black;
+        cursor: default;
+        padding-top: 0;
         &:hover{
-            background-color: rgb(244, 244, 244);
+            background-color: rgb(255, 255, 255);
+        }
+    }
+    &__file{
+        width: 100%;
+        padding: 2px;
+        p{
+            width: 100%;
+            margin: 0;
+            word-break: break-all;
+            -webkit-line-clamp: 3;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    }
+    &__document_cancel{
+        position: absolute;
+        right: -8px;
+        top: -7px;
+        width: 14px;
+        height: 14px;
+        border-radius: 3px;
+        background-color: $utility-color;
+        color: white;
+        cursor: pointer;
+        transition: all 0.4s;
+        &:hover{
+            background-color: black;
         }
     }
     &__btn-wrap{
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        margin-top: 11px;
+        margin-top: 22px;
     }
     &__btn{
         height: 35px;
@@ -138,6 +190,11 @@
         font-weight: 700;
         padding: 3px 7px;
         margin-left: 20px;
+        &_white{
+            color:$utility-color ;
+            background-color:white;
+            border: 1px solid $utility-color;
+        }
     }
 }
 
