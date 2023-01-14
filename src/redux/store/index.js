@@ -5,10 +5,11 @@ import sMessageReducer from './sMessageSlice'
 import authReducer from './authSlice'
 import activeReagentReducer from './activeReagSlice'
 import projectReducer from './projectSlice'
-
+import addItemReducer from './addItemSlice'
 
 const store = configureStore({
     reducer: {
+        addItem: addItemReducer,
         project: projectReducer,
         auth: authReducer,
         sMessage: sMessageReducer,

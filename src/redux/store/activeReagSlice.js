@@ -27,6 +27,7 @@ const activeReagentSlice = createSlice({
         carantin: false,
         creator: '',
         carantinDate: null,
+        location: '',
     
     
         customField1: '',
@@ -67,6 +68,7 @@ const activeReagentSlice = createSlice({
             state.carantin = false;
             state.creator = '';
             state.carantinDate = null;
+            state.location = '';
     
             state.customField1 = '';
             state.customField2 = '';

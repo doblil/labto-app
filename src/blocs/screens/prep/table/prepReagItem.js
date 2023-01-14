@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { stringifyDate } from "../../../../services/sevices";
 import { SVGstar } from "../../../../svg/svg"
 
 export const PrepReagItem = (props) => {
@@ -26,7 +27,7 @@ export const PrepReagItem = (props) => {
         <td className="table__item">{CAS}</td>
         <td className="table__item">{restUnits} {units}</td>
         <td className="table__item">{Math.floor(restUnits/container*100)}%</td>
-        <td className="table__item">{toDate}</td>
+        <td className="table__item">{stringifyDate(Date.parse(toDate))}</td>
     </tr>
 )
 }
