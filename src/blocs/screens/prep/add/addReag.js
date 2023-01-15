@@ -68,14 +68,14 @@ export const AddReag = () => {
                             onChange={(e)=>{dispatch(addItemIdCh(e.target.value))}}
                         />
                     </div>
-                    <div className="add__destination">
+                    <div className="add__destination add__destination_mt8">
                         <div className="add__label">Наименование</div>
                         <input type="text" class="add__input"
                             value={name}
                             onChange={(e)=>{dispatch(addNameCh(e.target.value))}}
                         />
                     </div>
-                    <div className="add__destination">
+                    <div className="add__destination add__destination_mt8">
                         <div className="add__label">CAS-№</div>
                         <input type="text" class="add__input"
                             value={CAS}
@@ -84,7 +84,7 @@ export const AddReag = () => {
                     </div>
 
 
-                    <div className="add__destination add__destination_mt8">
+                    <div className="add__destination">
                         <div className="add__label">Производитель</div>
                         <input type="text" class="add__input"
                             value={manufacturer}
@@ -98,24 +98,27 @@ export const AddReag = () => {
                             onChange={(e)=>{dispatch(addCatCh(e.target.value))}}
                         />
                     </div>
-                    <div className="add__destination">
+                    <div className="add__destination add__destination_mt8">
                         <div className="add__label">Партия</div>
                         <input type="text" class="add__input"
                             value={lot}
                             onChange={(e)=>{dispatch(addLotCh(e.target.value))}}
                         />
                     </div>
-                    <div className="add__destination add__destination_mt8">
+                    <div className="add__destination">
                         <div className="add__label">Упаковка</div>
-                        <input type="text" class="add__input add__input-mini"
-                            value={container}
-                            onChange={(e)=>{dispatch(addContainerCh(e.target.value))}}
-                        />
-                        <select class="add__input add__input-mini" ></select>
+                        <div className="add__destination add__destination-mini">
+                            <input type="text" class="add__input add__input-mini"
+                                value={container}
+                                onChange={(e)=>{dispatch(addContainerCh(e.target.value))}}
+                            />
+                            <select class="add__input add__input-mini" ></select>
+                        </div>
+                        
 
                     </div>
                    
-                    <div className="add__destination">
+                    <div className="add__destination add__destination_mt8">
                         <div className="add__label">Дата производства</div>
                         <input type="text" class="add__input"
                             value={fromDate}
@@ -182,7 +185,7 @@ export const AddReag = () => {
                     </div>
                     
                     <div className="add__btn-wrap">
-                        <button onClick={handleAddItem} className="add__btn">В черновик</button>
+                        <button onClick={handleAddItem} className="add__btn add__btn_white">В черновик</button>
                         <button className="add__btn">Внести</button>
                     </div>
                 </div>
