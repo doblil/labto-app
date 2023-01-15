@@ -3,8 +3,8 @@ import { api } from "./api";
 export const reagentApi = api.injectEndpoints({
     endpoints: builder => ({
         getReagents: builder.query({
-            query: ({type, carantin})=> ({
-                url: `/api/reagent/getAll/${type}/${carantin}`,
+            query: ({type, isolate})=> ({
+                url: `/api/reagent/getAll/${type}/${isolate}`,
             }),
             providesTags: ['Reagent'],
         }),

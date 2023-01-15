@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { projectsCh } from "../../redux/store/projectSlice"
 import { AddReag } from "./prep/add/addReag"
 import { Outlet } from "react-router-dom"
+import { useState } from "react"
 export const Screen = () => {
   const dispatch = useDispatch();
   const {projects} = useSelector(state => state.project)
@@ -20,11 +21,13 @@ export const Screen = () => {
 
   console.log(projects);
   
+  const [activeTab, setActiveTab] = useState('')
+
   return(
     <>
-      <Header/>
+      <Header activeTab = {activeTab}/>
       <div className="screen">
-        <Outlet/>
+        <Outlet context={[activeTab, setActiveTab]}/>
       </div>
     </>
   )

@@ -1,13 +1,11 @@
 import { useEffect } from "react"
 import { useOutletContext } from "react-router-dom"
 
-export const Profile = () => {
-    
+export const Purchases = () => {
     const [activeTab, setActiveTab] = useOutletContext()
     useEffect(() => {
-        setActiveTab('profile')
+        setActiveTab('purchases')
     }, [setActiveTab])
-
     return(
         <>
         </>

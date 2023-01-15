@@ -81,6 +81,10 @@ input{
         outline-color: transparent;
     }
 }
+
+.invalid{
+    border: 2px solid crimson;
+}
 select{
     width: 145px;
     height: 25px;
