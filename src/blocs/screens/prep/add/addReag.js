@@ -152,19 +152,20 @@ export const AddReag = () => {
                     </div>
                     <div className="add__destination">
                         <div className="add__label">Упаковка</div>
-                        <input type="text" class="add__input add__input-mini"
-                            value={container}
-                            onChange={(e)=>{dispatch(addContainerCh(e.target.value))}}
-                        />
-                        <select defaultValue='g' onChange={(e)=>dispatch(addUnitsCh(e.target.value))} class="add__input add__input-mini" >
-                            <option  value={'g'}>грамм (g)</option>
-                            <option  value={'mg'}>миллиграмм (mg)</option>
-                            <option  value={'kg'}>килограмм (kg)</option>
-                            <option  value={'l'}>литр (l)</option>
-                            <option  value={'ml'}>миллилитр (ml)</option>
-                            <option  value={'pcs'}>Штук (pcs)</option>
-                        </select>
-
+                        <div className="add__destination add__destination-mini">
+                            <input type="text" class="add__input add__input-mini"
+                                value={container}
+                                onChange={(e)=>{dispatch(addContainerCh(e.target.value))}}
+                            />
+                            <select defaultValue='g' onChange={(e)=>dispatch(addUnitsCh(e.target.value))} class="add__input add__input-mini" >
+                                <option  value={'g'}>грамм (g)</option>
+                                <option  value={'mg'}>миллиграмм (mg)</option>
+                                <option  value={'kg'}>килограмм (kg)</option>
+                                <option  value={'l'}>литр (l)</option>
+                                <option  value={'ml'}>миллилитр (ml)</option>
+                                <option  value={'pcs'}>штук (pcs)</option>
+                            </select>
+                        </div>
                     </div>
                    
                     <div className="add__destination add__destination_mt8">

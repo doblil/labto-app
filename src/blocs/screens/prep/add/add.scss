@@ -48,6 +48,9 @@
         &-mini{
             width: 110px;
         }
+        &:-webkit-datetime-edit{
+            display: none;
+        }
     }
     &__choice{
         width: 230px;
