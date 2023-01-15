@@ -13,7 +13,7 @@ export const AuthForm = (props) => {
     const [email, setEmail] = useState('3@mail.ru');
     const [password, setPassword] = useState('123123');
  
-    const [login, {isSuccess} ] = useLoginMutation();
+    const [login, ] = useLoginMutation();
     const dispatch = useDispatch();
     const navigate = useNavigate()
 
@@ -27,7 +27,6 @@ export const AuthForm = (props) => {
         }
         try {
             const userData = await login({email, password}).unwrap();
-            const s = await isSuccess
             dispatch(setCredentials({...userData, email}));
             dispatch(isAuthCh(true));
             dispatch(userIdCh(userData));

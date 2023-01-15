@@ -42,12 +42,13 @@ export const reagentApi = api.injectEndpoints({
         }),
         addReagent: builder.mutation({
             query: ({body, userId})=> ({
-                url: `/api/reagent/unfavorite/${userId}`,
+                url: `/api/reagent/createOne/${userId}`,
                 method: 'POST',
+                body
             }),
             invalidatesTags: ['Reagent'],
         }),
     })
 })
 
-export const { useGetOneReagentQuery, useGetReagentsQuery, useTakeReagentMutation, useFavoriteReagentMutation, useUnfavoriteReagentMutation } = reagentApi
+export const { useGetOneReagentQuery, useGetReagentsQuery, useTakeReagentMutation, useFavoriteReagentMutation, useUnfavoriteReagentMutation, useAddReagentMutation } = reagentApi

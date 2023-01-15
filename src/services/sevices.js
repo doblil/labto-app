@@ -3,7 +3,7 @@ export const handleWarnImg = (arr) => {
         'corrosive': './icons/danger/corrosive.svg',
         'eHazard': './icons/danger/environmentally_hazardous.svg',
         'harmful': './icons/danger/harmful.svg',
-        'hHazard': './icons/danger/health _hazard.svg',
+        'hHazard': './icons/danger/health_hazard.svg',
         'oxidizing': './icons/danger/oxidizing.svg',
         'toxic': './icons/danger/toxic.svg',
         'explosive': './icons/danger/explosive.svg',

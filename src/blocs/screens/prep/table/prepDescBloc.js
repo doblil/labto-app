@@ -8,9 +8,12 @@ import { SVGstar } from '../../../../svg/svg'
 import { handleWarnImg, stringifyDate } from '../../../../services/sevices'
 import { useEffect } from 'react'
 import { favoriteCh } from '../../../../redux/store/authSlice'
+import { addCreateSame } from '../../../../redux/store/addItemSlice'
+import { useNavigate } from 'react-router-dom'
 
 export const PrepDescBloc = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     let content = <></>
     let isFavorite = false
@@ -44,6 +47,13 @@ export const PrepDescBloc = () => {
             dispatch(favoriteCh(target))
         }
     }
+
+    const handleAddSame = async () => {
+        if (isSuccess && data.reagent)
+        await dispatch(addCreateSame(data.reagent));
+        navigate('/prep/addReagent');
+
+    }
     
     if(!target){
         return(
@@ -59,7 +69,7 @@ export const PrepDescBloc = () => {
     }
 
     if(isSuccess && data.reagent){
-        const {itemId, 
+        const {itemId, location,
             name, manufacturer, cat, 
             lot, container, fromDate, 
             toDate, units, restUnits, 
@@ -74,6 +84,7 @@ export const PrepDescBloc = () => {
                     <div className="desc__name">{name}</div>
                     <div className="desc__title">{manufacturer} | {cat}</div>
                 </div>
+                <button className='desc__create-same' onClick={handleAddSame}>Внести похожий</button>
                 <div className="desc__status">
                     <div className="desc__presence">{restUnits > 0.1 && 'В наличии'}</div>
                     <div className="desc__favorite">
@@ -104,7 +115,7 @@ export const PrepDescBloc = () => {
                     </div>
                     <div className="grid__box item-d">
                         <div className="grid__heading">Расположение</div>
-                        <div className="grid__value">шкаф 2 <br /> полка 3</div>
+                        <div className="grid__value">{location}</div>
                         <img className="grid__icon" src="icons/location.svg" alt="location" />
                     </div>
                     <div className="grid__box item-e">
