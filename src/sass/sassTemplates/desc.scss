@@ -61,6 +61,18 @@
         align-items: flex-end;
         justify-content: space-between;
     }
+    &__create-same{
+        background-color: transparent;
+        padding: 5px;
+        color: $main-color;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        transition: 0.2s;
+        font-size: 12px;
+        &:hover{
+            border: 1px solid #ffb027;
+        }
+    }
     &__presence{
         font-size: 9px;
         color: rgb(0, 217, 0);

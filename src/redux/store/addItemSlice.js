@@ -12,15 +12,15 @@ const addItemSlice = createSlice({
         cat: '',
         lot: '',
         manufacturer: '',
-        fromDate: null,
-        toDate: null,
-        units: '',
-        container: null,
+        fromDate: '',
+        toDate: '',
+        units: 'g',
+        container: '',
         passport: [],
         SDS: '',
         TDS: '',
         warn: [],
-        price: null,
+        price: '',
         location: '',
 
     
@@ -46,8 +46,24 @@ const addItemSlice = createSlice({
         addPriceCh: (state, action) => {state.price = action.payload},
         addLocationCh: (state, action) => {state.location = action.payload},
         
+        addCreateSame: (state, action) => {
+            const {type, standartType, name, CAS, cat, lot, manufacturer, fromDate, toDate, units, container, SDS, TDS, warn, location} = action.payload;
+            state.CAS = CAS;
+            state.SDS = SDS;
+            state.TDS = TDS;
+            state.cat = cat;
+            state.type = type;
+            state.standartType = standartType;
+            state.name = name;
+            state.manufacturer = manufacturer;
+            state.units = units;
+            state.container = container;
+            state.warn = warn;
+            state.location = location;
+        },
+
         addItemReset: (state) => {
-            state.type = ''; // 'rs', 'subst', 'reag;
+            state.type = ''; // 'rs', 'subst', 'reag';
             state.standartType = '';
             state.itemId = '';
             state.name = '';
@@ -55,15 +71,15 @@ const addItemSlice = createSlice({
             state.cat = '';
             state.lot = '';
             state.manufacturer = '';
-            state.fromDate = Date;
-            state.toDate = Date;
+            state.fromDate = '';
+            state.toDate = '';
             state.units = '';
-            state.container = null;
+            state.container = '';
             state.passport = [];
             state.SDS = '';
             state.TDS = '';
             state.warn = [];
-            state.price = null;
+            state.price = '';
 
 
         } 
@@ -73,6 +89,6 @@ const addItemSlice = createSlice({
 
 export const { addItemReset, addCASCh, addCatCh, addContainerCh, addFromDateCh, addItemIdCh, addLotCh,
 addManufacturerCh, addPassportCh, addPriceCh, addSDSCh, addStandartTypeCh, addTDSCh, 
-addToDateCh, addTypeCh, addUnitsCh, addWarnCh, addLocationCh, addNameCh } = addItemSlice.actions;
+addToDateCh, addTypeCh, addUnitsCh, addWarnCh, addLocationCh, addNameCh, addCreateSame } = addItemSlice.actions;
 export default addItemSlice.reducer;
 

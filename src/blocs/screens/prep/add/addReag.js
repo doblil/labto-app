@@ -2,6 +2,8 @@ import './add.scss'
 
 import { addItemReset, addCASCh, addCatCh, addContainerCh, addFromDateCh, addItemIdCh, addLotCh, addManufacturerCh, addNameCh,  addPassportCh, addPriceCh, addSDSCh, addStandartTypeCh, addTDSCh, addToDateCh, addTypeCh, addUnitsCh, addWarnCh, addLocationCh } from '../../../../redux/store/addItemSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { sMessageCh } from '../../../../redux/store/sMessageSlice'
+import { useAddReagentMutation } from '../../../../redux/api/reagentApi'
 
 
 export const AddReag = () => {
@@ -26,10 +28,11 @@ export const AddReag = () => {
         type,
         units,
         warn,
-    } = useSelector(state => state.addItem)
+    } = useSelector(state => state.addItem);
+    const {userId} = useSelector(state => state.auth)
     const dispatch = useDispatch()
 
-
+    const [addReagent, {isLoading, isError}] = useAddReagentMutation()
 
     const handleWarn = (w) => {
         if (warn.includes(w)){
@@ -50,8 +53,50 @@ export const AddReag = () => {
         }
     }
 
-    const handleAddItem = (type) =>{
-        dispatch(addTypeCh(type))
+    const handleValidateAddForm = () => {
+        const falseValues = [!type, !itemId, !CAS, !name, !manufacturer, !fromDate, !toDate, !cat, !lot,  !container];
+        console.log(falseValues)
+
+        if (falseValues.includes(true)){
+            return false
+        }
+        return true
+    }
+
+    const handleAddItem = async () =>{
+        dispatch(addTypeCh('reag'));
+        if(!handleValidateAddForm()){
+            dispatch(sMessageCh('Заполните обязательные поля'))
+            return 
+        }
+        const body = {
+            itemId, 
+            CAS, 
+            name,
+            location,
+            cat, 
+            container, 
+            fromDate: Date.parse(fromDate), 
+            lot, 
+            manufacturer, 
+            passport, 
+            price, 
+            SDS, 
+            standartType,
+            TDS,
+            toDate: Date.parse(toDate),
+            type,
+            units,
+            warn,
+        }
+
+        if(isLoading){
+            return dispatch(sMessageCh("Повторите через 10 секунд"))
+        }
+
+        await addReagent({body, userId}).unwrap()
+        dispatch(addItemReset())
+
     }
 
 
@@ -65,7 +110,7 @@ export const AddReag = () => {
                         <div className="add__label">ID</div>
                         <input type="text" class="add__input"
                             value={itemId}
-                            onChange={(e)=>{dispatch(addItemIdCh(e.target.value))}}
+                            onChange={(e)=>{dispatch(addItemIdCh(e.target.value)); dispatch(addTypeCh('reag'));}}
                         />
                     </div>
                     <div className="add__destination">
@@ -88,14 +133,14 @@ export const AddReag = () => {
                         <div className="add__label">Производитель</div>
                         <input type="text" class="add__input"
                             value={manufacturer}
-                            onChange={(e)=>{dispatch(addManufacturerCh(e.target.value))}}
+                            onChange={(e)=>{ dispatch(addManufacturerCh(e.target.value))}}
                         />
                     </div>
                     <div className="add__destination add__destination_mt8">
                         <div className="add__label">Каталожный номер</div>
                         <input type="text" class="add__input"
                             value={cat}
-                            onChange={(e)=>{dispatch(addCatCh(e.target.value))}}
+                            onChange={(e)=>{ dispatch(addCatCh(e.target.value))}}
                         />
                     </div>
                     <div className="add__destination">
@@ -111,22 +156,29 @@ export const AddReag = () => {
                             value={container}
                             onChange={(e)=>{dispatch(addContainerCh(e.target.value))}}
                         />
-                        <select class="add__input add__input-mini" ></select>
+                        <select defaultValue='g' onChange={(e)=>dispatch(addUnitsCh(e.target.value))} class="add__input add__input-mini" >
+                            <option  value={'g'}>грамм (g)</option>
+                            <option  value={'mg'}>миллиграмм (mg)</option>
+                            <option  value={'kg'}>килограмм (kg)</option>
+                            <option  value={'l'}>литр (l)</option>
+                            <option  value={'ml'}>миллилитр (ml)</option>
+                            <option  value={'pcs'}>Штук (pcs)</option>
+                        </select>
 
                     </div>
                    
                     <div className="add__destination">
                         <div className="add__label">Дата производства</div>
-                        <input type="text" class="add__input"
+                        <input type="date" class="add__input"
                             value={fromDate}
-                            onChange={(e)=>{dispatch(addFromDateCh(e.target.value))}}
+                            onChange={(e)=>{ dispatch(addFromDateCh(e.target.value))}}
                         />
                     </div>
                     <div className="add__destination add__destination_mt8">
                         <div className="add__label">Годен до</div>
-                        <input type="text" class="add__input"
+                        <input type="date" class="add__input"
                             value={toDate}
-                            onChange={(e)=>{dispatch(addToDateCh(e.target.value))}}
+                            onChange={(e)=>{ dispatch(addToDateCh(e.target.value))}}
                         />
                     </div>
                     
@@ -168,10 +220,10 @@ export const AddReag = () => {
                         <div className="add__label">Документы</div>
                         <div className="add__document">
                             <div className="add__document_form">Добавить паспорт</div>
-                            <div className="add__document_form">Добавить SDS</div>
+                            <div className="add__document_form">Добавить SDS (ссылка)</div>
                             {/* <div className="add__document_form">Добавить TDS</div> */}
                             <div className="add__document-wrap">
-                                <div className="add__document-title">TDS</div>
+                                <div className="add__document-title">TDS (ссылка)</div>
                                 <div className="add__document_form add__document_success">
                                     <div className="add__document_cancel">x</div>
                                     <div className="add__file"><p>name_file.docdfsdsfsdfdsfdsfdsfsdfdsfsdfdsfdfsdfghjkljhgfdxszxfcghjk</p></div>
@@ -182,8 +234,8 @@ export const AddReag = () => {
                     </div>
                     
                     <div className="add__btn-wrap">
-                        <button onClick={handleAddItem} className="add__btn">В черновик</button>
-                        <button className="add__btn">Внести</button>
+                        <button  className="add__btn">В черновик</button>
+                        <button onClick={handleAddItem} className="add__btn">Внести</button>
                     </div>
                 </div>
             </div>
