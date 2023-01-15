@@ -26,7 +26,7 @@ export const FlowForm = () => {
         console.log(body);
         console.log('click')
         await takeReagent({userId, target, body})
-        setDate(null); 
+        setDate(1688890550391); 
         setQuan(0);
         setTest('');
         setDestination(null)
@@ -54,10 +54,10 @@ export const FlowForm = () => {
                 <div className="flow__destination">
                     <div className="flow__label">Количество</div>
                     <div className="flow__wrap">
-                        <input value={quan || ''} onChange={(e)=> {setQuan(e.target.value)}} type="text" class="flow__input"/>
+                        <input value={quan || ''} onChange={(e)=> {setQuan(e.target.value)}} type="number" class="flow__input"/>
                         <div className="flow__inner">
                             <div className="flow__label">Дата</div>
-                            <input onChange={(e)=> {setDate(Date.parse(e.target.value))}} type="text" class="flow__input flow__input-mini"/>
+                            <input onChange={(e)=> {setDate(Date.parse(e.target.value))}} type="datetime-local" class="flow__input flow__input-mini"/>
                         </div>
                     </div>
                 </div>

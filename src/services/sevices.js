@@ -35,7 +35,7 @@ export const stringifyDate = (value, exact = false) => {
     }
 
     if (exact) {
-        return `${year}.${needZero(month)}.${needZero(day)}  ${needZero(hours)}:${needZero(minutes)}}`
+        return `${year}.${needZero(month)}.${needZero(day)}  ${needZero(hours)}:${needZero(minutes)}`
     }
     return `${year}.${needZero(month)}.${needZero(day)}`
 

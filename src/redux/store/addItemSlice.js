@@ -47,7 +47,7 @@ const addItemSlice = createSlice({
         addLocationCh: (state, action) => {state.location = action.payload},
         
         addCreateSame: (state, action) => {
-            const {type, standartType, name, CAS, cat, lot, manufacturer, fromDate, toDate, units, container, SDS, TDS, warn, location} = action.payload;
+            const {type, standartType, name, CAS, cat, manufacturer, units, container, SDS, TDS, warn, location} = action.payload;
             state.CAS = CAS;
             state.SDS = SDS;
             state.TDS = TDS;

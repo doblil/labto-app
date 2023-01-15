@@ -14,7 +14,7 @@ export const PrepReagTable = (props) => {
 
     const reqParams = {
         type: 'reag',
-        carantin: 'false'
+        isolate: 'false'
     }
 
 
