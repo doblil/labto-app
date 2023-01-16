@@ -41,7 +41,7 @@ const handleFilter = (arr = []) => {;
     return arr
 } 
 
-if (isLoading) {content = <h5>Загрузка...</h5>}
+if (isLoading) {return <div className="table__load">Загрузка...</div>}
 if (isSuccess) {content = handleFilter(data.reagents)
 .map(item => {
     return <PrepReagItem

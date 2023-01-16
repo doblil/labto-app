@@ -1,3 +1,4 @@
+@import '../../../src/sass/base/variables.scss';
 .server-message{
     position: fixed;
     padding: 10px 15px;
@@ -9,7 +10,7 @@
     text-align: center;
     font-weight: 700;
 
-    background-color: darkred;
+    background-color: $utility-color;
     color: white;
     border-radius: 10px;
     z-index: 1;

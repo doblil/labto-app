@@ -29,7 +29,7 @@ export const PrepInfoBloc = () => {
                 setFavoriteSearch = {setFavoriteSearch}
                 setExpSearch = {setExpSearch}
             />
-            <div className="table">
+            <div className="overflow table">
                 <PrepReagTable
                     nameSearch = {nameSearch}
                     casSearch = {casSearch}
