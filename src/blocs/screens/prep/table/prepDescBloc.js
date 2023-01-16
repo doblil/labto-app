@@ -84,7 +84,10 @@ export const PrepDescBloc = () => {
                     <div className="desc__name">{name}</div>
                     <div className="desc__title">{manufacturer} | {cat}</div>
                 </div>
-                <button className='desc__create-same' onClick={handleAddSame}>Внести похожий</button>
+                <button className='desc__item-action' onClick={handleAddSame}>Внести похожий</button>
+                <button className='desc__item-action' onClick={handleAddSame}>Удалить</button>
+                <button className='desc__item-action' onClick={handleAddSame}>Изменить</button>
+                <button className='desc__item-action' onClick={handleAddSame}>Карантин</button>
                 <div className="desc__status">
                     <div className="desc__presence">{restUnits > 0.1 && 'В наличии'}</div>
                     <div className="desc__favorite">

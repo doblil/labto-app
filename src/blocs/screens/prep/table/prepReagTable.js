@@ -31,7 +31,7 @@ const handleActiveItem = (id) => {
 
 const handleFilter = (arr = []) => {;
     if (catSearch) arr = arr.filter(item => item.cat.toLowerCase().includes(catSearch.toLowerCase())) ;
-    if (casSearch) arr = arr.filter(item => item.cas.includes(casSearch)) ;
+    if (casSearch) arr = arr.filter(item => item.CAS.includes(casSearch)) ;
     if (nameSearch) arr = arr.filter(item => item.name.toLowerCase().includes(nameSearch.toLowerCase())) ;
     if (expSearch && expSearch === 'valid') arr = arr.filter(item => Date.parse(item.toDate) > Date.now()) ;
     if (expSearch && expSearch === 'invalid') arr = arr.filter(item => Date.parse(item.toDate) < Date.now()) ;
