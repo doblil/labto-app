@@ -112,13 +112,15 @@ export const AddReag = () => {
                             value={itemId}
                             onChange={(e)=>{dispatch(addItemIdCh(e.target.value)); dispatch(addTypeCh('reag'));}}
                         />
+                        <div className="add__confirm add__confirm_yes">✔</div>
                     </div>
                     <div className="add__destination add__destination_mt8">
                         <div className="add__label">Наименование</div>
-                        <input type="text" class="add__input"
+                        <input type="text" class="add__input add__input_warn"
                             value={name}
                             onChange={(e)=>{dispatch(addNameCh(e.target.value))}}
                         />
+                        <div className="add__confirm add__confirm_no">﹗</div>
                     </div>
                     <div className="add__destination add__destination_mt8">
                         <div className="add__label">CAS-№</div>

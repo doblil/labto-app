@@ -1,6 +1,7 @@
 import '../prep.scss'
 import '../../../../sass/sassTemplates/desc.scss'
 import '../../../../sass/sassTemplates/flow.scss'
+import '../../../../sass/sassTemplates/overflow.scss'
 import { FlowForm } from './flowForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { useFavoriteReagentMutation, useGetOneReagentQuery, useUnfavoriteReagentMutation } from '../../../../redux/api/reagentApi'
@@ -78,6 +79,7 @@ export const PrepDescBloc = () => {
         
         const last = inUse[inUse.length - 1]
         content = <> 
+            <button className='desc__create-same' onClick={handleAddSame}>Внести похожий</button>
             <div className="desc__top">
                 <div className="desc__heading">
                     <div className="desc__title">ID {itemId}</div>
@@ -97,7 +99,7 @@ export const PrepDescBloc = () => {
                 </div>
             </div>
 
-       <div className="desc__overflow">
+       <div className="overflow desc__overflow">
             <div className="desc__overflow-wrap">
                 <div className="grid">
                     <div className="grid__box item-a">
