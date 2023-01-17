@@ -2,6 +2,11 @@
 @import '../base/title.scss';
 
 .table{
+    &__line{
+        background-color: $main-color;
+        height: 2px;
+        width: 100%;
+    }
     margin-top: 7px;
     &__load{
         width: 100%;
@@ -22,7 +27,7 @@
             background-color: white;
 
             th{
-                
+                max-width: 200px;
                 padding: 8px;
                 text-align: left;
                 &:first-child{
@@ -33,6 +38,7 @@
         tbody{
             height: 100%;
             td{
+                max-width: 200px;
                 padding: 6px;
                 &:first-child{
                     padding-left: 23px;

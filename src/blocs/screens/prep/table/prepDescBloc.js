@@ -3,6 +3,7 @@ import '../../../../sass/sassTemplates/desc.scss'
 import '../../../../sass/sassTemplates/flow.scss'
 import '../../../../sass/sassTemplates/overflow.scss'
 import { FlowForm } from './flowForm'
+import { Barcode } from '../../../barcode/barcode'
 import { useDispatch, useSelector } from 'react-redux'
 import { useDeleteReagentMutation, useFavoriteReagentMutation, useGetOneReagentQuery, useUnfavoriteReagentMutation } from '../../../../redux/api/reagentApi'
 import { SVGstar } from '../../../../svg/svg'
@@ -19,14 +20,15 @@ export const PrepDescBloc = (props) => {
     const navigate = useNavigate();
 
     const [showHistory, setShowHistory] = useState(false)
-    const {setShowBarcode} = props
+    const [showBarcode, setShowBarcode] = useState(false)
+
+    console.log(showBarcode)
 
     let content = <></>
     let isFavorite = false
     const {favorite, userId} = useSelector(state => state.auth);
+    const { _id: target } = useSelector(state => state.activeReagent);
     const reagent = useSelector(state => state.activeReagent);
-    const { _id: target, itemId } = useSelector(state => state.activeReagent);
-
     if(favorite.includes(target)){isFavorite = true}
 
     const [deleteReagent, {isLoading: deleteLoading}] = useDeleteReagentMutation()
@@ -171,7 +173,18 @@ export const PrepDescBloc = (props) => {
                                 <div className="grid__doc">SDS</div> 
                                 <div className="grid__doc">TDS</div>
                             </div>
-                            <div className="grid__barcode" onClick={()=>{setShowBarcode(true); console.log('click barcode')}}> <img src="icons/upc.svg" alt="" /></div>
+                            <div className="grid__barcode" onClick={()=>{setShowBarcode(true); console.log('click barcode')}}> 
+                            <img src="icons/upc.svg" alt="" /> 
+                            </div>
+                            <Barcode 
+                                setShowBarcode = {setShowBarcode} 
+                                showBarcode = {showBarcode}
+                                itemId={itemId}
+                                name = {name}
+                                cat = {cat}
+                                lot = {lot}
+                                manufacturer = {manufacturer}
+                            />
                             <img className="grid__icon" src="icons/document.svg" alt="document" />
                         </div>
                         <div className="grid__box item-h">
@@ -196,7 +209,7 @@ export const PrepDescBloc = (props) => {
   
     return(
     <div className="desc">
-        <div className="desc__close" onClick={()=>{setShowHistory(false)}}>×</div>
+        <div className="close" onClick={()=>{setShowHistory(false)}}></div>
         {content}
         <FlowForm/>
     </div>

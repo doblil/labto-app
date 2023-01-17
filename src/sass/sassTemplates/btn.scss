@@ -19,6 +19,16 @@
         background-color: white;
         border: 1px solid $utility-color
     }
+    &_bar{
+        color: $main-color;
+        background-color: white;
+        border: 1px solid $main-color;
+        font-size: 14px;
+    }
+    &_active{
+        background-color: $main-color;
+        color: white;
+    }
     &:hover{
         box-shadow: $minor-shadow;
     }

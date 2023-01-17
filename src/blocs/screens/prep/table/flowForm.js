@@ -64,6 +64,8 @@ export const FlowForm = () => {
                     <div className="flow__label">Количество</div>
                     <div className="flow__wrap">
                         <input value={quan || ''} onChange={(e)=> {setQuan(e.target.value)}} type="number" min={0} class="flow__input"/>
+                        <div className="flow__measure">ml</div>
+
                         <div className="flow__inner">
                             <div className="flow__label">Дата</div>
                             <input value={date}  onChange={(e)=> {setDate(e.target.value); console.log(typeof e.target.value, e.target.value)}} type="datetime-local" class="flow__input flow__input-mini"/>

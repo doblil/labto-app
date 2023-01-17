@@ -1,28 +1,58 @@
 import './barcode.scss'
-import JsBarcode from 'jsbarcode';
-import { useSelector } from 'react-redux';
+import BCode from 'react-barcode';
+import { useState, useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
+
 
 export const Barcode = (props) => {
     
+    const printRef = useRef(null)
+    const [printSize, setPrintSize] = useState('big') //'big', 'middle', 'small'
+
+    const styles = {
+        big: {
+            nameFontSize: "14px",
+            infoFontSize: "12px",
+            barcodeWidth: 2,  
+            boxWidth: '315px',
+            boxHeigt: '110px',
+            padding: ""
+        },
+        middle: {
+            nameFontSize: "10px",
+            infoFontSize: "9px",
+            barcodeWidth: 2,  
+            boxWidth: '220px',
+            boxHeigt: '91px',
+            padding: ""
+
+        },
+        small: {
+            nameFontSize: "0",
+            infoFontSize: "0",
+            barcodeWidth: 1,  
+            boxWidth: '126px',
+            boxHeigt: '52px',
+            padding: "0"
+
+        }
+    }
+
     const {showBarcode, setShowBarcode} = props
-    const {itemId, cat, lot, name, manufacturer} = useSelector(state => state.activeReagent)
+    const {itemId, cat, lot, name, manufacturer} = props
 
-    console.log('barcode render ith state ', showBarcode)
-    if(!itemId) {return <></>}
-
-    JsBarcode("#barcode", `${itemId}`, {
-        lineColor: "#0aa",
-        width:4,
-        height:40,
-        displayValue: true
+    const handlePrint = useReactToPrint({
+        content: () => printRef.current,
       });
-   
+
+    if(!itemId) {return <></>}
 
 
     const handleCloseBarcode = (e) => {
-        if(e.target.Classname === 'barcode'){
+        if(e.target.className === 'barcode'){
             setShowBarcode(false)
         }
+        
     }
     const handleShow = () => {
         if (showBarcode) {
@@ -36,22 +66,36 @@ export const Barcode = (props) => {
         }
     }
 
+    const handleActiveClass = (v) => {
+        if(v === printSize){
+            return 'btn btn_bar btn_active barcode__btn '
+        } else {
+            return 'btn btn_bar barcode__btn'
+        }
+    }
+   
+
     return(
         
         <div className="barcode" style={handleShow()} onClick={handleCloseBarcode}>
             <div className="barcode__window">
-                <div className="barcode__heading">Штрихкод</div>
+                <div className="close" onClick={() => setShowBarcode(false)}></div>
+                <div className="barcode__heading">Выберите подходящий размер штрихкода</div>
                 <div className="barcode__btn-wrap">
-                    <button className='btn barcode__btn'>Большой</button>
-                    <button className='btn barcode__btn'>Средний</button>
-                    <button className='btn barcode__btn barcode__btn_active'>Маленький</button>
+                    <button className={handleActiveClass('big')} onClick={() => setPrintSize('big')} >Большой</button>
+                    <button className={handleActiveClass('middle')} onClick={() => setPrintSize('middle')} >Средний</button>
+                    <button className={handleActiveClass('small')} onClick={() => setPrintSize('small')} >Маленький</button>
                 </div>
                 <div className="barcode__wrap">
-                    <img src="icons/bar.png" alt="" id='barcode' />
-                    <div className="barcode__name">{name}</div>
-                    <div className="barcode__info">{manufacturer} | {cat} | (lot: {lot})</div>
+                    <div className="barcode__toprint" ref={printRef} style= {{width: styles[printSize].boxWidth, height:styles[printSize].boxHeigt, padding:styles[printSize].padding}}>
+                        <BCode width={styles[printSize].barcodeWidth} height={30} fontSize={14} value={`${itemId}`}/>
+                        <div className="barcode__name" style={{fontSize: styles[printSize].nameFontSize}}>{name}</div>
+                        <div className="barcode__info" style={{fontSize: styles[printSize].infoFontSize}}>{manufacturer} | {cat} | (lot: {lot})</div>
+                    </div>
                 </div>
+                <button className='btn barcode__print' onClick={handlePrint}> Распечатать</button>
             </div>
+            <button className='btn barcode__btn'></button>
         </div>
             
     );
