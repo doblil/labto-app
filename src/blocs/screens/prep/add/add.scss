@@ -210,25 +210,8 @@
         margin-top: 22px;
     }
     &__btn{
-        height: 35px;
         width: 105px;
-        color:white ;
-        background-color:$utility-color ;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 12px;
-        font-weight: 700;
-        padding: 3px 7px;
         margin-left: 20px;
-        &_white{
-            color:$utility-color ;
-            background-color:white;
-            border: 1px solid $utility-color;
-        }
     }
 }
 

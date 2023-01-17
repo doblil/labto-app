@@ -146,6 +146,7 @@ export const PrepDescBloc = () => {
                             <div className="grid__doc">SDS</div> 
                             <div className="grid__doc">TDS</div>
                         </div>
+                        <div className="grid__barcode"> <img src="icons/upc.svg" alt="" /></div>
                         <img className="grid__icon" src="icons/document.svg" alt="document" />
                     </div>
                     <div className="grid__box item-h">

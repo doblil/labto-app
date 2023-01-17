@@ -63,8 +63,8 @@ export const FlowForm = () => {
                 </div>
 
                 <div className="flow__btn-wrap">
-                    <button className="flow__btn">В черновик</button>
-                    <button className="flow__btn" onClick={handleTakeReagent}>Списать</button>
+                    <button className="btn btn_white flow__btn ">В черновик</button>
+                    <button className="btn flow__btn" onClick={handleTakeReagent}>Списать</button>
                 </div>
 
             </div>

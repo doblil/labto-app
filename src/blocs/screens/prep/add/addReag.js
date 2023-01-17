@@ -237,8 +237,8 @@ export const AddReag = () => {
                     </div>
                     
                     <div className="add__btn-wrap">
-                        <button  className="add__btn">В черновик</button>
-                        <button onClick={handleAddItem} className="add__btn">Внести</button>
+                        <button  className="btn btn_white add__btn">В черновик</button>
+                        <button onClick={handleAddItem} className="btn add__btn">Внести</button>
                     </div>
                 </div>
             </div>

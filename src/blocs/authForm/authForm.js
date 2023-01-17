@@ -53,7 +53,7 @@ export const AuthForm = (props) => {
                     <a href="/" className="auth__forgot">Забыли пароль?</a>
                 </form>
                     
-                <button onClick={handleLogin} onEnter className="auth__action-btn" >Войти</button>
+                <button onClick={handleLogin} onEnter className="btn auth__btn" >Войти</button>
             </div>
         </div>
             

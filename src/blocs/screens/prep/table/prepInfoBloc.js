@@ -1,4 +1,5 @@
 import '../prep.scss'
+import '../../../../sass/sassTemplates/btn.scss'
 import '../../../../sass/sassTemplates/info.scss'
 import '../../../../sass/sassTemplates/table.scss'
 import { useState } from 'react'

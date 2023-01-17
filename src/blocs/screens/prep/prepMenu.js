@@ -1,7 +1,7 @@
 import './prep.scss'
 import '../../../sass/sassTemplates/menu.scss'
 import { Link } from 'react-router-dom'
-
+ 
 
 export const PrepMenu = () => {
     return(
