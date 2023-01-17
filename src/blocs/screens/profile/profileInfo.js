@@ -15,11 +15,11 @@ export const ProfileInfo = () => {
             <div className="profile__heading">Профиль</div>
             <div className="profile__card">
                 <img src="icons/info.svg" alt="" className="profile__icon" />
-                <div className="profile__name">Федорко Илья Николаевич</div>
+                <div className="profile__name">Федорко Илья Николаевич</div> <br />
                 <div className="profile__info">химик-аналитик ОРАМ</div>
                 <div className="profile__info">Управление по новым продуктам</div>
-                <div className="profile__info">Полисинтез</div>
-                <div className="profile__info">Руководитель: Иванов Иван иваныч</div>
+                <div className="profile__info">Полисинтез</div> <br />
+                <div className="profile__info">Руководитель: Иванов Иван иваныч</div> <br />
 
                 <div className="profile__contact">
                     <img src="icons/phone.svg" alt="" />

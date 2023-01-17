@@ -19,11 +19,11 @@ export const Header = (props) => {
       <nav className="header__menu">
         <img src="icons/main_logo.svg" alt="" />
         <ul>
-          <li className={handleActiveTab('profile')}><Link to="/profile" className="link">Профиль</Link></li>
-          <li className={handleActiveTab('prep')}><Link to="/prep/reagentTable" className="link">Препараторская</Link></li>
-          <li className={handleActiveTab('report')}><Link to="/report" className="link">Отчётность</Link></li>
-          <li className={handleActiveTab('purchases')}><Link to="/purchases" className="link">Закупки</Link></li>
-          <li className={handleActiveTab('employers')}><Link to="/employers" className="link">Сотрудники</Link></li>
+            <li><Link to="/profile/info" className="link"><div className={handleActiveTab('profile')}>Профиль</div></Link></li>
+            <li><Link to="/prep/reagentTable" className="link"><div className={handleActiveTab('prep')}>Препараторская</div></Link></li>
+            <li><Link to="/report" className="link"><div className={handleActiveTab('report')}>Отчётность</div></Link></li>
+            <li><Link to="/purchases" className="link"><div className={handleActiveTab('purchases')}>Закупки</div></Link></li>
+            <li><Link to="/employers" className="link"><div className={handleActiveTab('employers')}>Сотрудники</div></Link></li>
         </ul>
       </nav>
 

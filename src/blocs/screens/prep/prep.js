@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { Outlet, useOutletContext } from "react-router-dom"
+import { Barcode } from "../../barcode/barcode"
 import { PrepMenu } from "./prepMenu"
 
 export const Prep = () => {
@@ -13,6 +14,7 @@ export const Prep = () => {
         <>
             <PrepMenu/>
             <Outlet/>
+            <Barcode/>
         </>
     )
 }

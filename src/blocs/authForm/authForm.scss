@@ -44,19 +44,9 @@
         margin-top: 12px;
         color: $utility-color;
     }
-    &__action-btn{
+    &__btn{
         height: 37px;
         width: 120px;
-        color:white ;
-        background-color:$utility-color ;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 13px;
-        font-weight: 700;
         margin-top: 17px;
     }
 }

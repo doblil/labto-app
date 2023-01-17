@@ -7,6 +7,8 @@ import { ServerMessage } from '../blocs/serverMessage/serverMessage';
 
 import './app.scss'
 import '../sass/base/variables.scss'
+import '../sass/sassTemplates/btn.scss'
+import '../sass/sassTemplates/overflow.scss'
 
 
 

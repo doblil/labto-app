@@ -7,9 +7,40 @@
     box-shadow: $main-shadow;
     padding: 20px;
     &__heading{
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 700;
         padding: 5px;
-        margin-left: 30px;
+        margin-left: 12px;
+    }
+    &__card{
+        background-color: rgb(244, 244, 244);
+        width: max-content;
+        border-radius: 10px;
+        padding: 30px 80px 30px 30px;
+        position: relative;
+        box-shadow: $minor-shadow;
+        margin-left: 18px;
+        margin-top: 20px;
+    }
+    &__icon{
+        position: absolute;
+        width: 20px;
+        right: 20px;
+        top: 20px;
+    }
+    &__name{
+        font-size: 15px;
+        font-weight: 700;
+    }
+    &__info{
+        font-size: 13px;
+        margin-top: 7px;
+    }
+    &__contact{
+        display: flex;
+        margin-top: 5px;
+        img{
+            height: 20px;
+        }
     }
 }

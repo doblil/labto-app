@@ -201,6 +201,19 @@
         margin: 10px 0;
         cursor: pointer;
     }
+    &__barcode{
+        padding: 5px;
+        position: absolute;
+        right: 10px;
+        top: 35px;
+        height: 70px;
+        width: 40px;
+        background-color: white;
+        border-radius: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     &__history{
         font-size: 10px;
         color: white;
