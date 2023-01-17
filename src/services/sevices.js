@@ -15,7 +15,7 @@ export const handleWarnImg = (arr) => {
     })
 }
 
-export const stringifyDate = (value, exact = false) => {
+export const stringifyDate = (value, exact = false, input = false) => {
 
 
 
@@ -37,11 +37,12 @@ export const stringifyDate = (value, exact = false) => {
     if (exact) {
         return `${year}.${needZero(month)}.${needZero(day)}  ${needZero(hours)}:${needZero(minutes)}`
     }
+    if(input) {
+        return `${year}-${needZero(month)}-${needZero(day)}T${needZero(hours)}:${needZero(minutes)}`
+    }
     return `${year}.${needZero(month)}.${needZero(day)}`
 
 }
 
-export const restToExpired = () => {
 
-}
 

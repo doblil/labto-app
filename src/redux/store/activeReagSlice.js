@@ -44,6 +44,9 @@ const activeReagentSlice = createSlice({
                 if (key !== '_id') {state[key] = action.payload.key}
             }
         },
+        inUseCh: (state, action) => {
+            state.inUse = action.payload
+        },
         reagentReset: (state) => {
             state._id =  '';
             state.type = ''; // 'rs', 'subst', 'reag;
@@ -80,6 +83,6 @@ const activeReagentSlice = createSlice({
     }
 });
 
-export const { reagentFill, reagentReset, activeReagentCh } = activeReagentSlice.actions;
+export const { reagentFill, reagentReset, activeReagentCh, inUseCh } = activeReagentSlice.actions;
 export default activeReagentSlice.reducer;
 

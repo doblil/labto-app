@@ -1,17 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux"
 import { useTakeReagentMutation } from "../../../../redux/api/reagentApi";
 import { sMessageCh } from "../../../../redux/store/sMessageSlice";
+import { stringifyDate } from "../../../../services/sevices";
 
 
 export const FlowForm = () => {
-    const [date, setDate] = useState(null)
+    const [date, setDate] = useState(stringifyDate(Date.now(), false, true))
     const [quan, setQuan] = useState(0)
     const [test, setTest] = useState('')
     const [destination, setDestination] = useState(null)
     const {name, userId} = useSelector(state => state.auth);
     const {projects} = useSelector(state => state.project)
-    const {_id: target} = useSelector(state => state.activeReagent)
+    const {_id: target} = useSelector(state => state.activeReagent);
+
+    useEffect(() => {
+        setDate(stringifyDate(Date.now(), false, true))
+    }, [target])
+
 
     const [takeReagent, {isLoading}] = useTakeReagentMutation()
 
@@ -21,12 +27,15 @@ export const FlowForm = () => {
         if(!(date && quan && test && destination && name && userId)){
             return sMessageCh('Заполните все поля формы или обновите страницу')
         }
+        if(isLoading){
+            return sMessageCh('Пожалуйста, подождите')
+        }
 
         const body = {date, quan, test, destination, name}
         console.log(body);
         console.log('click')
         await takeReagent({userId, target, body})
-        setDate(1688890550391); 
+        setDate(stringifyDate(Date.now(), false, true)); 
         setQuan(0);
         setTest('');
         setDestination(null)
@@ -54,10 +63,10 @@ export const FlowForm = () => {
                 <div className="flow__destination">
                     <div className="flow__label">Количество</div>
                     <div className="flow__wrap">
-                        <input value={quan || ''} onChange={(e)=> {setQuan(e.target.value)}} type="number" class="flow__input"/>
+                        <input value={quan || ''} onChange={(e)=> {setQuan(e.target.value)}} type="number" min={0} class="flow__input"/>
                         <div className="flow__inner">
                             <div className="flow__label">Дата</div>
-                            <input onChange={(e)=> {setDate(Date.parse(e.target.value))}} type="datetime-local" class="flow__input flow__input-mini"/>
+                            <input value={date}  onChange={(e)=> {setDate(e.target.value); console.log(typeof e.target.value, e.target.value)}} type="datetime-local" class="flow__input flow__input-mini"/>
                         </div>
                     </div>
                 </div>

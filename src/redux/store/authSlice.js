@@ -53,12 +53,17 @@ const authSlice = createSlice({
             } else {
                 state.favorite.push(action.payload)
             }
+        },
+
+        deleteFavorite: (state, action) => {
+            state.favorite =  state.favorite.filter(item => item !== action.payload)
         }
+
         
     } ,
 });
 
-export const { setCredentials, clearStore, isAuthCh, userIdCh, favoriteCh } = authSlice.actions;
+export const { setCredentials, clearStore, isAuthCh, userIdCh, favoriteCh, deleteFavorite } = authSlice.actions;
 export default authSlice.reducer;
 
 export const selectCurrentEmail = (state) => state.auth.email;

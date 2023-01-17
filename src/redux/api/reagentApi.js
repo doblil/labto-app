@@ -48,7 +48,15 @@ export const reagentApi = api.injectEndpoints({
             }),
             invalidatesTags: ['Reagent'],
         }),
+
+        deleteReagent: builder.mutation({
+            query: ({target, userId}) => ({
+                url: `/api/reagent/delete/${userId}/${target}`,
+                method: 'DELETE'
+            }) ,
+            invalidatesTags: ['Reagent'],
+        })
     })
 })
 
-export const { useGetOneReagentQuery, useGetReagentsQuery, useTakeReagentMutation, useFavoriteReagentMutation, useUnfavoriteReagentMutation, useAddReagentMutation } = reagentApi
+export const { useGetOneReagentQuery, useGetReagentsQuery, useTakeReagentMutation, useFavoriteReagentMutation, useUnfavoriteReagentMutation, useAddReagentMutation, useDeleteReagentMutation } = reagentApi
