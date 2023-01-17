@@ -6,7 +6,6 @@ export const HistoryOfUsage = (props) => {
     
     const {units, itemId, name, cat, lot, inUse} = useSelector(state=> state.activeReagent)
 
-    console.log(props.reagent)
     if(!props.reagent){
         return <></>
     }

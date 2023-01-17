@@ -14,18 +14,18 @@ import { useNavigate } from 'react-router-dom'
 import { HistoryOfUsage } from './historyOfUsage'
 import { inUseCh, reagentFill } from '../../../../redux/store/activeReagSlice'
 
-export const PrepDescBloc = () => {
+export const PrepDescBloc = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const [showHistory, setShowHistory] = useState(false)
-
+    const {setShowBarcode} = props
 
     let content = <></>
     let isFavorite = false
     const {favorite, userId} = useSelector(state => state.auth);
     const reagent = useSelector(state => state.activeReagent);
-    const { _id: target } = useSelector(state => state.activeReagent);
+    const { _id: target, itemId } = useSelector(state => state.activeReagent);
 
     if(favorite.includes(target)){isFavorite = true}
 
@@ -96,7 +96,6 @@ export const PrepDescBloc = () => {
             toDate, units, restUnits, 
             inUse, warn, SDS, TDS, 
             passport} = data.reagent;
-        
         
         dispatch(inUseCh(inUse))
         const last = inUse[inUse.length - 1]
@@ -172,7 +171,7 @@ export const PrepDescBloc = () => {
                                 <div className="grid__doc">SDS</div> 
                                 <div className="grid__doc">TDS</div>
                             </div>
-                            <div className="grid__barcode"> <img src="icons/upc.svg" alt="" /></div>
+                            <div className="grid__barcode" onClick={()=>{setShowBarcode(true); console.log('click barcode')}}> <img src="icons/upc.svg" alt="" /></div>
                             <img className="grid__icon" src="icons/document.svg" alt="document" />
                         </div>
                         <div className="grid__box item-h">
