@@ -88,14 +88,13 @@ export const Barcode = (props) => {
                 </div>
                 <div className="barcode__wrap">
                     <div className="barcode__toprint" ref={printRef} style= {{width: styles[printSize].boxWidth, height:styles[printSize].boxHeigt, padding:styles[printSize].padding}}>
-                        <BCode width={styles[printSize].barcodeWidth} height={30} fontSize={14} value={`${itemId}`}/>
+                        <BCode margin={5} width={styles[printSize].barcodeWidth} height={30} fontSize={14} value={`${itemId}`}/>
                         <div className="barcode__name" style={{fontSize: styles[printSize].nameFontSize}}>{name}</div>
                         <div className="barcode__info" style={{fontSize: styles[printSize].infoFontSize}}>{manufacturer} | {cat} | (lot: {lot})</div>
                     </div>
                 </div>
                 <button className='btn barcode__print' onClick={handlePrint}> Распечатать</button>
             </div>
-            <button className='btn barcode__btn'></button>
         </div>
             
     );
