@@ -95,7 +95,6 @@ export const Barcode = (props) => {
                 </div>
                 <button className='btn barcode__print' onClick={handlePrint}> Распечатать</button>
             </div>
-            <button className='btn barcode__btn'></button>
         </div>
             
     );

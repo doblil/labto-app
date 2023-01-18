@@ -55,10 +55,9 @@ if (isSuccess) {content = handleFilter(data.reagents)
 
 
 return(
-    <table className="table__wrap">
-    <div className="table__line"></div>  
+    <table className="table__wrap"> 
 
-    <thead>       
+    <thead>     
         <tr>
             <th>ID</th>
             <th>Наименование</th>

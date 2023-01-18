@@ -88,7 +88,7 @@ export const PrepDescBloc = (props) => {
 
 
     if (isLoading){
-        content = <div className="desc__return">Загрузка...</div>
+        content = <div className="desc__load">Загрузка...</div>
     }
 
     if(isSuccess && data.reagent){
@@ -101,17 +101,22 @@ export const PrepDescBloc = (props) => {
         
         dispatch(inUseCh(inUse))
         const last = inUse[inUse.length - 1]
-        content = <> 
+        content = <>                 
+            <div className="desc__action-wrap">
+                <button className='desc__item-action' onClick={handleAddSame}>Внести похожий</button>
+                <button className='desc__item-action' onClick={handleDeleteReagent}>Удалить</button>
+                <button className='desc__item-action' onClick={handleAddSame}>Изменить</button>
+                <button className='desc__item-action' onClick={handleAddSame}>Карантин</button>
+                <button className='desc__item-action desc__item-action_main' onClick={handleAddSame}>Опции</button>
+            </div>
             <div className="desc__top">
+
                 <div className="desc__heading">
                     <div className="desc__title">ID {itemId}</div>
                     <div className="desc__name">{name}</div>
                     <div className="desc__title">{manufacturer} | {cat}</div>
                 </div>
-                <button className='desc__item-action' onClick={handleAddSame}>Внести похожий</button>
-                <button className='desc__item-action' onClick={handleDeleteReagent}>Удалить</button>
-                <button className='desc__item-action' onClick={handleAddSame}>Изменить</button>
-                <button className='desc__item-action' onClick={handleAddSame}>Карантин</button>
+
                 <div className="desc__status">
                     <div className="desc__presence">{restUnits > 0.1 && 'В наличии'}</div>
                     <div className="desc__favorite">
@@ -121,10 +126,10 @@ export const PrepDescBloc = (props) => {
                 </div>
             </div>
         
-        <div className="overflow desc__overflow">
+            <div className="overflow overflow__alt desc__overflow">
                 
-                <div className="desc__overflow-wrap" style={{display: `${showHistory === true ? '' : 'none' }`}}>
-                    <HistoryOfUsage reagent = {reagent}/>
+                <div className="overflow_border desc__overflow-wrap" style={{display: `${showHistory === true ? '' : 'none' }`}}>
+                    <HistoryOfUsage setShowHistory={setShowHistory} reagent = {reagent}/>
                 </div>
 
                 <div style={{display: `${!showHistory === true ? '' : 'none' }`}} className="desc__overflow-wrap">
@@ -209,7 +214,6 @@ export const PrepDescBloc = (props) => {
   
     return(
     <div className="desc">
-        <div className="close" onClick={()=>{setShowHistory(false)}}></div>
         {content}
         <FlowForm/>
     </div>

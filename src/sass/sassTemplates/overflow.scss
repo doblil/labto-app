@@ -2,10 +2,14 @@
 
 .overflow{
     overflow: auto;
+    // &_border{
+    //     border: 1px solid $main-color;
+    // }
     &::-webkit-scrollbar {
         width: 13px;
     }
     &::-webkit-scrollbar-track {
+        margin-top: 50px;
         background-color: rgb(228, 228, 228);
         border-radius: 8px;
     }
@@ -14,5 +18,12 @@
         background-color: gray;
         border-radius: 6px;
         border: 2px solid rgb(228, 228, 228);
+    }
+    &__alt{
+        &::-webkit-scrollbar-track {
+            margin-top: 29px;
+            background-color: rgb(228, 228, 228);
+            border-radius: 8px;
+        }
     }
 }

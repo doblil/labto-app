@@ -31,6 +31,7 @@ export const PrepInfoBloc = () => {
                 setExpSearch = {setExpSearch}
             />
             <div className="overflow table">
+                <div className="table__line"></div>
                 <PrepReagTable
                     nameSearch = {nameSearch}
                     casSearch = {casSearch}
