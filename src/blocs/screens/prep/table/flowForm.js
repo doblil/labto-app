@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import { useTakeReagentMutation } from "../../../../redux/api/reagentApi";
 import { sMessageCh } from "../../../../redux/store/sMessageSlice";
 import { stringifyDate } from "../../../../services/sevices";
+import { Link } from 'react-router-dom';
 
 
 export const FlowForm = () => {
@@ -74,7 +75,8 @@ export const FlowForm = () => {
                 </div>
 
                 <div className="flow__btn-wrap">
-                    <button className="btn btn_white flow__btn ">В черновик</button>
+                    
+                    <Link to="/confirm" className="link"><button className="btn btn_white flow__btn ">В черновик</button></Link>
                     <button className="btn flow__btn" onClick={handleTakeReagent}>Списать</button>
                 </div>
 

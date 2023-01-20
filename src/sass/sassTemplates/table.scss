@@ -46,15 +46,19 @@
         tbody{
             height: 100%;
             td{
-                max-width: 200px;
+                max-width: 200px;              
                 padding: 6px;
+                height: 40px;
                 &:first-child{
                     padding-left: 23px;
                 }
             }
-            tr:nth-of-type(even) {
-                background-color: #f3f3f3;
+            tr{
+                &:nth-of-type(even) {
+                    background-color: #f3f3f3;
+                }
             }
+
         }
         &_low{
             thead{
