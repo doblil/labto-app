@@ -1,21 +1,16 @@
-import { PrepReagItem } from "./prepReagItem"
-import { useGetReagentsQuery } from "../../../../redux/api/reagentApi"
+import { ReagItem } from "./reagItem"
+import { useGetReagentsQuery } from "../../../../../redux/api/reagentApi"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { favoriteCh } from "../../../../redux/store/authSlice"
-import { activeReagentCh } from "../../../../redux/store/activeReagSlice"
+import { favoriteCh } from "../../../../../redux/store/authSlice"
+import { activeReagentCh } from "../../../../../redux/store/activeReagSlice"
 
 
-export const PrepReagTable = (props) => {
+export const ReagTable = (props) => {
 
 
-    const {catSearch, nameSearch, casSearch, expSearch, favoriteSearch, restSearch} = props
+    const {catSearch, nameSearch, casSearch, expSearch, favoriteSearch, restSearch, reqParams} = props
     
-
-    const reqParams = {
-        type: 'reag',
-        isolate: 'false'
-    }
 
 
 let content = <></>
@@ -44,7 +39,7 @@ const handleFilter = (arr = []) => {;
 if (isLoading) {return <div className="table__load">Загрузка...</div>}
 if (isSuccess) {content = handleFilter(data.reagents)
 .map(item => {
-    return <PrepReagItem
+    return <ReagItem
         activeItem = {activeItem === item._id}
         handleActiveItem = {handleActiveItem}
         favorite = {favorite}

@@ -32,7 +32,7 @@ export const AuthForm = (props) => {
             dispatch(userIdCh(userData));
             setEmail('');
             setPassword('');
-            navigate('/prep/reagentTable')
+            navigate('/prep/reag')
             
         } catch (error) {
             console.error(error);

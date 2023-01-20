@@ -1,26 +1,29 @@
-import '../prep.scss'
-import '../../../../sass/sassTemplates/desc.scss'
-import '../../../../sass/sassTemplates/flow.scss'
-import '../../../../sass/sassTemplates/overflow.scss'
-import { FlowForm } from './flowForm'
-import { Barcode } from '../../../barcode/barcode'
+import '../../prep.scss'
+import '../../../../../sass/sassTemplates/desc.scss'
+import '../../../../../sass/sassTemplates/flow.scss'
+import '../../../../../sass/sassTemplates/overflow.scss'
+import { FlowForm } from '../flowForm'
+import { Barcode } from '../../../../barcode/barcode'
 import { useDispatch, useSelector } from 'react-redux'
-import { useDeleteReagentMutation, useFavoriteReagentMutation, useGetOneReagentQuery, useUnfavoriteReagentMutation } from '../../../../redux/api/reagentApi'
-import { SVGstar } from '../../../../svg/svg'
-import { handleWarnImg, stringifyDate } from '../../../../services/sevices'
+import { useDeleteReagentMutation, useFavoriteReagentMutation, useGetOneReagentQuery, useUnfavoriteReagentMutation } from '../../../../../redux/api/reagentApi'
+import { SVGstar } from '../../../../../svg/svg'
+import { handleWarnImg, stringifyDate } from '../../../../../services/sevices'
 import { useEffect, useState } from 'react'
-import { deleteFavorite, favoriteCh } from '../../../../redux/store/authSlice'
-import { addCreateSame } from '../../../../redux/store/addItemSlice'
+import { deleteFavorite, favoriteCh } from '../../../../../redux/store/authSlice'
+import { addCreateSame } from '../../../../../redux/store/addItemSlice'
 import { useNavigate } from 'react-router-dom'
-import { HistoryOfUsage } from './historyOfUsage'
-import { inUseCh, reagentFill } from '../../../../redux/store/activeReagSlice'
+import { HistoryOfUsage } from '../historyOfUsage'
+import { inUseCh, reagentFill } from '../../../../../redux/store/activeReagSlice'
+import { Options } from '../options'
 
-export const PrepDescBloc = (props) => {
+export const ReagDesc = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const [showHistory, setShowHistory] = useState(false)
     const [showBarcode, setShowBarcode] = useState(false)
+    const [showOptions, setShowOptions] = useState(false)
+
 
     console.log(showBarcode)
 
@@ -35,6 +38,8 @@ export const PrepDescBloc = (props) => {
     const [favoriteReagent, {isLoading: favoriteLoading, isSuccess: favoriteSuccess}] = useFavoriteReagentMutation()
     const [unfavoriteReagent, {isLoading: unfavoriteLoading, isSuccess: unfavoriteSuccess}] = useUnfavoriteReagentMutation()
     const {data, isLoading, isSuccess} = useGetOneReagentQuery(target);
+
+    
 
     const handleLoaders = () => {
         return deleteLoading || favoriteLoading || unfavoriteLoading || isLoading
@@ -103,11 +108,8 @@ export const PrepDescBloc = (props) => {
         const last = inUse[inUse.length - 1]
         content = <>                 
             <div className="desc__action-wrap">
-                <button className='desc__item-action' onClick={handleAddSame}>Внести похожий</button>
-                <button className='desc__item-action' onClick={handleDeleteReagent}>Удалить</button>
-                <button className='desc__item-action' onClick={handleAddSame}>Изменить</button>
-                <button className='desc__item-action' onClick={handleAddSame}>Карантин</button>
-                <button className='desc__item-action desc__item-action_main' onClick={handleAddSame}>Опции</button>
+                {showOptions && <Options/>}
+                <button className='desc__item-action desc__item-action_main' onClick={() => setShowOptions(!showOptions)}>Опции</button>
             </div>
             <div className="desc__top">
 

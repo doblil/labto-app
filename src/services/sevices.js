@@ -42,6 +42,29 @@ export const stringifyDate = (value, exact = false, input = false) => {
     }
     return `${year}.${needZero(month)}.${needZero(day)}`
 
+};
+
+export const stringifyRSType = (type = '') => {
+    switch (type) {
+        case 'usp':
+            return 'USP RS';
+        case 'epcrs':
+            return 'EP CRS';
+        case 'bp':
+            return 'BP RS';
+        case 'who':
+            return 'ВОЗ';
+        case 'rso':
+            return 'РСО';
+        case 'gso':
+            return 'ГСО';
+        case 'fso':
+            return 'ФСО';
+        case 'oth':
+            return '';
+        default:
+            return ''
+    }
 }
 
 

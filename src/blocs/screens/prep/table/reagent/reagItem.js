@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import { stringifyDate } from "../../../../services/sevices";
-import { SVGstar } from "../../../../svg/svg"
+import { stringifyDate } from "../../../../../services/sevices";
+import { SVGstar } from "../../../../../svg/svg"
 
-export const PrepReagItem = (props) => {
+export const ReagItem = (props) => {
   
   const {favorite} = useSelector(state => state.auth)
   const { itemId, name, CAS, cat, lot, manufacturer, toDate, units, restUnits, container, _id } = props.item;

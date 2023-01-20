@@ -32,6 +32,10 @@
         margin-bottom: 5px;
         margin-top: -7px;
     }
+    &__action-inner{
+        height: inherit;
+        animation: 0.5s ease-in slidein;
+    }
     &__item-action{
         background-color: transparent;
         padding: 3px;
@@ -321,3 +325,14 @@
 }
 @media (max-width: 575px) {
 }
+
+
+@keyframes slidein {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }

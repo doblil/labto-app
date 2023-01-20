@@ -1,13 +1,15 @@
-import '../prep.scss'
-import '../../../../sass/sassTemplates/btn.scss'
-import '../../../../sass/sassTemplates/info.scss'
-import '../../../../sass/sassTemplates/table.scss'
+import '../../prep.scss'
+import '../../../../../sass/sassTemplates/btn.scss'
+import '../../../../../sass/sassTemplates/info.scss'
+import '../../../../../sass/sassTemplates/table.scss'
 import { useState } from 'react'
-import { PrepReagFilter } from './prepReagFilter'
-import { PrepReagTable } from './prepReagTable'
+import { RsFilter } from './rsFilter'
+import { RsTable } from './rsTable'
 
-export const PrepInfoBloc = () => {
+export const RsPage = (props) => {
     
+    const {reqParams} = props
+
     const [nameSearch, setNameSearch] = useState('');
     const [casSearch, setCasSearch] = useState('');
     const [catSearch, setCatSearch] = useState('');
@@ -19,7 +21,7 @@ export const PrepInfoBloc = () => {
 
     return(
         <div className="info">
-            <PrepReagFilter 
+            <RsFilter 
                 exp = {expSearch}
                 rest = {restSearch}
                 favorite = {favoriteSearch} 
@@ -32,7 +34,8 @@ export const PrepInfoBloc = () => {
             />
             <div className="overflow table">
                 <div className="table__line"></div>
-                <PrepReagTable
+                <RsTable
+                    reqParams = {reqParams}
                     nameSearch = {nameSearch}
                     casSearch = {casSearch}
                     catSearch = {catSearch}

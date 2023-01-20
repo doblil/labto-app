@@ -1,6 +1,4 @@
-import { PrepDescBloc } from "./prep/table/prepDescBloc"
-import { PrepInfoBloc } from "./prep/table/prepInfoBloc"
-import { PrepMenu } from "./prep/prepMenu"
+
 import { Header } from "../header/header"
 
 import './screen.scss'

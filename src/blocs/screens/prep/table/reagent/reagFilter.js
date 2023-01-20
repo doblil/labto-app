@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useSelector } from "react-redux";
 
-export const PrepReagFilter = (props) => {
+export const ReagFilter = (props) => {
     
     const { setCasSearch, setCatSearch, setNameSearch, setExpSearch, setFavoriteSearch, setRestSearch, rest, exp, favorite } = props;
     const {favorite: favoriteList} = useSelector(state => state.auth)

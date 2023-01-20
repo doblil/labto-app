@@ -20,7 +20,7 @@ export const Header = (props) => {
         <img src="icons/main_logo.svg" alt="" />
         <ul>
             <li><Link to="/profile/info" className="link"><div className={handleActiveTab('profile')}>Профиль</div></Link></li>
-            <li><Link to="/prep/reagentTable" className="link"><div className={handleActiveTab('prep')}>Препараторская</div></Link></li>
+            <li><Link to="/prep/reag" className="link"><div className={handleActiveTab('prep')}>Препараторская</div></Link></li>
             <li><Link to="/report" className="link"><div className={handleActiveTab('report')}>Отчётность</div></Link></li>
             <li><Link to="/purchases" className="link"><div className={handleActiveTab('purchases')}>Закупки</div></Link></li>
             <li><Link to="/employers" className="link"><div className={handleActiveTab('employers')}>Сотрудники</div></Link></li>
