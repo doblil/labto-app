@@ -129,6 +129,7 @@ textarea{
 }
 .favorite :after{
     content: url("../../public/icons/star.svg");
+    position: absolute;
 }
 // @font-face {
 // 	font-family: "MontserratAlternates-Light";

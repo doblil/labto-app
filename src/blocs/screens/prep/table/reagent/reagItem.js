@@ -6,7 +6,13 @@ export const ReagItem = (props) => {
   
   const {favorite} = useSelector(state => state.auth)
   const { itemId, name, CAS, cat, lot, manufacturer, toDate, units, restUnits, container, _id } = props.item;
-
+  const handleDateWarn = () => {
+    if((Date.parse(toDate) - Date.now()) > (1000*60*60*24*10)){
+      return 'table__item'
+    } else {
+      return 'table__item table__item_warn'
+    }
+  }
 
 
   return(
@@ -27,7 +33,7 @@ export const ReagItem = (props) => {
         <td className="table__item">{CAS}</td>
         <td className="table__item">{restUnits} {units}</td>
         <td className="table__item">{Math.floor(restUnits/container*100)}%</td>
-        <td className="table__item">{stringifyDate(Date.parse(toDate))}</td>
+        <td className={handleDateWarn()}>{stringifyDate(Date.parse(toDate))}</td>
     </tr>
 )
 }

@@ -1,12 +1,11 @@
 @import '../../sass/base/variables.scss';
 
-.close{
-    height: 20px;
-    width: 20px;
+.print{
+    height: 23px;
+    width: 23px;
     position: absolute;
-    top: 6px;
-    right: 6px;
-    font-size: 20px;
+    top: 95px;
+    right: 5px;
     cursor: pointer;
     z-index: 5;
     transition: all 0.3s;
@@ -14,15 +13,8 @@
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    &_big{
-        height: 23px;
-        width: 23px;
-        font-size: 22px;
-        top: 95px;
-        right: 32px;
-    }
     &:before{
-        content: '×';
+        content: url(./../../../public/icons/printer.svg);
         line-height: 0px;
     }
     &:hover{

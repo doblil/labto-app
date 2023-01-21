@@ -30,32 +30,30 @@
         justify-content: flex-end;
         margin-right: 4px;
         margin-bottom: 5px;
-        margin-top: -7px;
-    }
-    &__action-inner{
-        height: inherit;
-        animation: 0.5s ease-in slidein;
+        margin-top: -14px;
     }
     &__item-action{
+        height: 22px;
         background-color: transparent;
         padding: 3px;
-        color: $main-color;
+        color: $utility-color;
         border: 1px solid transparent;
         border-radius: 5px;
         transition: all 0.3s;
         font-size: 10px;
-        margin-right: 6px;
+        margin-right: 8px;
         cursor: pointer;
         &:hover{
-            border: 1px solid #ffb027;
+            border: 1px solid $utility-color;
         }
         &_main{
             color: black;
-            border: 1px solid black;
+            border: 1px solid gray;
             margin-left: 8px;
             &:hover{
                 background-color: #f3f3f3;
                 border: 1px solid transparent;
+                box-shadow: $minor-shadow;
             }
         }
     }
@@ -280,12 +278,12 @@
 }
 .item-g{
     grid-area: g;
-    background-color: #36a3ff;
+    background-color: $utility-color;
     border: none;
 }
 .item-h{
     grid-area: h;
-    background-color:  #36a3ff;
+    background-color:  $utility-color;
     border: none;
 }
 @media (max-width: 1200px) {
@@ -325,14 +323,3 @@
 }
 @media (max-width: 575px) {
 }
-
-
-@keyframes slidein {
-    from {
-      opacity: 0;
-    }
-  
-    to {
-      opacity: 1;
-    }
-  }

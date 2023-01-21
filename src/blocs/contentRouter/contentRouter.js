@@ -14,6 +14,7 @@ import { ProfileInfo } from "../screens/profile/profileInfo"
 import { ProfileDrafts } from "../screens/profile/profileDrafts"
 import { ProfileHistory } from "../screens/profile/profileHistory"
 import { ProfileOrders } from "../screens/profile/profileOrders"
+import { Rs } from "../screens/prep/table/rs/rs"
 import { ConfirmMessage } from "../confirmMessage/confirmMessage"
 export const ContentRouter = () => {
   

@@ -204,7 +204,7 @@ export const ReagDesc = (props) => {
                                 </> : <div className="grid__history">Похоже, никто не пользовался</div>}
                             </div>
                             <img className="grid__icon" src="icons/person.svg" alt="document" />
-                            <button className="grid__btn" onClick={()=> {setShowHistory(true)}}>Смотреть развернутую историю списаний &#10095;&#10095;</button>
+                            {!!inUse.length && <button className="grid__btn" onClick={()=> {setShowHistory(true)}}>Смотреть развернутую историю списаний &#10095;&#10095;</button>}
                         </div>
                     </div>
                 </div>

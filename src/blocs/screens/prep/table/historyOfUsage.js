@@ -30,6 +30,7 @@ export const HistoryOfUsage = (props) => {
     return(
         <table className="table__wrap table__wrap_low">
             <div className="close close_big" onClick={()=>{setShowHistory(false)}}></div>
+            <div className="print"> </div>
         
             <thead  className="table__shadow">
                 <tr>
