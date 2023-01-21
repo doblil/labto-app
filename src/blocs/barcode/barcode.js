@@ -15,7 +15,7 @@ export const Barcode = (props) => {
             infoFontSize: "12px",
             barcodeWidth: 2,  
             boxWidth: '315px',
-            boxHeigt: '110px',
+            boxHeigt: '95px',
             padding: ""
         },
         middle: {

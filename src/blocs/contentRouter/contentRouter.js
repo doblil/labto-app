@@ -14,7 +14,7 @@ import { ProfileInfo } from "../screens/profile/profileInfo"
 import { ProfileDrafts } from "../screens/profile/profileDrafts"
 import { ProfileHistory } from "../screens/profile/profileHistory"
 import { ProfileOrders } from "../screens/profile/profileOrders"
-import { Rs } from "../screens/prep/table/rs/rs"
+import { ConfirmMessage } from "../confirmMessage/confirmMessage"
 export const ContentRouter = () => {
   
   const {isAuth} = useSelector(state => state.auth);
@@ -39,6 +39,7 @@ export const ContentRouter = () => {
           <Route path="/prep/rs" element = {<Rs reqParams = {{type: 'rs', isolate: 'false'}}/>}/>
           <Route path="/prep/addReagent" element = {<AddReag/>}/>
         </Route>
+        <Route path="/confirm" element={<ConfirmMessage/>}/>
       </Route>
 
       

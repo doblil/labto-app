@@ -12,7 +12,6 @@ export const ProfileInfo = () => {
     
     return(
         <div className="profile__wrap">
-            <div className="profile__heading">Профиль</div>
             <div className="profile__card">
                 <img src="icons/info.svg" alt="" className="profile__icon" />
                 <div className="profile__name">Федорко Илья Николаевич</div> <br />
