@@ -90,9 +90,9 @@
         align-items: flex-end;
         justify-content: space-between;
     }
-    &__presence{
-        font-size: 9px;
-        color: rgb(0, 217, 0);
+    &__rs{
+        font-size: 12px;
+        color: $utility-color;
         font-weight: 700;
         cursor: default;
         margin-bottom: 3px;

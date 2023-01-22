@@ -1,5 +1,5 @@
 
-import { RsDesc } from "./rsDesc"
+import { Desc } from "../desc"
 import { RsPage } from "./rsPage"
 
 export const Rs = (props) => {
@@ -9,7 +9,7 @@ export const Rs = (props) => {
    return(
          <>
             <RsPage reqParams={reqParams}/>
-            <RsDesc/>
+            <Desc/>
          </>
          )
 
