@@ -1,22 +1,22 @@
-import '../../prep.scss'
-import '../../../../../sass/sassTemplates/desc.scss'
-import '../../../../../sass/sassTemplates/flow.scss'
-import '../../../../../sass/sassTemplates/overflow.scss'
-import { FlowForm } from '../flowForm'
-import { Barcode } from '../../../../barcode/barcode'
+import '../prep.scss'
+import '../../../../sass/sassTemplates/desc.scss'
+import '../../../../sass/sassTemplates/flow.scss'
+import '../../../../sass/sassTemplates/overflow.scss'
+import { FlowForm } from './flowForm'
+import { Barcode } from '../../../barcode/barcode'
 import { useDispatch, useSelector } from 'react-redux'
-import { useDeleteReagentMutation, useFavoriteReagentMutation, useGetOneReagentQuery, useUnfavoriteReagentMutation } from '../../../../../redux/api/reagentApi'
-import { SVGstar } from '../../../../../svg/svg'
-import { handleWarnImg, stringifyDate } from '../../../../../services/sevices'
-import { useEffect, useState } from 'react'
-import { deleteFavorite, favoriteCh } from '../../../../../redux/store/authSlice'
-import { addCreateSame } from '../../../../../redux/store/addItemSlice'
+import { useDeleteReagentMutation, useFavoriteReagentMutation, useGetOneReagentQuery, useUnfavoriteReagentMutation } from '../../../../redux/api/reagentApi'
+import { SVGstar } from '../../../../svg/svg'
+import { handleWarnImg, stringifyDate, stringifyRSType } from '../../../../services/sevices'
+import { useState } from 'react'
+import { deleteFavorite, favoriteCh } from '../../../../redux/store/authSlice'
+import { addCreateSame } from '../../../../redux/store/addItemSlice'
 import { useNavigate } from 'react-router-dom'
-import { HistoryOfUsage } from '../historyOfUsage'
-import { inUseCh, reagentFill } from '../../../../../redux/store/activeReagSlice'
-import { Options } from '../options'
+import { HistoryOfUsage } from './historyOfUsage'
+import { inUseCh, reagentReset } from '../../../../redux/store/activeReagSlice'
+import { Options } from './options'
 
-export const ReagDesc = (props) => {
+export const Desc = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -66,22 +66,34 @@ export const ReagDesc = (props) => {
         }
     }
 
+    // options handlers
+
     const handleAddSame = async () => {
         if (isSuccess && data.reagent)
         await dispatch(addCreateSame(data.reagent));
         navigate('/prep/addReagent');
-
     }
 
-    const handleDeleteReagent = async () => {
+    const handleDelete = async () => {
         if (handleLoaders()) return
         try {
             await deleteReagent({userId, target})
             dispatch(deleteFavorite(target))
+            dispatch(reagentReset())
         } catch (error) {
             console.error(error)
         }
     }
+
+    const handleChange = async () => {
+
+    }
+
+    const handleIsolate = async () => {
+
+    }
+
+    // before fetching
     
     if(!target){
         return(
@@ -96,19 +108,30 @@ export const ReagDesc = (props) => {
         content = <div className="desc__load">Загрузка...</div>
     }
 
+    // after success fetching
+
     if(isSuccess && data.reagent){
         const {itemId, location,
             name, manufacturer, cat, 
             lot, container, fromDate, 
             toDate, units, restUnits, 
-            inUse, warn, SDS, TDS, 
+            inUse, warn, standartType, SDS, TDS, 
             passport} = data.reagent;
         
         dispatch(inUseCh(inUse))
         const last = inUse[inUse.length - 1]
         content = <>                 
             <div className="desc__action-wrap">
-                {showOptions && <Options/>}
+                {!!showOptions && 
+                
+                    <Options
+                        handleAddSame = {handleAddSame}
+                        handleDelete = {handleDelete}
+                        handleIsolate = {handleIsolate}
+                        handleChange = {handleChange}
+                    />
+                
+                }
                 <button className='desc__item-action desc__item-action_main' onClick={() => setShowOptions(!showOptions)}>Опции</button>
             </div>
             <div className="desc__top">
@@ -120,7 +143,7 @@ export const ReagDesc = (props) => {
                 </div>
 
                 <div className="desc__status">
-                    <div className="desc__presence">{restUnits > 0.1 && 'В наличии'}</div>
+                    {!!standartType && <div className="desc__rs">Стандартный образец {stringifyRSType(standartType)}</div>}
                     <div className="desc__favorite">
                         {isFavorite && <SVGstar handleFavorite = {handleFavorite} style={{fill: "#ffb027", height:"25", width: "25"}}/>}
                         {!isFavorite && <SVGstar handleFavorite = {handleFavorite} style={{fill: "#cdcdcd", height:"25", width: "25"}}/>}
@@ -148,8 +171,9 @@ export const ReagDesc = (props) => {
                         </div>
                         <div className="grid__box item-c" >
                             <div className="grid__heading">Дата производства - <br /> годен до</div>
-                            <div className="grid__value">{stringifyDate(fromDate) } - {stringifyDate(toDate) }</div>
-                            <div className="grid__descr">осталось {(toDate - (+Date.now()))/1000/60/60/24} суток</div>
+                            {(!toDate && !!standartType) && <div className="grid__value">Проверьте текущую партию на сайте производителя</div>}
+                            {toDate && <div className="grid__value">{stringifyDate(fromDate) } - {stringifyDate(toDate) }</div>}
+                            {toDate && <div className="grid__descr">осталось {(toDate - (+Date.now()))/1000/60/60/24} суток</div>}
                             <img className="grid__icon" src="icons/date.svg" alt="document" />
                         </div>
                         <div className="grid__box item-d">

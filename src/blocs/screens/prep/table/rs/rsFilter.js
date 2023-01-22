@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useSelector } from "react-redux";
+import { SVGstar } from "../../../../../svg/svg";
 
 export const RsFilter = (props) => {
     
@@ -107,7 +108,7 @@ export const RsFilter = (props) => {
                         <label className="custom-checkbox__text" for="chb-fit">Годен</label>
                     </div>
 
-                    <div className="filter__row favorite">
+                    <div className="filter__row">
                         <input 
                             className="custom-checkbox" 
                             type="checkbox"id="chb-allFavorite" 
@@ -124,7 +125,14 @@ export const RsFilter = (props) => {
                             checked={favorite === true}
                             onChange = {(e) => setFavoriteSearch(true)}
                         />
-                        <label className="custom-checkbox__text" for="chb-favorite">Избранное ({favoriteList.length})</label> <br />
+                        <label className="custom-checkbox__text" style={{position: 'relative'}} for="chb-favorite">Избранное ({favoriteList.length})
+                            <SVGstar style={{
+                                fill: "#ffb027",
+                                position: 'absolute',
+                                bottom: '4px',
+                                right: '-12px'
+                                }}/>
+                        </label> <br />
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 
-import { ReagDesc } from "./reagDesc"
+import { Desc } from "../desc"
 import { ReagPage } from "./reagPage"
 
 export const Reag = (props) => {
@@ -9,7 +9,7 @@ export const Reag = (props) => {
    return(
          <>
             <ReagPage reqParams = {reqParams}/>
-            <ReagDesc/>
+            <Desc/>
          </>
          )
 
