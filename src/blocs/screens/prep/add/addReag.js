@@ -102,7 +102,7 @@ export const AddReag = () => {
 
     
     return(
-        <div className="add">            
+        <div className=" overflow add">            
             <div className="add__heading">Добавление реактива</div>
             <div className="add__wrap">
                 <div className="add__inner">
@@ -207,7 +207,7 @@ export const AddReag = () => {
                     <div className="add__destination add__destination_top">
                         <div className="add__label">Пиктограммы опасности СГС</div>
                         <div className="add__choice">
-                            <div  className="add__choice-heading">Выберите необходимые из списка</div>
+                            <div  className="add__choice-heading">Выберите необходимые из списка:</div>
                             <div style={handleWarnStyle('explosive')} onClick={()=>handleWarn('explosive')} className="add__pict"><img src="icons/danger/explosive.svg" alt="explosive" />Explosive</div>
                             <div style={handleWarnStyle('flameble')} onClick={()=>handleWarn('flameble')} className="add__pict"><img src="icons/danger/flammable.svg" alt="flammable" />Flammable</div>
                             <div style={handleWarnStyle('oxidizing')} onClick={()=>handleWarn('oxidizing')} className="add__pict"><img src="icons/danger/oxidizing.svg" alt="oxidizing" />Oxidizing</div>
@@ -219,20 +219,49 @@ export const AddReag = () => {
                             <div style={handleWarnStyle('eHazard')} onClick={()=>handleWarn('eHazard')} className="add__pict"><img src="icons/danger/environmentally_hazardous.svg" alt="environmentally_hazardous" />Environmentally hazardous</div>
                         </div>
                     </div>
-                    <div className="add__destination">
+                    <div className="add__destination add__destination_top">
                         <div className="add__label">Документы</div>
                         <div className="add__document">
-                            <div className="add__document_form">Добавить паспорт</div>
-                            <div className="add__document_form">Добавить SDS (ссылка)</div>
-                            {/* <div className="add__document_form">Добавить TDS</div> */}
-                            <div className="add__document-wrap">
-                                <div className="add__document-title">TDS (ссылка)</div>
-                                <div className="add__document_form add__document_success">
-                                    <div className="add__document_cancel">x</div>
-                                    <div className="add__file"><p>name_file.docdfsdsfsdfdsfdsfdsfsdfdsfsdfdsfdfsdfghjkljhgfdxszxfcghjk</p></div>
+                            <div className="add__document_window">
+                                <div className="add__document-title">Добавить паспорт:</div>
+                                <div className="add__document-checkbox">
+                                    <input 
+                                        className="custom-checkbox" 
+                                        type="checkbox"id="chb-addLink" 
+                                        name="chb-addLink"
+                                    />
+                                    <label className="custom-checkbox__text" for="chb-addLink">Ссылка</label>
+
+                                    <input 
+                                        className="custom-checkbox" 
+                                        type="checkbox"id="chb-addFile" 
+                                        name="chb-addFile"
+                                    />
+                                    <label className="custom-checkbox__text" for="chb-addFile">Файл</label>
                                 </div>
-                                
+                                <div className="add__document-result">
+                                    <div className="add__document_form add__document_success">
+                                        <div className="add__document_cancel">x</div>
+                                        <div className="add__file"><p>name_file.docdfsdsfsdfdsfdsfdsfsdfdsfsdfdsfdfsdfghjkljhgfdxszxfcghjk</p></div>
+                                    </div>
+                                    {/* <div className="add__document_form">Добавить файл</div> */}
+                                </div> 
+                                  
+                                {/* <div className="add__document-result">
+                                    <input type="text" class="add__input add__input-doc"/>
+                                </div>             */}
                             </div>
+                        
+
+                            <div className="add__document_window">
+                                <div className="add__document-title">Добавить SDS:</div>
+                                <input type="text" class="add__input add__input-doc"/>
+                            </div>             
+
+                            <div className="add__document_window">
+                                <div className="add__document-title">Добавить TDS:</div>
+                                <input type="text" class="add__input add__input-doc"/>
+                            </div>             
                         </div>
                     </div>
                     

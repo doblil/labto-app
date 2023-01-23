@@ -4,7 +4,7 @@
     height: 23px;
     width: 23px;
     position: absolute;
-    top: 95px;
+    top: 109px;
     right: 5px;
     cursor: pointer;
     z-index: 5;
@@ -13,6 +13,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    background-color: white;
     &:before{
         content: url(./../../../public/icons/printer.svg);
         line-height: 0px;
