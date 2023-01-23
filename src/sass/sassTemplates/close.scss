@@ -15,10 +15,11 @@
     align-items: center;
     border-radius: 5px;
     &_big{
+        background-color: white;
         height: 23px;
         width: 23px;
         font-size: 22px;
-        top: 95px;
+        top: 109px;
         right: 32px;
     }
     &:before{
