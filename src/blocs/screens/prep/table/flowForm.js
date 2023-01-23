@@ -4,6 +4,7 @@ import { useTakeReagentMutation } from "../../../../redux/api/reagentApi";
 import { sMessageCh } from "../../../../redux/store/sMessageSlice";
 import { stringifyDate } from "../../../../services/sevices";
 import { Link } from 'react-router-dom';
+import { useConfirm } from "../../../../hooks/useConfirm";
 
 
 export const FlowForm = () => {
@@ -13,12 +14,13 @@ export const FlowForm = () => {
     const [destination, setDestination] = useState(null)
     const {name, userId} = useSelector(state => state.auth);
     const {projects} = useSelector(state => state.project)
-    const {_id: target} = useSelector(state => state.activeReagent);
-
+    const {_id: target, name: reagName, units} = useSelector(state => state.activeReagent);
     useEffect(() => {
         setDate(stringifyDate(Date.now(), false, true))
     }, [target])
 
+    console.log(`Списать ${quan} ${units} ${reagName}`)
+    const [FlowDialog, flowConfirm] = useConfirm(`Списать ${quan} ${units} ${reagName}`)
 
     const [takeReagent, {isLoading}] = useTakeReagentMutation()
 
@@ -42,9 +44,19 @@ export const FlowForm = () => {
         setDestination(null)
     }
 
+    const confirmTakeReagent = async () => {
+        const confirm = await flowConfirm();
+        if(confirm){
+            handleTakeReagent()
+        } else {
+            return
+        }
+    }
+
     return(
         <>
             <div className="flow">
+                <FlowDialog/>
                 <div className="flow__heading">Оформить расход</div>
 
                 <div className="flow__destination">
@@ -65,7 +77,7 @@ export const FlowForm = () => {
                     <div className="flow__label">Количество</div>
                     <div className="flow__wrap">
                         <input value={quan || ''} onChange={(e)=> {setQuan(e.target.value)}} type="number" min={0} class="flow__input"/>
-                        <div className="flow__measure">ml</div>
+                        <div className="flow__measure">{units}</div>
 
                         <div className="flow__inner">
                             <div className="flow__label">Дата</div>
@@ -77,7 +89,7 @@ export const FlowForm = () => {
                 <div className="flow__btn-wrap">
                     
                     <Link to="/confirm" className="link"><button className="btn btn_white flow__btn ">В черновик</button></Link>
-                    <button className="btn flow__btn" onClick={handleTakeReagent}>Списать</button>
+                    <button className="btn flow__btn" onClick={confirmTakeReagent}>Списать</button>
                 </div>
 
             </div>

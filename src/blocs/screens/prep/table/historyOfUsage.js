@@ -25,7 +25,6 @@ export const HistoryOfUsage = (props) => {
             </tr>
         )
     })
-    console.log(props.reagent)
 
     return(
         <table className="table__wrap table__wrap_low">

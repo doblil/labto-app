@@ -28,5 +28,11 @@
         font-size: 14px;
         line-height: 20px;
         margin-bottom: 40px;
+        color: $utility-color;
+    }
+    &__btns{
+        display: flex;
+        width: 80%;
+        justify-content: space-around;
     }
 }

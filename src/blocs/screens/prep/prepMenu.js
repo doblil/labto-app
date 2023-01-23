@@ -14,9 +14,9 @@ export const PrepMenu = () => {
 
 	console.log(activeTab)
 
-	const handleReset = (e) => {
+	const handleReset = (tab) => {
 		dispatch(reagentReset());
-		setActiveTab(e.target.value);
+		setActiveTab(tab);
 	} 
 
 	const handleClass = (v) => {
@@ -33,9 +33,9 @@ export const PrepMenu = () => {
 			<div className="menu__stripe"></div>
 			<div className="menu__subtitle">Таблица</div>
 			<ul>
-				<li><Link to={'/prep/reag'} className='link'><div className={handleClass('reag')} value = {'reag'} onClick ={handleReset}>Реактивы</div></Link></li>
-				<li><Link to={'/prep/rs'} className='link'><div className={handleClass('rs')} value = {'rs'} onClick ={handleReset}>Стандарты</div></Link></li>
-				<li><Link to={'/prep/subt'} className='link'><div className={handleClass('subst')} value = {'subst'} onClick ={handleReset}>Субстанции</div></Link></li>
+				<li><Link to={'/prep/reag'} className='link'><div className={handleClass('reag')} onClick ={() =>  handleReset('reag')}>Реактивы</div></Link></li>
+				<li><Link to={'/prep/rs'} className='link'><div className={handleClass('rs')} onClick ={() =>  handleReset('rs')}>Стандарты</div></Link></li>
+				<li><Link to={'/prep/subst'} className='link'><div className={handleClass('subst')} onClick ={() =>  handleReset('subst')}>Субстанции</div></Link></li>
 				
 			</ul>
 			<div className="menu__stripe"></div>

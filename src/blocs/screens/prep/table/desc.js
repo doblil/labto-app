@@ -13,8 +13,9 @@ import { deleteFavorite, favoriteCh } from '../../../../redux/store/authSlice'
 import { addCreateSame } from '../../../../redux/store/addItemSlice'
 import { useNavigate } from 'react-router-dom'
 import { HistoryOfUsage } from './historyOfUsage'
-import { inUseCh, reagentReset } from '../../../../redux/store/activeReagSlice'
+import { inUseCh, reagentFill, reagentReset } from '../../../../redux/store/activeReagSlice'
 import { Options } from './options'
+import { useConfirm } from '../../../../hooks/useConfirm'
 
 export const Desc = (props) => {
     const dispatch = useDispatch();
@@ -24,11 +25,12 @@ export const Desc = (props) => {
     const [showBarcode, setShowBarcode] = useState(false)
     const [showOptions, setShowOptions] = useState(false)
 
-
-    console.log(showBarcode)
+ 
 
     let content = <></>
     let isFavorite = false
+
+    
     const {favorite, userId} = useSelector(state => state.auth);
     const { _id: target } = useSelector(state => state.activeReagent);
     const reagent = useSelector(state => state.activeReagent);
@@ -118,7 +120,7 @@ export const Desc = (props) => {
             inUse, warn, standartType, SDS, TDS, 
             passport} = data.reagent;
         
-        dispatch(inUseCh(inUse))
+        dispatch(reagentFill(data.reagent))
         const last = inUse[inUse.length - 1]
         content = <>                 
             <div className="desc__action-wrap">

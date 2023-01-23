@@ -1,14 +1,23 @@
 import './confirmMessage.scss'
 
 
-export const ConfirmMessage = () => {
+export const ConfirmMessage = (props) => {
+    const {confirmFunction, rejectFunction, text, open} = props
+    console.log(text)
+
+
     return(
-        <div className="confirm">
-            <div className="confirm__window">
-                <div className="close"></div>
-                <div className="confirm__text">Вы уверены, что хотите списать 30г реактива "Муравьиная кислота"?</div>
-                <button className='btn'> Подтвердить</button>
-            </div>
-        </div>
+        <>{open && <div className="confirm" >
+                        <div className="confirm__window">
+                            <div className="close"></div>
+                            <div className="confirm__text">{text}</div>
+                            <div className="confirm__text">*после подтверждения данное действвие нельзя отменить</div>
+                            <div className="confirm__btns">
+                                <button className='btn' onClick={confirmFunction}>Подтвердить</button>
+                                <button className='btn' onClick={rejectFunction}>Отменить</button>
+                            </div>
+                        </div>
+                    </div>}
+        </>
     )
 }

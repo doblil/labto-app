@@ -1,7 +1,7 @@
 export const Options = (props) => {
     
     const {handleAddSame, handleDelete, handleChange, handleIsolate} = props
-
+    
     return (
         <div className="desc__action-inner">
             <button className='desc__item-action' onClick={handleAddSame}>Внести похожий</button>

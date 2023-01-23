@@ -1,5 +1,6 @@
 import React from 'react';
-import { Header } from '../blocs/header/header';
+import { useSelector } from 'react-redux';
+
 import { ContentRouter } from '../blocs/contentRouter/contentRouter';
 import { Footer } from '../blocs/footer/footer';
 

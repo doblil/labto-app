@@ -40,9 +40,29 @@ const activeReagentSlice = createSlice({
     reducers: {
         activeReagentCh: (state, action) => {state._id = action.payload} ,
         reagentFill: (state, action) => {
-            for(let key in action.payload){
-                if (key !== '_id') {state[key] = action.payload.key}
-            }
+            state.CAS = action.payload.CAS
+            state.SDS = action.payload.SDS
+            state.TDS = action.payload.TDS
+            state.carantin = action.payload.carantin
+            state.carantinDate = action.payload.carantinDate
+            state.cat = action.payload.cat
+            state.container = action.payload.container
+            state.creator = action.payload.creator
+            state.fromDate = action.payload.fromDate
+            state.inUse = action.payload.inUse
+            state.itemId = action.payload.itemId
+            state.location = action.payload.location
+            state.lot = action.payload.lot
+            state.manufacturer = action.payload.manufacturer
+            state.name = action.payload.name
+            state.passport = action.payload.passport
+            state.price = action.payload.price
+            state.restUnits = action.payload.restUnits
+            state.standartType = action.payload.standartType
+            state.toDate = action.payload.toDate
+            state.type = action.payload.type
+            state.units = action.payload.units
+            state.warn = action.payload.warn
         },
         inUseCh: (state, action) => {
             state.inUse = action.payload
@@ -57,8 +77,8 @@ const activeReagentSlice = createSlice({
             state.cat = '';
             state.lot = '';
             state.manufacturer = '';
-            state.fromDate = Date;
-            state.toDate = Date;
+            state.fromDate = null;
+            state.toDate = null;
             state.units = '';
             state.restUnits = null;
             state.container = null;

@@ -4,35 +4,27 @@ import { addItemReset, addCASCh, addCatCh, addContainerCh, addFromDateCh, addIte
 import { useDispatch, useSelector } from 'react-redux'
 import { sMessageCh } from '../../../../redux/store/sMessageSlice'
 import { useAddReagentMutation } from '../../../../redux/api/reagentApi'
+import { ConfirmMessage } from '../../../confirmMessage/confirmMessage'
+import { useConfirm } from '../../../../hooks/useConfirm'
 
 
 export const AddReag = () => {
     
-
     const { 
-        itemId, 
-        CAS, 
-        name,
-        location,
-        cat, 
-        container, 
-        fromDate, 
-        lot, 
-        manufacturer, 
-        passport, 
-        price, 
-        SDS, 
-        standartType,
-        TDS,
-        toDate,
-        type,
-        units,
-        warn,
+        itemId, CAS, name, location,
+        cat, container, fromDate, lot, 
+        manufacturer, passport, price, 
+        SDS, standartType, TDS, toDate,
+        type, units, warn,
     } = useSelector(state => state.addItem);
+    
+    const [AddDialog, addConfirm] = useConfirm(`Внести реактив ID: ${itemId}, ${name}?`);
+
+
     const {userId} = useSelector(state => state.auth)
     const dispatch = useDispatch()
 
-    const [addReagent, {isLoading, isError}] = useAddReagentMutation()
+    const [addReagent, {isLoading,}] = useAddReagentMutation()
 
     const handleWarn = (w) => {
         if (warn.includes(w)){
@@ -99,10 +91,22 @@ export const AddReag = () => {
 
     }
 
-
+    const handleAddConfirm = async () => {
+        if(!handleValidateAddForm()){
+            dispatch(sMessageCh('Заполните обязательные поля'))
+            return 
+        }
+        const confirm = await addConfirm();
+        if(confirm){
+            handleAddItem()
+        } else {
+            return
+        }
+    }
     
     return(
-        <div className="add">            
+        <div className="add">
+            <AddDialog/>            
             <div className="add__heading">Добавление реактива</div>
             <div className="add__wrap">
                 <div className="add__inner">
@@ -238,11 +242,10 @@ export const AddReag = () => {
                     
                     <div className="add__btn-wrap">
                         <button  className="btn btn_white add__btn">В черновик</button>
-                        <button onClick={handleAddItem} className="btn add__btn">Внести</button>
+                        <button onClick={handleAddConfirm} className="btn add__btn">Внести</button>
                     </div>
                 </div>
             </div>
-
         </div>
     )
   }
