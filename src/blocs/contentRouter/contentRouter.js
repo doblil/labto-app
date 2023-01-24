@@ -16,6 +16,7 @@ import { ProfileHistory } from "../screens/profile/profileHistory"
 import { ProfileOrders } from "../screens/profile/profileOrders"
 import { Rs } from "../screens/prep/table/rs/rs"
 import { ConfirmMessage } from "../confirmMessage/confirmMessage"
+import { ReportAnnual } from "../screens/report/reportAnnual"
 export const ContentRouter = () => {
   
   const {isAuth} = useSelector(state => state.auth);
@@ -39,6 +40,9 @@ export const ContentRouter = () => {
           <Route path="/prep/reag" element = {<Reag reqParams = {{type: 'reag', isolate: 'false'}}/>}/>
           <Route path="/prep/rs" element = {<Rs reqParams = {{type: 'rs', isolate: 'false'}}/>}/>
           <Route path="/prep/addReagent" element = {<AddReag/>}/>
+        </Route>
+        <Route path="/report" element ={<Report/>}>
+          <Route path="/report/annual" element = {<ReportAnnual/>}/>
         </Route>
         <Route path="/confirm" element={<ConfirmMessage/>}/>
       </Route>

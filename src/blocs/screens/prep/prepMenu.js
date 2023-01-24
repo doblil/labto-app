@@ -38,18 +38,17 @@ export const PrepMenu = () => {
 				
 			</ul>
 			<div className="menu__stripe"></div>
-			<div className="menu__subtitle">Внести</div>
+			<div className="menu__subtitle">Внеcение</div>
 			<ul>
-				<li><div className="menu__item"><Link to='/prep/addReagent' children="Реактивы" className='link'/></div></li>
-				<li><div className="menu__item"><Link to='/' children="Стандартные образцы" className='link'/></div></li>
-				<li><div className="menu__item"><Link to='/' children="Субстанции" className='link'/></div></li>
+				<li><Link to='/prep/addReagent'  className='link'><div className="menu__item">Реактивы</div></Link></li>
+				<li><Link to='/' className='link'><div className="menu__item">Стандартные образцы</div></Link></li>
+				<li><Link to='/'  className='link'><div className="menu__item">Субстанции</div></Link></li>
 			</ul>
 			<div className="menu__stripe"></div>
 			<div className="menu__subtitle">Карантин</div>
 			<ul>
-				<li><div className="menu__item"><Link to='/' children="Реактивы" className='link'/></div></li>
-				<li><div className="menu__item"><Link to='/' children="Стандартные образцы" className='link'/></div></li>
-				<li><div className="menu__item"></div></li>
+				<li><Link to='/' className='link'><div className="menu__item">Реактивы</div></Link></li>
+				<li><Link to='/' className='link'><div className="menu__item">Стандартные образцы</div></Link></li>
 			</ul>
 		</div>
 		)
