@@ -1,15 +1,24 @@
+import React, { useState } from 'react';
+
+
 import './add.scss'
 
 import { addItemReset, addCASCh, addCatCh, addContainerCh, addFromDateCh, addItemIdCh, addLotCh, addManufacturerCh, addNameCh,  addPassportCh, addPriceCh, addSDSCh, addStandartTypeCh, addTDSCh, addToDateCh, addTypeCh, addUnitsCh, addWarnCh, addLocationCh } from '../../../../redux/store/addItemSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { sMessageCh } from '../../../../redux/store/sMessageSlice'
 import { useAddReagentMutation } from '../../../../redux/api/reagentApi'
-import { ConfirmMessage } from '../../../confirmMessage/confirmMessage'
 import { useConfirm } from '../../../../hooks/useConfirm'
+import { InputFile } from './inputFile';
+import { useUploadMutation } from '../../../../redux/api/uploadApi';
 
 
 export const AddReag = () => {
     
+    const [passportType, setPassportType] = useState('link')
+    const [passportFile, setPassportFile] = useState(null)
+
+    console.log(passportFile)
+
     const { 
         itemId, CAS, name, location,
         cat, container, fromDate, lot, 
@@ -25,7 +34,9 @@ export const AddReag = () => {
     const dispatch = useDispatch()
 
     const [addReagent, {isLoading,}] = useAddReagentMutation()
-
+    const [upload, {isSuccess}] = useUploadMutation()
+    
+    
     const handleWarn = (w) => {
         if (warn.includes(w)){
             dispatch(addWarnCh((warn.filter(item=> item !== w))))
@@ -86,7 +97,18 @@ export const AddReag = () => {
             return dispatch(sMessageCh("Повторите через 10 секунд"))
         }
 
+        
+        
         await addReagent({body, userId}).unwrap()
+        // FOR UPLOAD FILES
+        if(passportType === 'file'){
+            const formData = new FormData();
+            formData.append('files', passportFile[0])
+            formData.append('fileName', passportFile[0].name)
+            await upload({userId, itemId, formData}).unwrap()
+        }
+        setPassportFile(null);
+        setPassportType('link')
         dispatch(addItemReset())
 
     }
@@ -230,30 +252,32 @@ export const AddReag = () => {
                                 <div className="add__document-title">Добавить паспорт:</div>
                                 <div className="add__document-checkbox">
                                     <input 
+                                        value={'link'}
+                                        checked = {passportType === 'link'}
                                         className="custom-checkbox" 
                                         type="checkbox"id="chb-addLink" 
                                         name="chb-addLink"
+                                        onChange={(e) => setPassportType(e.target.value)}
                                     />
                                     <label className="custom-checkbox__text" for="chb-addLink">Ссылка</label>
 
                                     <input 
+                                        checked = {passportType === 'file'}
+                                        value = {'file'}
                                         className="custom-checkbox" 
                                         type="checkbox"id="chb-addFile" 
                                         name="chb-addFile"
+                                        onChange={(e) => setPassportType(e.target.value)}
                                     />
                                     <label className="custom-checkbox__text" for="chb-addFile">Файл</label>
                                 </div>
-                                <div className="add__document-result">
-                                    <div className="add__document_form add__document_success">
-                                        <div className="add__document_cancel">x</div>
-                                        <div className="add__file"><p>name_file.docdfsdsfsdfdsfdsfdsfsdfdsfsdfdsfdfsdfghjkljhgfdxszxfcghjk</p></div>
-                                    </div>
-                                    {/* <div className="add__document_form">Добавить файл</div> */}
-                                </div> 
+
+                                {passportType === 'file' && <InputFile passportFile={passportFile} setPassportFile = {setPassportFile}/>}
                                   
-                                {/* <div className="add__document-result">
-                                    <input type="text" class="add__input add__input-doc"/>
-                                </div>             */}
+                                {passportType === 'link' && 
+                                <div className="add__document-result">
+                                    <input onChange={(e)=> dispatch(addPassportCh(e.target.value))} type="text" class="add__input add__input-doc"/>
+                                </div>}            
                             </div>
                         
 

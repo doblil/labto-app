@@ -16,13 +16,13 @@ const addItemSlice = createSlice({
         toDate: '',
         units: 'g',
         container: '',
-        passport: [],
+        passport: '',
         SDS: '',
         TDS: '',
         warn: [],
         price: '',
         location: '',
-
+        cahnged: false
     
 
     },
@@ -61,6 +61,28 @@ const addItemSlice = createSlice({
             state.warn = warn;
             state.location = location;
         },
+        addChange: (state, action) => {
+            const { name, cat, lot, manufacturer, fromDate, toDate, units, container, passport, SDS, TDS, warn, price, location, CAS, itemId} = action.payload;
+            state.itemId = itemId
+            state.CAS = CAS;
+            state.SDS = SDS;
+            state.TDS = TDS;
+            state.cat = cat;
+            state.lot = lot;
+            state.fromDate = fromDate;
+            state.name = name;
+            state.manufacturer = manufacturer;
+            state.units = units;
+            state.container = container;
+            state.warn = warn;
+            state.location = location;
+            state.toDate = toDate;
+            state.passport = passport;
+            state.price = price;
+
+        },
+
+        
 
         addItemReset: (state) => {
             state.type = ''; // 'rs', 'subst', 'reag';
@@ -75,14 +97,15 @@ const addItemSlice = createSlice({
             state.toDate = '';
             state.units = '';
             state.container = '';
-            state.passport = [];
+            state.passport = '';
             state.SDS = '';
             state.TDS = '';
             state.warn = [];
             state.price = '';
 
 
-        } 
+        }, 
+
         
     }
 });

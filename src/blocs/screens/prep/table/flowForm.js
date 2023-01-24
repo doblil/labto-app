@@ -19,7 +19,6 @@ export const FlowForm = () => {
         setDate(stringifyDate(Date.now(), false, true))
     }, [target])
 
-    console.log(`Списать ${quan} ${units} ${reagName}`)
     const [FlowDialog, flowConfirm] = useConfirm(`Списать ${quan} ${units} ${reagName}`)
 
     const [takeReagent, {isLoading}] = useTakeReagentMutation()

@@ -146,17 +146,24 @@
         width: 148px;
     }
     &__document_form{
-        width: 65px;
+        width: 145px;
         height: 40px;
-        padding-top: 10px;
+        padding: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border-radius: 5px;
         background-color: $main-color;
         color: white;
         box-shadow: inset 0px 0px 4px rgb(166, 166, 166);
         font-size: 9px;
         text-align: center;
+        box-shadow: $minor-shadow;
         transition: all 0.4s;
         cursor: pointer;
+        input{
+            display: none;
+        }
         &:hover{
             background-color: rgb(85, 85, 85);
         }
@@ -181,16 +188,13 @@
     }
     &__file{
         width: 100%;
-        padding: 2px;
-        p{
-            width: 100%;
-            margin: 0;
-            word-break: break-all;
-            -webkit-line-clamp: 3;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
+        width: 100%;
+        margin: 0;
+        word-break: break-all;
+        -webkit-line-clamp: 3;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
     &__document_cancel{
         position: absolute;

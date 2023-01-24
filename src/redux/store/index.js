@@ -6,6 +6,7 @@ import authReducer from './authSlice'
 import activeReagentReducer from './activeReagSlice'
 import projectReducer from './projectSlice'
 import addItemReducer from './addItemSlice'
+import changeItemReducer from './changeItemSlice'
 
 const store = configureStore({
     reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
         auth: authReducer,
         sMessage: sMessageReducer,
         activeReagent: activeReagentReducer,
+        changeitem: changeItemReducer,
         [api.reducerPath]: api.reducer
     },
     middleware: getDefaultMiddleware => {

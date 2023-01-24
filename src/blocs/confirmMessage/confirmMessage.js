@@ -3,7 +3,6 @@ import './confirmMessage.scss'
 
 export const ConfirmMessage = (props) => {
     const {confirmFunction, rejectFunction, text, open} = props
-    console.log(text)
 
 
     return(

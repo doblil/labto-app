@@ -55,8 +55,45 @@ export const reagentApi = api.injectEndpoints({
                 method: 'DELETE'
             }) ,
             invalidatesTags: ['Reagent'],
-        })
+        }),
+
+        isolateReagent: builder.mutation({
+            query: ({target, userId}) => ({
+                url: `/api/reagent/isolate/${userId}/${target}`,
+                method: 'PATCH'
+            }) ,
+            invalidatesTags: ['Reagent'],
+        }),
+        changeReagent: builder.mutation({
+            query: ({target, userId, body}) => ({
+                url: `/api/reagent/delete/${userId}/${target}`,
+                method: 'PATCH',
+                body,
+            }) ,
+            invalidatesTags: ['Reagent'],
+        }),
+        getPassport: builder.mutation({
+            query: (target)=> ({
+                url: `/api/reagent/getPassport/${target}`,
+                method: "GET",
+                responseHandler: async (response) => window.open(window.URL.createObjectURL(await response.blob()), '_blank'),
+                cache: "no-cache",
+            }),
+        }),
+
+
     })
 })
 
-export const { useGetOneReagentQuery, useGetReagentsQuery, useTakeReagentMutation, useFavoriteReagentMutation, useUnfavoriteReagentMutation, useAddReagentMutation, useDeleteReagentMutation } = reagentApi
+export const { 
+    useGetOneReagentQuery, 
+    useGetReagentsQuery, 
+    useTakeReagentMutation, 
+    useFavoriteReagentMutation, 
+    useUnfavoriteReagentMutation, 
+    useAddReagentMutation, 
+    useDeleteReagentMutation,
+    useIsolateReagentMutation, 
+    useChangeReagentMutation,
+    useGetPassportMutation
+} = reagentApi

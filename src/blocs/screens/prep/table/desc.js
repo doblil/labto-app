@@ -5,7 +5,7 @@ import '../../../../sass/sassTemplates/overflow.scss'
 import { FlowForm } from './flowForm'
 import { Barcode } from '../../../barcode/barcode'
 import { useDispatch, useSelector } from 'react-redux'
-import { useDeleteReagentMutation, useFavoriteReagentMutation, useGetOneReagentQuery, useUnfavoriteReagentMutation } from '../../../../redux/api/reagentApi'
+import { useDeleteReagentMutation, useFavoriteReagentMutation, useGetOneReagentQuery, useGetPassportMutation, useIsolateReagentMutation, useUnfavoriteReagentMutation } from '../../../../redux/api/reagentApi'
 import { SVGstar } from '../../../../svg/svg'
 import { handleWarnImg, stringifyDate, stringifyRSType } from '../../../../services/sevices'
 import { useState } from 'react'
@@ -13,9 +13,10 @@ import { deleteFavorite, favoriteCh } from '../../../../redux/store/authSlice'
 import { addCreateSame } from '../../../../redux/store/addItemSlice'
 import { useNavigate } from 'react-router-dom'
 import { HistoryOfUsage } from './historyOfUsage'
-import { inUseCh, reagentFill, reagentReset } from '../../../../redux/store/activeReagSlice'
+import { reagentFill, reagentReset } from '../../../../redux/store/activeReagSlice'
 import { Options } from './options'
-import { useConfirm } from '../../../../hooks/useConfirm'
+import { ChangeForm } from './changeForm'
+import { sMessageCh } from '../../../../redux/store/sMessageSlice'
 
 export const Desc = (props) => {
     const dispatch = useDispatch();
@@ -36,15 +37,19 @@ export const Desc = (props) => {
     const reagent = useSelector(state => state.activeReagent);
     if(favorite.includes(target)){isFavorite = true}
 
-    const [deleteReagent, {isLoading: deleteLoading}] = useDeleteReagentMutation()
-    const [favoriteReagent, {isLoading: favoriteLoading, isSuccess: favoriteSuccess}] = useFavoriteReagentMutation()
-    const [unfavoriteReagent, {isLoading: unfavoriteLoading, isSuccess: unfavoriteSuccess}] = useUnfavoriteReagentMutation()
+    ///////********RTQ Query hooks
+    const [deleteReagent, {isLoading: deleteLoading}] = useDeleteReagentMutation();
+    const [isolateReagent, {isLoading:isolateLoading}] = useIsolateReagentMutation()
+    const [favoriteReagent, {isLoading: favoriteLoading}] = useFavoriteReagentMutation()
+    const [unfavoriteReagent, {isLoading: unfavoriteLoading}] = useUnfavoriteReagentMutation()
     const {data, isLoading, isSuccess} = useGetOneReagentQuery(target);
+    const [passportLoader] = useGetPassportMutation();
 
+    //////*********
     
 
     const handleLoaders = () => {
-        return deleteLoading || favoriteLoading || unfavoriteLoading || isLoading
+        return deleteLoading || favoriteLoading || unfavoriteLoading || isLoading || isolateLoading 
     }
 
     const handleJarColor = (container, rest) => {
@@ -75,6 +80,10 @@ export const Desc = (props) => {
         await dispatch(addCreateSame(data.reagent));
         navigate('/prep/addReagent');
     }
+    const handleChange = async () => {
+        if (isSuccess && data.reagent)
+        navigate('/prep/addReagent');
+    }
 
     const handleDelete = async () => {
         if (handleLoaders()) return
@@ -87,12 +96,25 @@ export const Desc = (props) => {
         }
     }
 
-    const handleChange = async () => {
-
-    }
+    const handleIsURL = (str) =>  {
+        const pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+          '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+          '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+          '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+          '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+          '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+        return !!pattern.test(str);
+      }
 
     const handleIsolate = async () => {
-
+        if (handleLoaders()) return
+        try {
+            await isolateReagent({userId, target})
+            dispatch(deleteFavorite(target))
+            dispatch(reagentReset())
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     // before fetching
@@ -120,6 +142,24 @@ export const Desc = (props) => {
             inUse, warn, standartType, SDS, TDS, 
             passport} = data.reagent;
         
+        const passportIsURL = handleIsURL(passport)
+        
+        const handlePassport = async () => {
+            if(passportIsURL) return
+
+            if(!passport){
+                return dispatch(sMessageCh('Похоже вы не добавили паспорт для этого вещества'))
+            }
+            
+            try {
+                await passportLoader(target)
+            } catch (error) {
+                console.error(error)
+            }
+            
+            
+        }
+
         dispatch(reagentFill(data.reagent))
         const last = inUse[inUse.length - 1]
         content = <>                 
@@ -202,9 +242,10 @@ export const Desc = (props) => {
                         <div className="grid__box item-g">
                             <div className="grid__heading grid__heading_white">Документы</div>
                             <div className="grid__value">
-                                <div className="grid__doc">Паспорт</div>
-                                <div className="grid__doc">SDS</div> 
-                                <div className="grid__doc">TDS</div>
+                                {!passportIsURL && <div className="grid__doc" onClick={handlePassport}>Паспорт</div>}
+                                {!!passportIsURL && <div className="grid__doc" onClick={handlePassport}><a href={passport}>Пасспорт</a></div>}
+                                {!!SDS && <div className="grid__doc"><a href={SDS}>SDS</a></div>} 
+                                {!!TDS && <div className="grid__doc"><a href={TDS}>TDS</a></div>}
                             </div>
                             <div className="grid__barcode" onClick={()=>{setShowBarcode(true); console.log('click barcode')}}> 
                             <img src="icons/upc.svg" alt="" /> 
@@ -244,6 +285,7 @@ export const Desc = (props) => {
     <div className="desc">
         {content}
         <FlowForm/>
+        <ChangeForm/>
     </div>
   )
 }

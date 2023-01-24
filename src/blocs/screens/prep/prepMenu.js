@@ -12,7 +12,6 @@ export const PrepMenu = () => {
 
 	const dispatch = useDispatch();
 
-	console.log(activeTab)
 
 	const handleReset = (tab) => {
 		dispatch(reagentReset());

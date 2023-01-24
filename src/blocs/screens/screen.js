@@ -17,7 +17,6 @@ export const Screen = () => {
     dispatch(projectsCh(data.projects))
   }
 
-  console.log(projects);
   
   const [activeTab, setActiveTab] = useState('')
 
