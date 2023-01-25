@@ -34,9 +34,7 @@ export const FlowForm = () => {
         }
 
         const body = {date, quan, test, destination, name}
-        console.log(body);
-        console.log('click')
-        await takeReagent({userId, target, body})
+        await takeReagent({target, body})
         setDate(stringifyDate(Date.now(), false, true)); 
         setQuan(0);
         setTest('');

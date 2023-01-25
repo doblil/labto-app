@@ -99,7 +99,7 @@ export const AddReag = () => {
 
         
         
-        await addReagent({body, userId}).unwrap()
+        await addReagent(body).unwrap()
         // FOR UPLOAD FILES
         if(passportType === 'file'){
             const formData = new FormData();

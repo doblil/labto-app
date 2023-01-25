@@ -44,10 +44,19 @@ export const HistoryOfUsage = (props) => {
     if(!inUse){
         return<></>
     }
+
+    let totalUsage = 0
+    const startDate = inUse.map(item => stringifyDate(Date.parse(item.date))).sort()[0];
+    const endDate = inUse.map(item => stringifyDate(Date.parse(item.date))).sort()[inUse.length - 1]
+    inUse.forEach(item => {
+        totalUsage += (+item.quan)
+        console.log(item.quan);
+        return totalUsage
+    })
     
     const content = inUse.map((item) =>{
         return(
-            
+                
                 <tr key={item._id} className="table__row">
                     <td className="table__item">{stringifyDate(Date.parse(item.date), true)}</td>
                     <td className="table__item">{item.destination}</td>
@@ -81,6 +90,7 @@ export const HistoryOfUsage = (props) => {
                 </tbody>
         
             </table>
+            {printPrep && <h5>Всего использовано {Math.round(totalUsage*1000)/1000}{units} за период {startDate} - {endDate}</h5>}
         </div>
        
     )

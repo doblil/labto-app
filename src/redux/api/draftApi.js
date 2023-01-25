@@ -3,15 +3,15 @@ import { api } from "./api";
 export const draftApi = api.injectEndpoints({
     endpoints: builder => ({
         getDrafts: builder.query({
-            query: (userId)=> ({
-                url: `/api/draft/getAll/${userId}`,
+            query: ()=> ({
+                url: `/api/draft/getAll/`,
             }),
             providesTags: ['Draft'],
         }),
 
         addReagent: builder.mutation({
             query: ({body, userId})=> ({
-                url: `/api/reagent/createOne/${userId}`,
+                url: `/api/reagent/createOne/`,
                 method: 'POST',
                 body
             }),
@@ -20,7 +20,7 @@ export const draftApi = api.injectEndpoints({
 
         deleteReagent: builder.mutation({
             query: ({target, userId}) => ({
-                url: `/api/reagent/delete/${userId}/${target}`,
+                url: `/api/reagent/delete/${target}`,
                 method: 'DELETE'
             }) ,
             invalidatesTags: ['Reagent'],
@@ -28,14 +28,14 @@ export const draftApi = api.injectEndpoints({
 
         isolateReagent: builder.mutation({
             query: ({target, userId}) => ({
-                url: `/api/reagent/isolate/${userId}/${target}`,
+                url: `/api/reagent/isolate/${target}`,
                 method: 'PATCH'
             }) ,
             invalidatesTags: ['Reagent'],
         }),
         changeReagent: builder.mutation({
             query: ({target, userId, body}) => ({
-                url: `/api/reagent/delete/${userId}/${target}`,
+                url: `/api/reagent/delete/${target}`,
                 method: 'PATCH',
                 body,
             }) ,
@@ -54,6 +54,3 @@ export const draftApi = api.injectEndpoints({
     })
 })
 
-export const { 
-    
-} = draftApi
