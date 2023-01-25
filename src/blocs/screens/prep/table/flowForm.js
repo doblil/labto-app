@@ -5,6 +5,7 @@ import { sMessageCh } from "../../../../redux/store/sMessageSlice";
 import { stringifyDate } from "../../../../services/sevices";
 import { Link } from 'react-router-dom';
 import { useConfirm } from "../../../../hooks/useConfirm";
+import { useDraftReagentMutation } from "../../../../redux/api/draftApi";
 
 
 export const FlowForm = () => {
@@ -12,9 +13,9 @@ export const FlowForm = () => {
     const [quan, setQuan] = useState(0)
     const [test, setTest] = useState('')
     const [destination, setDestination] = useState(null)
-    const {name, userId} = useSelector(state => state.auth);
+    const {name} = useSelector(state => state.auth);
     const {projects} = useSelector(state => state.project)
-    const {_id: target, name: reagName, units} = useSelector(state => state.activeReagent);
+    const {_id: target, name: reagName, units, itemId} = useSelector(state => state.activeReagent);
     useEffect(() => {
         setDate(stringifyDate(Date.now(), false, true))
     }, [target])
@@ -22,11 +23,12 @@ export const FlowForm = () => {
     const [FlowDialog, flowConfirm] = useConfirm(`Списать ${quan} ${units} ${reagName}`)
 
     const [takeReagent, {isLoading}] = useTakeReagentMutation()
+    const [draftReagent, {isLoading: draftLoading}] = useDraftReagentMutation()
 
     const options = projects.map(item => <option  value={item.code}>{item.code} {item.name}</option>)
 
     const handleTakeReagent = async () => {
-        if(!(date && quan && test && destination && name && userId)){
+        if(!(date && quan && test && destination && name )){
             return sMessageCh('Заполните все поля формы или обновите страницу')
         }
         if(isLoading){
@@ -39,6 +41,25 @@ export const FlowForm = () => {
         setQuan(0);
         setTest('');
         setDestination(null)
+    }
+
+    const handleDraftReagent = async () => {
+        if(!(date && quan && test && destination && name )){
+            return sMessageCh('Заполните все поля формы или обновите страницу')
+        }
+        if(isLoading || draftLoading){
+            return sMessageCh('Пожалуйста, подождите')
+        }
+        try {
+            const body = {date, destination, quan, test, target: {reagent: target, name: reagName, itemId, units}}
+            await draftReagent(body)
+            setDate(stringifyDate(Date.now(), false, true)); 
+            setQuan(0);
+            setTest('');
+            setDestination(null)
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     const confirmTakeReagent = async () => {
@@ -85,7 +106,7 @@ export const FlowForm = () => {
 
                 <div className="flow__btn-wrap">
                     
-                    <Link to="/confirm" className="link"><button className="btn btn_white flow__btn ">В черновик</button></Link>
+                    <button className="btn btn_white flow__btn " onClick={handleDraftReagent}>В черновик</button>
                     <button className="btn flow__btn" onClick={confirmTakeReagent}>Списать</button>
                 </div>
 

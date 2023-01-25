@@ -9,48 +9,24 @@ export const draftApi = api.injectEndpoints({
             providesTags: ['Draft'],
         }),
 
-        addReagent: builder.mutation({
-            query: ({body, userId})=> ({
-                url: `/api/reagent/createOne/`,
+        draftReagent: builder.mutation({
+            query: (body)=> ({
+                url: `/api/draft/add/`,
                 method: 'POST',
                 body
             }),
-            invalidatesTags: ['Reagent'],
+            invalidatesTags: ['Draft'],
         }),
 
-        deleteReagent: builder.mutation({
-            query: ({target, userId}) => ({
-                url: `/api/reagent/delete/${target}`,
+        deleteDraft: builder.mutation({
+            query: (target) => ({
+                url: `/api/draft/delete/${target}`,
                 method: 'DELETE'
             }) ,
-            invalidatesTags: ['Reagent'],
+            invalidatesTags: ['Draft'],
         }),
-
-        isolateReagent: builder.mutation({
-            query: ({target, userId}) => ({
-                url: `/api/reagent/isolate/${target}`,
-                method: 'PATCH'
-            }) ,
-            invalidatesTags: ['Reagent'],
-        }),
-        changeReagent: builder.mutation({
-            query: ({target, userId, body}) => ({
-                url: `/api/reagent/delete/${target}`,
-                method: 'PATCH',
-                body,
-            }) ,
-            invalidatesTags: ['Reagent'],
-        }),
-        getPassport: builder.mutation({
-            query: (target)=> ({
-                url: `/api/reagent/getPassport/${target}`,
-                method: "GET",
-                responseHandler: async (response) => window.open(window.URL.createObjectURL(await response.blob()), '_blank'),
-                cache: "no-cache",
-            }),
-        }),
-
 
     })
 })
 
+export const { useDeleteDraftMutation, useDraftReagentMutation, useGetDraftsQuery } = draftApi
