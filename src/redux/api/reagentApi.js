@@ -66,7 +66,7 @@ export const reagentApi = api.injectEndpoints({
         }),
         changeReagent: builder.mutation({
             query: ({target, userId, body}) => ({
-                url: `/api/reagent/delete/${userId}/${target}`,
+                url: `/api/reagent/change/${userId}/${target}`,
                 method: 'PATCH',
                 body,
             }) ,

@@ -15,7 +15,7 @@ const store = configureStore({
         auth: authReducer,
         sMessage: sMessageReducer,
         activeReagent: activeReagentReducer,
-        changeitem: changeItemReducer,
+        changeItem: changeItemReducer,
         [api.reducerPath]: api.reducer
     },
     middleware: getDefaultMiddleware => {

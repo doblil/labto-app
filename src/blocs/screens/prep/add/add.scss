@@ -7,6 +7,12 @@
     border-radius: 15px;
     box-shadow: $main-shadow;
     padding: 20px;
+    &__overflow{
+        height: 97%;
+        &::-webkit-scrollbar-track {
+            margin-top: 20px;
+        }
+    }
     &__heading{
         font-size: 13px;
         font-weight: 700;
@@ -16,6 +22,9 @@
     &__wrap{
         display: flex;
         flex-wrap: wrap;
+    }
+    &__inner{
+        margin-bottom: 20px;
     }
     &__confirm{
         width: 20px;
@@ -44,16 +53,16 @@
     &__destination{
         position: relative;
         display: flex;
-        margin-top: 25px;
+        margin-top: 20px;
         align-items: center;
         &-mini{
-            width: 230px;
+            width: 250px;
             display: flex;
             justify-content: space-between;
             margin-top: 0;
         }
         &_mt8{
-            margin-top: 8px;
+            margin-top: 6px;
         }
         &_top{
             align-items: flex-start;
@@ -77,13 +86,19 @@
             }
         }
         &-mini{
-            width: 110px;
+            width: 118px;
         }
         &:-webkit-datetime-edit{
             display: none;
         }
         &-doc{
-            width: 100%;
+            width: 170px;
+        }
+        &-passport{
+            width: 100px;
+        }
+        &_low{
+            height: 24px;
         }
     }
     &__choice{
@@ -97,12 +112,18 @@
         flex-wrap: wrap;
         justify-content: center;
         background-color: white;
+        &_mini{
+            height: 176px;
+        }
     }
     &__choice-heading{
         padding: 5px 10px;
         width: 100%;
         font-size: 9px;
         font-weight: 700;
+        &_mini{
+            padding-bottom: 0;
+        }
     }
     &__pict{
         width: 73px;
@@ -120,12 +141,19 @@
         line-height: 8px;
         text-align: center;
         border: transparent;
-        &:hover{
-            border: 1px solid rgb(185, 185, 185);
-        }
+
         img{
             height: 49px;
             margin-bottom: 3px;
+        }
+        &_mini{
+            height: 52px;
+            img{
+                height: 27px;
+            }
+        }        
+        &:hover{
+            border: 1px solid rgb(185, 185, 185);
         }
     }
     &__document{
@@ -136,19 +164,22 @@
         width: 250px;
         font-size: 12px;
         position: relative;
-        margin-bottom: 10px;
+        margin-bottom: 7px;
     }
     &__document-title{
-        width: 90px;
+        width: 80px;
         font-size: 10px;
     }
+    &__document-checkbox{
+        width: 70px;
+    }
     &__document-result{
-        width: 148px;
+        width: 100px;
     }
     &__document_form{
-        width: 145px;
-        height: 40px;
-        padding: 7px;
+        width: 100px;
+        height: 39px;
+        padding: 6px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -215,7 +246,7 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        margin-top: 22px;
+        margin-top: 15px;
     }
     &__btn{
         width: 105px;

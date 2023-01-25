@@ -128,8 +128,10 @@ export const AddReag = () => {
     
     return(
         <div className="add">
-            <AddDialog/>            
             <div className="add__heading">Добавление реактива</div>
+            <div className="overflow add__overflow">  
+            <AddDialog/>            
+            
             <div className="add__wrap">
                 <div className="add__inner">
                     <div className="add__destination">
@@ -276,7 +278,7 @@ export const AddReag = () => {
                                   
                                 {passportType === 'link' && 
                                 <div className="add__document-result">
-                                    <input onChange={(e)=> dispatch(addPassportCh(e.target.value))} type="text" class="add__input add__input-doc"/>
+                                    <input onChange={(e)=> dispatch(addPassportCh(e.target.value))} type="text" class="add__input add__input-doc add__input-passport"/>
                                 </div>}            
                             </div>
                         
@@ -298,6 +300,7 @@ export const AddReag = () => {
                         <button onClick={handleAddConfirm} className="btn add__btn">Внести</button>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     )

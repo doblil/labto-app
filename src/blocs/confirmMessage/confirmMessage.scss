@@ -24,6 +24,12 @@
         border-radius: 10px;
         position: relative;
     }
+    &__heading{
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 8px;
+        color: $utility-color;
+    }
     &__text{
         font-size: 14px;
         line-height: 20px;
