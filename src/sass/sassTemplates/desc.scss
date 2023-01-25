@@ -34,9 +34,12 @@
         margin-bottom: 5px;
         margin-top: -14px;
     }
+    &__action-inner{
+        z-index: 2;
+    }
     &__item-action{
         height: 22px;
-        background-color: transparent;
+        background-color: white;
         padding: 3px;
         color: $utility-color;
         border: 1px solid transparent;
@@ -45,6 +48,7 @@
         font-size: 10px;
         margin-right: 8px;
         cursor: pointer;
+        z-index: 2;
         &:hover{
             border: 1px solid $utility-color;
         }

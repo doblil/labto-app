@@ -17,6 +17,7 @@ import { reagentFill, reagentReset } from '../../../../redux/store/activeReagSli
 import { Options } from './options'
 import { ChangeForm } from './changeForm'
 import { sMessageCh } from '../../../../redux/store/sMessageSlice'
+import { changeFill } from '../../../../redux/store/changeItemSlice'
 
 export const Desc = (props) => {
     const dispatch = useDispatch();
@@ -25,6 +26,7 @@ export const Desc = (props) => {
     const [showHistory, setShowHistory] = useState(false)
     const [showBarcode, setShowBarcode] = useState(false)
     const [showOptions, setShowOptions] = useState(false)
+    const [showChange, setShowChange] = useState(false)
 
  
 
@@ -161,6 +163,7 @@ export const Desc = (props) => {
         }
 
         dispatch(reagentFill(data.reagent))
+        dispatch(changeFill(data.reagent))
         const last = inUse[inUse.length - 1]
         content = <>                 
             <div className="desc__action-wrap">
@@ -171,6 +174,7 @@ export const Desc = (props) => {
                         handleDelete = {handleDelete}
                         handleIsolate = {handleIsolate}
                         handleChange = {handleChange}
+                        setShowChange = {setShowChange}
                     />
                 
                 }
@@ -285,7 +289,7 @@ export const Desc = (props) => {
     <div className="desc">
         {content}
         <FlowForm/>
-        <ChangeForm/>
+        {showChange && <ChangeForm setShowChange={setShowChange}/>}
     </div>
   )
 }

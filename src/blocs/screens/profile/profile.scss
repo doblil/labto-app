@@ -118,7 +118,8 @@
         span{
             color: $utility-color;
             font-weight: 700;
-            line-height: 25px;
+            line-height: 14px;
+            text-decoration:underline;
         }
     }
     &__delete{
