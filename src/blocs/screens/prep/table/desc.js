@@ -243,7 +243,7 @@ export const Desc = (props) => {
                             <div className="grid__heading grid__heading_white">Документы</div>
                             <div className="grid__value">
                                 {!passportIsURL && <div className="grid__doc" onClick={handlePassport}>Паспорт</div>}
-                                {!!passportIsURL && <div className="grid__doc" onClick={handlePassport}><a href={passport}>Пасспорт</a></div>}
+                                {!!passportIsURL && <div className="grid__doc" onClick={handlePassport}><a style={{textDecoration: 'none', color: 'inherit'}} rel="noreferrer" href={passport} target="_blank">Паспорт</a></div>}
                                 {!!SDS && <div className="grid__doc"><a href={SDS}>SDS</a></div>} 
                                 {!!TDS && <div className="grid__doc"><a href={TDS}>TDS</a></div>}
                             </div>
