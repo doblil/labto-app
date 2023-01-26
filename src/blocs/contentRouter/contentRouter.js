@@ -11,9 +11,9 @@ import { Profile } from "../screens/profile/profile"
 import { Purchases } from "../screens/purchases/purchases"
 import { Report } from "../screens/report/report"
 import { ProfileInfo } from "../screens/profile/profileInfo"
-import { ProfileDrafts } from "../screens/profile/profileDrafts"
+import { Drafts } from "../screens/profile/drafts/drafts"
 import { ProfileHistory } from "../screens/profile/profileHistory"
-import { ProfileOrders } from "../screens/profile/profileOrders"
+import { Orders } from "../screens/profile/orders/orders"
 import { Rs } from "../screens/prep/table/rs/rs"
 import { ConfirmMessage } from "../confirmMessage/confirmMessage"
 import { ReportAnnual } from "../screens/report/reportAnnual"
@@ -30,9 +30,9 @@ export const ContentRouter = () => {
         <Route path="/employers" element={<Employers/>}/>
         <Route path="/profile" element={<Profile/>}>
             <Route path="/profile/info" element={<ProfileInfo/>}/>
-            <Route path="/profile/drafts" element={<ProfileDrafts/>}/>
+            <Route path="/profile/drafts" element={<Drafts/>}/>
             <Route path="/profile/history" element={<ProfileHistory/>}/>
-            <Route path="/profile/orders" element={<ProfileOrders/>}/>
+            <Route path="/profile/orders" element={<Orders/>}/>
         </Route>
         <Route path="/purchases" element={<Purchases/>}/>
         <Route path="/report" element={<Report/>}/>

@@ -18,55 +18,55 @@ export const reagentApi = api.injectEndpoints({
                 
             }
         }),
-        takeReagent: builder.mutation({
-            query: ({target, userId, body})=> ({
-                url: `/api/reagent/take/${userId}/${target}`,
+        takeReagent: builder.mutation({ //////////done
+            query: ({target, body})=> ({
+                url: `/api/reagent/take/${target}`,
                 method: 'PUT',
                 body
             }),
             invalidatesTags: ['Reagent'],
         }),
-        favoriteReagent: builder.mutation({
-            query: ({target, userId})=> ({
-                url: `/api/reagent/favorite/${userId}/${target}`,
+        favoriteReagent: builder.mutation({  //////////done
+            query: (target)=> ({
+                url: `/api/reagent/favorite/${target}`,
                 method: 'PATCH',
             }),
             invalidatesTags: ['Reagent'],
         }),
-        unfavoriteReagent: builder.mutation({
-            query: ({target, userId})=> ({
-                url: `/api/reagent/unfavorite/${userId}/${target}`,
+        unfavoriteReagent: builder.mutation({  //////////done
+            query: (target)=> ({
+                url: `/api/reagent/unfavorite/${target}`,
                 method: 'PATCH',
             }),
             invalidatesTags: ['Reagent'],
         }),
         addReagent: builder.mutation({
-            query: ({body, userId})=> ({
-                url: `/api/reagent/createOne/${userId}`,
+            query: (body)=> ({
+                url: `/api/reagent/createOne`,
                 method: 'POST',
                 body
             }),
             invalidatesTags: ['Reagent'],
         }),
 
-        deleteReagent: builder.mutation({
-            query: ({target, userId}) => ({
-                url: `/api/reagent/delete/${userId}/${target}`,
+        deleteReagent: builder.mutation({ //////////done
+            query: (target) => ({
+                url: `/api/reagent/delete/${target}`,
                 method: 'DELETE'
             }) ,
             invalidatesTags: ['Reagent'],
         }),
 
-        isolateReagent: builder.mutation({
-            query: ({target, userId}) => ({
-                url: `/api/reagent/isolate/${userId}/${target}`,
+        isolateReagent: builder.mutation({ //////////done
+            query: (target) => ({
+                url: `/api/reagent/isolate/${target}`,
                 method: 'PATCH'
             }) ,
             invalidatesTags: ['Reagent'],
         }),
         changeReagent: builder.mutation({
-            query: ({target, userId, body}) => ({
-                url: `/api/reagent/change/${userId}/${target}`,
+            query: ({target, body}) => ({ //////////done
+                url: `/api/reagent/change/${target}`,
                 method: 'PATCH',
                 body,
             }) ,

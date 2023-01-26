@@ -66,11 +66,11 @@ export const Desc = (props) => {
          if (handleLoaders()) return
 
         if(!favorite.includes(target)){
-            await favoriteReagent({userId, target})
+            await favoriteReagent(target)
             dispatch(favoriteCh(target))
         }
         if(favorite.includes(target)){
-            await unfavoriteReagent({userId, target})
+            await unfavoriteReagent(target)
             dispatch(favoriteCh(target))
         }
     }
@@ -90,7 +90,7 @@ export const Desc = (props) => {
     const handleDelete = async () => {
         if (handleLoaders()) return
         try {
-            await deleteReagent({userId, target})
+            await deleteReagent(target)
             dispatch(deleteFavorite(target))
             dispatch(reagentReset())
         } catch (error) {
@@ -111,7 +111,7 @@ export const Desc = (props) => {
     const handleIsolate = async () => {
         if (handleLoaders()) return
         try {
-            await isolateReagent({userId, target})
+            await isolateReagent(target)
             dispatch(deleteFavorite(target))
             dispatch(reagentReset())
         } catch (error) {
@@ -142,7 +142,7 @@ export const Desc = (props) => {
             lot, container, fromDate, 
             toDate, units, restUnits, 
             inUse, warn, standartType, SDS, TDS, 
-            passport} = data.reagent;
+            passport, price, CAS} = data.reagent;
         
         const passportIsURL = handleIsURL(passport)
         
@@ -163,7 +163,7 @@ export const Desc = (props) => {
         }
 
         dispatch(reagentFill(data.reagent))
-        dispatch(changeFill(data.reagent))
+        dispatch(changeFill({passport, SDS, TDS, warn, location, price, CAS, itemId, name}))
         const last = inUse[inUse.length - 1]
         content = <>                 
             <div className="desc__action-wrap">

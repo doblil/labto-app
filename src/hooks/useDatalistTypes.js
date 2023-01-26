@@ -1,3 +1,3 @@
-export const useDatalistTypes = () => {
+export const useDatalistTypes = (type) => {
   
 }

@@ -16,6 +16,8 @@ export const ChangeForm = (props) => {
     const {_id:target} = useSelector(state => state.activeReagent)
     const [changeReagent] = useChangeReagentMutation();
     const [upload] = useUploadMutation()
+    
+    
     const handleWarn = (w) => {
         if (warn.includes(w)){
             dispatch(chWarnCh((warn.filter(item=> item !== w))))
@@ -40,7 +42,7 @@ export const ChangeForm = (props) => {
             CAS, SDS, TDS, passport, warn, location, price, itemId, name
         };
 
-        await changeReagent({userId, target, body}).unwrap()
+        await changeReagent({target, body}).unwrap()
 
         if(passportType === 'file'){
             const formData = new FormData();
