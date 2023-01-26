@@ -93,7 +93,7 @@ export const Barcode = (props) => {
                         <div className="barcode__info" style={{fontSize: styles[printSize].infoFontSize}}>{manufacturer} | {cat} | (lot: {lot})</div>
                     </div>
                 </div>
-                <button className='btn barcode__print' onClick={handlePrint}> Распечатать</button>
+                <button className='btn barcode__print' onClick={handlePrint}> <img src="icons/printer_white.svg" alt="printer" /> Распечатать</button>
             </div>
         </div>
             
