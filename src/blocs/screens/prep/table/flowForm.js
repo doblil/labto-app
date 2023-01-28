@@ -6,6 +6,7 @@ import { stringifyDate } from "../../../../services/sevices";
 import { Link } from 'react-router-dom';
 import { useConfirm } from "../../../../hooks/useConfirm";
 import { useDraftReagentMutation } from "../../../../redux/api/draftApi";
+import { CustomSelect } from "../../../customSelect/customSelect";
 
 
 export const FlowForm = () => {
@@ -25,7 +26,9 @@ export const FlowForm = () => {
     const [takeReagent, {isLoading}] = useTakeReagentMutation()
     const [draftReagent, {isLoading: draftLoading}] = useDraftReagentMutation()
 
-    const options = projects.map(item => <option  value={item.code}>{item.code} {item.name}</option>)
+    const options = projects.map(item => {
+        return { value: item.code, label: `${item.code}, ${item.name}`}
+    })
 
     const handleTakeReagent = async () => {
         if(!(date && quan && test && destination && name )){
@@ -79,11 +82,12 @@ export const FlowForm = () => {
 
                 <div className="flow__destination">
                     <div className="flow__label">Статья списания</div>
-                    <input value={destination || ''} onChange={(e)=> {setDestination(e.target.value)}} class="flow__input" list="destination" id="destInput" name="ice-cream-choice"></input>
-                    <datalist id="destination">
-                        <option></option>
-                        {options}
-                    </datalist>
+                    <CustomSelect
+                        options = {options}
+                        width = {'60%'}
+                        height = {'25px'}
+                        fontSize = {'12px'}
+                    />
                 </div>
 
                 <div className="flow__destination">

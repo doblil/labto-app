@@ -1,10 +1,13 @@
 import { useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
+
+
 import '../../../../sass/sassTemplates/menu.scss'
 
 
 export const Orders = () => {
+
     
 	const [activeNav, setActiveNav] = useOutletContext()
 	useEffect(() => {
@@ -42,6 +45,9 @@ export const Orders = () => {
                     <div className="profile__select">Подтвердить</div> 
                 </div>          
             </div>
+
+
         </div>
+
     )
 }
