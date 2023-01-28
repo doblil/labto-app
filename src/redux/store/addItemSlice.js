@@ -22,7 +22,8 @@ const addItemSlice = createSlice({
         warn: [],
         price: '',
         location: '',
-        cahnged: false
+        cahnged: false,
+        initialDestination: '',
     
 
     },
@@ -45,7 +46,8 @@ const addItemSlice = createSlice({
         addWarnCh: (state, action) => {state.warn = action.payload},
         addPriceCh: (state, action) => {state.price = action.payload},
         addLocationCh: (state, action) => {state.location = action.payload},
-        
+        addInitialDestinationCh: (state, action) => {state.initialDestination = action.payload}, 
+
         addCreateSame: (state, action) => {
             const {type, standartType, name, CAS, cat, manufacturer, units, container, SDS, TDS, warn, location} = action.payload;
             state.CAS = CAS;
@@ -102,7 +104,7 @@ const addItemSlice = createSlice({
             state.TDS = '';
             state.warn = [];
             state.price = '';
-
+            state.initialDestination = ''
 
         }, 
 
@@ -112,6 +114,6 @@ const addItemSlice = createSlice({
 
 export const { addItemReset, addCASCh, addCatCh, addContainerCh, addFromDateCh, addItemIdCh, addLotCh,
 addManufacturerCh, addPassportCh, addPriceCh, addSDSCh, addStandartTypeCh, addTDSCh, 
-addToDateCh, addTypeCh, addUnitsCh, addWarnCh, addLocationCh, addNameCh, addCreateSame } = addItemSlice.actions;
+addToDateCh, addTypeCh, addUnitsCh, addWarnCh, addLocationCh, addNameCh, addCreateSame, addInitialDestinationCh } = addItemSlice.actions;
 export default addItemSlice.reducer;
 

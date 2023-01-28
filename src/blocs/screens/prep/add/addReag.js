@@ -16,8 +16,7 @@ export const AddReag = () => {
     
     const [passportType, setPassportType] = useState('link')
     const [passportFile, setPassportFile] = useState(null)
-
-    console.log(passportFile)
+    const {projects} = useSelector(state => state.project)
 
     const { 
         itemId, CAS, name, location,

@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const projectSlice = createSlice({
-    name: 'sMessage',
+    name: 'project',
     initialState: {
-        projects: []
+        projects: [],
+
     },
     reducers: {
         projectsCh: (state, action) => {
@@ -15,4 +16,3 @@ const projectSlice = createSlice({
 export const { projectsCh } = projectSlice.actions;
 export default projectSlice.reducer;
 
-export const selectCurrentMessage = (state) => state.sMessage.sMessage 

@@ -8,11 +8,12 @@ import projectReducer from './projectSlice'
 import addItemReducer from './addItemSlice'
 import changeItemReducer from './changeItemSlice'
 import orderReducer from './orderSlice'
-
+import globalReducer from './globalSlice';
 const store = configureStore({
     reducer: {
         addItem: addItemReducer,
         project: projectReducer,
+        global: globalReducer,
         auth: authReducer,
         sMessage: sMessageReducer,
         activeReagent: activeReagentReducer,

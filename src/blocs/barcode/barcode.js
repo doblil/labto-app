@@ -8,7 +8,7 @@ export const Barcode = (props) => {
     
     const printRef = useRef(null)
     const [printSize, setPrintSize] = useState('big') //'big', 'middle', 'small'
-
+    const [isPrinting, setIsPrinting] = useState(false)
     const styles = {
         big: {
             nameFontSize: "14px",

@@ -8,7 +8,6 @@ import { OrderItem } from './orderItem'
 
 export const Orders = () => {
     const {data, isLoading, isError} = useGetMyOrdersQuery();
-    console.log(data)
 	const [activeNav, setActiveNav] = useOutletContext()
 	useEffect(() => {
         setActiveNav('orders')
@@ -50,8 +49,8 @@ export const Orders = () => {
             <div className="overflow ">
 
                 <div className="profile__parameter">
-                    <div className="profile__value profile__value_date">дата</div>
-                    <div className="profile__value">наименование</div>
+                    <div className="profile__value">дата</div>
+                    <div className="profile__value profile__value_name">наименование</div>
                     <div className="profile__value profile__value_text">текст</div>
                     <div className="profile__value">статус</div>
                     <div className="profile__select"></div>

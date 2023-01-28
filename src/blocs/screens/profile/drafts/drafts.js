@@ -47,7 +47,7 @@ export const Drafts = () => {
 				<div className="profile__value">вещество</div>
 				<div className="profile__value">количество</div>
 				<div className="profile__value">статья списания</div>
-				<div className="profile__value profile__value_test">вид испытания</div>
+				<div className="profile__value profile__value_text">вид испытания</div>
 				<div className="profile__value"></div>
 				<div className="profile__value profile__value_5"></div>
             </div>

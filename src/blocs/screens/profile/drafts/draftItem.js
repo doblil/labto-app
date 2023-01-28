@@ -65,7 +65,7 @@ export const DraftItem = (props) => {
                 <div className="profile__value flow__measure">{target.units}</div>
             </div>
             <div className="profile__value profile__value-underlined">{destination}</div>
-            <div className="profile__value profile__value-underlined profile__value_test">{test}</div>
+            <div className="profile__value profile__value-underlined profile__value_text">{test}</div>
 
             <div className="profile__select  profile__select_10" onClick={confirmTakeReagent}>Списать</div>
             <div className="profile__delete profile__value_5" onClick={handleDelete}><img src="icons/trash.svg" alt="" /></div>

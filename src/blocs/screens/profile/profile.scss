@@ -95,7 +95,10 @@
         &_5{
             width: 5%;
         }
-        &_test{
+        &_name{
+            min-width: 20%;
+        }
+        &_text{
             width: 35%;
         }
         &-red{
@@ -116,14 +119,6 @@
             border-radius: 4px;
             padding: 7px;
             text-align: center;
-        }
-        &_date{
-            width: 50px;
-            line-height: 20px;
-        }
-        &_text{
-            width: 400px;
-            position: relative;
         }
         span{
             color: $utility-color;
