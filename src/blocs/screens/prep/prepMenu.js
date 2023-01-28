@@ -37,19 +37,18 @@ export const PrepMenu = () => {
 				<li><Link to={'/prep/subst'} className='link'><div className={handleClass('subst')} onClick ={() =>  handleReset('subst')}>Субстанции</div></Link></li>
 				
 			</ul>
-			<div className="menu__stripe"></div>
-			<div className="menu__subtitle">Внеcение</div>
-			<ul>
-				<li><Link to='/prep/addReagent'  className='link'><div className="menu__item">Реактивы</div></Link></li>
-				<li><Link to='/' className='link'><div className="menu__item">Стандартные образцы</div></Link></li>
-				<li><Link to='/'  className='link'><div className="menu__item">Субстанции</div></Link></li>
-			</ul>
+
 			<div className="menu__stripe"></div>
 			<div className="menu__subtitle">Карантин</div>
 			<ul>
 				<li><Link to='/' className='link'><div className="menu__item">Реактивы</div></Link></li>
 				<li><Link to='/' className='link'><div className="menu__item">Стандартные образцы</div></Link></li>
 			</ul>
+			<div className="menu__stripe"></div>
+			<ul>
+				<li><Link to='/prep/addReagent'className='link'><div className={handleClass('add')} onClick ={() =>  handleReset('add')}>Внеcение</div></Link></li>
+			</ul>
+
 		</div>
 		)
 }

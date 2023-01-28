@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { CustomSelect } from '../../../customSelect/customSelect';
 
 import './add.scss'
 
@@ -125,9 +125,23 @@ export const AddReag = () => {
         }
     }
     
+    const options = [
+        { value: 'reag', label: 'реактива' },
+        { value: 'subst', label: 'субстанции' },
+        { value: 'rs', label: 'стандартного образца' }
+    ]
+
     return(
         <div className="add">
-            <div className="add__heading">Добавление реактива</div>
+            <div className="add__top">
+                <div className="add__heading">Внесение</div>
+                <CustomSelect
+                    fontSize = {'15px'}
+                    width = {'250px'}
+                    input = {'none'}
+                    options = {options}
+                />
+            </div>           
             <div className="overflow add__overflow">  
             <AddDialog/>            
             
