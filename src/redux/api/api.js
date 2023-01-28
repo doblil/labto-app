@@ -37,6 +37,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
         console.log('sending refresh token');
         const refreshResult = await baseQuery('/api/refresh', api, extraOptions);
         if(refreshResult?.data) {
+            console.log(refreshResult.data);
             const email = api.getState().auth.email;
             api.dispatch(setCredentials({...refreshResult.data, email}))
             result = await baseQuery(args, api, extraOptions);
@@ -51,6 +52,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 
 export const api = createApi({
     baseQuery: baseQueryWithReauth,
-    tagTypes: ['Reagent', 'Draft', ],
+    tagTypes: ['Reagent', 'Draft', 'Order', ],
     endpoints: builder => ({})
 })

@@ -1,47 +1,64 @@
 import { useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
+import { useGetMyOrdersQuery } from '../../../../redux/api/orderApi'
 
 import '../../../../sass/sassTemplates/menu.scss'
+import { OrderItem } from './orderItem'
 
 
 export const Orders = () => {
-    
+    const {data, isLoading, isError} = useGetMyOrdersQuery();
+    console.log(data)
 	const [activeNav, setActiveNav] = useOutletContext()
 	useEffect(() => {
         setActiveNav('orders')
     }, [setActiveNav])
+    let content = <></>
+    
+    
+    if(isLoading){
+        content = <h5>Загрузка заказов...</h5>
+    }
+    if(isError){
+        content = <h5>Не удается найти ваши заказы</h5>
+    }
+    if(!data?.myOrders?.length){
+        content = <h5>Похоже, вы не создали ни одного зааказа</h5>
+    }
+    if(data && data?.myOrders?.length){
+        content = data.myOrders.map (item=> {
+            const {fromDate, name, manufacturer, cat, text, status} = item
+            return <OrderItem
+                fromDate = {fromDate}
+                name = {name}
+                manufacturer = {manufacturer}
+                cat = {cat}
+                text = {text}
+                status = {status}
+            />
+        })
+    }
+
 
 	return(
-        <div className="overflow ">
-
-            <div className="profile__parameter">
-                <div className="profile__value profile__value_date">дата</div>
-                <div className="profile__value">наименование</div>
-                <div className="profile__value profile__value_text">текст</div>
-                <div className="profile__value">статус</div>
-                <div className="profile__select"></div>
+        <>
+            <div className="history__top">
+                <div className="profile__select profile__select_history">Создать заказ</div>
+                <div className="profile__select profile__select_history">Активные</div>
+                <div className="profile__select profile__select_history">Архив</div>
             </div>
+            <div className="overflow ">
 
-            <div className="profile__item">
-                <div className="profile__value profile__value_date">11.12.2022</div>
-                <div className="profile__value"> <span>Муравьиная кислота</span> <br /> Нева Реактив <br /> ГОСТ 4696-86</div>
-                <div className="profile__value profile__value_text">„Здравствуйте! Прошу прислать мне 300 г чистой муравьиной кислоты. Желательно побыстрее... Жду! Спасибо вам, что вы есть“</div>
-                <div className="profile__value profile__value_border">в обработке</div>
-                <div className="profile__wrap">
-                    <div className="profile__select">Редактировать</div>
-                    <div className="profile__select">Отменить</div> 
-                </div>          
+                <div className="profile__parameter">
+                    <div className="profile__value profile__value_date">дата</div>
+                    <div className="profile__value">наименование</div>
+                    <div className="profile__value profile__value_text">текст</div>
+                    <div className="profile__value">статус</div>
+                    <div className="profile__select"></div>
+                </div>
+                {content}
+                
             </div>
-
-            <div className="profile__item">
-                <div className="profile__value profile__value_date">11.12.2022</div>
-                <div className="profile__value"><span>Муравьиная кислота</span> <br /> Нева Реактив <br /> ГОСТ 4696-86</div>
-                <div className="profile__value profile__value_text">„Здравствуйте! Прошу прислать мне 300 г чистой муравьиной кислоты. Желательно побыстрее... Жду! Спасибо вам, что вы есть“</div>
-                <div className="profile__value profile__value_border">выполнено и ждет подтверждения</div>
-                <div className="profile__wrap">
-                    <div className="profile__select">Подтвердить</div> 
-                </div>          
-            </div>
-        </div>
+        </>
     )
 }

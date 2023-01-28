@@ -162,6 +162,14 @@ export const Desc = (props) => {
             
         }
 
+        const handleRestDays = () => {
+            const rest = Math.floor((Date.parse(toDate.toString())-(+Date.now().toString()))/1000/3600/24);
+            if (rest <0){
+                return 'истек срок годности'
+            }
+            return `осталось ${rest} суток`
+        }
+        
         dispatch(reagentFill(data.reagent))
         dispatch(changeFill({passport, SDS, TDS, warn, location, price, CAS, itemId, name}))
         const last = inUse[inUse.length - 1]
@@ -219,7 +227,7 @@ export const Desc = (props) => {
                             <div className="grid__heading">Дата производства - <br /> годен до</div>
                             {(!toDate && !!standartType) && <div className="grid__value">Проверьте текущую партию на сайте производителя</div>}
                             {toDate && <div className="grid__value">{stringifyDate(fromDate) } - {stringifyDate(toDate) }</div>}
-                            {toDate && <div className="grid__descr">осталось {(toDate - (+Date.now()))/1000/60/60/24} суток</div>}
+                            {toDate && <div className="grid__descr">{handleRestDays()}</div>}
                             <img className="grid__icon" src="icons/date.svg" alt="document" />
                         </div>
                         <div className="grid__box item-d">

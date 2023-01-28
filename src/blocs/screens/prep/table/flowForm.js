@@ -44,7 +44,7 @@ export const FlowForm = () => {
     }
 
     const handleDraftReagent = async () => {
-        if(!(date && quan && test && destination && name )){
+        if(!(date && test && destination && name )){
             return sMessageCh('Заполните все поля формы или обновите страницу')
         }
         if(isLoading || draftLoading){

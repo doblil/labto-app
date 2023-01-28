@@ -7,6 +7,7 @@ import activeReagentReducer from './activeReagSlice'
 import projectReducer from './projectSlice'
 import addItemReducer from './addItemSlice'
 import changeItemReducer from './changeItemSlice'
+import orderReducer from './orderSlice'
 
 const store = configureStore({
     reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
         sMessage: sMessageReducer,
         activeReagent: activeReagentReducer,
         changeItem: changeItemReducer,
+        order: orderReducer, 
         [api.reducerPath]: api.reducer
     },
     middleware: getDefaultMiddleware => {

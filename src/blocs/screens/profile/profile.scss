@@ -142,7 +142,6 @@
         cursor: pointer;
         &:hover{
             box-shadow: $main-shadow;
-
         }
         img{
             height: 100%;
@@ -151,7 +150,9 @@
 }
 
 .history{
+    height: 100%;
     &__top{
+        
         display: flex;
         justify-content: flex-start;
         margin-bottom: 12px;

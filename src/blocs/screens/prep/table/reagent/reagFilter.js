@@ -125,7 +125,7 @@ export const ReagFilter = (props) => {
                             checked={favorite === true}
                             onChange = {(e) => setFavoriteSearch(true)}
                         />
-                        <label className="custom-checkbox__text" style={{position: 'relative'}} for="chb-favorite">Избранное ({favoriteList.length})
+                        <label className="custom-checkbox__text" style={{position: 'relative'}} for="chb-favorite">Избранное ({favoriteList?.length})
                             <SVGstar style={{
                                 fill: "#ffb027",
                                 position: 'absolute',

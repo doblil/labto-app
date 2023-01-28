@@ -17,8 +17,6 @@ export const handleWarnImg = (arr) => {
 
 export const stringifyDate = (value, exact = false, input = false) => {
 
-
-
     const date = new Date(value)
 
     const year = date.getFullYear();
@@ -62,6 +60,68 @@ export const stringifyRSType = (type = '') => {
             return 'ФСО';
         case 'oth':
             return '';
+        default:
+            return ''
+    }
+}
+
+export const stringifyHistoryAction = (type = '') => {
+    switch (type) {
+        case 'addReag':
+            return 'добавление реактива';
+        case 'takeReag':
+            return 'списание реактива';
+        case 'changeReag':
+            return 'изменение данных реактива';
+        case 'isolateReag':
+            return 'перенесение в карантин';
+        case 'deleteReag':
+            return 'удаление реактива';
+        case 'takeColumn':
+            return 'начало работы с колонкой';
+        case 'returnColumn':
+            return 'заавершение работы с колонкой';
+        case 'createOrder':
+            return 'создание заказа';
+        case 'changeOrderStatus':
+            return 'изменение статуса заказа';
+        case 'deleteOrder':
+            return 'удаление заказа';
+        case 'createReport':
+            return 'создание отчета';
+        case 'addUser':
+            return 'добавление пользователя';
+        case 'deleteUser':
+            return 'удаление пользователя';
+        case 'enterSystem':
+            return 'вход в систему';
+        case 'getUserHistory':
+            return 'просмотр истории сотрудника';
+        case 'changeUser':
+            return 'изменение данных сотрудника';
+        default:
+            return ''
+    }
+}
+
+export const stringifyOrderStatus = (type = '') => {
+    switch (type) {
+        case 'created':
+            return 'Создан';
+        case 'processed':
+            return 'в обработке';
+        case 'executed':
+            return 'выполняется';
+        case 'completed':
+            return 'готов, ожидает подтверждения';
+        case 'canceled':
+            return 'отменен';
+        case 'reviced':
+            return 'отправлен на доработку';
+        case 'changed':
+            return 'изменен';
+        case 'confirmed':
+            return 'Завершен, подтвержден заказчиком';
         default:
             return ''
     }
