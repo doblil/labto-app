@@ -46,6 +46,7 @@
     &__condition{
         display: flex;
         align-items: flex-start;
+        flex-wrap: wrap;
     }
     &__row{
         position: relative;

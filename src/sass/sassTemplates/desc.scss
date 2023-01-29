@@ -2,7 +2,7 @@
 @import '../base/title.scss';
 
 .desc{
-    width: 45%;
+    width: 50%;
     background-color: white;
     border-radius: 15px;
     box-shadow: $main-shadow;
@@ -12,7 +12,7 @@
     flex-direction: column;
     justify-content: space-between;
     &__return{
-        width: 45%;
+        width: 50%;
         background-color: white;
         border-radius: 15px;
         box-shadow: $main-shadow;
@@ -129,7 +129,7 @@
 
 .grid{
     display: grid;
-    grid-template: 80px 135px 80px/ minmax(95px, 1fr) minmax(80px, 1fr)  minmax(150px, 3fr) minmax(82px, 1fr) minmax(20px, 1fr);
+    grid-template: 77px 125px 70px/ 1fr 1fr 3fr 1fr 1fr;
     gap:10px 15px;
     justify-content: space-between;
     grid-template-areas:
@@ -186,7 +186,7 @@
     }
     &__jar{
         position: absolute;
-        right: 15px;
+        right: 9px;
         height: 52px;
     }
     &__jar-scale{
@@ -232,7 +232,7 @@
     &__barcode{
         padding: 5px;
         position: absolute;
-        right: 10px;
+        right: 20px;
         top: 35px;
         height: 70px;
         width: 40px;
@@ -255,8 +255,8 @@
         height: 13px;
         width: 13px;
         position: absolute;
+        bottom: 5px;
         right: 3px;
-        top: 5px;
     }
 }
 .item-a{
@@ -300,13 +300,9 @@
     border: none;
 }
 @media (max-width: 1200px) {
-    .desc{
-        width: 45%;
-        min-width: 0;
-    }
     .grid{
         display: grid;
-        grid-template: 80px 135px 40px 80px/ minmax(85px, 1fr) minmax(75px, 1fr)  minmax(140px, 3fr) minmax(70px, 1fr);
+        grid-template: 77px 125px 50px 70px/ 1fr 1fr 3fr 1fr;
         gap:9px 13px;
         grid-template-areas:
             "a b c d "
@@ -315,13 +311,6 @@
             "h h h h ";
         &__jar{
             right: 10px;
-        }
-        &__icon{
-            height: 13px;
-            width: 13px;
-            position: absolute;
-            right: 3px;
-            top: 5px;
         }
     }
     .item-e{

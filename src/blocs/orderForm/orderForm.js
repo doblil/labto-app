@@ -55,27 +55,43 @@ export const OrderForm = (props) => {
 
     return(
         
-        <div className="order" onClick={(e)=>{if(e.target.className === 'order') {handleHideForm()}}}>
-            <div className="order__window">
+        <div className="overlay" onClick={(e)=>{if(e.target.className === 'order') {handleHideForm()}}}>
+            <div className="overlay__window">
                 <div className="close" onClick={handleHideForm}></div>
-                <div className="flow__heading">Оформление заказа</div>
+                <div className="overlay__heading"> <p>Оформление заказа</p>
+                    <CustomSelect
+                        options = {options}
+                        width = {'150px'}
+                        height = {'20px'}
+                        fontSize = {'10px'}
+                    />
+                </div>
 
                 <div className="flow__destination">
-                    <div className="flow__label">Заказать</div>
+                    <div className="flow__label">Наименование</div>
                     <input
                         value={name}
                         onChange={(e) => {dispatch(orderNameCh(e.target.value))}}
                         placeholder='Наименование'
+                        style ={{width: '60%', height: '30px'}}
                     />
+                </div>
+                <div className="flow__destination">
+                    <div className="flow__label">Производитель</div>
                     <input
                         value = {manufacturer}
                         onChange={(e) => {dispatch(orderManufacturerCh(e.target.value))}}
                         placeholder='Производитель'
+                        style ={{width: '60%', height: '30px'}}
                     />
+                </div>
+                <div className="flow__destination">
+                    <div className="flow__label">Каталожный номер</div>
                     <input
                         value = {cat}
                         onChange={(e) => {dispatch(orderCatCh(e.target.value))}}
                         placeholder='Кат. №'
+                        style ={{width: '60%', height: '30px'}}
                     />
                 </div>
 
@@ -85,8 +101,8 @@ export const OrderForm = (props) => {
                         handleChange = {(target) => dispatch(orderDestinationCh(target.value))}
                         options = {options}
                         width = {'60%'}
-                        height = {'25px'}
-                        fontSize = {'12px'}
+                        height = {'20px'}
+                        fontSize = {'10px'}
                     />
                 </div>
                 <div className="flow__destination">
@@ -95,8 +111,8 @@ export const OrderForm = (props) => {
                         handleChange = {(target) => dispatch(orderAddresseeNameCh(target.value))}
                         options = {usersOptions}
                         width = {'60%'}
-                        height = {'25px'}
-                        fontSize = {'12px'}
+                        height = {'20px'}
+                        fontSize = {'10px'}
                     />
                 </div>
 
