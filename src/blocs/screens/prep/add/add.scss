@@ -2,11 +2,7 @@
 @import '../../../../../src/sass/base/variables.scss';
 
 .add{
-    width: calc(100% - 150px);
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: $main-shadow;
-    padding: 20px;
+
     &__overflow{
         height: 94%;
         &::-webkit-scrollbar-track {

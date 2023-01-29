@@ -2,7 +2,7 @@
 @import '../base/title.scss';
 
 .info{
-    width: calc(65% - 260px);
+    width: 49%;
     margin-right: 13px;
     background-color: white;
     border-radius: 15px;
@@ -13,9 +13,6 @@
 }
 
 @media (max-width: 1200px) {
-    .info{
-        width: 45%;
-    }
 }
 @media (max-width: 991px) {}
 @media (max-width: 767px) {

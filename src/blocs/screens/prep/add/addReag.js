@@ -156,7 +156,7 @@ export const AddReag = () => {
     ]
 
     return(
-        <div className="add">
+        <div className="page">
             <div className="add__top">
                 <div className="add__heading">Внесение</div>
                 <CustomSelect

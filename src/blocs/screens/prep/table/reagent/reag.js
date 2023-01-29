@@ -7,10 +7,12 @@ export const Reag = (props) => {
    const {reqParams} = props
    
    return(
-         <>
-            <ReagPage reqParams = {reqParams}/>
-            <Desc/>
-         </>
-         )
+        <>
+			<div className="page-divided">
+				<ReagPage reqParams = {reqParams}/>
+				<Desc/>
+			</div>
+        </>
+        )
 
 }

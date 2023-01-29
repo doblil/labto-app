@@ -8,8 +8,11 @@ export const Rs = (props) => {
    
    return(
          <>
-            <RsPage reqParams={reqParams}/>
-            <Desc/>
+            <div className="page-divided">
+               <RsPage reqParams={reqParams}/>
+               <Desc/>
+            </div>
+
          </>
          )
 

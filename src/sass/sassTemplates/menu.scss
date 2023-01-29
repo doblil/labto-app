@@ -2,7 +2,7 @@
 @import '../base/title.scss';
 
 .menu{
-    width: 196px;
+    min-width: 196px;
     margin-right: -30px;
     background-color: $main-color;
     border-radius: 15px;

@@ -21,10 +21,14 @@ export const CustomSelect = (props) => {
             padding: '0',
             boxShadow: 'none',
             height: `${height}`,
+            fontSize: `${fontSize}`,
             input: {
                 boxShadow: 'none',
                 border: 'none',
                 fontSize: 'inherit',
+                height: `${height}`,
+            },
+            placeholder:{
                 height: `${height}`
             }
         }),
@@ -58,6 +62,10 @@ export const CustomSelect = (props) => {
             fontSize: `${fontSize}`,
             padding: ' 10px 5px',
             color: state.isSelected ? 'white' : 'black'
+        }),
+        placeholder: (baseStyles, state) => ({
+            ...baseStyles,
+            fontSize: `${fontSize}`
         }),
     }
     
