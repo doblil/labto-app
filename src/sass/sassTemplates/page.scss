@@ -1,0 +1,9 @@
+@import '../../sass/base/variables.scss';
+
+.page{
+    width: calc(100% - 110px);
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: $main-shadow;
+    padding: 30px;
+}

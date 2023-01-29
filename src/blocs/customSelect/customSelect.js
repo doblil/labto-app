@@ -53,11 +53,11 @@ export const CustomSelect = (props) => {
             ...baseStyles,
             padding: '0px 3px'
         }),
-        option: (baseStyles) => ({
+        option: (baseStyles, state) => ({
             ...baseStyles,
             fontSize: `${fontSize}`,
             padding: ' 10px 5px',
-            color: 'black'
+            color: state.isSelected ? 'white' : 'black'
         }),
     }
     
@@ -74,6 +74,7 @@ export const CustomSelect = (props) => {
                 primary25: '#dedede',
                 primary50: '#dedede',
                 primary: '#00a0a0',
+
                 },
             })}
             styles={selectStyles}

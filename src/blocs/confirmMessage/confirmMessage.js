@@ -6,8 +6,8 @@ export const ConfirmMessage = (props) => {
 
 
     return(
-        <>{open && <div className="confirm" >
-                        <div className="confirm__window">
+        <>{open && <div className="overlay" >
+                        <div className="overlay__window">
                             <div className="close"></div>
                             <div className="confirm__text">{text}</div>
                             <div className="confirm__text">*после подтверждения данное действвие нельзя отменить</div>

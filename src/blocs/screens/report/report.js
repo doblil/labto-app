@@ -17,7 +17,7 @@ export const Report = () => {
     return (
         <>
             <ReportMenu activeNav={activeNav}/>
-            <div className="report"><Outlet context={[activeNav, setActiveNav]}/></div>
+            <div className="page"><Outlet context={[activeNav, setActiveNav]}/></div>
         </>
     )
 }

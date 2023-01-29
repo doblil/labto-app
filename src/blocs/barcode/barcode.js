@@ -77,10 +77,10 @@ export const Barcode = (props) => {
 
     return(
         
-        <div className="barcode" style={handleShow()} onClick={handleCloseBarcode}>
-            <div className="barcode__window">
+        <div className="overlay" style={handleShow()} onClick={handleCloseBarcode}>
+            <div className="overlay__window">
                 <div className="close" onClick={() => setShowBarcode(false)}></div>
-                <div className="barcode__heading">Выберите подходящий размер штрихкода</div>
+                <div className="overlay__heading">Выберите подходящий размер штрихкода</div>
                 <div className="barcode__btn-wrap">
                     <button className={handleActiveClass('big')} onClick={() => setPrintSize('big')} >Большой</button>
                     <button className={handleActiveClass('middle')} onClick={() => setPrintSize('middle')} >Средний</button>
@@ -93,7 +93,7 @@ export const Barcode = (props) => {
                         <div className="barcode__info" style={{fontSize: styles[printSize].infoFontSize}}>{manufacturer} | {cat} | (lot: {lot})</div>
                     </div>
                 </div>
-                <button className='btn barcode__print' onClick={handlePrint}> <img src="icons/printer_white.svg" alt="printer" /> Распечатать</button>
+                <button className='btn overlay__btn' onClick={handlePrint}> <img src="icons/printer_white.svg" alt="printer" /> Распечатать</button>
             </div>
         </div>
             

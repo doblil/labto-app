@@ -1,29 +1,6 @@
 @import '../../sass/base/variables.scss';
 
 .barcode{
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    top: 0;
-    left: 0;
-    background-color: rgba(black, $alpha: 0.6);
-    z-index: 7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &__window{
-        padding: 50px;
-        background-color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        border-radius: 10px;
-        position: relative;
-    }
-    &__heading{
-        font-size: 10px;
-    }
     &__btn-wrap{
         display: flex;
         margin-top: 10px;
@@ -57,13 +34,5 @@
         font-size: 12px;
         text-align: center;
         margin-top: 2px;
-    }
-    &__print{
-        margin-top: 15px;
-        width: 150px;
-        height: 40px;
-        img{
-            margin-right: 8px;
-        }
     }
 }
