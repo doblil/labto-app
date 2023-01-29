@@ -18,11 +18,15 @@ import { Options } from './options'
 import { ChangeForm } from './changeForm'
 import { sMessageCh } from '../../../../redux/store/sMessageSlice'
 import { changeFill } from '../../../../redux/store/changeItemSlice'
+import { orderCatCh, orderManufacturerCh, orderNameCh, orderTextCh, orderTypeCh } from '../../../../redux/store/orderSlice'
+import { OrderForm } from '../../../orderForm/orderForm'
 
 export const Desc = (props) => {
+    
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const [showOrderForm, setShowOrderForm] = useState(false)
     const [showHistory, setShowHistory] = useState(false)
     const [showBarcode, setShowBarcode] = useState(false)
     const [showOptions, setShowOptions] = useState(false)
@@ -40,6 +44,7 @@ export const Desc = (props) => {
     if(favorite.includes(target)){isFavorite = true}
 
     ///////********RTQ Query hooks
+
     const [deleteReagent, {isLoading: deleteLoading}] = useDeleteReagentMutation();
     const [isolateReagent, {isLoading:isolateLoading}] = useIsolateReagentMutation()
     const [favoriteReagent, {isLoading: favoriteLoading}] = useFavoriteReagentMutation()
@@ -47,8 +52,7 @@ export const Desc = (props) => {
     const {data, isLoading, isSuccess} = useGetOneReagentQuery(target);
     const [passportLoader] = useGetPassportMutation();
 
-    //////*********
-    
+    //////********* HANDLERS
 
     const handleLoaders = () => {
         return deleteLoading || favoriteLoading || unfavoriteLoading || isLoading || isolateLoading 
@@ -142,7 +146,7 @@ export const Desc = (props) => {
             lot, container, fromDate, 
             toDate, units, restUnits, 
             inUse, warn, standartType, SDS, TDS, 
-            passport, price, CAS} = data.reagent;
+            passport, price, CAS, type} = data.reagent;
         
         const passportIsURL = handleIsURL(passport)
         
@@ -173,8 +177,21 @@ export const Desc = (props) => {
         dispatch(reagentFill(data.reagent))
         dispatch(changeFill({passport, SDS, TDS, warn, location, price, CAS, itemId, name}))
         const last = inUse[inUse.length - 1]
+
+        const handleOrderSame = () => {
+            dispatch(orderNameCh(name));
+            dispatch(orderTypeCh(type));
+            dispatch(orderManufacturerCh(manufacturer));
+            dispatch(orderCatCh(cat));
+            dispatch(orderTextCh(`Хочу заказать ${name}, ${manufacturer}, кат.№ ${cat},  _____  ${units}. 
+            Необходимо для  _________  , срочность средняя.`));
+            setShowOrderForm(true);
+        }
+
+
         content = <>                 
             <div className="desc__action-wrap">
+                {showOrderForm && <OrderForm setShowOrderForm={setShowOrderForm}/>}
                 {!!showOptions && 
                 
                     <Options
@@ -249,7 +266,7 @@ export const Desc = (props) => {
                                 <div className="grid__jar-scale" style={{backgroundColor: handleJarColor(container, restUnits), height: `${Math.floor(restUnits/container*100)}%`}}></div>
                             </div>
                             <div className="grid__icon"></div>
-                            <button className="grid__btn">Заказать</button>
+                            <button className="grid__btn" onClick={handleOrderSame}>Заказать</button>
                         </div>
                         <div className="grid__box item-g">
                             <div className="grid__heading grid__heading_white">Документы</div>
