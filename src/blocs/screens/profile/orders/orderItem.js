@@ -16,9 +16,9 @@ export const OrderItem = (props) => {
                     <div className="profile__select">Отменить</div> 
                 </div>        
             </div>
-            <div className="profile__messages">
+            {/* <div className="profile__messages">
                 <span>Cообщения</span>
-            </div> 
+            </div>  */}
         </>
         
     )

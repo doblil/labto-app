@@ -64,7 +64,7 @@ const addItemSlice = createSlice({
             state.location = location;
         },
         addChange: (state, action) => {
-            const { name, cat, lot, manufacturer, fromDate, toDate, units, container, passport, SDS, TDS, warn, price, location, CAS, itemId} = action.payload;
+            const { name, cat, lot, manufacturer, fromDate, toDate, units, container, passport, SDS, TDS, warn, price, location, CAS, itemId, initialDestination} = action.payload;
             state.itemId = itemId
             state.CAS = CAS;
             state.SDS = SDS;
@@ -81,7 +81,7 @@ const addItemSlice = createSlice({
             state.toDate = toDate;
             state.passport = passport;
             state.price = price;
-
+            state.initialDestination = initialDestination;
         },
 
         

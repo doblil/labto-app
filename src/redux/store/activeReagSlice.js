@@ -28,14 +28,6 @@ const activeReagentSlice = createSlice({
         creator: '',
         carantinDate: null,
         location: '',
-    
-    
-        customField1: '',
-        customField2: '',
-        customField3: '',
-        customField4: '',
-        customField5: '',
-
     },
     reducers: {
         activeReagentCh: (state, action) => {state._id = action.payload} ,
@@ -93,11 +85,6 @@ const activeReagentSlice = createSlice({
             state.carantinDate = null;
             state.location = '';
     
-            state.customField1 = '';
-            state.customField2 = '';
-            state.customField3 = '';
-            state.customField4 = '';
-            state.customField5 = '';
         } 
         
     }

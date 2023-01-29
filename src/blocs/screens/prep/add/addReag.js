@@ -3,7 +3,7 @@ import { CustomSelect } from '../../../customSelect/customSelect';
 
 import './add.scss'
 
-import { addItemReset, addCASCh, addCatCh, addContainerCh, addFromDateCh, addItemIdCh, addLotCh, addManufacturerCh, addNameCh,  addPassportCh, addPriceCh, addSDSCh, addStandartTypeCh, addTDSCh, addToDateCh, addTypeCh, addUnitsCh, addWarnCh, addLocationCh } from '../../../../redux/store/addItemSlice'
+import { addItemReset, addCASCh, addCatCh, addContainerCh, addFromDateCh, addItemIdCh, addLotCh, addManufacturerCh, addNameCh,  addPassportCh, addPriceCh, addSDSCh, addStandartTypeCh, addTDSCh, addToDateCh, addTypeCh, addUnitsCh, addWarnCh, addLocationCh, addInitialDestinationCh } from '../../../../redux/store/addItemSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { sMessageCh } from '../../../../redux/store/sMessageSlice'
 import { useAddReagentMutation } from '../../../../redux/api/reagentApi'
@@ -23,9 +23,15 @@ export const AddReag = () => {
         cat, container, fromDate, lot, 
         manufacturer, passport, price, 
         SDS, standartType, TDS, toDate,
-        type, units, warn,
+        type, units, warn, initialDestination,
     } = useSelector(state => state.addItem);
-    
+    console.log({ 
+        itemId, CAS, name, location,
+        cat, container, fromDate, lot, 
+        manufacturer, passport, price, 
+        SDS, standartType, TDS, toDate,
+        type, units, warn, initialDestination,
+    })
     const [AddDialog, addConfirm] = useConfirm(`Внести реактив ID: ${itemId}, ${name}?`);
 
 
@@ -90,6 +96,7 @@ export const AddReag = () => {
             type,
             units,
             warn,
+            initialDestination
         }
 
         if(isLoading){
@@ -124,7 +131,24 @@ export const AddReag = () => {
             return
         }
     }
+
+    const handleChangeType = (target) => {
+        
+        dispatch(addTypeCh(target.value))
+    }
+
+    const handleChangeDestination = (target) =>{
+        console.log(type)
+        console.log(initialDestination)
+        dispatch(addInitialDestinationCh(target.value))
+    } 
     
+    const destinationOptions = projects.map(item => {
+        return { value: item.code, label: `${item.code}, ${item.name}`}
+    })
+
+
+
     const options = [
         { value: 'reag', label: 'реактива' },
         { value: 'subst', label: 'субстанции' },
@@ -136,6 +160,7 @@ export const AddReag = () => {
             <div className="add__top">
                 <div className="add__heading">Внесение</div>
                 <CustomSelect
+                    handleChange = {handleChangeType}
                     fontSize = {'15px'}
                     width = {'250px'}
                     input = {'none'}
@@ -304,7 +329,14 @@ export const AddReag = () => {
                             <div className="add__document_window">
                                 <div className="add__document-title">Добавить TDS:</div>
                                 <input type="text" class="add__input add__input-doc"/>
-                            </div>             
+                            </div>  
+                            <CustomSelect
+                                handleChange = {handleChangeDestination}
+                                fontSize = {'15px'}
+                                width = {'250px'}
+                                input = {'none'}
+                                options = {destinationOptions}
+                            />           
                         </div>
                     </div>
                     

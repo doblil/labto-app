@@ -127,5 +127,9 @@ export const stringifyOrderStatus = (type = '') => {
     }
 }
 
+export const decodeProjectName = (data, code) => {
+    return data.filter(item=> item.code === code)[0].name
+}
+
 
 

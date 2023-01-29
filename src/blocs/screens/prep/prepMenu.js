@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { reagentReset } from '../../../redux/store/activeReagSlice'
 import { useState } from 'react'
+import { SVGpen } from '../../../svg/svg'
  
 
 export const PrepMenu = () => {
@@ -46,7 +47,7 @@ export const PrepMenu = () => {
 			</ul>
 			<div className="menu__stripe"></div>
 			<ul>
-				<li><Link to='/prep/addReagent'className='link'><div className={handleClass('add')} onClick ={() =>  handleReset('add')}>Внеcение</div></Link></li>
+				<li><Link to='/prep/addReagent'className='link'><div className={handleClass('add')} onClick ={() =>  handleReset('add')}><SVGpen/>Внеcение</div></Link></li>
 			</ul>
 
 		</div>

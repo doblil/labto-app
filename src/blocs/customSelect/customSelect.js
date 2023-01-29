@@ -3,7 +3,7 @@ import  Select from 'react-select'
 
 export const CustomSelect = (props) => {
     
-    const {options, width, height, fontSize, input} = props;
+    const {options, width, height, fontSize, input, handleChange, value} = props;
 
     
     const selectStyles = {
@@ -63,6 +63,8 @@ export const CustomSelect = (props) => {
     
     return(
         <Select
+            value = {value}
+            onChange = {handleChange}
             options={options}
             theme={(theme) => ({
                 ...theme,
