@@ -17,7 +17,7 @@ export const Profile = () => {
     return(
         <>
             <ProfileMenu activeNav={activeNav}/>
-            <div className="profile"><Outlet context={[activeNav, setActiveNav]}/></div>
+            <div className="page"><Outlet context={[activeNav, setActiveNav]}/></div>
         </>
     )
 }

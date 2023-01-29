@@ -37,6 +37,11 @@ export const ChangeForm = (props) => {
         }
     }
 
+    const handleClose = () => {
+        setShowChange(false)
+        dispatch(changeReset())
+    }
+
     const handleChange = async () => {
         const body = {
             CAS, SDS, TDS, passport, warn, location, price, itemId, name
@@ -59,11 +64,11 @@ export const ChangeForm = (props) => {
     return (
         <>
         
-            <div className="confirm" >         
-                    <div className="confirm__window">
-                        <div className="close" onClick={() => setShowChange(false)}></div>
+            <div className="overlay" >         
+                    <div className="overlay__window">
+                        <div className="close" onClick={handleClose}></div>
 
-                        <div className="confirm__heading">Изменение реактива ID: {itemId}, {name}</div>
+                        <div className="overlay__heading">Изменение реактива ID: {itemId}, {name}</div>
                         <div className="add__inner">
                             <div className="add__destination add__destination_mt8">
                                 <div className="add__label">CAS-№</div>
@@ -172,7 +177,7 @@ export const ChangeForm = (props) => {
                            
                         <div className="confirm__btns">
                             <button className='btn' onClick={handleChange}>Изменить</button>
-                            <button className='btn' >Отменить</button>
+                            <button className='btn' onClick={handleClose}>Отменить</button>
                         </div>
                     </div>
                 </div>
