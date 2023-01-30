@@ -39,7 +39,7 @@ export const Drafts = () => {
 	
 
   	return(
-    	<div className="overflow ">
+    	<div>
 
 			<div className="profile__parameter">
 				<div className="profile__value">дата</div>
@@ -51,8 +51,7 @@ export const Drafts = () => {
 				<div className="profile__value"></div>
 				<div className="profile__value profile__value_5"></div>
             </div>
-
-			{content}
+			<div className="overflow drafts">{content}</div>
         </div>
     )
 }

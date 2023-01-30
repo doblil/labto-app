@@ -33,7 +33,7 @@ export const ReagPage = (props) => {
                 setFavoriteSearch = {setFavoriteSearch}
                 setExpSearch = {setExpSearch}
             />
-            <div className="overflow table">
+            <div className="overflow overflow__mt50 table">
                 <div className="table__line"></div>
                 <ReagTable
                     reqParams = {reqParams}

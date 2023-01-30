@@ -47,7 +47,14 @@ export const PrepMenu = () => {
 			</ul>
 			<div className="menu__stripe"></div>
 			<ul>
-				<li><Link to='/prep/addReagent'className='link'><div className={handleClass('add')} onClick ={() =>  handleReset('add')}><SVGpen/>Внеcение</div></Link></li>
+				<li><Link to='/prep/addReagent'className='link'>
+						<div className={handleClass('add')} onClick ={() =>  handleReset('add')}>
+							<SVGpen/>
+							<p>Внеcение</p>
+					
+						</div>
+					</Link>
+				</li>
 			</ul>
 
 		</div>

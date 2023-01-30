@@ -43,4 +43,9 @@
             color: black;
         }
     }
+    &__item-inner{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
