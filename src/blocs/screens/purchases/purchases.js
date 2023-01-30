@@ -1,13 +1,18 @@
 import { useEffect } from "react"
-import { useOutletContext } from "react-router-dom"
+import { PurchasesMenu } from "./purchasesMenu"
 
-export const Purchases = () => {
+import { Outlet, useOutletContext } from "react-router-dom"
+
+export const Purchases = (props) => {
+    const {activeNav} = props
     const [activeTab, setActiveTab] = useOutletContext()
     useEffect(() => {
         setActiveTab('purchases')
     }, [setActiveTab])
     return(
         <>
+            <PurchasesMenu activeNav={activeNav}/>
+            <div className="page"><Outlet/></div>
         </>
     )
 }

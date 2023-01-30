@@ -222,7 +222,7 @@ export const Desc = (props) => {
                 </div>
             </div>
         
-            <div className="overflow overflow__alt desc__overflow">
+            <div className="overflow overflow__mt29 desc__overflow">
                 
                 <div className="overflow_border desc__overflow-wrap" style={{display: `${showHistory === true ? '' : 'none' }`}}>
                     <HistoryOfUsage setShowHistory={setShowHistory} reagent = {reagent}/>

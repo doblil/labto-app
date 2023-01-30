@@ -141,10 +141,15 @@
 
 .history{
     height: 100%;
-    &__top{
-        
+    &__top{ 
         display: flex;
         justify-content: flex-start;
         margin-bottom: 12px;
     }
 }
+
+.drafts{
+    height: 100%;
+    max-height: calc(100% - 70px);
+
+}   

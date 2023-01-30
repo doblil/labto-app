@@ -46,10 +46,8 @@ export const ContentRouter = () => {
           <Route path="/report/annual" element = {<ReportAnnual/>}/>
         </Route>
         <Route path="/confirm" element={<ConfirmMessage/>}/>
+        <Route path="/purchases" element={<Purchases/>}/>
       </Route>
-
-      
-
     </Routes>
     
   )
