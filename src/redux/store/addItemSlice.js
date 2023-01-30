@@ -50,6 +50,7 @@ const addItemSlice = createSlice({
 
         addCreateSame: (state, action) => {
             const {type, standartType, name, CAS, cat, manufacturer, units, container, SDS, TDS, warn, location} = action.payload;
+            state.standartType = standartType
             state.CAS = CAS;
             state.SDS = SDS;
             state.TDS = TDS;
@@ -63,28 +64,6 @@ const addItemSlice = createSlice({
             state.warn = warn;
             state.location = location;
         },
-        addChange: (state, action) => {
-            const { name, cat, lot, manufacturer, fromDate, toDate, units, container, passport, SDS, TDS, warn, price, location, CAS, itemId, initialDestination} = action.payload;
-            state.itemId = itemId
-            state.CAS = CAS;
-            state.SDS = SDS;
-            state.TDS = TDS;
-            state.cat = cat;
-            state.lot = lot;
-            state.fromDate = fromDate;
-            state.name = name;
-            state.manufacturer = manufacturer;
-            state.units = units;
-            state.container = container;
-            state.warn = warn;
-            state.location = location;
-            state.toDate = toDate;
-            state.passport = passport;
-            state.price = price;
-            state.initialDestination = initialDestination;
-        },
-
-        
 
         addItemReset: (state) => {
             state.type = ''; // 'rs', 'subst', 'reag';

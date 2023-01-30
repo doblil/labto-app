@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import { useGetHistoryQuery } from '../../../redux/api/historyApi'
 import '../../../sass/sassTemplates/menu.scss'
@@ -14,6 +14,12 @@ export const ProfileHistory = () => {
         setActiveNav('history')
     }, [setActiveNav])
 
+	const bottomRef = useRef(null);
+	useEffect( () => {
+        bottomRef.current?.scrollIntoView({behavior: 'smooth', block: "nearest"});
+    }, [])
+
+
 	let content = <></>
 	if (isLoading){
 		content = <h5>Загрузка</h5>
@@ -25,7 +31,7 @@ export const ProfileHistory = () => {
 	if(isSuccess && data?.history?.history && data.history?.history?.length){
 		const {history} = data.history
 		content = (
-			<table table className="table__wrap"> 
+			 <><table table className="table__wrap"> 
               		<thead>     
                   		<tr>
 							<th>Дата</th>
@@ -46,7 +52,10 @@ export const ProfileHistory = () => {
 							)
 						})}
               		</tbody>
+					
               </table>
+			  <div className="" ref={bottomRef}></div>
+			  </>
 		)
 	}
   

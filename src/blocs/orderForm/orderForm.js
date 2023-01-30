@@ -1,13 +1,14 @@
 import { CustomSelect } from "../customSelect/customSelect";
 import { useDispatch, useSelector } from "react-redux";
 import './orderForm.scss'
-import { orderAddresseeNameCh, orderCatCh, orderDestinationCh, orderManufacturerCh, orderNameCh, orderReset, orderTextCh } from "../../redux/store/orderSlice";
+import { orderAddresseeNameCh, orderCatCh, orderDestinationCh, orderManufacturerCh, orderNameCh, orderReset, orderTextCh, orderTypeCh } from "../../redux/store/orderSlice";
 import { useCreateOrderMutation } from "../../redux/api/orderApi";
 import { sMessageCh } from "../../redux/store/sMessageSlice";
+import { useState } from "react";
 
 
 export const OrderForm = (props) => {
-
+const [initialise, setInitialise] = useState(false)
     const { setShowOrderForm } = props;
     const dispatch = useDispatch()
 
@@ -32,6 +33,18 @@ export const OrderForm = (props) => {
         
     }
 
+    const handleSelectDestination = (target) => {
+        dispatch(orderDestinationCh(target?.value))
+    }
+
+    const handleSelectAdressee = (target) => {
+        dispatch(orderAddresseeNameCh(target?.value))
+    }
+
+    const handleSelectType = (target) => {
+        dispatch(orderTypeCh(target?.value))
+    }
+
     const hanleCreateOrder = async () => {
         try {
             if(!name || !text || !addresseeName){
@@ -47,7 +60,7 @@ export const OrderForm = (props) => {
             await createOrder(body).unwrap()
             dispatch(orderReset());
             setShowOrderForm(false)
-
+            setInitialise(true)
         } catch (error) {
             console.error(error)
         }
@@ -60,10 +73,15 @@ export const OrderForm = (props) => {
                 <div className="close" onClick={handleHideForm}></div>
                 <div className="overlay__heading"> <p>Оформление заказа</p>
                     <CustomSelect
+                        handleChange = {handleSelectType}
+                        initialise = {initialise}
+                        setInitialise = {setInitialise}
                         options = {options}
                         width = {'150px'}
                         height = {'20px'}
                         fontSize = {'10px'}
+                        selected = {type}
+
                     />
                 </div>
 
@@ -98,21 +116,28 @@ export const OrderForm = (props) => {
                 <div className="flow__destination">
                     <div className="flow__label">Проект</div>
                     <CustomSelect
-                        handleChange = {(target) => dispatch(orderDestinationCh(target.value))}
+                        handleChange = {handleSelectDestination}
+                        initialise = {initialise}
+                        setInitialise = {setInitialise}
                         options = {options}
                         width = {'60%'}
                         height = {'20px'}
                         fontSize = {'10px'}
+                        selected = {initialDestination}
                     />
                 </div>
                 <div className="flow__destination">
                     <div className="flow__label">Адресат</div>
                     <CustomSelect
-                        handleChange = {(target) => dispatch(orderAddresseeNameCh(target.value))}
+                        handleChange = {handleSelectAdressee}
+                        initialise = {initialise}
+                        setInitialise = {setInitialise}
                         options = {usersOptions}
                         width = {'60%'}
                         height = {'20px'}
                         fontSize = {'10px'}
+                        selected = {addresseeName}
+
                     />
                 </div>
 

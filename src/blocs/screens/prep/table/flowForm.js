@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux"
 import { useTakeReagentMutation } from "../../../../redux/api/reagentApi";
 import { sMessageCh } from "../../../../redux/store/sMessageSlice";
@@ -10,6 +10,7 @@ import { CustomSelect } from "../../../customSelect/customSelect";
 
 
 export const FlowForm = () => {
+    const [initialise, setInitialise] = useState(false)
     const [date, setDate] = useState(stringifyDate(Date.now(), false, true))
     const [quan, setQuan] = useState(0)
     const [test, setTest] = useState('')
@@ -17,6 +18,9 @@ export const FlowForm = () => {
     const {name} = useSelector(state => state.auth);
     const {projects} = useSelector(state => state.project)
     const {_id: target, name: reagName, units, itemId} = useSelector(state => state.activeReagent);
+    
+    console.log({date, quan, test, destination, name});
+
     useEffect(() => {
         setDate(stringifyDate(Date.now(), false, true))
     }, [target])
@@ -32,6 +36,7 @@ export const FlowForm = () => {
 
     const handleTakeReagent = async () => {
         if(!(date && quan && test && destination && name )){
+            console.log('all fields required')
             return sMessageCh('Заполните все поля формы или обновите страницу')
         }
         if(isLoading){
@@ -48,7 +53,8 @@ export const FlowForm = () => {
 
     const handleDraftReagent = async () => {
         if(!(date && test && destination && name )){
-            return sMessageCh('Заполните все поля формы или обновите страницу')
+            console.log(date, test, destination, name)
+            return sMessageCh('Заполните необходимые поля формы или обновите страницу')
         }
         if(isLoading || draftLoading){
             return sMessageCh('Пожалуйста, подождите')
@@ -58,8 +64,10 @@ export const FlowForm = () => {
             await draftReagent(body)
             setDate(stringifyDate(Date.now(), false, true)); 
             setQuan(0);
-            setTest('');
-            setDestination(null)
+            setTest(''); 
+            setInitialise(true)
+            setDestination(null);
+           
         } catch (error) {
             console.error(error);
         }
@@ -74,6 +82,10 @@ export const FlowForm = () => {
         }
     }
 
+    const handleSelect = (target) => {
+        setDestination(target?.value)
+    }
+
     return(
         <>
             <div className="flow">
@@ -83,6 +95,9 @@ export const FlowForm = () => {
                 <div className="flow__destination">
                     <div className="flow__label">Статья списания</div>
                     <CustomSelect
+                        initialise = {initialise}
+                        setInitialise = {setInitialise}
+                        handleChange = {handleSelect}
                         options = {options}
                         width = {'60%'}
                         height = {'25px'}
@@ -110,8 +125,16 @@ export const FlowForm = () => {
 
                 <div className="flow__btn-wrap">
                     
-                    <button className="btn btn_white flow__btn " onClick={handleDraftReagent}>В черновик</button>
-                    <button className="btn flow__btn" onClick={confirmTakeReagent}>Списать</button>
+                    <button 
+                            className="btn btn_white flow__btn " 
+                            onClick={handleDraftReagent}
+                            disabled = {!(date && test && destination && name )}
+                        >В черновик</button>
+                    <button 
+                            className="btn flow__btn" 
+                            onClick={confirmTakeReagent}
+                            // disabled = {!(date && test && destination && name && quan )}
+                        >Списать</button>
                 </div>
 
             </div>

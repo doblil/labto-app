@@ -13,7 +13,7 @@ import { useUploadMutation } from '../../../../redux/api/uploadApi';
 
 
 export const AddReag = () => {
-    
+    const [initialise, setInitialise]=useState(false);
     const [passportType, setPassportType] = useState('link')
     const [passportFile, setPassportFile] = useState(null)
     const {projects} = useSelector(state => state.project)
@@ -160,11 +160,14 @@ export const AddReag = () => {
             <div className="add__top">
                 <div className="add__heading">Внесение</div>
                 <CustomSelect
+                    initialise = {initialise}
+                    setInitialise = {setInitialise}
                     handleChange = {handleChangeType}
                     fontSize = {'15px'}
                     width = {'250px'}
                     input = {'none'}
                     options = {options}
+                    selected = {type}
                 />
             </div>           
             <div className="overflow add__overflow">  
@@ -331,6 +334,8 @@ export const AddReag = () => {
                                 <input type="text" class="add__input add__input-doc"/>
                             </div>  
                             <CustomSelect
+                                initialise = {initialise}
+                                setInitialise = {setInitialise}
                                 handleChange = {handleChangeDestination}
                                 fontSize = {'15px'}
                                 width = {'250px'}

@@ -1,11 +1,21 @@
-import React from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import  Select from 'react-select' 
 
 export const CustomSelect = (props) => {
-    
-    const {options, width, height, fontSize, input, handleChange, value} = props;
+ 
+    const {options, width, height, fontSize, input, handleChange, initialise, setInitialise, selected} = props;
+    const selectRef = useRef(null);
 
-    
+    const initialiseSelect = () => {
+        selectRef.current.clearValue();
+        setInitialise(false)
+    }
+    useEffect(() => {
+        if(initialise){
+            initialiseSelect()
+        }
+    })
+
     const selectStyles = {
 
         container: (baseStyles) => ({
@@ -71,7 +81,11 @@ export const CustomSelect = (props) => {
     
     return(
         <Select
-            value = {value}
+            value={options.filter((option) => {
+                return option.value === selected;
+            })}
+            ref={selectRef}
+            placeholder = {'Выберите...'}
             onChange = {handleChange}
             options={options}
             theme={(theme) => ({

@@ -82,8 +82,8 @@ export const Desc = (props) => {
     // options handlers
 
     const handleAddSame = async () => {
-        if (isSuccess && data.reagent)
-        await dispatch(addCreateSame(data.reagent));
+        if (isSuccess && data.reagent);
+        dispatch(addCreateSame(data.reagent));
         navigate('/prep/addReagent');
     }
     const handleChange = async () => {
