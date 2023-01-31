@@ -102,6 +102,7 @@ export const FlowForm = () => {
                         width = {'60%'}
                         height = {'25px'}
                         fontSize = {'12px'}
+                        selected = {destination}
                     />
                 </div>
 

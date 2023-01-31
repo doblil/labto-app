@@ -58,7 +58,7 @@ export const stringifyRSType = (type = '') => {
             return 'ГСО';
         case 'fso':
             return 'ФСО';
-        case 'oth':
+        case '':
             return '';
         default:
             return ''
@@ -127,9 +127,16 @@ export const stringifyOrderStatus = (type = '') => {
     }
 }
 
-export const decodeProjectName = (data, code) => {
-    return data.filter(item=> item.code === code)[0].name
+export const decodeProjectName = (arr, value) => {
+    const name = arr.filter(item=> item.code === value)[0].name
+    if(!name) return value
+    return `${value}, ${name}`
 }
 
+export const decodeOption = (arr, value, displayValue = false) => {
+    const label = arr.filter(item => item.value === value)[0].label
+    if(!displayValue) return label;
+    return `${value}, ${label}`
+}
 
 

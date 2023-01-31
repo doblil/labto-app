@@ -1,5 +1,6 @@
 import { stringifyDate, stringifyOrderStatus } from '../../../../services/sevices'
 
+
 export const OrderItem = (props) => {
     
     const {name, status, fromDate, manufacturer, cat, text} = props

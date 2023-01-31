@@ -61,7 +61,7 @@ export const ProfileHistory = () => {
   
 						
   	return(
-        <div className="history overflow">
+        <div className="history overflow overflow__mt50" style={{height: 'calc(100% - 5px)'}}>
           
             {content}
 

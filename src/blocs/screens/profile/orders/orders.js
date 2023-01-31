@@ -60,7 +60,7 @@ export const Orders = () => {
                 <div className="profile__value">статус</div>
                 <div className="profile__select"></div>
             </div>            
-            <div className="overflow" style={{height: 'calc(100% - 200px)'}}>
+            <div className="overflow" style={{height: 'calc(100% - 85px)'}}>
                 {content}
             </div> 
                 

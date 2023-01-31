@@ -17,6 +17,7 @@ import { Orders } from "../screens/profile/orders/orders"
 import { Rs } from "../screens/prep/table/rs/rs"
 import { ConfirmMessage } from "../confirmMessage/confirmMessage"
 import { ReportAnnual } from "../screens/report/reportAnnual"
+import { EmployersList } from "../screens/employers/employersList"
 export const ContentRouter = () => {
   
   const {isAuth} = useSelector(state => state.auth);
@@ -27,7 +28,9 @@ export const ContentRouter = () => {
     
     <Routes>
       <Route path="/" element = {<Screen/>}>
-        <Route path="/employers" element={<Employers/>}/>
+        <Route path="/employers" element={<Employers/>}>
+          <Route path="/employers/list" element={<EmployersList/>}/>
+        </Route>
         <Route path="/profile" element={<Profile/>}>
             <Route path="/profile/info" element={<ProfileInfo/>}/>
             <Route path="/profile/drafts" element={<Drafts/>}/>

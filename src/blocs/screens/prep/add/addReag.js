@@ -41,7 +41,8 @@ export const AddReag = () => {
     const [addReagent, {isLoading,}] = useAddReagentMutation()
     const [upload, {isSuccess}] = useUploadMutation()
     
-    
+    //////////////HANDLERS
+
     const handleWarn = (w) => {
         if (warn.includes(w)){
             dispatch(addWarnCh((warn.filter(item=> item !== w))))
@@ -62,10 +63,10 @@ export const AddReag = () => {
     }
 
     const handleValidateAddForm = () => {
-        const falseValues = [!type, !itemId, !CAS, !name, !manufacturer, !fromDate, !toDate, !cat, !lot,  !container];
-        console.log(falseValues)
-
-        if (falseValues.includes(true)){
+        if (!(type && itemId &&  name && manufacturer && fromDate && toDate && cat && lot && container && units)){
+            return false
+        }
+        if(!standartType && type === 'rs'){
             return false
         }
         return true
@@ -133,7 +134,6 @@ export const AddReag = () => {
     }
 
     const handleChangeType = (target) => {
-        
         dispatch(addTypeCh(target.value))
     }
 
@@ -142,6 +142,23 @@ export const AddReag = () => {
         console.log(initialDestination)
         dispatch(addInitialDestinationCh(target.value))
     } 
+
+    const handleInputIcons = (state) => {
+        if(state){
+            return <div className="add__confirm add__confirm_yes">✔</div>
+        } else {
+            return <div className="add__confirm add__confirm_no">﹗</div>
+        }
+    } 
+    const handleInputStyle = (state) => {
+        if(!state){
+            return {border: '2px solid crimson'}
+        } else {
+            return {border : ''}
+        }
+    }
+
+    /////////////// OPTIONS
     
     const destinationOptions = projects.map(item => {
         return { value: item.code, label: `${item.code}, ${item.name}`}
@@ -157,8 +174,9 @@ export const AddReag = () => {
 
     return(
         <div className="page">
-            <div className="add__top">
+            <div className="add__top" >{handleInputIcons(type)}
                 <div className="add__heading">Внесение</div>
+                
                 <CustomSelect
                     initialise = {initialise}
                     setInitialise = {setInitialise}
@@ -169,6 +187,7 @@ export const AddReag = () => {
                     options = {options}
                     selected = {type}
                 />
+                
             </div>           
             <div className="overflow add__overflow">  
             <AddDialog/>            
@@ -180,16 +199,18 @@ export const AddReag = () => {
                         <input type="text" class="add__input"
                             value={itemId}
                             onChange={(e)=>{dispatch(addItemIdCh(e.target.value)); dispatch(addTypeCh('reag'));}}
+                            style={handleInputStyle(itemId)}
                         />
-                        <div className="add__confirm add__confirm_yes">✔</div>
+                        {handleInputIcons(itemId)}
                     </div>
                     <div className="add__destination add__destination_mt8">
                         <div className="add__label">Наименование</div>
                         <input type="text" class="add__input add__input_warn"
                             value={name}
                             onChange={(e)=>{dispatch(addNameCh(e.target.value))}}
+                            style={handleInputStyle(name)}
                         />
-                        <div className="add__confirm add__confirm_no">﹗</div>
+                        {handleInputIcons(name)}
                     </div>
                     <div className="add__destination add__destination_mt8">
                         <div className="add__label">CAS-№</div>
@@ -198,6 +219,19 @@ export const AddReag = () => {
                             onChange={(e)=>{dispatch(addCASCh(e.target.value))}}
                         />
                     </div>
+                    <div className="add__destination add__destination_mt8">
+                        <div className="add__label">Тип стандарта</div>
+                        {type === 'rs' &&<> <select type="text" class="add__input"
+                            value={standartType}
+                            onChange={(e)=>{dispatch(addStandartTypeCh(e.target.value))}}
+                            style = {handleInputStyle(standartType)}
+                        >
+                        
+                        </select>
+                        {handleInputIcons(standartType)}
+                        </>}
+                    </div>
+
 
 
                     <div className="add__destination">
@@ -205,21 +239,27 @@ export const AddReag = () => {
                         <input type="text" class="add__input"
                             value={manufacturer}
                             onChange={(e)=>{ dispatch(addManufacturerCh(e.target.value))}}
+                            style={handleInputStyle(manufacturer)}
                         />
+                        {handleInputIcons(manufacturer)}
                     </div>
                     <div className="add__destination add__destination_mt8">
                         <div className="add__label">Каталожный номер</div>
                         <input type="text" class="add__input"
                             value={cat}
                             onChange={(e)=>{ dispatch(addCatCh(e.target.value))}}
+                            style={handleInputStyle(cat)}
                         />
+                        {handleInputIcons(cat)}
                     </div>
                     <div className="add__destination add__destination_mt8">
                         <div className="add__label">Партия</div>
                         <input type="text" class="add__input"
                             value={lot}
                             onChange={(e)=>{dispatch(addLotCh(e.target.value))}}
+                            style={handleInputStyle(lot)}
                         />
+                        {handleInputIcons(lot)}
                     </div>
                     <div className="add__destination">
                         <div className="add__label">Упаковка</div>
@@ -227,8 +267,10 @@ export const AddReag = () => {
                             <input type="text" class="add__input add__input-mini"
                                 value={container}
                                 onChange={(e)=>{dispatch(addContainerCh(e.target.value))}}
+                                style={handleInputStyle(container)}
                             />
-                            <select defaultValue='g' onChange={(e)=>dispatch(addUnitsCh(e.target.value))} class="add__input add__input-mini" >
+                            {handleInputIcons(container)}
+                            <select defaultValue='g' onChange={(e)=>dispatch(addUnitsCh(e.target.value))} class="add__input add__input-mini" style={handleInputStyle(units)}>
                                 <option  value={'g'}>грамм (g)</option>
                                 <option  value={'mg'}>миллиграмм (mg)</option>
                                 <option  value={'kg'}>килограмм (kg)</option>
@@ -236,6 +278,7 @@ export const AddReag = () => {
                                 <option  value={'ml'}>миллилитр (ml)</option>
                                 <option  value={'pcs'}>штук (pcs)</option>
                             </select>
+                        
                         </div>
                     </div>
                    
@@ -244,14 +287,18 @@ export const AddReag = () => {
                         <input type="date" class="add__input"
                             value={fromDate}
                             onChange={(e)=>{ dispatch(addFromDateCh(e.target.value))}}
+                            style = {handleInputStyle(fromDate)}
                         />
+                        {handleInputIcons(fromDate)}
                     </div>
                     <div className="add__destination add__destination_mt8">
                         <div className="add__label">Годен до</div>
                         <input type="date" class="add__input"
                             value={toDate}
                             onChange={(e)=>{ dispatch(addToDateCh(e.target.value))}}
+                            style={handleInputStyle(toDate)}
                         />
+                        {handleInputIcons(toDate)}
                     </div>
                     
                     

@@ -1,13 +1,13 @@
 import React, { useState, useRef } from 'react';
 
 import { useSelector } from "react-redux"
-import { stringifyDate } from "../../../../services/sevices"
+import { decodeProjectName, stringifyDate } from "../../../../services/sevices"
 import { useReactToPrint } from "react-to-print"
 
 export const HistoryOfUsage = (props) => {
     const {setShowHistory} = props
     const {units, itemId, name, cat, lot, inUse} = useSelector(state=> state.activeReagent)
-
+    const {projects} = useSelector(state=> state.project)
     const printRef = useRef(null)
     const [printPrep, setPrintPrep] = useState(false)
 
@@ -59,7 +59,7 @@ export const HistoryOfUsage = (props) => {
                 
                 <tr key={item._id} className="table__row">
                     <td className="table__item">{stringifyDate(Date.parse(item.date), true)}</td>
-                    <td className="table__item">{item.destination}</td>
+                    <td className="table__item">{decodeProjectName(projects, item.destination)}</td>
                     <td className="table__item">{item.test}</td>
                     <td className="table__item">{item.quan} {units}</td>
                     <td className="table__item">{item.name}</td>

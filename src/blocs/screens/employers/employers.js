@@ -6,7 +6,7 @@ export const Employers = (props) => {
     const {activeNav} = props
     const [activeTab, setActiveTab] = useOutletContext()
     useEffect(() => {
-        setActiveTab('employers')
+        setActiveTab('list')
     }, [setActiveTab])
     return(
         <>
