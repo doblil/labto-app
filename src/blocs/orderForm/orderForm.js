@@ -18,13 +18,20 @@ const [initialise, setInitialise] = useState(false)
     const {name, type, text, addresseeName, initialDestination, manufacturer, cat} = useSelector(state => state.order)
     const [createOrder, {isLoading}] = useCreateOrderMutation()
     
-    const options = projects.map(item => {
+    const projectOptions = projects.map(item => {
         return { value: item.code, label: `${item.code}, ${item.name}`}
     })
 
     const usersOptions = allUsers.map(item => {
         return { value: item.name, label: `${item.name}, ${item.positon}`}
     })
+
+    const typeOptions =  [
+        { value: 'reag', label: 'реактива' },
+        { value: 'subst', label: 'субстанции' },
+        { value: 'rs', label: 'стандартного образца' },
+        { value: 'column', label: 'колонки'}
+    ]
 
     const handleHideForm = () => {
         
@@ -76,7 +83,7 @@ const [initialise, setInitialise] = useState(false)
                         handleChange = {handleSelectType}
                         initialise = {initialise}
                         setInitialise = {setInitialise}
-                        options = {options}
+                        options = {typeOptions}
                         width = {'150px'}
                         height = {'20px'}
                         fontSize = {'10px'}
@@ -119,7 +126,7 @@ const [initialise, setInitialise] = useState(false)
                         handleChange = {handleSelectDestination}
                         initialise = {initialise}
                         setInitialise = {setInitialise}
-                        options = {options}
+                        options = {projectOptions}
                         width = {'60%'}
                         height = {'20px'}
                         fontSize = {'10px'}

@@ -6,7 +6,6 @@ import { AuthForm } from "../authForm/authForm"
 import { Screen } from "../screens/screen"
 import { Reag } from "../screens/prep/table/reagent/reag"
 import { AddReag } from '../screens/prep/add/addReag'
-import { Employers } from "../screens/employers/employers"
 import { Profile } from "../screens/profile/profile"
 import { Purchases } from "../screens/purchases/purchases"
 import { Report } from "../screens/report/report"
@@ -17,7 +16,8 @@ import { Orders } from "../screens/profile/orders/orders"
 import { Rs } from "../screens/prep/table/rs/rs"
 import { ConfirmMessage } from "../confirmMessage/confirmMessage"
 import { ReportAnnual } from "../screens/report/reportAnnual"
-import { EmployersList } from "../screens/employers/employersList"
+import { AdminList } from "../screens/admin/adminList"
+import { Admin } from "../screens/admin/admin"
 export const ContentRouter = () => {
   
   const {isAuth} = useSelector(state => state.auth);
@@ -28,8 +28,8 @@ export const ContentRouter = () => {
     
     <Routes>
       <Route path="/" element = {<Screen/>}>
-        <Route path="/employers" element={<Employers/>}>
-          <Route path="/employers/list" element={<EmployersList/>}/>
+        <Route path="/admin" element={<Admin/>}>
+          <Route path="/admin/list" element={<AdminList/>}/>
         </Route>
         <Route path="/profile" element={<Profile/>}>
             <Route path="/profile/info" element={<ProfileInfo/>}/>

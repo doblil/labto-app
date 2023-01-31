@@ -1,8 +1,8 @@
 import { useEffect } from "react"
 import { Outlet, useOutletContext } from "react-router-dom"
-import { EmployersMenu } from "./employersMenu"
+import { AdminMenu } from "./adminMenu"
 
-export const Employers = (props) => {
+export const Admin = (props) => {
     const {activeNav} = props
     const [activeTab, setActiveTab] = useOutletContext()
     useEffect(() => {
@@ -10,7 +10,7 @@ export const Employers = (props) => {
     }, [setActiveTab])
     return(
         <>
-            <EmployersMenu activeNav={activeNav}/>
+            <AdminMenu activeNav={activeNav}/>
             <div className="page"><Outlet/></div>
         </>
     )

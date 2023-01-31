@@ -13,8 +13,9 @@ export const OrderItem = (props) => {
                 <div className="profile__value profile__value_text">{text}</div>
                 <div className="profile__value profile__value_border">{stringifyOrderStatus(status)}</div>
                 <div className="profile__wrap">
-                    <div className="profile__select">Редактировать</div>
-                    <div className="profile__select">Отменить</div> 
+                    {status === "canceled" && <div className="profile__select">Удалить</div>}
+                    {status === "сompleted" && <div className="profile__select">Подтвердить</div>}
+                    <div className="profile__select">+Kомментарий</div> 
                 </div>        
             </div>
             {/* <div className="profile__messages">

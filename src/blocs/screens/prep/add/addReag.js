@@ -165,12 +165,12 @@ export const AddReag = () => {
     })
 
 
-
-    const options = [
+const options = [
         { value: 'reag', label: 'реактива' },
         { value: 'subst', label: 'субстанции' },
         { value: 'rs', label: 'стандартного образца' }
     ]
+    
 
     return(
         <div className="page">

@@ -1,11 +1,11 @@
-import './employers.scss'
+import './admin.scss'
 import './../profile/profile.scss'
 
 import { useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
 
-export const EmployersList = (props) => {
+export const AdminList = (props) => {
     
     // const [activeNav, setActiveNav] = useOutletContext()
 	// useEffect(() => {
@@ -13,7 +13,7 @@ export const EmployersList = (props) => {
     // }, [setActiveNav])
     
     return(
-        <div className="emploers__wrap">
+        <div className="admin__wrap">
             <div className="profile__card profile__card_mini">
                 <img src="icons/info.svg" alt="" className="profile__icon" />
                 <div className="profile__name">Федорко Илья Николаевич</div> <br />
