@@ -23,7 +23,7 @@ export const Header = (props) => {
             <li><Link to="/prep/reag" className="link"><div className={handleActiveTab('prep')}>Препараторская</div></Link></li>
             <li><Link to="/report" className="link"><div className={handleActiveTab('report')}>Отчётность</div></Link></li>
             <li><Link to="/purchases" className="link"><div className={handleActiveTab('purchases')}>Закупки</div></Link></li>
-            <li><Link to="/admin/list" className="link"><div className={handleActiveTab('admin')}>Администрирование</div></Link></li>
+            <li><Link to="/admin/list" className="link"><div className={handleActiveTab('admin')}>Управление</div></Link></li>
         </ul>
       </nav>
 

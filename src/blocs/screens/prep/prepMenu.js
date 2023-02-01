@@ -1,4 +1,4 @@
-import './prep.scss'
+
 import '../../../sass/sassTemplates/menu.scss'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'

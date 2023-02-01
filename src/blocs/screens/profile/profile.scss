@@ -14,7 +14,11 @@
         padding: 30px 80px 30px 30px;
         position: relative;
         &_mini{
-            width: min-content;
+            width: 270px;
+            margin-right: 15px;
+            margin-bottom: 12px;
+            padding: 20px;
+
         }
     }
     &__icon{
@@ -22,13 +26,17 @@
         width: 20px;
         right: 20px;
         top: 20px;
+        &_mini{
+            right: 6px;
+            top: 18px;
+        }
     }
     &__name{
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 700;
     }
     &__info{
-        font-size: 13px;
+        font-size: 12px;
         margin-top: 7px;
     }
     &__contact{
@@ -38,6 +46,7 @@
             height: 20px;
         }
     }
+
     &__select{
         width: 130px;
         padding: 9px;
@@ -63,6 +72,9 @@
         }
         &_10{
             width: 10%;
+        }
+        &_long{
+            width: auto;
         }
     }
 

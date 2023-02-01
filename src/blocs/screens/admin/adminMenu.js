@@ -14,12 +14,12 @@ export const AdminMenu = (props) => {
 
     return(
         <div className="menu">
-        <div className="menu__title">Администрирование</div>
+        <div className="menu__title">Управление</div>
         <div className="menu__stripe"></div>
         <ul>
             <li><Link to='/admin/list' className='link'><div className={handleActiveNav('list')}>Список</div></Link></li>
-            <li><Link to='/admin'  className='link'><div className={handleActiveNav('admin')}>Лаборанты</div></Link></li>
-            <li><Link to='/admin'  className='link'><div className={handleActiveNav('admin')}>Настройки доступа</div></Link></li>
+            <li><Link to='/admin/projects'  className='link'><div className={handleActiveNav('projects')}>Проекты</div></Link></li>
+            <li><Link to='/admin/options'  className='link'><div className={handleActiveNav('options')}>Опции</div></Link></li>
         </ul>
       </div>
     )

@@ -152,7 +152,7 @@ export const AddReag = () => {
     } 
     const handleInputStyle = (state) => {
         if(!state){
-            return {border: '2px solid crimson'}
+            return {border: '1px solid #d14949'}
         } else {
             return {border : ''}
         }
@@ -205,7 +205,7 @@ const options = [
                     </div>
                     <div className="add__destination add__destination_mt8">
                         <div className="add__label">Наименование</div>
-                        <input type="text" class="add__input add__input_warn"
+                        <input type="text" class="add__input"
                             value={name}
                             onChange={(e)=>{dispatch(addNameCh(e.target.value))}}
                             style={handleInputStyle(name)}

@@ -1,4 +1,4 @@
-import '../prep.scss'
+
 import '../../../../sass/sassTemplates/desc.scss'
 import '../../../../sass/sassTemplates/flow.scss'
 import '../../../../sass/sassTemplates/overflow.scss'
