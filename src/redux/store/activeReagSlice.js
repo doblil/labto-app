@@ -24,9 +24,9 @@ const activeReagentSlice = createSlice({
         inUse: [],
         warn: [],
         price: null,
-        carantin: false,
+        isolate: false,
         creator: '',
-        carantinDate: null,
+        isolateDate: null,
         location: '',
     },
     reducers: {
@@ -35,7 +35,7 @@ const activeReagentSlice = createSlice({
             state.CAS = action.payload.CAS
             state.SDS = action.payload.SDS
             state.TDS = action.payload.TDS
-            state.carantin = action.payload.carantin
+            state.isolate = action.payload.isolate
             state.carantinDate = action.payload.carantinDate
             state.cat = action.payload.cat
             state.container = action.payload.container
@@ -80,7 +80,7 @@ const activeReagentSlice = createSlice({
             state.inUse = [];
             state.warn = [];
             state.price = null;
-            state.carantin = false;
+            state.isolate = false;
             state.creator = '';
             state.carantinDate = null;
             state.location = '';

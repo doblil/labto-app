@@ -50,7 +50,6 @@ export const HistoryOfUsage = (props) => {
     const endDate = inUse.map(item => stringifyDate(Date.parse(item.date))).sort()[inUse.length - 1]
     inUse.forEach(item => {
         totalUsage += (+item.quan)
-        console.log(item.quan);
         return totalUsage
     })
     

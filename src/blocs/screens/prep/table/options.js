@@ -3,7 +3,7 @@ import { useConfirm } from "../../../../hooks/useConfirm"
 
 export const Options = (props) => {
     
-    const {itemId, name} = useSelector(state => state.activeReagent);
+    const {itemId, name, isolate} = useSelector(state => state.activeReagent);
   
 
     const [IsolateDialog, isolateConfirm] = useConfirm(`Пренести реактив ID: ${itemId}, ${name} в карантин?`)
@@ -37,7 +37,7 @@ export const Options = (props) => {
         }
     }
 
-
+    console.log('isolate ',isolate)
     return (
         <div className="desc__action-inner">
             <ChangeDialog/>
@@ -45,8 +45,8 @@ export const Options = (props) => {
             <DeleteDialog/>
             <button className='desc__item-action' onClick={handleAddSame}>Внести похожий</button>
             <button className='desc__item-action' onClick={confirmDelete}>Удалить</button>
-            <button className='desc__item-action' onClick={confirmChange}>Изменить</button>
-            <button className='desc__item-action' onClick={confirmIsolate}>Карантин</button>
+            {!isolate && <button className='desc__item-action' onClick={confirmChange}>Изменить</button>}
+            {!isolate && <button className='desc__item-action' onClick={confirmIsolate}>Карантин</button>}
         </div>
     )
 } 

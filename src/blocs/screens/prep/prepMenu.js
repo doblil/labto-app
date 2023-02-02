@@ -42,14 +42,26 @@ export const PrepMenu = () => {
 			<div className="menu__stripe"></div>
 			<div className="menu__subtitle">Карантин</div>
 			<ul>
-				<li><Link to='/' className='link'><div className="menu__item">Реактивы</div></Link></li>
-				<li><Link to='/' className='link'><div className="menu__item">Стандартные образцы</div></Link></li>
+				<li><Link to='/prep/reag/isolate' className='link'><div className={handleClass('reagIsol')} onClick ={() =>  handleReset('reagIsol')}>Реактивы</div></Link></li>
+				<li><Link to='/prep/rs/isolate' className='link'><div className={handleClass('rsIsol')} onClick ={() =>  handleReset('rsIsol')}>Стандарты</div></Link></li>
+				<li><Link to='/prep/subst/isolate' className='link'><div className={handleClass('substIsol')} onClick ={() =>  handleReset('substIsol')}>Субстанции</div></Link></li>
+				
+			</ul>
+			<div className="menu__stripe"></div>
+			<div className="menu__subtitle">Колонки</div>
+			<ul>
+				<li><Link to='/prep/column/hplc' className='link'><div className={handleClass('hplc')} onClick ={() =>  handleReset('reagIsol')}>Для ВЭЖХ</div></Link></li>
+				<li><Link to='/prep/column/gc' className='link'><div className={handleClass('gs')} onClick ={() =>  handleReset('rsIsol')}>Для ГХ</div></Link></li>
+				<li><Link to='/prep/column/isolate' className='link'><div className={handleClass('colIsol')} onClick ={() =>  handleReset('substIsol')}>Списанные</div></Link></li>
+				
 			</ul>
 			<div className="menu__stripe"></div>
 			<ul>
 				<li><Link to='/prep/addReagent'className='link'>
 						<div className={handleClass('add')} onClick ={() =>  handleReset('add')}>
-							<SVGpen/>
+							<SVGpen
+								fill = {activeTab === 'add' ? 'black' : 'white'}
+							/>
 							<p>Внеcение</p>
 					
 						</div>

@@ -38,7 +38,7 @@ export const Desc = (props) => {
     let isFavorite = false
 
     
-    const {favorite, userId} = useSelector(state => state.auth);
+    const {favorite} = useSelector(state => state.auth);
     const { _id: target } = useSelector(state => state.activeReagent);
     const reagent = useSelector(state => state.activeReagent);
     if(favorite.includes(target)){isFavorite = true}

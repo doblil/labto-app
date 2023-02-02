@@ -41,8 +41,11 @@ export const ContentRouter = () => {
         <Route path="/report" element={<Report/>}/>
         <Route path="/prep" element ={<Prep/>}>
           <Route path="/prep/reag" element = {<Reag reqParams = {{type: 'reag', isolate: 'false'}}/>}/>
+          <Route path="/prep/reag/isolate" element = {<Reag reqParams = {{type: 'reag', isolate: 'true'}}/>}/>
           <Route path="/prep/rs" element = {<Rs reqParams = {{type: 'rs', isolate: 'false'}}/>}/>
+          <Route path="/prep/rs/isolate" element = {<Rs reqParams = {{type: 'rs', isolate: 'true'}}/>}/>
           <Route path="/prep/subst" element = {<Reag reqParams = {{type: 'subst', isolate: 'false'}}/>}/>
+          <Route path="/prep/subst/isolate" element = {<Reag reqParams = {{type: 'subst', isolate: 'true'}}/>}/>
           <Route path="/prep/addReagent" element = {<AddReag/>}/>
         </Route>
         <Route path="/report" element ={<Report/>}>

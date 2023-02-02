@@ -17,6 +17,7 @@ export const AddReag = () => {
     const [passportType, setPassportType] = useState('link')
     const [passportFile, setPassportFile] = useState(null)
     const {projects} = useSelector(state => state.project)
+    
 
     const { 
         itemId, CAS, name, location,
@@ -25,13 +26,9 @@ export const AddReag = () => {
         SDS, standartType, TDS, toDate,
         type, units, warn, initialDestination,
     } = useSelector(state => state.addItem);
-    console.log({ 
-        itemId, CAS, name, location,
-        cat, container, fromDate, lot, 
-        manufacturer, passport, price, 
-        SDS, standartType, TDS, toDate,
-        type, units, warn, initialDestination,
-    })
+    const {allManufacturers} = useSelector(state => state.global);
+    const {allRsTypes} = useSelector(state => state.global);
+
     const [AddDialog, addConfirm] = useConfirm(`Внести реактив ID: ${itemId}, ${name}?`);
 
 
@@ -198,7 +195,7 @@ const options = [
                         <div className="add__label">ID</div>
                         <input type="text" class="add__input"
                             value={itemId}
-                            onChange={(e)=>{dispatch(addItemIdCh(e.target.value)); dispatch(addTypeCh('reag'));}}
+                            onChange={(e)=>{dispatch(addItemIdCh(e.target.value));}}
                             style={handleInputStyle(itemId)}
                         />
                         {handleInputIcons(itemId)}
@@ -226,7 +223,9 @@ const options = [
                             onChange={(e)=>{dispatch(addStandartTypeCh(e.target.value))}}
                             style = {handleInputStyle(standartType)}
                         >
-                        
+                        {allRsTypes.map(item=>{
+                            return <option  value={item.value} key={item._id}>{item.label}</option>
+                        })}
                         </select>
                         {handleInputIcons(standartType)}
                         </>}
@@ -236,11 +235,15 @@ const options = [
 
                     <div className="add__destination">
                         <div className="add__label">Производитель</div>
-                        <input type="text" class="add__input"
+                        <select type="text" class="add__input"
                             value={manufacturer}
                             onChange={(e)=>{ dispatch(addManufacturerCh(e.target.value))}}
                             style={handleInputStyle(manufacturer)}
-                        />
+                        >
+                            {allManufacturers.map(item=>{
+                            return <option  value={item.value} key={item._id}>{item.label}</option>
+                            })}
+                        </select>
                         {handleInputIcons(manufacturer)}
                     </div>
                     <div className="add__destination add__destination_mt8">

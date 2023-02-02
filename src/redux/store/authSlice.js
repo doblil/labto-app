@@ -13,11 +13,12 @@ const authSlice = createSlice({
         name: '',
         direction: '',
         position: '',
-        irection: '',
+        department: '',
+        phone: ''
     },
     reducers: {
         setCredentials: (state, action) => {
-            const {email, accessToken, role, favorite, name, direction, department, position,} = action.payload;
+            const {email, accessToken, role, favorite, name, direction, department, position, phone} = action.payload;
         
             state.email = email;
             state.token = accessToken;
@@ -27,6 +28,7 @@ const authSlice = createSlice({
             state.direction = direction;
             state.department = department;
             state.position = position;
+            state.phone = phone;
         },
         clearStore: (state) => {
             state.email = null;
@@ -40,6 +42,7 @@ const authSlice = createSlice({
             state.direction = '';
             state.department = '';
             state.position = '';
+            state.phone = ''
         },
         isAuthCh: (state, action) => {state.isAuth = action.payload},
         userIdCh: (state, action) => {
