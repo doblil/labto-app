@@ -17,7 +17,7 @@ export const AdminMenu = (props) => {
         <div className="menu__title">Управление</div>
         <div className="menu__stripe"></div>
         <ul>
-            <li><Link to='/admin/list' className='link'><div className={handleActiveNav('list')}>Список</div></Link></li>
+            <li><Link to='/admin/list' className='link'><div className={handleActiveNav('list')}>Список сотрудников</div></Link></li>
             <li><Link to='/admin/projects'  className='link'><div className={handleActiveNav('projects')}>Проекты</div></Link></li>
             <li><Link to='/admin/options'  className='link'><div className={handleActiveNav('options')}>Опции</div></Link></li>
         </ul>

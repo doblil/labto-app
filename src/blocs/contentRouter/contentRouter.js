@@ -18,6 +18,11 @@ import { ConfirmMessage } from "../confirmMessage/confirmMessage"
 import { ReportAnnual } from "../screens/report/reportAnnual"
 import { AdminList } from "../screens/admin/adminList"
 import { Admin } from "../screens/admin/admin"
+import { AdminProjects } from "../screens/admin/sdminProjects"
+import { AdminOptions } from "../screens/admin/adminOptions"
+import { PurchasesApplications } from "../screens/purchases/purchasesApplications"
+import { PurchasesUnderway } from "../screens/purchases/purchasesUnderway"
+import { PurchasesArchive } from "../screens/purchases/purchasesArchive"
 export const ContentRouter = () => {
   
   const {isAuth} = useSelector(state => state.auth);
@@ -30,6 +35,8 @@ export const ContentRouter = () => {
       <Route path="/" element = {<Screen/>}>
         <Route path="/admin" element={<Admin/>}>
           <Route path="/admin/list" element={<AdminList/>}/>
+          <Route path="/admin/projects" element={<AdminProjects/>}/>
+          <Route path="/admin/options" element={<AdminOptions/>}/>
         </Route>
         <Route path="/profile" element={<Profile/>}>
             <Route path="/profile/info" element={<ProfileInfo/>}/>
@@ -37,7 +44,11 @@ export const ContentRouter = () => {
             <Route path="/profile/history" element={<ProfileHistory/>}/>
             <Route path="/profile/orders" element={<Orders/>}/>
         </Route>
-        <Route path="/purchases" element={<Purchases/>}/>
+        <Route path="/purchases" element={<Purchases/>}>
+          <Route path="/purchases/applications" element={<PurchasesApplications/>}/>
+          <Route path="/purchases/underway" element={<PurchasesUnderway/>}/>
+          <Route path="/purchases/archive" element={<PurchasesArchive/>}/>
+        </Route>
         <Route path="/report" element={<Report/>}/>
         <Route path="/prep" element ={<Prep/>}>
           <Route path="/prep/reag" element = {<Reag reqParams = {{type: 'reag', isolate: 'false'}}/>}/>

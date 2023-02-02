@@ -1,8 +1,7 @@
+
 import './admin.scss'
 import './../profile/profile.scss'
 
-import { useEffect } from 'react'
-import { useOutletContext } from 'react-router-dom'
 
 
 export const AdminList = (props) => {
@@ -14,9 +13,11 @@ export const AdminList = (props) => {
     
     return(
         <>
+
+            
             <div className="admin__top">
                 <div className="filter__wrap">
-                    <div className="filter__label">Поиск по имени</div>
+                    <div className="filter__label">Поиск по имени сотрудника</div>
                     <input type="text" />
                     
                     <button className="filter__btn"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="10" fill="white" class="bi bi-search" viewBox="0 0 16 16">
@@ -132,7 +133,6 @@ export const AdminList = (props) => {
                         <div className="profile__select profile__select_long">Удалить пользователя</div>
                     </div>
                 </div>
-
             </div>
         </>
     )
