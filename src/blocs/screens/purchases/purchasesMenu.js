@@ -17,9 +17,9 @@ export const PurchasesMenu = (props) => {
         <div className="menu__title">Закупки</div>
         <div className="menu__stripe"></div>
         <ul>
-            <li><Link to='/purchases' className='link'><div className={handleActiveNav('purchases')}>Заявки</div></Link></li>
-            <li><Link to='/purchases'  className='link'><div className={handleActiveNav('purchases')}>В работе</div></Link></li>
-            <li><Link to='/purchases'  className='link'><div className={handleActiveNav('purchases')}>Архив</div></Link></li>
+            <li><Link to='/purchases/applications' className='link'><div className={handleActiveNav('applications')}>Заявки</div></Link></li>
+            <li><Link to='/purchases/underway'  className='link'><div className={handleActiveNav('underway')}>В работе</div></Link></li>
+            <li><Link to='/purchases/archive'  className='link'><div className={handleActiveNav('archive')}>Архив</div></Link></li>
         </ul>
       </div>
     )

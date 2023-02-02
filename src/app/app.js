@@ -14,6 +14,7 @@ import '../sass/sassTemplates/close.scss'
 import '../sass/sassTemplates/print.scss'
 import '../sass/sassTemplates/overlay.scss'
 import '../sass/sassTemplates/page.scss'
+import '../sass/sassTemplates/filter.scss'
 
 
 

@@ -1,4 +1,4 @@
-import './prep.scss'
+
 import '../../../sass/sassTemplates/menu.scss'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
@@ -58,10 +58,9 @@ export const PrepMenu = () => {
 			<div className="menu__stripe"></div>
 			<ul>
 				<li><Link to='/prep/addReagent'className='link'>
-						<div className={handleClass('add')} onClick ={() =>  handleReset('add')}>
-							<SVGpen
-								fill = {activeTab === 'add' ? 'black' : 'white'}
-							/>
+						<div className={`${handleClass('add')} menu__item-inner`} onClick ={() =>  handleReset('add')}>
+							<SVGpen/>
+							<br />
 							<p>Внеcение</p>
 					
 						</div>
