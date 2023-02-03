@@ -51,7 +51,7 @@ export const AdminList = (props) => {
                         <img src="icons/envelope.svg" alt="" />
                         <div className="profile__heading">ilusha@djdh.jd</div>
                     </div>
-                    <div className="profile__wrap">
+                    <div>
                         <div className="profile__select profile__select_long">Изменить права</div>
                         <div className="profile__select profile__select_long">Изменить логин, пароль</div>
                         <div className="profile__select profile__select_long">Изменить учетные данные</div>
@@ -76,7 +76,7 @@ export const AdminList = (props) => {
                         <img src="icons/envelope.svg" alt="" />
                         <div className="profile__heading">ilusha@djdh.jd</div>
                     </div>
-                    <div className="profile__wrap">
+                    <div>
                         <div className="profile__select profile__select_long">Изменить права</div>
                         <div className="profile__select profile__select_long">Изменить логин, пароль</div>
                         <div className="profile__select profile__select_long">Изменить учетные данные</div>
@@ -101,7 +101,7 @@ export const AdminList = (props) => {
                         <img src="icons/envelope.svg" alt="" />
                         <div className="profile__heading">ilusha@djdh.jd</div>
                     </div>
-                    <div className="profile__wrap">
+                    <div>
                         <div className="profile__select profile__select_long">Изменить права</div>
                         <div className="profile__select profile__select_long">Изменить логин, пароль</div>
                         <div className="profile__select profile__select_long">Изменить учетные данные</div>
@@ -126,7 +126,7 @@ export const AdminList = (props) => {
                         <img src="icons/envelope.svg" alt="" />
                         <div className="profile__heading">ilusha@djdh.jd</div>
                     </div>
-                    <div className="profile__wrap">
+                    <div>
                         <div className="profile__select profile__select_long">Изменить права</div>
                         <div className="profile__select profile__select_long">Изменить логин, пароль</div>
                         <div className="profile__select profile__select_long">Изменить учетные данные</div>
