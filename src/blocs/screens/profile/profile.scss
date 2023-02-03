@@ -55,6 +55,11 @@
             height: 20px;
         }
     }
+    &__wrap{
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
 
     &__select{
         width: 131px;
