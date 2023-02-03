@@ -1,20 +1,19 @@
 
-import './admin.scss'
-import './../profile/profile.scss'
+import '../admin.scss'
+import '../../profile/profile.scss'
+import { useState } from 'react'
+import { AddUser } from './addUser'
 
 
 
-export const AdminList = (props) => {
-    
-    // const [activeNav, setActiveNav] = useOutletContext()
-	// useEffect(() => {
-    //     setActiveNav('list')
-    // }, [setActiveNav])
-    
+export const Users = (props) => {
+
+    const [showAddProfile, setShowAddProfile] = useState(false)
+
     return(
         <>
 
-            
+            {showAddProfile && <AddUser setShowAddProfile = {setShowAddProfile}/>}
             <div className="admin__top">
                 <div className="filter__wrap">
                     <div className="filter__label">Поиск по имени сотрудника</div>
@@ -25,7 +24,7 @@ export const AdminList = (props) => {
                             </svg></button>
                 </div>
 
-                <div className="admin__add">
+                <div className="admin__add" onClick={()=> setShowAddProfile(true)}>
                     <img src="icons/person-plus.svg" alt="" />
                     <p >Добавить сотрудника</p>
                 </div>

@@ -1,4 +1,4 @@
-import { stringifyDate } from "../../../../services/sevices"
+import { stringifyDate } from "../../../../services/services"
 import { useConfirm } from "../../../../hooks/useConfirm"
 import { useTakeReagentMutation } from "../../../../redux/api/reagentApi"
 import { useState } from "react"

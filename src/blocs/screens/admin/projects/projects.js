@@ -1,11 +1,11 @@
-import './admin.scss'
-import './../profile/profile.scss'
+import '../admin.scss'
+import '../../profile/profile.scss'
 
 import { useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
 
-export const AdminProjects = (props) => {
+export const Projects = (props) => {
     
     // const [activeNav, setActiveNav] = useOutletContext()
 	// useEffect(() => {

@@ -1,17 +1,14 @@
 
 
-import './admin.scss'
-import './../profile/profile.scss'
+import '../admin.scss'
+import '../../profile/profile.scss'
 
-import { CustomSelect } from '../../customSelect/customSelect'
+import { CustomSelect } from '../../../customSelect/customSelect'
 
 
-export const AddProfile = (props) => {
+export const AddUser = (props) => {
     
-    // const [activeNav, setActiveNav] = useOutletContext()
-	// useEffect(() => {
-    //     setActiveNav('addprofile')
-    // }, [setActiveNav])
+    const {setShowAddProfile} = props
     
     return(
         <>
@@ -35,6 +32,14 @@ export const AddProfile = (props) => {
                             style ={{width: '60%', height: '30px'}}
                         />
                     </div>
+                    
+                    <div className="flow__destination">
+                        <div className="flow__label">Отдел</div>
+                        <input
+                            placeholder='название отдела'
+                            style ={{width: '60%', height: '30px'}}
+                        />
+                    </div>
                     <div className="flow__destination">
                         <div className="flow__label">Управление</div>
                         <input
@@ -46,9 +51,11 @@ export const AddProfile = (props) => {
                     <div className="flow__destination">
                         <div className="flow__label">Руководитель</div>
                         <CustomSelect
+                            options = {[]}
                             width = {'60%'}
                             height = {'20px'}
                             fontSize = {'10px'}
+                            selected = {''}
                         />
                     </div>
 
@@ -67,10 +74,17 @@ export const AddProfile = (props) => {
                             style ={{width: '60%', height: '30px'}}
                         />
                     </div>
+                    <div className="flow__destination">
+                        <div className="flow__label">Пароль</div>
+                        <input
+                            placeholder='почта'
+                            style ={{width: '60%', height: '30px'}}
+                        />
+                    </div>
                     
                     <div className="flow__btn-wrap">
                         <button className="btn btn_white flow__btn ">Добавить</button>
-                        <button className="btn flow__btn">Отменить</button>
+                        <button className="btn flow__btn" onClick={()=>setShowAddProfile(false)}>Отменить</button>
                     </div>
                 </div>
             </div>

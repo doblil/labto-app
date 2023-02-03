@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useOutletContext } from 'react-router-dom'
-import { stringifyRole } from '../../../services/sevices'
+import { stringifyRole } from '../../../services/services'
 import './profile.scss'
 
 

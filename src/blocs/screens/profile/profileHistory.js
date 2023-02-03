@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import { useGetHistoryQuery } from '../../../redux/api/historyApi'
 import '../../../sass/sassTemplates/menu.scss'
-import { stringifyDate, stringifyHistoryAction } from '../../../services/sevices'
+import { stringifyDate, stringifyHistoryAction } from '../../../services/services'
 
 
 export const ProfileHistory = () => {

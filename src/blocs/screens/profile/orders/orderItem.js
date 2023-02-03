@@ -1,4 +1,4 @@
-import { stringifyDate, stringifyOrderStatus } from '../../../../services/sevices'
+import { stringifyDate, stringifyOrderStatus } from '../../../../services/services'
 
 
 export const OrderItem = (props) => {

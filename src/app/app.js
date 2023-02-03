@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { ContentRouter } from '../blocs/contentRouter/contentRouter';
-import { Footer } from '../blocs/footer/footer';
 
 import { ServerMessage } from '../blocs/serverMessage/serverMessage';
 
@@ -23,7 +22,7 @@ function App() {
     <div className="App">
             <ContentRouter/>
             <ServerMessage/>
-            <Footer/> 
+
     </div>
   );
 }

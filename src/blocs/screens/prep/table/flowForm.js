@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux"
 import { useTakeReagentMutation } from "../../../../redux/api/reagentApi";
 import { sMessageCh } from "../../../../redux/store/sMessageSlice";
-import { stringifyDate } from "../../../../services/sevices";
+import { stringifyDate } from "../../../../services/services";
 import { Link } from 'react-router-dom';
 import { useConfirm } from "../../../../hooks/useConfirm";
 import { useDraftReagentMutation } from "../../../../redux/api/draftApi";

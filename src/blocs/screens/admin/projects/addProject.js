@@ -3,7 +3,7 @@
 import './admin.scss'
 import './../profile/profile.scss'
 
-import { CustomSelect } from '../../customSelect/customSelect'
+import { CustomSelect } from '../../../customSelect/customSelect'
 
 
 export const addProject = (props) => {

@@ -99,6 +99,12 @@ export const stringifyHistoryAction = (type = '') => {
             return 'просмотр истории сотрудника';
         case 'changeUser':
             return 'изменение данных сотрудника';
+        case 'createProject':
+            return 'создание проекта';
+        case 'deleteProject':
+            return 'удаление проекта';
+        case 'changeProjectStatus':
+            return 'изменение статуса проекта';
         default:
             return ''
     }

@@ -16,10 +16,10 @@ import { Orders } from "../screens/profile/orders/orders"
 import { Rs } from "../screens/prep/table/rs/rs"
 import { ConfirmMessage } from "../confirmMessage/confirmMessage"
 import { ReportAnnual } from "../screens/report/reportAnnual"
-import { AdminList } from "../screens/admin/adminList"
+import { Users } from "../screens/admin/users/users"
 import { Admin } from "../screens/admin/admin"
-import { AdminProjects } from "../screens/admin/sdminProjects"
-import { AdminOptions } from "../screens/admin/adminOptions"
+import { Projects } from "../screens/admin/projects/projects"
+import { Options } from "../screens/admin/options/options"
 import { PurchasesApplications } from "../screens/purchases/purchasesApplications"
 import { PurchasesUnderway } from "../screens/purchases/purchasesUnderway"
 import { PurchasesArchive } from "../screens/purchases/purchasesArchive"
@@ -34,9 +34,9 @@ export const ContentRouter = () => {
     <Routes>
       <Route path="/" element = {<Screen/>}>
         <Route path="/admin" element={<Admin/>}>
-          <Route path="/admin/list" element={<AdminList/>}/>
-          <Route path="/admin/projects" element={<AdminProjects/>}/>
-          <Route path="/admin/options" element={<AdminOptions/>}/>
+          <Route path="/admin/list" element={<Users/>}/>
+          <Route path="/admin/projects" element={<Projects/>}/>
+          <Route path="/admin/options" element={<Options/>}/>
         </Route>
         <Route path="/profile" element={<Profile/>}>
             <Route path="/profile/info" element={<ProfileInfo/>}/>

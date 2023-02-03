@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { stringifyDate } from "../../../../../services/sevices";
+import { stringifyDate } from "../../../../../services/services";
 import { SVGstar } from "../../../../../svg/svg"
 
 export const ReagItem = (props) => {

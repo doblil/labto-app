@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { stringifyDate, stringifyRSType } from "../../../../../services/sevices";
+import { stringifyDate, stringifyRSType } from "../../../../../services/services";
 import { SVGstar } from "../../../../../svg/svg"
 
 export const RsItem = (props) => {

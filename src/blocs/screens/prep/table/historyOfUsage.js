@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 
 import { useSelector } from "react-redux"
-import { decodeProjectName, stringifyDate } from "../../../../services/sevices"
+import { decodeProjectName, stringifyDate } from "../../../../services/services"
 import { useReactToPrint } from "react-to-print"
 
 export const HistoryOfUsage = (props) => {
