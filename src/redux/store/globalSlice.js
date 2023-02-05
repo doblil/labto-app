@@ -5,7 +5,11 @@ const globalSlice = createSlice({
     initialState: {
         allUsers: [],
         allManufacturers: [],
-        allRsTypes:[]
+        allRsTypes:[],
+        allDepartments:[],
+        allDirections: [],
+        allRoles:[],
+        allPositions:[],
     },
     reducers: {
         allUsersCh: (state, action) => {
@@ -16,10 +20,22 @@ const globalSlice = createSlice({
         } ,
         allRsTypesCh: (state, action) => {
             state.allRsTypes = action.payload
-        }
+        },
+        allDepartmentsCh: (state, action) => {
+            state.allDepartments = action.payload
+        },
+        allDirectionsCh: (state, action) => {
+            state.allDirections = action.payload
+        },
+        allPositionsCh: (state, action) => {
+            state.allPositions = action.payload
+        },
+        allRolesCh: (state, action) => {
+            state.allRoles = action.payload
+        },
     }
 });
 
-export const { allManufacturersCh, allUsersCh, allRsTypesCh } = globalSlice.actions;
+export const { allManufacturersCh, allUsersCh, allRsTypesCh, allDepartmentsCh, allDirectionsCh, allPositionsCh, allRolesCh } = globalSlice.actions;
 export default globalSlice.reducer;
 

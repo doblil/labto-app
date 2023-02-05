@@ -1,14 +1,23 @@
-
-
+import { CustomSelect } from '../../../customSelect/customSelect'
+import { useSelector } from 'react-redux'
 import '../admin.scss'
 import '../../profile/profile.scss'
+import { useState } from 'react'
 
-import { CustomSelect } from '../../../customSelect/customSelect'
+
 
 
 export const AddUser = (props) => {
-    
+    const {allDepartments, allPositions, allDirections, allRoles} = useSelector(state=> state.global)
     const {setShowAddProfile} = props
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [name, setName] = useState('')
+    const [position, setPosition] = useState('')
+    const [role, setRole] = useState('')
+    const [direction, setDirection] = useState('')
+    const [department, setDepartment] = useState('')
+    const [phone, setPhone] = useState('')
     
     return(
         <>

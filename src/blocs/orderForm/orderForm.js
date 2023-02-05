@@ -18,12 +18,14 @@ const [initialise, setInitialise] = useState(false)
     const {name, type, text, addresseeName, initialDestination, manufacturer, cat} = useSelector(state => state.order)
     const [createOrder, {isLoading}] = useCreateOrderMutation()
     
+    console.log(allUsers)
+
     const projectOptions = projects.map(item => {
         return { value: item.code, label: `${item.code}, ${item.name}`}
     })
 
     const usersOptions = allUsers.map(item => {
-        return { value: item.name, label: `${item.name}, ${item.positon}`}
+        return { value: item.name, label: `${item.name}, ${item.position}`}
     })
 
     const typeOptions =  [

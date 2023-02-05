@@ -31,14 +31,18 @@ export const Orders = () => {
     }
     if(data && data?.myOrders?.length){
         content = data.myOrders.map (item=> {
-            const {fromDate, name, manufacturer, cat, text, status} = item
+            const {fromDate, name, manufacturer, cat, text, status, uniqueId, messages, _id} = item
             return <OrderItem
+                target = {_id}
                 fromDate = {fromDate}
                 name = {name}
                 manufacturer = {manufacturer}
                 cat = {cat}
                 text = {text}
                 status = {status}
+                messages = {messages}
+                key = {uniqueId}
+                uniqueId = {uniqueId}
             />
         })
     }

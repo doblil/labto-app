@@ -50,8 +50,8 @@ export const PrepMenu = () => {
 			<div className="menu__stripe"></div>
 			<div className="menu__subtitle">Колонки</div>
 			<ul>
-				<li><Link to='/prep/column/hplc' className='link'><div className={handleClass('hplc')} onClick ={() =>  handleReset('reagIsol')}>Для ВЭЖХ</div></Link></li>
-				<li><Link to='/prep/column/gc' className='link'><div className={handleClass('gs')} onClick ={() =>  handleReset('rsIsol')}>Для ГХ</div></Link></li>
+				<li><Link to='/prep/column/hplc' className='link'><div className={handleClass('hplc')} onClick ={() =>  handleReset('reagIsol')}>ВЭЖХ</div></Link></li>
+				<li><Link to='/prep/column/gc' className='link'><div className={handleClass('gs')} onClick ={() =>  handleReset('rsIsol')}>ГХ</div></Link></li>
 				<li><Link to='/prep/column/isolate' className='link'><div className={handleClass('colIsol')} onClick ={() =>  handleReset('substIsol')}>Списанные</div></Link></li>
 				
 			</ul>

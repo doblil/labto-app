@@ -134,15 +134,24 @@ export const stringifyOrderStatus = (type = '') => {
 }
 
 export const decodeProjectName = (arr, value) => {
-    const name = arr.filter(item=> item.code === value)[0].name
-    if(!name) return value
-    return `${value}, ${name}`
+    const arrName = arr.filter(item=> item.code === value)
+    if(arrName.length){
+        return `${value}, ${arrName[0].name}`
+    }
+    return value
+    
 }
 
 export const decodeOption = (arr, value, displayValue = false) => {
-    const label = arr.filter(item => item.value === value)[0].label
-    if(!displayValue) return label;
-    return `${value}, ${label}`
+    const arrLabel = arr.filter(item => item.value === value)
+    if(arrLabel.length && displayValue){
+        return `${value}, ${arrLabel[0].label}`
+    }
+    if(arrLabel.length && !displayValue){
+        return `${arrLabel[0].label}`
+    }
+
+    return value
 }
 
 export const stringifyRole = (type = '') => {

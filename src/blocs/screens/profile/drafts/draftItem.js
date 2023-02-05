@@ -1,4 +1,4 @@
-import { stringifyDate } from "../../../../services/services"
+import { decodeProjectName, stringifyDate } from "../../../../services/services"
 import { useConfirm } from "../../../../hooks/useConfirm"
 import { useTakeReagentMutation } from "../../../../redux/api/reagentApi"
 import { useState } from "react"
@@ -6,7 +6,9 @@ import { sMessageCh } from "../../../../redux/store/sMessageSlice"
 import { useSelector } from "react-redux"
 import { useDeleteDraftMutation } from "../../../../redux/api/draftApi"
 
+
 export const DraftItem = (props) => {
+    const {projects} = useSelector(state=> state.project)
     const {target, date, test, quan:draftQuan, destination, id: draftId} = props
     const {name: userName} = useSelector(state => state.auth)
     
@@ -64,7 +66,7 @@ export const DraftItem = (props) => {
                 <input value={quan || ''} onChange={(e)=> {setQuan(e.target.value)}} type="number" min={0} class="flow__input"/>
                 <div className="profile__value flow__measure">{target.units}</div>
             </div>
-            <div className="profile__value profile__value-underlined">{destination}</div>
+            <div className="profile__value profile__value-underlined">{decodeProjectName(projects, destination)}</div>
             <div className="profile__value profile__value-underlined profile__value_text">{test}</div>
 
             <div className="profile__select  profile__select_10" onClick={confirmTakeReagent}>Списать</div>

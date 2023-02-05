@@ -6,6 +6,7 @@ export const historyApi = api.injectEndpoints({
             query: ()=> ({
                 url: `/api/history/get/`,
             }),
+            cache: "no-cache",
         }),
 
         getUserHistory: builder.query({

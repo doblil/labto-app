@@ -8,10 +8,7 @@ import { CustomSelect } from '../../../customSelect/customSelect'
 
 export const addProject = (props) => {
     
-    // const [activeNav, setActiveNav] = useOutletContext()
-	// useEffect(() => {
-    //     setActiveNav('addprofile')
-    // }, [setActiveNav])
+ 
     
     return(
         <>
@@ -40,15 +37,6 @@ export const addProject = (props) => {
                         <input
                             placeholder='Описание проекта'
                             style ={{width: '60%', height: '30px'}}
-                        />
-                    </div>
-
-                    <div className="flow__destination">
-                        <div className="flow__label">Руководитель</div>
-                        <CustomSelect
-                            width = {'60%'}
-                            height = {'20px'}
-                            fontSize = {'10px'}
                         />
                     </div>
 

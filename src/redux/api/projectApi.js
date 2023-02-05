@@ -3,8 +3,8 @@ import { api } from "./api";
 export const projectApi = api.injectEndpoints({
     endpoints: builder => ({
         getProjects: builder.query({
-            query: ()=> ({
-                url: `/api/project/getProjects/`,
+            query: (close)=> ({
+                url: `/api/project/getProjects/${close}`,
             }),
         }),
     })

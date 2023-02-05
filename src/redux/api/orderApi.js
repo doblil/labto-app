@@ -13,6 +13,7 @@ export const orderApi = api.injectEndpoints({
                 url: `/api/order/getAll/${status}`,
             }),
             providesTags: ['Draft'],
+            cache: "no-cache",
         }),
         createOrder: builder.mutation({ 
             query: (body)=> ({
