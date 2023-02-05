@@ -8,6 +8,9 @@
         align-items: flex-end;
         justify-content: space-between;
     }
+    &__card{
+        min-height: 400px;
+    }
     &__add{
         height: 77px;
         width: 124px;
@@ -38,4 +41,35 @@
     align-items: flex-start;
     flex-wrap: wrap;
     height: 88%;
+}
+
+.options{
+    &__title{
+        font-size: 12px;
+        margin-left: 7px;
+        margin-top: 20px;
+    }
+    &__list{
+        max-height: 140px;
+        margin-top: 10px;
+        padding: 7px;
+        background-color: $main-color;
+        border-radius: 7px;
+        width: max-content;
+    }
+    &__item{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 12px;
+        padding: 3px;
+        color: white;
+        &:hover{
+            background-color: $utility-color;
+        }
+    }
+    &__name{
+        margin-right: 4px;
+    }
+
 }

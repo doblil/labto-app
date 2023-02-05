@@ -30,9 +30,9 @@ export const Users = (props) => {
                 </div>
             </div>
 
-            <div className="list overflow">
+            <div className="overflow list">
 
-                <div className="profile__card profile__card_mini">
+                <div className="profile__card profile__card_mini admin__card">
                 <img src="icons/person-fill.svg" alt="" className="profile__icon profile__icon_mini" />
 
                     <div className="profile__name">Федорко Илья Николаевич</div> <br />

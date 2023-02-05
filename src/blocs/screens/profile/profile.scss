@@ -20,8 +20,13 @@
         }
         &_mini{
             width: 270px;
+            height: 400px;
             margin-right: 15px;
-            padding: 20px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
             &:hover{
                 border: 1px solid rgb(181, 181, 181);
             }
@@ -37,7 +42,7 @@
         top: 20px;
         &_mini{
             right: 6px;
-            top: 18px;
+            top: 8px;
         }
     }
     &__name{
@@ -50,7 +55,7 @@
     }
     &__contact{
         display: flex;
-        margin-top: 5px;
+        margin-top: 3px;
         img{
             height: 20px;
         }
@@ -66,7 +71,7 @@
         padding: 9px;
         background-color: white;
         border-radius: 6px;
-        margin: 5px 20px;
+        margin: 5px 23px;
         font-size: 12px;
         text-align: center;
         cursor: pointer;
