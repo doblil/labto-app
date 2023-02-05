@@ -63,22 +63,25 @@ export const Projects = (props) => {
         <>
 
             <div className="admin__top">
-                <div className="filter__wrap">
-                    <div className="filter__label">Поиск по названию проекта</div>
-                    <input type="text" />
-                    
-                    <button className="filter__btn"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="10" fill="white" class="bi bi-search" viewBox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                            </svg></button> 
-                <CustomSelect
-                    handleChange = {handleChange}
-                    fontSize = {'15px'}
-                    width = {'250px'}
-                    input = {'none'}
-                    options = {options}
-                    selected = {projectActive}
-                />
+                <div>
+                    <div className="filter__wrap" style={{marginBottom:'14px'}}>
+                        <div className="filter__label">Поиск по названию проекта</div>
+                        <input type="text" style={{height:'30px', width:'270px'}}/>
+                        
+                        <button className="filter__btn"  style={{height:'30px', width:'30px'}}><svg xmlns="http://www.w3.org/2000/svg" width="21" height="10" fill="white" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                </svg></button>
+                    </div>
+                    <CustomSelect
+                        handleChange = {handleChange}
+                        fontSize = {'15px'}
+                        width = {'270px'}
+                        input = {'none'}
+                        options = {options}
+                        selected = {projectActive}
+                    />
                 </div>
+
                
 
                 <div className="admin__add">
