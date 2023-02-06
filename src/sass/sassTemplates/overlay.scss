@@ -25,6 +25,13 @@
         position: relative;
         z-index: 8;
     }
+    &__warn{
+        margin-top: 6px;
+        color: red;
+        font-size: 10px;
+        width: 60%;
+        margin-left: 40%;
+    }
     &__heading{
         font-size: 11px;
         margin-bottom: 15px;

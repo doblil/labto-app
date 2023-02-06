@@ -60,17 +60,25 @@ export const DraftItem = (props) => {
         <div className="profile__item">
             <FlowDialog/>
             <div className="profile__value">{stringifyDate(date, true)}</div>
-            <div className="profile__value profile__value-underlined">{target.itemId}</div>
+            <div className="profile__value profile__value-underlined profile__value_5">{target.itemId}</div>
             <div className="profile__value profile__value-underlined">{target.name}</div>
             <div className="profile__value">
                 <input value={quan || ''} onChange={(e)=> {setQuan(e.target.value)}} type="number" min={0} class="flow__input"/>
-                <div className="profile__value flow__measure">{target.units}</div>
+                <div className="profile__value flow__measure" style={{display:'inline', marginLeft:'-2px'}}>{target.units}</div>
             </div>
             <div className="profile__value profile__value-underlined">{decodeProjectName(projects, destination)}</div>
             <div className="profile__value profile__value-underlined profile__value_text">{test}</div>
 
-            <div className="profile__select  profile__select_10" onClick={confirmTakeReagent}>Списать</div>
-            <div className="profile__delete profile__value_5" onClick={handleDelete}><img src="icons/trash.svg" alt="" /></div>
+            <div className="profile__value" onClick={confirmTakeReagent}>
+                <div className="profile__select" style={{marginLeft:'0', width:'73px', fontSize:'10px', marginLeft:'5px'}}>
+                     Списать
+                    </div>
+                </div>
+            <div className="profile__value profile__value_5" >
+                <div className="profile__delete"onClick={handleDelete}>
+                    <img src="icons/trash.svg" alt="" />
+                </div>
+            </div>
         </div>
     )
 }

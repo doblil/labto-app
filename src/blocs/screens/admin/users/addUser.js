@@ -167,7 +167,7 @@ export const AddUser = (props) => {
                         />
                         
                     </div>
-                    {!isPasswordConfirmed && <p>Пароли не совпадают</p>}
+                    {!isPasswordConfirmed && <p className='overlay__warn'>Пароли не совпадают</p>}
                     <div className="flow__btn-wrap">
                         <button 
                             className="btn btn_white flow__btn" 

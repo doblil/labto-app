@@ -42,8 +42,9 @@ export const OrderItem = (props) => {
     return (
         <>        
             <div className="profile__item">
-                <div className="profile__value " style={{fontWeight: 'bold'}}>{uniqueId}</div>
                 <div className="profile__value ">{stringifyDate(fromDate)}</div>
+                <div className="profile__value " style={{fontWeight: 'bold'}}>{uniqueId}</div>
+                
                 
                 <div className="profile__value profile__value_name"> <span>{name}</span> <br /> {manufacturer} <br /> {cat}</div>
                 <div className="profile__value profile__value_text overflow"  style={{maxHeight:'125px'}}>
@@ -73,10 +74,10 @@ export const OrderItem = (props) => {
                     }
                 </div>
                 <div className="profile__value profile__value_border">{stringifyOrderStatus(status)}</div>
-                <div className="profile__wrap">
+                <div className="profile__value">
                     {status === "canceled" && <div className="profile__select">Удалить</div>}
                     {status === "сompleted" && <div className="profile__select">Подтвердить</div>}
-                    <div className="profile__select" style={{marginLeft:'0'}} onClick={handleShowForm}>+Kомментарий</div> 
+                    <div className="profile__select" style={{marginLeft:'0', width:'105px', fontSize:'10px', marginLeft:'5px'}} onClick={handleShowForm}>+Kомментарий</div> 
                 </div>        
             </div>
             {/* <div className="profile__messages">
