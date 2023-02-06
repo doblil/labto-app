@@ -9,6 +9,7 @@ import addItemReducer from './addItemSlice'
 import changeItemReducer from './changeItemSlice'
 import orderReducer from './orderSlice'
 import globalReducer from './globalSlice';
+import addUserReducer from './addUserSlice'
 const store = configureStore({
     reducer: {
         addItem: addItemReducer,
@@ -19,6 +20,7 @@ const store = configureStore({
         activeReagent: activeReagentReducer,
         changeItem: changeItemReducer,
         order: orderReducer, 
+        addUser: addUserReducer,
         [api.reducerPath]: api.reducer
     },
     middleware: getDefaultMiddleware => {

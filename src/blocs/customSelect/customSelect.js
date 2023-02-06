@@ -78,12 +78,11 @@ export const CustomSelect = (props) => {
             fontSize: `${fontSize}`
         }),
     }
-    
     return(
         <Select
             value={options.filter((option) => {
                 return option.value === selected;
-            })}
+            })[0]}
             ref={selectRef}
             placeholder = {'Выберите...'}
             onChange = {handleChange}

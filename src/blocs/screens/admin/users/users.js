@@ -10,7 +10,7 @@ import { UserItem } from './userItem'
 
 export const Users = () => {
     const [filterName, setFilterName] = useState('')
-    const [showAddProfile, setShowAddProfile] = useState(false)
+    const [showAddUser, setShowAddUser] = useState(false)
 
     const {allUsers} = useSelector(state => state.global);
     const usersList = allUsers?.filter(item => filterName ? item.name.toLowerCase().includes(filterName.toLowerCase()) : item).map(item => {
@@ -31,7 +31,7 @@ export const Users = () => {
     return(
         <>
 
-            {showAddProfile && <AddUser setShowAddProfile = {setShowAddProfile}/>}
+            {showAddUser && <AddUser setShowAddUser = {setShowAddUser}/>}
             <div className="admin__top">
                 <div className="filter__wrap">
                     <div className="filter__label">Поиск по имени сотрудника</div>
@@ -42,7 +42,7 @@ export const Users = () => {
                             </svg></button>
                 </div>
 
-                <div className="admin__add" onClick={()=> setShowAddProfile(true)}>
+                <div className="admin__add" onClick={()=> setShowAddUser(true)}>
                     <img src="icons/person-plus.svg" alt="" />
                     <p >Добавить сотрудника</p>
                 </div>
