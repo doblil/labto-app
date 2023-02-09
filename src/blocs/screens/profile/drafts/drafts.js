@@ -42,14 +42,14 @@ export const Drafts = () => {
     	<div>
 
 			<div className="profile__parameter">
-				<div className="profile__value">дата</div>
-				<div className="profile__value profile__value_5">ID</div>
-				<div className="profile__value">вещество</div>
-				<div className="profile__value">количество</div>
-				<div className="profile__value">статья списания</div>
-				<div className="profile__value profile__value_text">вид испытания</div>
-				<div className="profile__value"></div>
-				<div className="profile__value profile__value_5"></div>
+				<div className="profile__value profile__value_header">дата</div>
+				<div className="profile__value profile__value_5 profile__value_header">ID</div>
+				<div className="profile__value profile__value_header">вещество</div>
+				<div className="profile__value profile__value_header">количество</div>
+				<div className="profile__value profile__value_header">статья списания</div>
+				<div className="profile__value profile__value_text profile__value_header">вид испытания</div>
+				<div className="profile__value profile__value_header"></div>
+				<div className="profile__value profile__value_5 profile__value_header"></div>
             </div>
 			<div className="overflow drafts">{content}</div>
         </div>

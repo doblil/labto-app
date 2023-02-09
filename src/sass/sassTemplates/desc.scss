@@ -178,7 +178,7 @@
     }
     &__quantity{
         width: 100%;
-        font-size: 21px;
+        font-size: 20px;
         text-align: left;
         font-weight: 700;
         margin-bottom: 10px;
@@ -204,7 +204,7 @@
     &__btn{
         position: absolute;
         bottom: 9px;
-        padding: 8px;
+        padding: 8px 3px;
         color: $utility-color;
         background-color: white;
         height: 21px;
