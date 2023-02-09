@@ -22,7 +22,7 @@ const addUserSlice = createSlice({
         positionCh: (state, action) => {state.position = action.payload},
         departmentCh: (state, action) => {state.department = action.payload},
         directionrCh: (state, action) => {state.direction = action.payload},
-        
+
         addUserReset: (state) => {
             state.department = ''; // 'rs', 'subst', 'reag';
             state.direction = '';
@@ -31,6 +31,8 @@ const addUserSlice = createSlice({
             state.password = '';
             state.position = '';
             state.role = '';
+            state.phone = '';
+            
 
         }, 
 

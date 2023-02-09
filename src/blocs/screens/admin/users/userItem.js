@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { stringifyRole } from '../../../../services/services';
 
 
 export const UserItem = (props) => {
     
+    const [showChRole, setShowChRole] = useState(false)
+    const [showChCredentials, setShowChCredentials] = useState(false)
+    const [showChUserData, setShowChUserData] = useState(false)
+
     const {name, role, position, department, direction, phone, email, _id,} = props;
 
     const roleImg = {
