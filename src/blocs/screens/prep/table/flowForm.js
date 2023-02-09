@@ -92,7 +92,7 @@ export const FlowForm = () => {
                 <div className="flow__heading">Оформить расход</div>
 
                 <div className="flow__destination">
-                    <div className="flow__label">Статья списания</div>
+                    <div className="flow__label" style={{marginTop:'6px'}}>Статья списания</div>
                     <CustomSelect
                         initialise = {initialise}
                         setInitialise = {setInitialise}
@@ -106,7 +106,7 @@ export const FlowForm = () => {
                 </div>
 
                 <div className="flow__destination">
-                    <div className="flow__label">Вид испытания</div>
+                    <div className="flow__label" style={{marginTop:'-2px'}}>Вид испытания</div>
                     <textarea value={test || ''} onChange={(e)=> {setTest(e.target.value)}} type="text" class="flow__input-text" placeholder="Описание анализа"></textarea>
                 </div>
 

@@ -59,10 +59,11 @@ export const Orders = () => {
             
             <div className="profile__parameter overflow">
                 <div className="profile__value">дата</div>
+                <div className="profile__value">№ заказа</div>
                 <div className="profile__value profile__value_name">наименование</div>
                 <div className="profile__value profile__value_text">текст</div>
                 <div className="profile__value">статус</div>
-                <div className="profile__select"></div>
+                <div className="profile__value"></div>
             </div>            
             <div className="overflow" style={{height: 'calc(100% - 85px)'}}>
                 {content}

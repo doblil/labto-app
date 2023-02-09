@@ -64,7 +64,7 @@ export const Projects = (props) => {
 
             <div className="admin__top">
                 <div>
-                    <div className="filter__wrap" style={{marginBottom:'14px'}}>
+                    <div className="filter__wrap" style={{marginBottom:'10px'}}>
                         <div className="filter__label">Поиск по названию проекта</div>
                         <input type="text" style={{height:'30px', width:'270px'}}/>
                         
@@ -90,7 +90,7 @@ export const Projects = (props) => {
                 </div>
             </div>
 
-            <div className="list overflow">
+            <div className="list overflow" style={{marginTop:'10px'}}>
 
                {content}
 
