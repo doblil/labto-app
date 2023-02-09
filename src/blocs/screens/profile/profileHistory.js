@@ -31,13 +31,14 @@ export const ProfileHistory = () => {
 	if(isSuccess && data?.history?.history && data.history?.history?.length){
 		const {history} = data.history
 		content = (
-			 <><table table className="table__wrap"> 
+			<>
+			 	<table table className="table__wrap"> 
               		<thead>     
                   		<tr>
-							<th>Дата</th>
-							<th>Действие</th>
-							<th>Наименование</th>
-							<th>Информация</th>
+							<th>дата</th>
+							<th>действие</th>
+							<th>наименование</th>
+							<th>информация</th>
                   		</tr>
               		</thead>
             		<tbody>
@@ -53,15 +54,15 @@ export const ProfileHistory = () => {
 						})}
               		</tbody>
 					
-              </table>
-			  <div className="" ref={bottomRef}></div>
-			  </>
+              	</table>
+			  	<div className="" ref={bottomRef}></div>
+			</>
 		)
 	}
   
 						
   	return(
-        <div className="history overflow overflow__mt50" style={{height: 'calc(100% - 5px)'}}>
+        <div className="history overflow overflow__mt50" style={{height: 'calc(100% - 5px)', marginTop:'-8px'}}>
           
             {content}
 
