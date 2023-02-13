@@ -228,6 +228,10 @@
         text-decoration: underline;
         margin: 10px 0;
         cursor: pointer;
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
     }
     &__barcode{
         padding: 5px;

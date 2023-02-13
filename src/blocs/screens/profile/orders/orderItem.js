@@ -56,7 +56,7 @@ export const OrderItem = (props) => {
                     <br />
                     {showForm &&
                      <div className="profile__wrap">
-                        <div className="close" style={{top: '-10px', right: '0'}} onClick={hanleResetForm}></div>
+                        <div className="close" style={{top: '-10px', right: '8px'}} onClick={hanleResetForm}></div>
                         <textarea 
                             ref={inputRef}  
                             type="text" 
@@ -67,7 +67,7 @@ export const OrderItem = (props) => {
                         />
                         <button 
                             className='btn' 
-                            style={{width:'52px',height:'36px', backgroundColor:'#00a0a0',marginRight:'7px', marginLeft:'7px', fontSize:'11px'}}
+                            style={{width:'52px',height:'33px', backgroundColor:'#00a0a0',marginRight:'7px', marginLeft:'7px', fontSize:'11px'}}
                             onClick = {handleMesageOrder}
                         > <img src="icons/send.svg" alt="send" /> </button>
                     </div>
