@@ -23,6 +23,7 @@ import { Options } from "../screens/admin/options/options"
 import { PurchasesApplications } from "../screens/purchases/purchasesApplications"
 import { PurchasesUnderway } from "../screens/purchases/purchasesUnderway"
 import { PurchasesArchive } from "../screens/purchases/purchasesArchive"
+import { Column } from "../screens/prep/table/column/column"
 export const ContentRouter = () => {
   
   const {isAuth} = useSelector(state => state.auth);
@@ -57,6 +58,7 @@ export const ContentRouter = () => {
           <Route path="/prep/rs/isolate" element = {<Rs reqParams = {{type: 'rs', isolate: 'true'}}/>}/>
           <Route path="/prep/subst" element = {<Reag reqParams = {{type: 'subst', isolate: 'false'}}/>}/>
           <Route path="/prep/subst/isolate" element = {<Reag reqParams = {{type: 'subst', isolate: 'true'}}/>}/>
+          <Route path="/prep/column/hplc" element = {<Column/>}/>
           <Route path="/prep/addReagent" element = {<AddReag/>}/>
         </Route>
         <Route path="/report" element ={<Report/>}>
