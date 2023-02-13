@@ -1,10 +1,11 @@
 import './header.scss';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { stringifyRole } from '../../services/services';
 
 export const Header = (props) => {
   
-	const {isAuth, name, direction, department, position } = useSelector(state => state.auth);
+	const {isAuth, name, direction, department, position, role } = useSelector(state => state.auth);
   const {activeTab} = props;
 
 	const handleActiveTab = (tabName) => {
@@ -29,8 +30,8 @@ export const Header = (props) => {
 
       {isAuth && <div className="header__profile">
         <span className="text header__info">{name}</span>
-        <span className="text header__info">{position} {department} {direction}</span>
-        <span className="text header__info header__info-fz11">{position}</span>
+        <span className="text header__info">{department} {direction}</span>
+        <span className="text header__info header__info-fz11">{position}/{stringifyRole(role)}</span>
       </div>}
     </div>
   )

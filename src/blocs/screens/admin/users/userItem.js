@@ -1,15 +1,27 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useUnactiveUserMutation } from '../../../../redux/api/userApi';
+import { sMessageCh } from '../../../../redux/store/sMessageSlice';
 import { stringifyRole } from '../../../../services/services';
+import { ChangeCredentials } from './changeCredentials';
+import { ChangeRole } from './changeRole';
+import { ChangeUserData } from './changeUserData';
 
 
 export const UserItem = (props) => {
-    
+    const dispatch = useDispatch()
     const [showChRole, setShowChRole] = useState(false)
     const [showChCredentials, setShowChCredentials] = useState(false)
     const [showChUserData, setShowChUserData] = useState(false)
 
     const {name, role, position, department, direction, phone, email, _id,} = props;
+
+    const [unactiveUser, {isLoading}] = useUnactiveUserMutation();
+
+    const handleUnactiveUser = async () => {
+        if(isLoading) return dispatch(sMessageCh('Попробуйте еще раз'));
+        await unactiveUser(_id).unwrap(); 
+    }
 
     const roleImg = {
         'user': "icons/person-fill.svg",
@@ -21,6 +33,29 @@ export const UserItem = (props) => {
 
     return (
         <div className="profile__card profile__card_mini">
+            {showChCredentials && <ChangeCredentials
+                name = {name}
+                direction = {direction}
+                id = {_id}
+                email = {email}
+                setShowChCredentials = {setShowChCredentials}
+            />}
+            {showChRole && <ChangeRole
+                name = {name}
+                role = {role}
+                direction = {direction}
+                id = {_id}
+                setShowChRole = {setShowChRole}
+            />}
+            {showChUserData && <ChangeUserData
+                name = {name}
+                position = {position}
+                direction = {direction}
+                department = {department}
+                phone = {phone}
+                id = {_id}
+                setShowChUserData = {setShowChUserData}
+            />}
             <img src={roleImg[role]} alt="" className="profile__icon profile__icon_mini" />
 
                 <div className="profile__name">{name}</div> <br />
@@ -40,10 +75,10 @@ export const UserItem = (props) => {
                     <div className="profile__heading">{email}</div>
                 </div>
                 <div>
-                    <div className="profile__select profile__select_long">Изменить права</div>
-                    <div className="profile__select profile__select_long">Изменить логин, пароль</div>
-                    <div className="profile__select profile__select_long">Изменить учетные данные</div>
-                    <div className="profile__select profile__select_long">Удалить пользователя</div>
+                    <div className="profile__select profile__select_long" onClick={()=>setShowChRole(true)}>Изменить права</div>
+                    <div className="profile__select profile__select_long" onClick={()=> setShowChCredentials(true)}>Изменить логин, пароль</div>
+                    <div className="profile__select profile__select_long" onClick={()=>setShowChUserData(true)}>Изменить учетные данные</div>
+                    <div className="profile__select profile__select_long" onClick={handleUnactiveUser}>Деактивировать пользователя</div>
                 </div>
             </div>
         

@@ -33,10 +33,10 @@ export const Screen = () => {
 		
 		dispatch(allManufacturersCh(manufacturers[0].options));
 		dispatch(allRsTypesCh(rsTypes[0].options));
-		dispatch(allDepartmentsCh(departments));
-		dispatch(allDirectionsCh(directions));
-		dispatch(allPositionsCh(positions));
-		dispatch(allRolesCh(roles));
+		dispatch(allDepartmentsCh(departments[0].options));
+		dispatch(allDirectionsCh(directions[0].options));
+		dispatch(allPositionsCh(positions[0].options));
+		dispatch(allRolesCh(roles[0].options));
 	}
 	const [activeTab, setActiveTab] = useState('')
 

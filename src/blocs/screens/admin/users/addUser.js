@@ -13,7 +13,6 @@ import { sMessageCh } from '../../../../redux/store/sMessageSlice'
 export const AddUser = (props) => {
     const {allDepartments, allPositions, allDirections, allRoles} = useSelector(state=> state.global)
     const {name, email, phone, password, role, position, direction, department} = useSelector(state => state.addUser)
-    const all = useSelector(state => state.addUser)
     const dispatch = useDispatch();
 
     const [confirmPassword, setConfirmPassword] = useState('')

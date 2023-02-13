@@ -65,6 +65,7 @@ export const stringifyRSType = (type = '') => {
     }
 }
 
+
 export const stringifyHistoryAction = (type = '') => {
     switch (type) {
         case 'addReag':
@@ -105,6 +106,10 @@ export const stringifyHistoryAction = (type = '') => {
             return 'удаление проекта';
         case 'changeProjectStatus':
             return 'изменение статуса проекта';
+        case 'addOption':
+            return 'добавление опции';
+        case 'deleteOption':
+            return 'удаление опции';
         default:
             return ''
     }

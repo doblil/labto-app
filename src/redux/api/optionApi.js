@@ -6,6 +6,7 @@ export const optionApi = api.injectEndpoints({
             query: ()=> ({
                 url: `/api/options/getAll/`,
             }),
+            providesTags: ['Option',]
         }),
         addOption: builder.mutation({
             query: (body)=> ({
@@ -13,13 +14,15 @@ export const optionApi = api.injectEndpoints({
                 method: "PATCH",
                 body,
             }),
+            invalidatesTags: ['Option',]
         }),
         deleteOptions: builder.mutation({
-            query: (body)=> ({
-                url: `/api/options/addOne/`,
-                method: "PATCH",
+            query: ({target, body})=> ({
+                url: `/api/options/deleteOne/${target}`,
+                method: "DELETE",
                 body,
             }),
+            invalidatesTags: ['Option',]
         }),
 
     })

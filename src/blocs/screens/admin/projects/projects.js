@@ -8,28 +8,31 @@ import { useSelector } from 'react-redux'
 import { ProjectItem } from './projectItem'
 import { useGetProjectsQuery } from '../../../../redux/api/projectApi'
 import { CustomSelect } from '../../../customSelect/customSelect'
+import { AddProject } from './addProject'
 
 export const Projects = (props) => {
     const [projectActive, setProjectActive] = useState('active')
     const [showAddProject, setShowAddProject] = useState(false);
+
     const [filterName, setFilterName] = useState('')
 
+
     const {data: closedProjects, isSuccess} = useGetProjectsQuery('true')
-    console.log(closedProjects)
     const {projects} = useSelector(state => state.project)
     const { allUsers } = useSelector(state => state.global)
     const handleChange = (target) => {
         setProjectActive(target.value)
     }
-    
+
+
     let content = <h5>Загрузка...</h5>
     if(projectActive === 'active'){if(projects.length){
         content = projects.map(item => {
             let creatorName = ''
-            const {name, code, descr, creator, closed} = item
+            const {name, code, descr, creator, closed, _id} = item
             const user = allUsers.filter(user => user._id === creator)
             if(user.length) {creatorName = user[0].name}
-            return <ProjectItem name = {name} descr = {descr} code = {code} creator = {creatorName} closed = {closed} key={code}/>
+            return <ProjectItem name = {name} descr = {descr} code = {code} creator = {creatorName} closed = {closed} key={code} id= {_id}/>
         })
     } else {
         content = <h5>Проектов пока что нет</h5>
@@ -41,10 +44,10 @@ export const Projects = (props) => {
             
             content = closedProjects.projects.map(item => {
                 let creatorName = ''
-                const {name, code, descr, creator, closed} = item
+                const {name, code, descr, creator, closed, _id} = item
                 const user = allUsers.filter(user => user._id === creator)
                 if(user.length) {creatorName = user[0].name}
-                return <ProjectItem name = {name} descr = {descr} code = {code} creator = {creatorName} closed = {closed} key={code}/>
+                return <ProjectItem name = {name} descr = {descr} code = {code} creator = {creatorName} closed = {closed} key={code} id= {_id}/>
             })
         } else {
         content = <h5>Закрытых проектов пока что нет</h5>
@@ -61,7 +64,7 @@ export const Projects = (props) => {
 
     return(
         <>
-
+            {showAddProject && <AddProject setShowAddProject = {setShowAddProject}/>}
             <div className="admin__top">
                 <div>
                     <div className="filter__wrap" style={{marginBottom:'10px'}}>
@@ -84,7 +87,9 @@ export const Projects = (props) => {
 
                
 
-                <div className="admin__add">
+                <div className="admin__add" onClick={() => {
+                  setShowAddProject(true)
+                }}>
                     <img src="icons/plus-circle.svg" alt="" />
                     <p >Создать новый проект</p>
                 </div>
