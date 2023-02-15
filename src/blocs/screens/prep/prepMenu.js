@@ -8,7 +8,7 @@ import { SVGpen } from '../../../svg/svg'
  
 
 export const PrepMenu = () => {
-  
+	const [onAdd, setOnAdd] = useState(false)
 	const [activeTab, setActiveTab] = useState('reag')
 
 	const dispatch = useDispatch();
@@ -18,6 +18,15 @@ export const PrepMenu = () => {
 		dispatch(reagentReset());
 		setActiveTab(tab);
 	} 
+
+
+	const handleFill = () => {
+		if (activeTab === 'add') {
+			return 'black'
+		} else {
+			return 'white'
+		}
+	}
 
 	const handleClass = (v) => {
 		if (activeTab === v) {
@@ -59,7 +68,7 @@ export const PrepMenu = () => {
 			<ul>
 				<li><Link to='/prep/addReagent'className='link'>
 						<div className={`${handleClass('add')} menu__item-inner`} onClick ={() =>  handleReset('add')}>
-							<SVGpen/>
+							<SVGpen fill={handleFill()}/>
 							<br />
 							<p>Внеcение</p>
 					

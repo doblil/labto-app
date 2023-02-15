@@ -19,8 +19,8 @@ export const ReportMenu = (props) => {
         <div className="menu__title">Отчетность</div>
         <div className="menu__stripe"></div>
         <ul>
-            <li><Link to='/report/annual' className='link'><div className={handleActiveNav('annual')}>Годовая</div></Link></li>
-            <li><Link to='/report/interim '  className='link'><div className={handleActiveNav('interim')}>Промежуточная</div></Link></li>
+            <li><Link to='/report/projects' className='link'><div className={handleActiveNav('projects')}>Проекты</div></Link></li>
+            <li><Link to='/report/department'  className='link'><div className={handleActiveNav('department')}>Работа управлений</div></Link></li>
         </ul>
       </div>
     )

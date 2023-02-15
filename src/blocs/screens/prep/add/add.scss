@@ -51,14 +51,7 @@
             font-size: 700;
             font-size: 20px;
             &:before{
-                content: '';
-                position: absolute;
-                right: 1px;
-                top: 3px;
-                width: 15px;
-                height: 15px;
-                border-radius: 100px;
-                border: 2px solid rgb(209, 73, 73);
+                content: url(../../../../../public/icons/exclamation-circle_big.svg);
             }
         }
     }

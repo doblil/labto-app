@@ -70,7 +70,8 @@ export const Users = () => {
 
             {showAddUser && <AddUser setShowAddUser = {setShowAddUser}/>}
             <div className="admin__top">
-                <div className="filter__wrap">
+                <div>
+                <div className="filter__wrap" style={{marginBottom:'10px'}}>
                     <div className="filter__label">Поиск по имени сотрудника</div>
                     <input  style={{height:'30px', width:'270px',}} type="text" onChange={(e)=> setFilterName(e.target.value)}/>
                     
@@ -88,6 +89,7 @@ export const Users = () => {
                         options = {options}
                         selected = {userActive}
                     />
+                </div>
 
                 <div className="admin__add" onClick={()=> setShowAddUser(true)}>
                     <img src="icons/person-plus.svg" alt="" />

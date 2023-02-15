@@ -15,7 +15,8 @@ import { ProfileHistory } from "../screens/profile/profileHistory"
 import { Orders } from "../screens/profile/orders/orders"
 import { Rs } from "../screens/prep/table/rs/rs"
 import { ConfirmMessage } from "../confirmMessage/confirmMessage"
-import { ReportAnnual } from "../screens/report/reportAnnual"
+import { ReportProjects } from "../screens/report/reportProjects"
+import { ReportDepartment } from "../screens/report/reportDepartment"
 import { Users } from "../screens/admin/users/users"
 import { Admin } from "../screens/admin/admin"
 import { Projects } from "../screens/admin/projects/projects"
@@ -24,6 +25,8 @@ import { PurchasesApplications } from "../screens/purchases/purchasesApplication
 import { PurchasesUnderway } from "../screens/purchases/purchasesUnderway"
 import { PurchasesArchive } from "../screens/purchases/purchasesArchive"
 import { Column } from "../screens/prep/table/column/column"
+
+
 export const ContentRouter = () => {
   
   const {isAuth} = useSelector(state => state.auth);
@@ -50,7 +53,10 @@ export const ContentRouter = () => {
           <Route path="/purchases/underway" element={<PurchasesUnderway/>}/>
           <Route path="/purchases/archive" element={<PurchasesArchive/>}/>
         </Route>
-        <Route path="/report" element={<Report/>}/>
+        <Route path="/report" element={<Report/>}>
+          <Route path="/report/projects" element={<ReportProjects/>}/>
+          <Route path="/report/department" element={<ReportDepartment/>}/>
+        </Route>
         <Route path="/prep" element ={<Prep/>}>
           <Route path="/prep/reag" element = {<Reag reqParams = {{type: 'reag', isolate: 'false'}}/>}/>
           <Route path="/prep/reag/isolate" element = {<Reag reqParams = {{type: 'reag', isolate: 'true'}}/>}/>
@@ -60,9 +66,6 @@ export const ContentRouter = () => {
           <Route path="/prep/subst/isolate" element = {<Reag reqParams = {{type: 'subst', isolate: 'true'}}/>}/>
           <Route path="/prep/column/hplc" element = {<Column/>}/>
           <Route path="/prep/addReagent" element = {<AddReag/>}/>
-        </Route>
-        <Route path="/report" element ={<Report/>}>
-          <Route path="/report/annual" element = {<ReportAnnual/>}/>
         </Route>
         <Route path="/confirm" element={<ConfirmMessage/>}/>
         <Route path="/purchases" element={<Purchases/>}/>

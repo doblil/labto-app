@@ -144,7 +144,7 @@ export const AddReag = () => {
         if(state){
             return <div className="add__confirm add__confirm_yes">✔</div>
         } else {
-            return <div className="add__confirm add__confirm_no">﹗</div>
+            return <div className="add__confirm add__confirm_no"></div>
         }
     } 
     const handleInputStyle = (state) => {
@@ -216,9 +216,9 @@ const options = [
                             onChange={(e)=>{dispatch(addCASCh(e.target.value))}}
                         />
                     </div>
-                    <div className="add__destination add__destination_mt8">
+                    {type === 'rs' && <><div className="add__destination add__destination_mt8">
                         <div className="add__label">Тип стандарта</div>
-                        {type === 'rs' &&<> <select type="text" class="add__input"
+                         <select type="text" class="add__input"
                             value={standartType}
                             onChange={(e)=>{dispatch(addStandartTypeCh(e.target.value))}}
                             style = {handleInputStyle(standartType)}
@@ -228,8 +228,8 @@ const options = [
                         })}
                         </select>
                         {handleInputIcons(standartType)}
-                        </>}
-                    </div>
+                        
+                    </div></>}
 
 
 

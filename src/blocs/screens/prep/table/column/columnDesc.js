@@ -1,10 +1,12 @@
 
+import { Barcode } from '../../../../barcode/barcode'
+import { SVGstar } from '../../../../../svg/svg'
+import { ColumnFlowForm } from './columnFlowForm'
+
 import '../../../../../sass/sassTemplates/desc.scss'
 import '../../../../../sass/sassTemplates/flow.scss'
 import '../../../../../sass/sassTemplates/overflow.scss'
-import { FlowForm } from '../flowForm'
-import { Barcode } from '../../../../barcode/barcode'
-import { SVGstar } from '../../../../../svg/svg'
+
 
 export const ColumnDesc = () => {
        const content = <>                 
@@ -29,55 +31,54 @@ export const ColumnDesc = () => {
                 </div>
 
                 <div className="desc__overflow-wrap">
-                    <div className="grid">
-                        <div className="grid__box item-a">
-                            <div className="grid__heading">Партия</div>
-                            <div className="grid__value">7878</div>
+                    <div className="grid grid_columns">
+                        <div className="grid__box item-a"style={{ backgroundColor:'#00ac7f'}}>
+                            <div className="grid__heading"style={{color:'white'}}>Статус</div>
+                            <div className="grid__value" style={{color:'white'}}>Свободна</div>
                         </div>
+                        {/* <div className="grid__box item-a"style={{ backgroundColor:'red'}}>
+                            <div className="grid__heading"style={{color:'white'}}>Статус</div>
+                            <div className="grid__value" style={{color:'white'}}>В работе</div>
+                        </div> */}
 
                         <div className="grid__box item-b">
-                            <div className="grid__heading">Упаковка</div>
-                            <div className="grid__value">600 g</div>
+                            <div className="grid__heading">Партия</div>
+                            <div className="grid__value">734874</div>
                             <img className="grid__icon" src="icons/scales.svg" alt="document" />
                         </div>
-                        <div className="grid__box item-c" >
-                            <div className="grid__heading">Дата производства - <br /> годен до</div>
-                            <div className="grid__descr">45.45.2023</div>
+                        <div className="grid__box item-c">
+                            <div className="grid__heading">Серийный номер</div>
+                            <div className="grid__value">t12341234</div>
+                        </div>
+                        <div className="grid__box item-d" >
+                            <div className="grid__heading">Дата производства</div>
+                            <div className="grid__value">45.45.2023</div>
                             <img className="grid__icon" src="icons/date.svg" alt="document" />
                         </div>
-                        <div className="grid__box item-d">
-                            <div className="grid__heading">Расположение</div>
-                            <div className="grid__value">there</div>
-                            <img className="grid__icon" src="icons/location.svg" alt="location" />
+
+                        <div className="grid__box item-r">
+                        <div className="grid__heading">Основной проект</div>
+                            <div className="grid__value">Диклофенак Диклофенак Диклофенак Диклофенак</div>
                         </div>
-                        <div className="grid__box item-e"></div>
-                        <div className="grid__box item-f">
-                            <div className="grid__heading grid__heading_white">Наличие</div>
-                            <div className="grid__value">
-                                <div className="grid__quantity">100%</div>
-                                <div className="grid__quantity">600 g</div>
+
+                        <div className="grid__box item-f"style={{display:'flex',flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+                            <div>
+                                <div className="grid__quantity"style={{fontSize:'7px', lineHeight:'20px', marginBottom:'15px'}}>Счётчик инжекций <br /> <span style={{fontSize:'20px'}}>34673</span></div>
+                                <div className="grid__quantity"style={{fontSize:'7px', lineHeight:'18px'}}>Растворитель хранения: <br /> <span style={{fontSize:'16px'}}>ACN:H2O=1:1</span></div>
                             </div>
-                            <div className="grid__jar">
-                                <img className="grid__img" src="icons/jar.svg" alt="jar" />
-                                <div className="grid__jar-scale" style={{height: `100%`}}></div>
-                            </div>
-                            <div className="grid__icon"></div>
-                            <button className="grid__btn">Заказать</button>
+                            <img src="icons/injector.svg" alt="injector" style={{height:'90px'}}/> 
                         </div>
                         <div className="grid__box item-g">
                             <div className="grid__heading grid__heading_white">Документы</div>
                             <div className="grid__value">
                                 <div className="grid__doc"> Паспорт</div>
-                                <div className="grid__doc"><a href='/'>SDS</a></div>
-                                <div className="grid__doc"><a href='/'>TDS</a></div>
                             </div>
                             
                             <div className="grid__barcode"> 
                                 <img src="icons/upc.svg" alt="" /> 
                             </div>
-                            <Barcode/>
-                        </div>
                             <img className="grid__icon" src="icons/document.svg" alt="document" />
+                            <Barcode/>
                         </div>
                         <div className="grid__box item-h">
                             <div className="grid__heading grid__heading_white">Последний пользователь</div>
@@ -86,11 +87,15 @@ export const ColumnDesc = () => {
                                     <div className="grid__history">Lily</div>
                                     <div className="grid__history"></div>
                                     <div className="grid__history"></div>
-                                </> : <div className="grid__history">Похоже, никто не пользовался</div>
+                                </> 
+                                <div className="grid__history">Похоже, никто не пользовался</div>
                             </div>
                             <img className="grid__icon" src="icons/person.svg" alt="document" />
-                            <button className="grid__btn">Смотреть развернутую историю списаний</button>
+                            <button className="grid__btn">Смотреть развернутую историю списаний ❯❯</button>
                         </div>
+                            
+                        </div>
+                        
                     </div>
                 </div>
         </>
@@ -100,7 +105,7 @@ export const ColumnDesc = () => {
 return(
     <div className="desc">
         {content}
-        <FlowForm/>
+        <ColumnFlowForm/>
     </div>
   )
 }

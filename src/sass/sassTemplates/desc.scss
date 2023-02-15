@@ -136,6 +136,13 @@
         "a b c d e"
         "f f g g e"
         "h h h h h";
+    &_columns{
+        grid-template: 82px 125px 70px/ 1fr 1fr 1fr 1fr 2fr;
+        grid-template-areas:
+            "a b c d r"
+            "f f f g g"
+            "h h h h h";
+    }
     &__box{
         border: 1px solid $main-color;
         border-radius: 5px;
@@ -302,6 +309,9 @@
     grid-area: h;
     background-color:  $utility-color;
     border: none;
+}
+.item-r{
+    grid-area: r;
 }
 @media (max-width: 1200px) {
     .grid{

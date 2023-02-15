@@ -35,6 +35,7 @@ export const UserItem = (props) => {
         <div className="profile__card profile__card_mini">
             {showChCredentials && <ChangeCredentials
                 name = {name}
+                position = {position}
                 direction = {direction}
                 id = {_id}
                 email = {email}
@@ -43,6 +44,7 @@ export const UserItem = (props) => {
             {showChRole && <ChangeRole
                 name = {name}
                 role = {role}
+                position = {position}
                 direction = {direction}
                 id = {_id}
                 setShowChRole = {setShowChRole}
