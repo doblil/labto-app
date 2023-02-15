@@ -36,12 +36,8 @@ export const ChangeRole = (props) => {
              <div className="overlay">
                 <div className="overlay__window">
                     <div className="close" onClick={handleCancel}></div>
-                    <div className="overlay__heading"> 
-                        <p>Изменение прав сотрудника</p>
-                    </div>
-                    <div className="overlay__heading"> 
-                        <p>{name}, {position}, {direction}. Текущие права: {stringifyRole(role)}</p>
-                    </div>
+                    <div className="overlay__heading">Изменение прав сотрудника</div>
+                    <div className="confirm__text" style={{marginBottom:'3px'}}>{name}, {position}, {direction} <br /> Текущие права: {stringifyRole(role)}</div>
                     <div className="flow__destination">
                         <div className="flow__label">Права</div>
                         <CustomSelect
@@ -53,6 +49,8 @@ export const ChangeRole = (props) => {
                             selected = {newRole}
                         />
                     </div>
+                    <br />
+
                     <div className="flow__btn-wrap">
                         <button 
                             className="btn btn_white flow__btn" 
@@ -60,8 +58,7 @@ export const ChangeRole = (props) => {
                             children = 'Изменить'
                         />
                         <button className="btn flow__btn" onClick={handleCancel}>Отменить</button>
-                    </div>
-                    
+                    </div>                    
                 </div>
             </div>
         </>

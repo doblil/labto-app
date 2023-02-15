@@ -36,10 +36,9 @@ export const ChangeCredentials = (props) => {
              <div className="overlay">
                 <div className="overlay__window">
                     <div className="close" onClick={handleCancel}></div>
-                    <div className="overlay__heading"> <p>Изменение данных сотрудника</p>
+                    <div className="overlay__heading">Изменение данных сотрудника
                     </div>
-                    <div className="overlay__heading"> <p>{name}, {position}, {direction}</p>
-                    </div>
+                    <div className="confirm__text">{name}, {position}, {direction}</div>
                     
 
                     

@@ -15,13 +15,16 @@ import { ProfileHistory } from "../screens/profile/profileHistory"
 import { Orders } from "../screens/profile/orders/orders"
 import { Rs } from "../screens/prep/table/rs/rs"
 import { ConfirmMessage } from "../confirmMessage/confirmMessage"
-import { ReportAnnual } from "../screens/report/reportAnnual"
+import { ReportProjects } from "../screens/report/reportProjects"
+import { ReportDepartment } from "../screens/report/reportDepartment"
 import { Users } from "../screens/admin/users/users"
 import { Admin } from "../screens/admin/admin"
 import { Projects } from "../screens/admin/projects/projects"
 import { Options } from "../screens/admin/options/options"
 import { PurchasesList } from "../screens/purchases/purchasesList"
 import { Column } from "../screens/prep/table/column/column"
+
+
 export const ContentRouter = () => {
   
   const {isAuth} = useSelector(state => state.auth);

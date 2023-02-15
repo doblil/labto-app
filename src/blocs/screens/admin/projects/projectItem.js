@@ -23,7 +23,7 @@ export const ProjectItem = (props) => {
     return(
         <>
             {showChangeProject && <ChangeProject name = {name} descr = {descr} target={id} code={code} setShowChangeProject = {setShowChangeProject}/>}
-            <div className="profile__card">
+            <div className="profile__card" style={{padding:'20px 10px'}}>
                 <div className="profile__name">{name}</div> <br />
                 <div className="profile__name">{code}</div> <br />
                 <div className="profile__info">{descr}</div>
