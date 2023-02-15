@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useState } from 'react'
 import { useSelector } from 'react-redux';
-import { useMessageOrderMutation } from '../../../../redux/api/orderApi';
+import { useMessageOrderMutation, useStatusOrderMutation } from '../../../../redux/api/orderApi';
 import { stringifyDate, stringifyOrderStatus } from '../../../../services/services'
 
 
@@ -16,7 +16,7 @@ export const OrderItem = (props) => {
     })
 
     const [messageOrder, {isLoading}] = useMessageOrderMutation()
-
+    const [statusOrder, {isLoading: statusLoading}] = useStatusOrderMutation();
     const inputRef = useRef(null);
 
     
@@ -37,6 +37,13 @@ export const OrderItem = (props) => {
         } else {
             return
         }
+    }
+
+    const handleConfirm = async () => {
+        if(isLoading || statusLoading) return
+        if(status !== 'completed') return
+        const target = uniqueId;
+        await statusOrder({target, status: 'confirmed'});
     }
 
     return (
@@ -75,9 +82,8 @@ export const OrderItem = (props) => {
                 </div>
                 <div className="profile__value profile__value_border">{stringifyOrderStatus(status)}</div>
                 <div className="profile__value">
-                    {status === "canceled" && <div className="profile__select">Удалить</div>}
-                    {status === "сompleted" && <div className="profile__select">Подтвердить</div>}
-                    <div className="profile__select" style={{marginLeft:'0', width:'105px', fontSize:'10px', marginLeft:'5px'}} onClick={handleShowForm}>+Kомментарий</div> 
+                    {status === 'completed' && <div className="profile__select" style={{width:'105px', fontSize:'10px', marginLeft:'5px', backgroundColor: 'green', color:"white"}} onClick={handleConfirm}>Подтвердить</div>}
+                    <div className="profile__select" style={{ width:'105px', fontSize:'10px', marginLeft:'5px'}} onClick={handleShowForm}>+Kомментарий</div> 
                 </div>        
             </div>
             {/* <div className="profile__messages">

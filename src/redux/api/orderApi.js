@@ -12,7 +12,7 @@ export const orderApi = api.injectEndpoints({
             query: (status)=> ({
                 url: `/api/order/getAll/${status}`,
             }),
-            providesTags: ['Draft'],
+            providesTags: ['Order'],
             cache: "no-cache",
         }),
         createOrder: builder.mutation({ 
@@ -26,7 +26,21 @@ export const orderApi = api.injectEndpoints({
 
         statusOrder: builder.mutation({ 
             query: ({target, status}) => ({
-                url: `/api/draft/delete/${target}/${status}`,
+                url: `/api/order/status/${target}/${status}`,
+                method: 'PATCH'
+            }) ,
+            invalidatesTags: ['Order'],
+        }),
+        archiveOrder: builder.mutation({ 
+            query: (target) => ({
+                url: `/api/order/archive/${target}`,
+                method: 'PATCH'
+            }) ,
+            invalidatesTags: ['Order'],
+        }),
+        redirectOrder: builder.mutation({ 
+            query: ({targetUser, target}) => ({
+                url: `/api/order/redirect/${targetUser}/${target}`,
                 method: 'PATCH'
             }) ,
             invalidatesTags: ['Order'],
@@ -56,4 +70,6 @@ export const {
     useGetOrdersQuery,
     useMessageOrderMutation,
     useStatusOrderMutation,
+    useRedirectOrderMutation,
+    useArchiveOrderMutation,
 } = orderApi

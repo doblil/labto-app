@@ -110,6 +110,8 @@ export const stringifyHistoryAction = (type = '') => {
             return 'добавление опции';
         case 'deleteOption':
             return 'удаление опции';
+        case 'redirectOrder':
+            return 'перенаправление заказа';
         default:
             return ''
     }

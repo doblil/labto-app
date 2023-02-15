@@ -20,9 +20,7 @@ import { Users } from "../screens/admin/users/users"
 import { Admin } from "../screens/admin/admin"
 import { Projects } from "../screens/admin/projects/projects"
 import { Options } from "../screens/admin/options/options"
-import { PurchasesApplications } from "../screens/purchases/purchasesApplications"
-import { PurchasesUnderway } from "../screens/purchases/purchasesUnderway"
-import { PurchasesArchive } from "../screens/purchases/purchasesArchive"
+import { PurchasesList } from "../screens/purchases/purchasesList"
 import { Column } from "../screens/prep/table/column/column"
 export const ContentRouter = () => {
   
@@ -33,40 +31,44 @@ export const ContentRouter = () => {
   return (
     
     <Routes>
-      <Route path="/" element = {<Screen/>}>
-        <Route path="/admin" element={<Admin/>}>
-          <Route path="/admin/list" element={<Users/>}/>
-          <Route path="/admin/projects" element={<Projects/>}/>
-          <Route path="/admin/options" element={<Options/>}/>
-        </Route>
-        <Route path="/profile" element={<Profile/>}>
-            <Route path="/profile/info" element={<ProfileInfo/>}/>
-            <Route path="/profile/drafts" element={<Drafts/>}/>
-            <Route path="/profile/history" element={<ProfileHistory/>}/>
-            <Route path="/profile/orders" element={<Orders/>}/>
-        </Route>
-        <Route path="/purchases" element={<Purchases/>}>
-          <Route path="/purchases/applications" element={<PurchasesApplications/>}/>
-          <Route path="/purchases/underway" element={<PurchasesUnderway/>}/>
-          <Route path="/purchases/archive" element={<PurchasesArchive/>}/>
-        </Route>
-        <Route path="/report" element={<Report/>}/>
-        <Route path="/prep" element ={<Prep/>}>
-          <Route path="/prep/reag" element = {<Reag reqParams = {{type: 'reag', isolate: 'false'}}/>}/>
-          <Route path="/prep/reag/isolate" element = {<Reag reqParams = {{type: 'reag', isolate: 'true'}}/>}/>
-          <Route path="/prep/rs" element = {<Rs reqParams = {{type: 'rs', isolate: 'false'}}/>}/>
-          <Route path="/prep/rs/isolate" element = {<Rs reqParams = {{type: 'rs', isolate: 'true'}}/>}/>
-          <Route path="/prep/subst" element = {<Reag reqParams = {{type: 'subst', isolate: 'false'}}/>}/>
-          <Route path="/prep/subst/isolate" element = {<Reag reqParams = {{type: 'subst', isolate: 'true'}}/>}/>
-          <Route path="/prep/column/hplc" element = {<Column/>}/>
-          <Route path="/prep/addReagent" element = {<AddReag/>}/>
-        </Route>
-        <Route path="/report" element ={<Report/>}>
-          <Route path="/report/annual" element = {<ReportAnnual/>}/>
-        </Route>
-        <Route path="/confirm" element={<ConfirmMessage/>}/>
-        <Route path="/purchases" element={<Purchases/>}/>
-      </Route>
+		<Route path="/" element = {<Screen/>}>
+			<Route path="/admin" element={<Admin/>}>
+				<Route path="/admin/list" element={<Users/>}/>
+				<Route path="/admin/projects" element={<Projects/>}/>
+				<Route path="/admin/options" element={<Options/>}/>
+			</Route>
+			<Route path="/profile" element={<Profile/>}>
+				<Route path="/profile/info" element={<ProfileInfo/>}/>
+				<Route path="/profile/drafts" element={<Drafts/>}/>
+				<Route path="/profile/history" element={<ProfileHistory/>}/>
+				<Route path="/profile/orders" element={<Orders/>}/>
+			</Route>
+			<Route path="/purchases/" element={<Purchases/>}>
+				<Route path="/purchases/my/allMy" element={<PurchasesList status = {'allMy'}/>}/>
+				<Route path="/purchases/my/newMy" element={<PurchasesList status = {'newMy'}/>}/>
+				<Route path="/purchases/my/activeMy" element={<PurchasesList status = {'activeMy'}/>}/>
+				<Route path="/purchases/my/completedMy" element={<PurchasesList status = {'completedMy'}/>}/>
+				<Route path="/purchases/my/archiveMy" element={<PurchasesList status = {'archiveMy'}/>}/>
+				<Route path="/purchases/all/all" element={<PurchasesList status = {'all'}/>}/>
+				<Route path="/purchases/all/archive" element={<PurchasesList status = {'archive'}/>}/>
+
+			</Route>
+			<Route path="/report" element={<Report/>}/>
+			<Route path="/prep" element ={<Prep/>}>
+				<Route path="/prep/reag" element = {<Reag reqParams = {{type: 'reag', isolate: 'false'}}/>}/>
+				<Route path="/prep/reag/isolate" element = {<Reag reqParams = {{type: 'reag', isolate: 'true'}}/>}/>
+				<Route path="/prep/rs" element = {<Rs reqParams = {{type: 'rs', isolate: 'false'}}/>}/>
+				<Route path="/prep/rs/isolate" element = {<Rs reqParams = {{type: 'rs', isolate: 'true'}}/>}/>
+				<Route path="/prep/subst" element = {<Reag reqParams = {{type: 'subst', isolate: 'false'}}/>}/>
+				<Route path="/prep/subst/isolate" element = {<Reag reqParams = {{type: 'subst', isolate: 'true'}}/>}/>
+				<Route path="/prep/column/hplc" element = {<Column/>}/>
+				<Route path="/prep/addReagent" element = {<AddReag/>}/>
+			</Route>
+			<Route path="/report" element ={<Report/>}>
+			<Route path="/report/annual" element = {<ReportAnnual/>}/>
+			</Route>
+			<Route path="/confirm" element={<ConfirmMessage/>}/>
+		</Route>
     </Routes>
     
   )

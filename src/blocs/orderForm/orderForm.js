@@ -25,7 +25,7 @@ const [initialise, setInitialise] = useState(false)
     })
 
     const usersOptions = allUsers.map(item => {
-        return { value: item.name, label: `${item.name}, ${item.position}`}
+        return { value: item._id, label: `${item.name}, ${item.position}`}
     })
 
     const typeOptions =  [
@@ -61,7 +61,7 @@ const [initialise, setInitialise] = useState(false)
             }
             
             const body = {
-                name, type, text, addresseeName, manufacturer, cat, initialDestination
+                name, type, text, addressee : addresseeName, manufacturer, cat, initialDestination
             };
 
             if(isLoading) return;
