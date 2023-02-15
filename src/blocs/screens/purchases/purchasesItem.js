@@ -86,13 +86,13 @@ export const PurchasesItem = (props) => {
                     </div>
                     }
                 </div>
-                <div className="profile__value profile__value_border">{stringifyOrderStatus(status)}</div>
+                <div className="profile__value profile__value_border" style={{fontSize:'10px'}}>{stringifyOrderStatus(status)}</div>
                 <div className="profile__value">
-                    {(!['completed', 'canceled', 'confirmed'].includes(status)) && <div className="profile__select" style={{ width:'105px', fontSize:'10px', marginLeft:'5px'}} onClick={()=>setShowStatusForm(true)}>Изменить статус</div>}
-                    {(!['completed', 'canceled', 'confirmed'].includes(status)) && <div className="profile__select" style={{ width:'105px', fontSize:'10px', marginLeft:'5px'}} onClick={()=>setShowRedirectForm(true)}>Перенаправить</div>}
-                    {(['canceled', 'confirmed'].includes(status)) &&  <div style={{ width:'105px', fontSize:'10px', marginLeft:'5px'}} className="profile__select"onClick={handleDeleteOrder}>Удалить</div>}
-                    {(!archive && ['canceled', 'confirmed'].includes(status)) &&  <div style={{ width:'105px', fontSize:'10px', marginLeft:'5px'}} className="profile__select"onClick={handleArchiveOrder}>В архив</div>}
-                    {!archive && <div className="profile__select" style={{ width:'105px', fontSize:'10px', marginLeft:'5px'}} onClick={handleShowForm}>+Kомментарий</div>} 
+                    {(!['completed', 'canceled', 'confirmed'].includes(status)) && <div className="profile__select" style={{ width:'110px', fontSize:'10px', marginLeft:'5px'}} onClick={()=>setShowStatusForm(true)}>Изменить статус</div>}
+                    {(!['completed', 'canceled', 'confirmed'].includes(status)) && <div className="profile__select" style={{ width:'110px', fontSize:'10px', marginLeft:'5px'}} onClick={()=>setShowRedirectForm(true)}>Перенаправить</div>}
+                    {(['canceled', 'confirmed'].includes(status)) &&  <div style={{ width:'110px', fontSize:'10px', marginLeft:'5px'}} className="profile__select"onClick={handleDeleteOrder}>Удалить</div>}
+                    {(!archive && ['canceled', 'confirmed'].includes(status)) &&  <div style={{ width:'110px', fontSize:'10px', marginLeft:'5px'}} className="profile__select"onClick={handleArchiveOrder}>В архив</div>}
+                    {!archive && <div className="profile__select" style={{ width:'110px', fontSize:'10px', marginLeft:'5px'}} onClick={handleShowForm}>+Kомментарий</div>} 
                 </div>        
             </div>
 

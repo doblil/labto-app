@@ -82,7 +82,7 @@ export const OrderItem = (props) => {
                 </div>
                 <div className="profile__value profile__value_border">{stringifyOrderStatus(status)}</div>
                 <div className="profile__value">
-                    {status === 'completed' && <div className="profile__select" style={{width:'105px', fontSize:'10px', marginLeft:'5px', backgroundColor: 'green', color:"white"}} onClick={handleConfirm}>Подтвердить</div>}
+                    {status === 'completed' && <div className="profile__select" style={{width:'105px', fontSize:'10px', marginLeft:'5px', backgroundColor: 'rgb(0, 172, 127)', color:"white"}} onClick={handleConfirm}>Подтвердить</div>}
                     <div className="profile__select" style={{ width:'105px', fontSize:'10px', marginLeft:'5px'}} onClick={handleShowForm}>+Kомментарий</div> 
                 </div>        
             </div>

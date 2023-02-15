@@ -49,14 +49,14 @@ export const RedirectForm = (props) => {
              <div className="overlay">
                 <div className="overlay__window">
                     <div className="close" onClick={handleCancel}></div>
-                    <div className="overlay__heading"> 
-                        <p>Перенаправить заказ другому сотруднику</p>
+                    <div className="overlay__heading">Перенаправить заказ другому сотруднику
                     </div>
-                    <div className="overlay__heading"> 
-                        <p>Заказ № {uniqueId}, от {stringifyDate(fromDate)}. {name}. Заказчик: {ownerName}. Статус: {stringifyOrderStatus(status)}</p>
+                    <br />
+                    <div className="confirm__text" style={{marginBottom:'6px'}}> 
+                        Заказ № {uniqueId} от {stringifyDate(fromDate)} <br /> {name} <br /> Заказчик: {ownerName} <br /> Статус: {stringifyOrderStatus(status)}
                     </div>
                     <div className="flow__destination">
-                        <div className="flow__label">Новый адресат</div>
+                        <div className="flow__label"style={{marginTop:'6px'}}>Новый адресат</div>
                         <CustomSelect
                             handleChange = {handleSelectAdressee}
                             options = {usersOptions}

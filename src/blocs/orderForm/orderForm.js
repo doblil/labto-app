@@ -80,19 +80,21 @@ const [initialise, setInitialise] = useState(false)
         <div className="overlay" onClick={(e)=>{if(e.target.className === 'order') {handleHideForm()}}}>
             <div className="overlay__window">
                 <div className="close" onClick={handleHideForm}></div>
-                <div className="overlay__heading"> <p>Оформление заказа</p>
+                <div className="flow__destination">
+                    <div className="flow__label" style={{marginTop:'7px'}}>Оформление заказа</div>
+                    
                     <CustomSelect
                         handleChange = {handleSelectType}
                         initialise = {initialise}
                         setInitialise = {setInitialise}
                         options = {typeOptions}
-                        width = {'150px'}
+                        width = {'60%'}
                         height = {'20px'}
                         fontSize = {'10px'}
                         selected = {type}
-
                     />
-                </div>
+                    </div>
+                
 
                 <div className="flow__destination">
                     <div className="flow__label">Наименование</div>
@@ -123,7 +125,7 @@ const [initialise, setInitialise] = useState(false)
                 </div>
 
                 <div className="flow__destination">
-                    <div className="flow__label">Проект</div>
+                    <div className="flow__label"style={{marginTop:'7px'}}>Проект</div>
                     <CustomSelect
                         handleChange = {handleSelectDestination}
                         initialise = {initialise}
@@ -136,7 +138,7 @@ const [initialise, setInitialise] = useState(false)
                     />
                 </div>
                 <div className="flow__destination">
-                    <div className="flow__label">Адресат</div>
+                    <div className="flow__label"style={{marginTop:'7px'}}>Адресат</div>
                     <CustomSelect
                         handleChange = {handleSelectAdressee}
                         initialise = {initialise}

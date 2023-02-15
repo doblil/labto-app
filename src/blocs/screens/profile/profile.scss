@@ -7,6 +7,12 @@
         padding: 5px;
         margin-left: 12px;
     }
+    &__clarification{
+        font-size: 12px;
+        position: absolute;
+        top: 15px;
+        color: $fond-color;
+    }
     &__card{
         background-color: rgb(244, 244, 244);
         width: 100%;

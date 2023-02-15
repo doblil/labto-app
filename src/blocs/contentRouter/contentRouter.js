@@ -56,7 +56,10 @@ export const ContentRouter = () => {
 				<Route path="/purchases/all/archive" element={<PurchasesList status = {'archive'}/>}/>
 
 			</Route>
-			<Route path="/report" element={<Report/>}/>
+			<Route path="/report" element={<Report/>}>
+				<Route path="/report/projects" element={<ReportProjects />}/>
+				<Route path="/report/department" element={<ReportDepartment />}/>
+			</Route>
 			<Route path="/prep" element ={<Prep/>}>
 				<Route path="/prep/reag" element = {<Reag reqParams = {{type: 'reag', isolate: 'false'}}/>}/>
 				<Route path="/prep/reag/isolate" element = {<Reag reqParams = {{type: 'reag', isolate: 'true'}}/>}/>
@@ -66,9 +69,6 @@ export const ContentRouter = () => {
 				<Route path="/prep/subst/isolate" element = {<Reag reqParams = {{type: 'subst', isolate: 'true'}}/>}/>
 				<Route path="/prep/column/hplc" element = {<Column/>}/>
 				<Route path="/prep/addReagent" element = {<AddReag/>}/>
-			</Route>
-			<Route path="/report" element ={<Report/>}>
-			<Route path="/report/annual" element = {<ReportAnnual/>}/>
 			</Route>
 			<Route path="/confirm" element={<ConfirmMessage/>}/>
 		</Route>

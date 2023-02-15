@@ -20,13 +20,13 @@ export const PurchasesList = (props) => {
     
     
     if(isLoading){
-        content = <h5>Загрузка заказов...</h5>
+        content = <h6>Загрузка заказов...</h6>
     }
     if(isError){
-        content = <h5>Не удается найти ваши заказы</h5>
+        content = <h6>Не удается найти Ваши заказы</h6>
     }
     if(!data?.orders?.length){
-        content = <h5>Похоже, в данной категории нет заяввок</h5>
+        content = <h6>Похоже, в данной категории нет заявок</h6>
     }
     if(data && data?.orders?.length){
         content = data.orders.map (item=> {
@@ -51,7 +51,7 @@ export const PurchasesList = (props) => {
 
 	return(
         <>
-            <h4>Адресованные мне</h4>
+            {status.includes('My') && <div className="profile__clarification">Адресованные Вам заказы</div>}
             
             <div className="profile__parameter overflow">
                 <div className="profile__value profile__value_header">от</div>
@@ -61,7 +61,7 @@ export const PurchasesList = (props) => {
                 <div className="profile__value profile__value_header">статус</div>
                 <div className="profile__value profile__value_header"></div>
             </div>            
-            <div className="overflow" style={{height: 'calc(100% - 85px)'}}>
+            <div className="overflow" style={{height: 'calc(100% - 25px)'}}>
                 {content}
             </div> 
                 

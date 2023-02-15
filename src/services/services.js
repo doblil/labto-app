@@ -120,7 +120,7 @@ export const stringifyHistoryAction = (type = '') => {
 export const stringifyOrderStatus = (type = '') => {
     switch (type) {
         case 'created':
-            return 'Создан';
+            return 'создан';
         case 'processed':
             return 'в обработке';
         case 'executed':
@@ -134,7 +134,7 @@ export const stringifyOrderStatus = (type = '') => {
         case 'changed':
             return 'изменен';
         case 'confirmed':
-            return 'Завершен, подтвержден заказчиком';
+            return 'завершен, подтвержден заказчиком';
         default:
             return ''
     }
