@@ -30,7 +30,7 @@ export const FlowForm = () => {
     const [draftReagent, {isLoading: draftLoading}] = useDraftReagentMutation()
 
     const options = projects.map(item => {
-        return { value: item.code, label: `${item.code}, ${item.name}`}
+        return { value: {code: item.code, name: item.name}, label: `${item.code}, ${item.name}`}
     })
 
     const handleTakeReagent = async () => {
@@ -47,6 +47,7 @@ export const FlowForm = () => {
         setDate(stringifyDate(Date.now(), false, true)); 
         setQuan(0);
         setTest('');
+        setInitialise(true)
         setDestination(null)
     }
 

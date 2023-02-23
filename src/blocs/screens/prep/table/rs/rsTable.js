@@ -9,7 +9,7 @@ import { activeReagentCh } from "../../../../../redux/store/activeReagSlice"
 export const RsTable = (props) => {
 
 
-    const {catSearch, nameSearch, casSearch, expSearch, favoriteSearch, restSearch, reqParams} = props
+    const {catSearch, nameSearch, casSearch, expSearch, favoriteSearch, restSearch, reqParams, setCurrentFavorite} = props
 
 
     let content = <></>
@@ -22,6 +22,11 @@ export const RsTable = (props) => {
         setActiveItem(id);
         dispatch(activeReagentCh(id))
     }
+
+    const handleCurrentFavorite = (arr = []) => {
+        return setCurrentFavorite(arr.filter(item => favorite.includes(item._id)).length)
+    }
+
 
     const handleFilter = (arr = []) => {;
         if (catSearch) arr = arr.filter(item => item.cat.toLowerCase().includes(catSearch.toLowerCase())) ;
@@ -45,8 +50,12 @@ export const RsTable = (props) => {
             key = { item._id }
             item = {item}
         />
-    })}
+    })
+        handleCurrentFavorite(data.reagents)
+        if (!data.reagents.length) {return <div className="table__load">Здесь пока что пусто...</div>}
+    }
 
+    
 
     return(
         <table className="table__wrap"> 

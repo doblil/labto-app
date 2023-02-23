@@ -276,7 +276,7 @@ export const Desc = (props) => {
                                 {!!SDS && <div className="grid__doc"><a href={SDS}>SDS</a></div>} 
                                 {!!TDS && <div className="grid__doc"><a href={TDS}>TDS</a></div>}
                             </div>
-                            <div className="grid__barcode" onClick={()=>{setShowBarcode(true); console.log('click barcode')}}> 
+                            <div className="grid__barcode" onClick={()=>{setShowBarcode(true);}}> 
                             <img src="icons/upc.svg" alt="" /> 
                             </div>
                             <Barcode 

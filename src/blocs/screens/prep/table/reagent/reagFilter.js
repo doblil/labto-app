@@ -4,11 +4,8 @@ import { SVGstar } from "../../../../../svg/svg"
 
 export const ReagFilter = (props) => {
     
-    const { setCasSearch, setCatSearch, setNameSearch, setExpSearch, setFavoriteSearch, setRestSearch, rest, exp, favorite } = props;
+    const { setCasSearch, setCatSearch, setNameSearch, setExpSearch, setFavoriteSearch, setRestSearch, rest, exp, favorite, currentFavorite } = props;
     const {favorite: favoriteList} = useSelector(state => state.auth)
-
-
-    console.log('from filter', favorite)
 
     return(
         <div className="filter">
@@ -125,7 +122,7 @@ export const ReagFilter = (props) => {
                             checked={favorite === true}
                             onChange = {(e) => setFavoriteSearch(true)}
                         />
-                        <label className="custom-checkbox__text" style={{position: 'relative'}} for="chb-favorite">Избранное ({favoriteList?.length})
+                        <label className="custom-checkbox__text" style={{position: 'relative'}} for="chb-favorite">Избранное ({currentFavorite})
                             <SVGstar style={{
                                 fill: "#ffb027",
                                 position: 'absolute',

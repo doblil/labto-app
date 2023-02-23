@@ -10,6 +10,7 @@ export const RsPage = (props) => {
     
     const {reqParams} = props
 
+    const [currentFavorite, setCurrentFavorite] = useState(0);
     const [nameSearch, setNameSearch] = useState('');
     const [casSearch, setCasSearch] = useState('');
     const [catSearch, setCatSearch] = useState('');
@@ -22,6 +23,7 @@ export const RsPage = (props) => {
     return(
         <div className="info">
             <RsFilter 
+                currentFavorite = {currentFavorite}
                 exp = {expSearch}
                 rest = {restSearch}
                 favorite = {favoriteSearch} 
@@ -35,6 +37,7 @@ export const RsPage = (props) => {
             <div className="overflow table">
                 <div className="table__line"></div>
                 <RsTable
+                    setCurrentFavorite = {setCurrentFavorite}
                     reqParams = {reqParams}
                     nameSearch = {nameSearch}
                     casSearch = {casSearch}

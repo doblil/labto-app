@@ -6,7 +6,7 @@ export const ConfirmMessage = (props) => {
 
 
     return(
-        <>{open && <div className="overlay" >
+        <>{open && <div className="overlay" style={{zIndex:99}}>
                         <div className="overlay__window">
                             <div className="close"></div>
                             <div className="confirm__text">{text}</div>

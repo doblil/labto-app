@@ -10,7 +10,7 @@ export const ReagPage = (props) => {
     
     const {reqParams} = props
     
-
+    const [currentFavorite, setCurrentFavorite] = useState(0)
     const [nameSearch, setNameSearch] = useState('');
     const [casSearch, setCasSearch] = useState('');
     const [catSearch, setCatSearch] = useState('');
@@ -23,6 +23,7 @@ export const ReagPage = (props) => {
     return(
         <div className="info">
             <ReagFilter 
+                currentFavorite = {currentFavorite}
                 exp = {expSearch}
                 rest = {restSearch}
                 favorite = {favoriteSearch} 
@@ -36,6 +37,7 @@ export const ReagPage = (props) => {
             <div className="overflow overflow__mt50 table">
                 <div className="table__line"></div>
                 <ReagTable
+                    setCurrentFavorite = {setCurrentFavorite}
                     reqParams = {reqParams}
                     nameSearch = {nameSearch}
                     casSearch = {casSearch}

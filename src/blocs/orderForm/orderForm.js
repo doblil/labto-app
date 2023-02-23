@@ -21,7 +21,7 @@ const [initialise, setInitialise] = useState(false)
     console.log(allUsers)
 
     const projectOptions = projects.map(item => {
-        return { value: item.code, label: `${item.code}, ${item.name}`}
+        return { value: {code: item.code, name: item.name}, label: `${item.code}, ${item.name}`}
     })
 
     const usersOptions = allUsers.map(item => {

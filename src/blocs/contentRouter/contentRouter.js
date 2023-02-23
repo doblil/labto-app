@@ -67,7 +67,9 @@ export const ContentRouter = () => {
 				<Route path="/prep/rs/isolate" element = {<Rs reqParams = {{type: 'rs', isolate: 'true'}}/>}/>
 				<Route path="/prep/subst" element = {<Reag reqParams = {{type: 'subst', isolate: 'false'}}/>}/>
 				<Route path="/prep/subst/isolate" element = {<Reag reqParams = {{type: 'subst', isolate: 'true'}}/>}/>
-				<Route path="/prep/column/hplc" element = {<Column/>}/>
+				<Route path="/prep/column/hplc" element = {<Column reqParams = {{type: 'hplc', isolate: 'false'}}/>}/>
+				<Route path="/prep/column/gc" element = {<Column reqParams = {{type: 'gc', isolate: 'false'}}/>}/>
+				<Route path="/prep/column/isolate" element = {<Column reqParams = {{type: 'all', isolate: 'true'}}/>}/>
 				<Route path="/prep/addReagent" element = {<AddReag/>}/>
 			</Route>
 			<Route path="/confirm" element={<ConfirmMessage/>}/>

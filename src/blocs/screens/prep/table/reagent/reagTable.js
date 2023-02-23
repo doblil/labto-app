@@ -9,7 +9,7 @@ import { activeReagentCh } from "../../../../../redux/store/activeReagSlice"
 export const ReagTable = (props) => {
 
 
-    const {catSearch, nameSearch, casSearch, expSearch, favoriteSearch, restSearch, reqParams} = props
+    const {catSearch, nameSearch, casSearch, expSearch, favoriteSearch, restSearch, reqParams, setCurrentFavorite} = props
     
 
 
@@ -24,7 +24,7 @@ const handleActiveItem = (id) => {
     dispatch(activeReagentCh(id))
 }
 
-const handleFilter = (arr = []) => {;
+const handleFilter = (arr = []) => {
     if (catSearch) arr = arr.filter(item => item.cat.toLowerCase().includes(catSearch.toLowerCase())) ;
     if (casSearch) arr = arr.filter(item => item.CAS.includes(casSearch)) ;
     if (nameSearch) arr = arr.filter(item => item.name.toLowerCase().includes(nameSearch.toLowerCase())) ;
@@ -36,6 +36,10 @@ const handleFilter = (arr = []) => {;
     return arr
 } 
 
+const handleCurrentFavorite = (arr = []) => {
+    return setCurrentFavorite(arr.filter(item => favorite.includes(item._id)).length)
+}
+
 if (isLoading) {return <div className="table__load">Загрузка...</div>}
 if (isSuccess) {content = handleFilter(data.reagents)
 .map(item => {
@@ -46,8 +50,11 @@ if (isSuccess) {content = handleFilter(data.reagents)
         key = { item._id }
         item = {item}
     />
-})}
+})
+handleCurrentFavorite(data.reagents)
+if (!data.reagents.length) {return <div className="table__load">Здесь пока что пусто...</div>}
 
+}
 
 return(
     <table className="table__wrap"> 

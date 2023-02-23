@@ -39,7 +39,7 @@ export const Barcode = (props) => {
     }
 
     const {showBarcode, setShowBarcode} = props
-    const {itemId, cat, lot, name, manufacturer} = props
+    const {itemId, cat, lot, name, manufacturer, sn, col} = props
 
     const handlePrint = useReactToPrint({
         content: () => printRef.current,
@@ -90,7 +90,8 @@ export const Barcode = (props) => {
                     <div className="barcode__toprint" ref={printRef} style= {{width: styles[printSize].boxWidth, height:styles[printSize].boxHeigt, padding:styles[printSize].padding}}>
                         <BCode margin={5} width={styles[printSize].barcodeWidth} height={30} fontSize={14} value={`${itemId}`}/>
                         <div className="barcode__name" style={{fontSize: styles[printSize].nameFontSize}}>{name}</div>
-                        <div className="barcode__info" style={{fontSize: styles[printSize].infoFontSize}}>{manufacturer} | {cat} | (lot: {lot})</div>
+                        {!col && <div className="barcode__info" style={{fontSize: styles[printSize].infoFontSize}}>{manufacturer} | {cat} | (lot: {lot})</div>}
+                        {col && <div className="barcode__info" style={{fontSize: styles[printSize].infoFontSize}}>{manufacturer} | {cat} | (S/N: {sn})</div>}
                     </div>
                 </div>
                 <button className='btn overlay__btn' onClick={handlePrint}> <img src="icons/printer_white.svg" alt="printer" /> Распечатать</button>

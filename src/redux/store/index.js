@@ -4,6 +4,7 @@ import { api } from '../api/api';
 import sMessageReducer from './sMessageSlice'
 import authReducer from './authSlice'
 import activeReagentReducer from './activeReagSlice'
+import activeColumnReducer from './activeColumnSlice';
 import projectReducer from './projectSlice'
 import addItemReducer from './addItemSlice'
 import changeItemReducer from './changeItemSlice'
@@ -21,6 +22,7 @@ const store = configureStore({
         changeItem: changeItemReducer,
         order: orderReducer, 
         addUser: addUserReducer,
+        activeColumn: activeColumnReducer,
         [api.reducerPath]: api.reducer
     },
     middleware: getDefaultMiddleware => {

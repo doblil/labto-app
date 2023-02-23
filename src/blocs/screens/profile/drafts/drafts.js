@@ -18,7 +18,6 @@ export const Drafts = () => {
 	let content = <></>
 
 	if(isLoading) content = <h5>Загрузка...</h5>
-	if (data && data.drafts.length === 0) content = <h5>У вас пока что нет ни одного черновика</h5>
 	if(data?.drafts){
 		content = data.drafts.map(draft => {
 			return <DraftItem
@@ -32,6 +31,8 @@ export const Drafts = () => {
 			/>
 		})
 	}
+	if (data?.drafts?.length === 0) content = <h5>У вас пока что нет ни одного черновика</h5>
+
 
 
 

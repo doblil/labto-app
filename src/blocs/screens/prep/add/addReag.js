@@ -157,8 +157,8 @@ export const AddReag = () => {
 
     /////////////// OPTIONS
     
-    const destinationOptions = projects.map(item => {
-        return { value: item.code, label: `${item.code}, ${item.name}`}
+    const projectOptions = projects.map(item => {
+        return { value: {code: item.code, name: item.name}, label: `${item.code}, ${item.name}`}
     })
 
 
@@ -390,7 +390,7 @@ const options = [
                                 fontSize = {'15px'}
                                 width = {'250px'}
                                 input = {'none'}
-                                options = {destinationOptions}
+                                options = {projectOptions}
                             />           
                         </div>
                     </div>

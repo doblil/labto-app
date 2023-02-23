@@ -5,17 +5,16 @@ import { useDispatch } from 'react-redux'
 import { reagentReset } from '../../../redux/store/activeReagSlice'
 import { useState } from 'react'
 import { SVGpen } from '../../../svg/svg'
- 
+import { columnReset } from '../../../redux/store/activeColumnSlice'
 
 export const PrepMenu = () => {
 	const [onAdd, setOnAdd] = useState(false)
 	const [activeTab, setActiveTab] = useState('reag')
 
 	const dispatch = useDispatch();
-
-
 	const handleReset = (tab) => {
 		dispatch(reagentReset());
+		dispatch(columnReset())
 		setActiveTab(tab);
 	} 
 
@@ -59,9 +58,9 @@ export const PrepMenu = () => {
 			<div className="menu__stripe"></div>
 			<div className="menu__subtitle">Колонки</div>
 			<ul>
-				<li><Link to='/prep/column/hplc' className='link'><div className={handleClass('hplc')} onClick ={() =>  handleReset('reagIsol')}>ВЭЖХ</div></Link></li>
-				<li><Link to='/prep/column/gc' className='link'><div className={handleClass('gs')} onClick ={() =>  handleReset('rsIsol')}>ГХ</div></Link></li>
-				<li><Link to='/prep/column/isolate' className='link'><div className={handleClass('colIsol')} onClick ={() =>  handleReset('substIsol')}>Списанные</div></Link></li>
+				<li><Link to='/prep/column/hplc' className='link'><div className={handleClass('hplc')} onClick ={() =>  handleReset('hplc')}>ВЭЖХ</div></Link></li>
+				<li><Link to='/prep/column/gc' className='link'><div className={handleClass('gc')} onClick ={() =>  handleReset('gc')}>ГХ</div></Link></li>
+				<li><Link to='/prep/column/isolate' className='link'><div className={handleClass('colIsol')} onClick ={() =>  handleReset('colIsol')}>Списанные</div></Link></li>
 				
 			</ul>
 			<div className="menu__stripe"></div>
