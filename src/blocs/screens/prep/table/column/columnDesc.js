@@ -7,7 +7,7 @@ import '../../../../../sass/sassTemplates/flow.scss'
 import '../../../../../sass/sassTemplates/overflow.scss'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useGetOneColumnQuery, useGetPassportMutation } from '../../../../../redux/api/columnApi'
+import { useGetOneColumnQuery, useGetColPassportMutation } from '../../../../../redux/api/columnApi'
 import { sMessageCh } from '../../../../../redux/store/sMessageSlice'
 import { columnFill } from '../../../../../redux/store/activeColumnSlice'
 import { ColumnHistory } from './columnHistory'
@@ -15,6 +15,9 @@ import { useNavigate } from 'react-router-dom'
 import { FormBusyColumn } from './formBusyColumn'
 import { FormTakeColumn } from './formTakeColumn'
 import { FormReturnColumn } from './formReturnColumn'
+import { ColumnOptions } from './columnOptions'
+import { changeColFill } from '../../../../../redux/store/changeColumnSlice'
+import { stringifyDate } from '../../../../../services/services'
 
 
 export const ColumnDesc = () => {
@@ -26,15 +29,17 @@ export const ColumnDesc = () => {
     const [showHistory, setShowHistory] = useState(false)
     const [showBarcode, setShowBarcode] = useState(false)
     const [showReturnForm, setShowReturnForm] = useState(false)
+    const [showOptions, setShowOptions] = useState(false)
+    const [showChange, setShowChange] = useState(false)
+
     let content = <></>
     
     const {_id: target} = useSelector(state => state.activeColumn)
-    const column = useSelector(state => state.activeColumn)
 
 
     ///////********RTQ Query hook
     const {data, isLoading, isSuccess} = useGetOneColumnQuery(target)
-    const [passportLoader] = useGetPassportMutation();
+    const [passportLoader] = useGetColPassportMutation();
     //////********* HANDLERS
 
     const handleIsURL = (str) =>  {
@@ -45,7 +50,24 @@ export const ColumnDesc = () => {
           '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
           '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
         return !!pattern.test(str);
-      }
+    }
+
+
+    const handleAddSame = () => {
+      
+    }
+
+    const handleDelete = () => {
+      
+    }
+
+    const handleChange = () => {
+      
+    }
+
+    const handleIsolate = () => {
+      
+    }
 
     // before fetching
 
@@ -68,7 +90,7 @@ export const ColumnDesc = () => {
         const {type, itemId, name, cat, lot, sn,
         manufacturer, totalInj, restSolvent, descr, 
         busy, passport, pressureLimit, mainSubstance,
-        mainProject, current, inUse, fromDate, _id} = data.column;
+        mainProject, current, inUse, fromDate, _id, price} = data.column;
 
 
         const passportIsURL = handleIsURL(passport)
@@ -87,10 +109,30 @@ export const ColumnDesc = () => {
  
         }
         dispatch(columnFill(data.column));
-        const last = inUse[inUse.length - 1];
+        dispatch(changeColFill({passport, descr, mainProject, itemId, restSolvent, pressureLimit, price}))
+        const last = inUse[inUse.length - 1]
 
-
-        content = <>                 
+        content = <>    
+            {showHistory && <ColumnHistory 
+                setShowHistory = {setShowHistory} 
+                itemId = {itemId} 
+                sn = {sn} 
+                cat = {cat} 
+                name = {name} 
+                inUse = {inUse}
+            />}  
+            <div className="desc__action-wrap">
+                {!!showOptions && 
+                    <ColumnOptions
+                        handleAddSame = {handleAddSame}
+                        handleDelete = {handleDelete}
+                        handleIsolate = {handleIsolate}
+                        handleChange = {handleChange}
+                        setShowChange = {setShowChange}
+                    />
+                }
+                <button className='desc__item-action desc__item-action_main' onClick={() => setShowOptions(!showOptions)}>Опции</button>
+            </div>           
             <div className="desc__top">
 
                 <div className="desc__heading">
@@ -107,11 +149,6 @@ export const ColumnDesc = () => {
             </div>
         
             <div className="overflow overflow__mt29 desc__overflow">
-                
-                <div className="overflow_border desc__overflow-wrap" style={{display: `${showHistory === true ? '' : 'none' }`}}>
-                    <ColumnHistory setShowHistory={setShowHistory} column = {column}/>
-                </div>
-
 
                 <div className="desc__overflow-wrap">
                     <div className="grid grid_columns">
@@ -151,7 +188,8 @@ export const ColumnDesc = () => {
                         <div className="grid__box item-g">
                             <div className="grid__heading grid__heading_white">Документы</div>
                             <div className="grid__value">
-                                <div className="grid__doc"> Паспорт</div>
+                                {!passportIsURL && <div className="grid__doc" onClick={handlePassport}>Паспорт</div>}
+                                {!!passportIsURL && <div className="grid__doc" onClick={handlePassport}><a rel="noreferrer" href={passport} target="_blank">Паспорт</a></div>}
                             </div>
                             
                             <div className="grid__barcode" onClick={()=>{setShowBarcode(true);}}> 
@@ -173,15 +211,15 @@ export const ColumnDesc = () => {
                         <div className="grid__box item-h">
                             <div className="grid__heading grid__heading_white">Последний пользователь</div>
                             <div className="grid__value grid__value_row">
-                                <>
-                                    <div className="grid__history">Lily</div>
-                                    <div className="grid__history"></div>
-                                    <div className="grid__history"></div>
-                                </> 
-                                <div className="grid__history">Похоже, никто не пользовался</div>
+                                {!!last && <>
+                                    <div className="grid__history">{last.userName}</div>
+                                    <div className="grid__history">{stringifyDate(last.toDate)}</div>
+                                    <div className="grid__history">{last.destination.name}</div>
+                                </>} 
+                                {!last && <div className="grid__history">Похоже, никто не пользовался</div>}
                             </div>
                             <img className="grid__icon" src="icons/person.svg" alt="document" />
-                            <button className="grid__btn">Смотреть развернутую историю списаний ❯❯</button>
+                            <button className="grid__btn" onClick={() => {setShowHistory(true)} }>Смотреть развернутую историю списаний ❯❯</button>
                         </div>
                             
                         </div>
@@ -210,3 +248,5 @@ return(
     </div>
   )
 }
+
+

@@ -94,9 +94,9 @@ export const Desc = (props) => {
     const handleDelete = async () => {
         if (handleLoaders()) return
         try {
+            dispatch(reagentReset())
             await deleteReagent(target)
             dispatch(deleteFavorite(target))
-            dispatch(reagentReset())
         } catch (error) {
             console.error(error)
         }

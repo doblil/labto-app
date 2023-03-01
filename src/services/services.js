@@ -82,6 +82,10 @@ export const stringifyHistoryAction = (type = '') => {
             return 'начало работы с колонкой';
         case 'returnColumn':
             return 'заавершение работы с колонкой';
+        case 'addColumn':
+            return 'добаление колонки';
+        // case 'returnColumn':
+        //     return 'заавершение работы с колонкой';
         case 'createOrder':
             return 'создание заказа';
         case 'changeOrderStatus':
@@ -104,8 +108,8 @@ export const stringifyHistoryAction = (type = '') => {
             return 'создание проекта';
         case 'deleteProject':
             return 'удаление проекта';
-        case 'changeProjectStatus':
-            return 'изменение статуса проекта';
+        case 'changeProject':
+            return 'изменение проекта';
         case 'addOption':
             return 'добавление опции';
         case 'deleteOption':

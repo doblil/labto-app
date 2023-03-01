@@ -39,7 +39,6 @@ export const ColumnTable = (props) => {
     if (isSuccess) {content = handleFilter(data.columns)
         .map(item => {
             return <ColumnItem
-                activeItem = {activeItem === item._id}
                 handleActiveItem = {handleActiveItem}
                 key = { item._id }
                 item = {item}

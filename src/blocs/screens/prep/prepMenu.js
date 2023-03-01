@@ -19,8 +19,8 @@ export const PrepMenu = () => {
 	} 
 
 
-	const handleFill = () => {
-		if (activeTab === 'add') {
+	const handleFill = (active) => {
+		if (activeTab === active) {
 			return 'black'
 		} else {
 			return 'white'
@@ -36,7 +36,8 @@ export const PrepMenu = () => {
 	}
 	
 	return(
-		<div className="menu">
+		<div className="menu" style={{paddingRight: '30px'}}>
+			<div className="owerflow" style={{height:'100%'}}>
 			<div className="menu__title">Препараторская</div>
 			<div className="menu__stripe"></div>
 			<div className="menu__subtitle">Таблица</div>
@@ -67,14 +68,25 @@ export const PrepMenu = () => {
 			<ul>
 				<li><Link to='/prep/addReagent'className='link'>
 						<div className={`${handleClass('add')} menu__item-inner`} onClick ={() =>  handleReset('add')}>
-							<SVGpen fill={handleFill()}/>
+							<SVGpen fill={handleFill('add')}/>
 							<br />
-							<p>Внеcение</p>
+							<p>Внесение</p>
+					
+						</div>
+					</Link>
+				</li>
+				<li><Link to='/prep/addColumn'className='link'>
+						<div className={`${handleClass('addColumn')} menu__item-inner`} onClick ={() =>  handleReset('addColumn')}>
+							<SVGpen fill={handleFill('addColumn')}/>
+							<br />
+							<p style={{textAlign: 'center'}}>Внесение колонок</p>
 					
 						</div>
 					</Link>
 				</li>
 			</ul>
+			</div>
+			
 
 		</div>
 		)

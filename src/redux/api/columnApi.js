@@ -77,7 +77,7 @@ export const columnApi = api.injectEndpoints({
             }) ,
             invalidatesTags: ['Column'],
         }),
-        getPassport: builder.mutation({
+        getColPassport: builder.mutation({
             query: (target)=> ({
                 url: `/api/column/getPassport/${target}`,
                 method: "GET",
@@ -95,7 +95,7 @@ export const {
     useFavoriteColumnMutation,
     useGetColumnsQuery,
     useGetOneColumnQuery,
-    useGetPassportMutation,
+    useGetColPassportMutation,
     useIsolateColumnMutation,
     useTakeColumnMutation,
     useReturnColumnMutation,

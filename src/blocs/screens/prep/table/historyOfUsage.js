@@ -88,7 +88,7 @@ export const HistoryOfUsage = (props) => {
                 </tbody>
         
             </table>
-            {printPrep && <h5>Всего использовано {Math.round(totalUsage*1000)/1000}{units} за период {startDate} - {endDate}</h5>}
+            {printPrep && <h6 style={{marginTop: '25px'}}>Всего использовано {Math.round(totalUsage*1000)/1000}{units} за период {startDate} - {endDate}</h6>}
         </div>
        
     )

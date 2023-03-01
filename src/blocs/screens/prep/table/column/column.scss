@@ -1,0 +1,21 @@
+@import '../../../../../sass/base/variables.scss';
+@import '../../../../../sass/base/title.scss';
+
+.column{
+    &__history{
+        width: 100%;
+        display: flex;
+        padding: 5px;
+        background-color: $substrate-color;
+        border-radius: 12px;
+        margin-top: 7px;
+    }
+    &__value{
+        padding: 10px;
+        font-size: 12px;
+        margin-right: 25px;
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+}

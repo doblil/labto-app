@@ -1,4 +1,4 @@
-import {  useState } from 'react';
+import {  useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { isAuthCh, setCredentials, userIdCh } from '../../redux/store/authSlice';
@@ -15,7 +15,13 @@ export const AuthForm = (props) => {
  
     const [login, ] = useLoginMutation();
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    const authRef = useRef(null)
+
+    useEffect(() => {
+      authRef.current.focus();
+    }, [])
 
     const handleLogin = async () =>  {
         
@@ -42,12 +48,12 @@ export const AuthForm = (props) => {
 
     return(
         
-        <div className="auth">
+        <div className="auth" >
             <img src="icons/main_logo.svg" alt="logo" />
             <div className="auth__wrapper">
-                <form className=" fadein" onKeyDown={(e) =>{if(e.key === 'Enter'){handleLogin()}}}>
+                <form className=" fadein" >
                     <label >Логин</label>
-                    <input onChange={(e) => setEmail(e.target.value)}  type="email" className="auth__input" placeholder="email" value ={email}/>
+                    <input onKeyDown={(e) =>{if(e.key === 'Enter'){handleLogin()}}} ref={authRef} onChange={(e) => setEmail(e.target.value)}  type="email" className="auth__input" placeholder="email" value ={email}/>
                     <label >Пароль</label>
                     <input onKeyDown={(e) =>{if(e.key === 'Enter'){handleLogin()}}} onChange={(e) => setPassword(e.target.value)} type="password" className="auth__input" placeholder="Пароль" value = {password}/>
                     <a href="/" className="auth__forgot">Забыли пароль?</a>

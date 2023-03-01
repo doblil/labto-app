@@ -23,6 +23,8 @@ import { Projects } from "../screens/admin/projects/projects"
 import { Options } from "../screens/admin/options/options"
 import { PurchasesList } from "../screens/purchases/purchasesList"
 import { Column } from "../screens/prep/table/column/column"
+import { AddColumn } from "../screens/prep/add/addColumn"
+import { SetMobileApp } from "../screens/admin/setMobileApp/setMobileApp"
 
 
 export const ContentRouter = () => {
@@ -39,6 +41,8 @@ export const ContentRouter = () => {
 				<Route path="/admin/list" element={<Users/>}/>
 				<Route path="/admin/projects" element={<Projects/>}/>
 				<Route path="/admin/options" element={<Options/>}/>
+				<Route path="/admin/setMobileApp" element={<SetMobileApp/>}/>
+
 			</Route>
 			<Route path="/profile" element={<Profile/>}>
 				<Route path="/profile/info" element={<ProfileInfo/>}/>
@@ -71,6 +75,7 @@ export const ContentRouter = () => {
 				<Route path="/prep/column/gc" element = {<Column reqParams = {{type: 'gc', isolate: 'false'}}/>}/>
 				<Route path="/prep/column/isolate" element = {<Column reqParams = {{type: 'all', isolate: 'true'}}/>}/>
 				<Route path="/prep/addReagent" element = {<AddReag/>}/>
+				<Route path="/prep/addColumn" element = {<AddColumn/>}/>
 			</Route>
 			<Route path="/confirm" element={<ConfirmMessage/>}/>
 		</Route>

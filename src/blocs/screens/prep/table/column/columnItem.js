@@ -5,10 +5,11 @@ import { SVGstar } from "../../../../../svg/svg"
 export const ColumnItem = (props) => {
   
   const {favorite} = useSelector(state => state.auth)
-  const { itemId, name, sn, manufacturer, cat, mainProject, _id } = props.item;
+  const {_id: target} = useSelector(state => state.activeColumn)
+  const { itemId, name, sn, manufacturer, cat, mainProject, _id} = props.item;
 
   return(
-    <tr className={props.activeItem ? "table__row table__row_active" : "table__row"} onClick = {() => props.handleActiveItem(_id)}>
+    <tr className={_id ===  target ? "table__row table__row_active" : "table__row"} onClick = {() => props.handleActiveItem(_id)}>
 		<td className="table__item">{itemId}</td>
 		<td className="table__item">
 			{(favorite.includes(_id)) && <SVGstar style={{

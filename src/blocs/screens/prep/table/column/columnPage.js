@@ -23,6 +23,8 @@ export const ColumnPage = (props) => {
                 setIUse = {setIUse}
                 favoriteSearch = {favoriteSearch}
                 setFavoriteSearch = {setFavoriteSearch}
+                projectSearch = {projectSearch}
+                nameSearch = {nameSearch}
                 
             />
             <div className="overflow overflow__mt50 table">

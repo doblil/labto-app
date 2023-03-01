@@ -3,8 +3,16 @@ import { api } from "./api";
 export const uploadApi = api.injectEndpoints({
     endpoints: builder => ({
         upload: builder.mutation({
-            query: ({userId, itemId, formData}) => ({
-                url: `/api/upload/${userId}/${itemId}`,
+            query: ({itemId, formData}) => ({
+                url: `/api/upload/${itemId}`,
+                method: 'PATCH',
+                body: formData,
+            }),
+            
+        }),
+        uploadCol: builder.mutation({
+            query: ({itemId, formData}) => ({
+                url: `/api/uploadCol/${itemId}`,
                 method: 'PATCH',
                 body: formData,
             }),
@@ -14,4 +22,4 @@ export const uploadApi = api.injectEndpoints({
     }),
 });
 
-export const { useUploadMutation } = uploadApi;
+export const { useUploadMutation, useUploadColMutation } = uploadApi;

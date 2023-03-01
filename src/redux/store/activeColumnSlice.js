@@ -25,7 +25,7 @@ const activeColumnSlice = createSlice({
         current: {},
         inUse: [],
         price: null,
-        
+        fromDate: null,
         
     },
     reducers: {
@@ -53,6 +53,7 @@ const activeColumnSlice = createSlice({
             state.mainProject = action.payload.mainProject
             state.current = action.payload.current
             state.inUse = action.payload.inUse
+            state.fromDate = action.payload.fromDate
         },
         inUseCh: (state, action) => {
             state.inUse = action.payload
@@ -81,6 +82,7 @@ const activeColumnSlice = createSlice({
             state.mainProject = {}
             state.current = {}
             state.inUse = []
+            state.fromDate = null
     
         } ,
         

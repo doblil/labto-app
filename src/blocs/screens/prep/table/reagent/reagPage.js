@@ -33,6 +33,9 @@ export const ReagPage = (props) => {
                 setRestSearch = {setRestSearch}
                 setFavoriteSearch = {setFavoriteSearch}
                 setExpSearch = {setExpSearch}
+                nameSearch = {nameSearch}
+                catSearch = {catSearch}
+                casSearch = {casSearch}
             />
             <div className="overflow overflow__mt50 table">
                 <div className="table__line"></div>
