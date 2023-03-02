@@ -15,6 +15,7 @@ export const ReagFilter = (props) => {
 
     return(
         <div className="filter">
+            <div style={{display:'flex',flexWrap:'wrap', alignItems:'center'}}>                
                 <div className="filter__inputs">
                     <div className="filter__wrap">
                         <div className="filter__label">Поиск по названию</div>
@@ -34,14 +35,13 @@ export const ReagFilter = (props) => {
                                 </svg></button>
                     </div>
 
-                    <div className="filter__wrap">
+                    <div className="filter__wrap" style={{marginBottom:'5px',marginRight:'0'}}>
                         <div className="filter__label">Поиск по CAS-№</div>
                         <input type="text" className="filter__input" onChange={(e)=>{setCasSearch(e.target.value)} } value= {casSearch}/>
                         <button className="filter__btn"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="10" fill="white" class="bi bi-search" viewBox="0 0 16 16">
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                                 </svg></button>
                         
-                       
                     </div>
 
                 </div>
@@ -137,13 +137,14 @@ export const ReagFilter = (props) => {
                                 }}/>
                         </label> <br />
                     </div>
-                    <button 
+                </div>
+                <button 
                         className="btn" 
-                        style={{fontSize: '8px', lineHeight:'10px', width: '70px', height:'30px', fontWeight: '500'}}
+                        style={{fontSize: '9px', lineHeight:'10px', width: '120px', height:'26px', fontWeight: '500', marginTop:"10px"}}
                         children='Сбросить фильтры'
                         onClick = {handleResetFilter}
                     />
-                </div>
             </div>
+        </div>
     )
 }

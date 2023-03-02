@@ -35,10 +35,10 @@ export const ProfileHistory = () => {
 			 	<table table className="table__wrap"> 
               		<thead>     
                   		<tr>
-							<th>дата</th>
-							<th>действие</th>
-							<th>наименование</th>
-							<th>информация</th>
+							<th>Дата</th>
+							<th>Действие</th>
+							<th>Наименование</th>
+							<th>Информация</th>
                   		</tr>
               		</thead>
             		<tbody>

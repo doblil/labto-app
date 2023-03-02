@@ -214,7 +214,7 @@ export const Desc = (props) => {
                 </div>
 
                 <div className="desc__status">
-                    {!!standartType && <div className="desc__rs">Стандартный образец {stringifyRSType(standartType)}</div>}
+                    {(type === 'rs') && <div className="desc__rs">Стандартный образец {stringifyRSType(standartType)}</div>}
                     <div className="desc__favorite">
                         {isFavorite && <SVGstar handleFavorite = {handleFavorite} style={{fill: "#ffb027", height:"25", width: "25"}}/>}
                         {!isFavorite && <SVGstar handleFavorite = {handleFavorite} style={{fill: "#cdcdcd", height:"25", width: "25"}}/>}

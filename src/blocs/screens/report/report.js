@@ -17,7 +17,7 @@ export const Report = (props) => {
     return (
         <>
             <ReportMenu activeNav={activeNav}/>
-            <div className="page"><Outlet/></div>
+            <div className="page" style={{padding:'10px 15px'}}><Outlet/></div>
         </>
     )
 }

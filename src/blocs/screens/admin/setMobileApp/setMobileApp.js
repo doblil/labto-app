@@ -8,7 +8,7 @@ export const SetMobileApp = () => {
     
     return(
         <>
-            <h5 style={{marginBottom: '30px'}}>Отсканируйте QR-код на стартовой странице приложения, чтобы его активировать</h5>
+            <h6 style={{marginBottom: '30px',marginTop:'-15px'}}>Отсканируйте QR-код на стартовой странице приложения, чтобы его активировать</h6>
             
             <QRCode
                 size={256}

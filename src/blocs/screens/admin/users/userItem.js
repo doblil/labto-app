@@ -60,7 +60,7 @@ export const UserItem = (props) => {
             />}
             <img src={roleImg[role]} alt="" className="profile__icon profile__icon_mini" />
 
-                <div className="profile__name">{name}</div> <br />
+                <div className="profile__name" style={{marginRight:'15px'}}>{name}</div> <br />
                 <div className="profile__info">{position}</div>
                 <div className="profile__info">{department}</div>
                 <div className="profile__info">{direction}</div>
