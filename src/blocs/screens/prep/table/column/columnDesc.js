@@ -90,7 +90,7 @@ export const ColumnDesc = () => {
         const {type, itemId, name, cat, lot, sn,
         manufacturer, totalInj, restSolvent, descr, 
         busy, passport, pressureLimit, mainSubstance,
-        mainProject, current, inUse, fromDate, _id, price} = data.column;
+        mainProject, current, inUse, fromDate, _id, price, isolate} = data.column;
 
 
         const passportIsURL = handleIsURL(passport)
@@ -226,9 +226,9 @@ export const ColumnDesc = () => {
                         
                     </div>
                 </div>
-                {!!current.userName && <FormBusyColumn setShowReturnForm = {setShowReturnForm} userName = {current.userName} current = {current}/>}
-                {!current.userName && <FormTakeColumn/>}
-                {(current.userName && showReturnForm) && 
+                {!!current.userName && !isolate && <FormBusyColumn setShowReturnForm = {setShowReturnForm} userName = {current.userName} current = {current}/>}
+                {!current.userName && !isolate && <FormTakeColumn/>}
+                {(current.userName && !isolate && showReturnForm) && 
                 <FormReturnColumn 
                     current = {current} 
                     setShowReturnForm = {setShowReturnForm}

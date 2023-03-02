@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CustomSelect } from '../../../customSelect/customSelect';
 
 import './add.scss'
@@ -11,6 +11,7 @@ import { InputFile } from './inputFile';
 import { useUploadColMutation, useUploadMutation } from '../../../../redux/api/uploadApi';
 import { addColCatCh, addColDescrCh, addColFromDateCh, addColInitialDestinationCh, addColItemIdCh, addColLotCh, addColManufacturerCh, addColNameCh, addColPassportCh, addColPressureLimitCh, addColPriceCh, addColReset, addColRestSolventCh, addColSnCh, addColTotalInjCh, addColTypeCh } from '../../../../redux/store/addColumnSlise';
 import { useAddColumnMutation } from '../../../../redux/api/columnApi';
+import { useOutletContext } from 'react-router-dom';
 
 
 export const AddColumn = () => {
@@ -18,6 +19,11 @@ export const AddColumn = () => {
     const [passportType, setPassportType] = useState('link')
     const [passportFile, setPassportFile] = useState(null)
     const {projects} = useSelector(state => state.project)
+
+    const [activeNav, setActiveNav] = useOutletContext();
+    useEffect(() => {
+        setActiveNav('addColumn')
+    })
 
     const { 
         itemId, type, name, cat, lot, sn, manufacturer, totalInj, restSolvent, descr, pressureLimit, passport, mainSubstance, mainProject, initialDestination, price, fromDate

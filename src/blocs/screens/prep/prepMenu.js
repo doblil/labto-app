@@ -3,24 +3,25 @@ import '../../../sass/sassTemplates/menu.scss'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { reagentReset } from '../../../redux/store/activeReagSlice'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SVGpen } from '../../../svg/svg'
 import { columnReset } from '../../../redux/store/activeColumnSlice'
 
-export const PrepMenu = () => {
-	const [onAdd, setOnAdd] = useState(false)
-	const [activeTab, setActiveTab] = useState('reag')
-
+export const PrepMenu = (props) => {
+	const {activeNav, setActiveNav} = props
+	
+	console.log(activeNav)
 	const dispatch = useDispatch();
+
+
 	const handleReset = (tab) => {
 		dispatch(reagentReset());
 		dispatch(columnReset())
-		setActiveTab(tab);
 	} 
 
 
 	const handleFill = (active) => {
-		if (activeTab === active) {
+		if (activeNav === active) {
 			return 'black'
 		} else {
 			return 'white'
@@ -28,7 +29,7 @@ export const PrepMenu = () => {
 	}
 
 	const handleClass = (v) => {
-		if (activeTab === v) {
+		if (activeNav === v) {
 			return 'menu__item menu__item_active'
 		} else {
 			return 'menu__item'

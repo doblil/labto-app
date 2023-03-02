@@ -21,8 +21,6 @@ export const ProfileInfo = () => {
                 <div className="profile__name">{name}</div> <br />
                 <div className="profile__info">{position} {department}</div>
                 <div className="profile__info">{direction}</div>
-                <div className="profile__info">Полисинтез</div> <br />
-                <div className="profile__info">Руководитель: Иванов Иван иваныч</div> <br />
                 <div className="profile__info">Ваши права: {stringifyRole(role)}</div> <br />
 
                 <div className="profile__contact">

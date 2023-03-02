@@ -13,7 +13,7 @@ export const Prep = () => {
 
     return(
         <>
-            <PrepMenu setActiveNav= {setActiveNav}/>
+            <PrepMenu setActiveNav= {setActiveNav} activeNav = {activeNav}/>
             <Outlet context={[activeNav, setActiveNav]}/>
             
         </>

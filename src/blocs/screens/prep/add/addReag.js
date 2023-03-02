@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CustomSelect } from '../../../customSelect/customSelect';
 
 import './add.scss'
@@ -10,6 +10,7 @@ import { useAddReagentMutation } from '../../../../redux/api/reagentApi'
 import { useConfirm } from '../../../../hooks/useConfirm'
 import { InputFile } from './inputFile';
 import { useUploadMutation } from '../../../../redux/api/uploadApi';
+import { useOutletContext } from 'react-router-dom';
 
 
 export const AddReag = () => {
@@ -38,6 +39,11 @@ export const AddReag = () => {
     const [addReagent, {isLoading,}] = useAddReagentMutation()
     const [upload, {isSuccess}] = useUploadMutation()
     
+    const [activeNav, setActiveNav] = useOutletContext();
+    useEffect(() => {
+        setActiveNav('add')
+    })
+
     //////////////HANDLERS
 
     const handleWarn = (w) => {
