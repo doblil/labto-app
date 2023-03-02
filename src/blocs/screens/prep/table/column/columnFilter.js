@@ -14,7 +14,8 @@ export const ColumnFilter = (props) => {
 
     return(
         <div className="filter">
-                <div className="filter__inputs" style={{justifyContent:'flex-start'}}>
+            <div style={{display:'flex',flexWrap:'wrap', alignItems:'center'}}>
+                <div className="filter__inputs">
                     <div className="filter__wrap" style={{marginBottom:'18px', marginRight:'20px'}}>
                         <div className="filter__label">Поиск по названию</div>
                         <input 
@@ -93,12 +94,14 @@ export const ColumnFilter = (props) => {
                     </div>
                     <button 
                         className="btn" 
-                        style={{fontSize: '10px', lineHeight:'12px', width: '85px', height:'30px'}}
+                        style={{fontSize: '9px', lineHeight:'10px', width: '120px', height:'26px', fontWeight: '500', marginTop:"10px"}}
                         children='Сбросить фильтры'
                         onClick = {handleResetFilter}
                     />
 
                 </div>
             </div>
+
+        </div>
     )
 }

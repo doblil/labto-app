@@ -18,7 +18,7 @@ export const ServerMessage = () => {
         content = <>
         </>
     }
-   console.log(currentMessage)
+
 
     useEffect(() => {
 
