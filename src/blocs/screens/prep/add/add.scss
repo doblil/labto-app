@@ -15,6 +15,8 @@
         display: flex;
         margin-bottom: 5px;
         align-items: center;
+        width: max-content;
+        padding-left: 20px;
     }
 
     &__heading{
@@ -23,6 +25,7 @@
         margin-right: 10px;
         font-size: 15px;
         font-weight: 700;
+        position: relative;
         &_input{
             width: 250px;
             height: 40px;
@@ -37,6 +40,7 @@
     }
     &__inner{
         margin-bottom: 20px;
+        padding-left: 20px;
     }
     &__confirm{
         width: 20px;

@@ -144,7 +144,7 @@ const options = [
 
     return(
         <div className="page">
-            <div className="add__top" >{handleInputIcons(type)}
+            <div className="add__top" style={{marginTop:'-10px'}}>
                 <div className="add__heading">Внесение колонки</div>
                 
                 <CustomSelect
@@ -157,7 +157,7 @@ const options = [
                     options = {options}
                     selected = {type}
                 />
-                
+                {handleInputIcons(type)}
             </div>           
             <div className="overflow add__overflow">  
             <AddDialog/>            
@@ -219,7 +219,7 @@ const options = [
                         />
                         {handleInputIcons(sn)}
                     </div>
-                    <div className="add__destination add__destination_mt8">
+                    <div className="add__destination">
                         <div className="add__label">Предел давления</div>
                         <input type="text" class="add__input"
                             value={pressureLimit}
@@ -259,6 +259,19 @@ const options = [
                 </div>
 
                 <div className="add__inner">
+                <div className="add__destination">
+                        <div className="add__label">Целевой проект</div>
+                        <CustomSelect
+                                initialise = {initialise}
+                                setInitialise = {setInitialise}
+                                handleChange = {handleChangeDestination}
+                                height = {'25px'}
+                                fontSize = {'12px'}
+                                width = {'250px'}
+                                options = {projectOptions}
+                            /> 
+
+                    </div>
                     <div className="add__destination">
                         <div className="add__label">Количество инжекций (для колонок бывших в употреблении)</div>
                         <input type="number" class="add__input"
@@ -322,16 +335,7 @@ const options = [
                                 <div className="add__document-title">Добавить TDS:</div>
                                 <input type="text" class="add__input add__input-doc"/>
                             </div>  
-                            <div className="add__heading">Целевой проект</div>
-                            <CustomSelect
-                                initialise = {initialise}
-                                setInitialise = {setInitialise}
-                                handleChange = {handleChangeDestination}
-                                fontSize = {'15px'}
-                                width = {'250px'}
-                                input = {'none'}
-                                options = {projectOptions}
-                            />           
+           
                         </div>
                     </div>
                     
