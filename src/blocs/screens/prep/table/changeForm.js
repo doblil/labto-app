@@ -12,7 +12,6 @@ export const ChangeForm = (props) => {
     const dispatch = useDispatch();
 
     const {CAS, SDS, TDS, passport, warn, location, price, itemId, name} = useSelector(state=>state.changeItem)
-    const {userId} = useSelector(state => state.auth);
     const {_id:target} = useSelector(state => state.activeReagent)
     const [changeReagent] = useChangeReagentMutation();
     const [upload] = useUploadMutation()
@@ -53,7 +52,7 @@ export const ChangeForm = (props) => {
             const formData = new FormData();
             formData.append('files', passportFile[0])
             formData.append('fileName', passportFile[0].name)
-            await upload({userId, itemId, formData}).unwrap()
+            await upload({itemId, formData}).unwrap()
         }
         setPassportFile(null);
         setPassportType('link')

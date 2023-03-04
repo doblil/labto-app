@@ -13,7 +13,7 @@ export const ColumnOptions = (props) => {
         <button className='desc__item-action' >Внести похожую</button>
         {isolate && <button className='desc__item-action' >Удалить</button>}
         {!isolate && <button className='desc__item-action' >Изменить</button>}
-        {!isolate && <button className='desc__item-action' >Карантин</button>}
+        {!isolate && <button className='desc__item-action' >Списать</button>}
     </div>
     )
 
