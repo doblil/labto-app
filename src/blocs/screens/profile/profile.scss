@@ -21,6 +21,9 @@
         position: relative;
         border: 1px solid transparent;
         margin-bottom: 12px;
+        &:last-child{
+            margin-bottom: 0;
+        }
         &:nth-child(even) {
             background-color: rgb(222, 255, 246);
         }

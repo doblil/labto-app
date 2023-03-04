@@ -175,7 +175,7 @@ const options = [
 
     return(
         <div className="page">
-            <div className="add__top" >{handleInputIcons(type)}
+            <div className="add__top" style={{marginTop:'-10px'}}>{handleInputIcons(type)}
                 <div className="add__heading">Внесение</div>
                 
                 <CustomSelect
@@ -333,9 +333,6 @@ const options = [
                             onChange={(e)=>{dispatch(addPriceCh(e.target.value))}}
                         />
                     </div>
-                </div>
-
-                <div className="add__inner">
                     <div className="add__destination">
                         <div className="add__label">Расположение</div>
                         <input type="text" class="add__input"
@@ -343,6 +340,22 @@ const options = [
                             onChange={(e)=>{dispatch(addLocationCh(e.target.value))}}
                         />
                     </div>
+                </div>
+
+                <div className="add__inner">
+                    <div className="add__destination">
+                        <div className="add__label">Целевой проект</div>
+                        <CustomSelect
+                                initialise = {initialise}
+                                setInitialise = {setInitialise}
+                                handleChange = {handleChangeDestination}
+                                height = {'25px'}
+                                fontSize = {'12px'}
+                                width = {'250px'}
+                                options = {projectOptions}
+                            /> 
+                    </div>
+
                     <div className="add__destination add__destination_top">
                         <div className="add__label">Пиктограммы опасности СГС</div>
                         <div className="add__choice">
@@ -403,15 +416,7 @@ const options = [
                                 <div className="add__document-title">Добавить TDS:</div>
                                 <input type="text" class="add__input add__input-doc"/>
                             </div>  
-                            <CustomSelect
-                                initialise = {initialise}
-                                setInitialise = {setInitialise}
-                                handleChange = {handleChangeDestination}
-                                fontSize = {'15px'}
-                                width = {'250px'}
-                                input = {'none'}
-                                options = {projectOptions}
-                            />           
+          
                         </div>
                     </div>
                     

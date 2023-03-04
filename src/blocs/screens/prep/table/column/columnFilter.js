@@ -63,7 +63,7 @@ export const ColumnFilter = (props) => {
                             checked={iUse === true}
                             onChange = {() => setIUse(true)}
                         />
-                        <label className="custom-checkbox__text" for="chb-iuse">используются мной</label> <br />
+                        <label className="custom-checkbox__text" for="chb-iuse">Используются мной</label> <br />
                     </div>
 
                     <div className="filter__row">
@@ -92,14 +92,13 @@ export const ColumnFilter = (props) => {
                                 }}/>
                         </label> <br />
                     </div>
-                    <button 
-                        className="btn" 
-                        style={{fontSize: '9px', lineHeight:'10px', width: '120px', height:'26px', fontWeight: '500', marginTop:"10px"}}
-                        children='Сбросить фильтры'
-                        onClick = {handleResetFilter}
-                    />
-
-                </div>
+                </div>                    
+                <button 
+                    className="btn" 
+                    style={{fontSize: '9px', lineHeight:'10px', width: '120px', height:'26px', fontWeight: '500', marginTop:"10px"}}
+                    children='Сбросить фильтры'
+                    onClick = {handleResetFilter}
+                />
             </div>
 
         </div>

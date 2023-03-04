@@ -29,7 +29,9 @@
         cursor: pointer;
         transition: all 0.2s;
         &:hover{
-            transform: scale(1.05);
+            // transform: scale(1.02);
+            box-shadow: $minor-shadow;
+            font-size: 12px;
         }
     }
 }
@@ -61,7 +63,7 @@
     }
     &__window{
         position: relative;
-        height: 245px;
+        height: 248px;
         width: 260px;
         margin-top: 6px;
         padding: 3px 3px 0 3px;
