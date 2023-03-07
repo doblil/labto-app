@@ -6,6 +6,14 @@ export const RsFilter = (props) => {
     const { setCasSearch, setCatSearch, setNameSearch, setExpSearch, setFavoriteSearch, setRestSearch, rest, exp, favorite, currentFavorite } = props;
     const {favorite: favoriteList} = useSelector(state => state.auth)
 
+    const handleResetFilter = () => {
+        setCasSearch('');
+        setCatSearch('');
+        setNameSearch('');
+        setFavoriteSearch(false);
+        setExpSearch('');
+        setRestSearch('');
+    }
 
 
     return(
@@ -132,6 +140,12 @@ export const RsFilter = (props) => {
                                 }}/>
                         </label> <br />
                     </div>
+                    <button 
+                        className="btn" 
+                        style={{fontSize: '9px', lineHeight:'10px', width: '120px', height:'26px', fontWeight: '500', marginTop:"10px"}}
+                        children='Сбросить фильтры'
+                        onClick = {handleResetFilter}
+                    />
                 </div>
             </div>
     )

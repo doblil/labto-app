@@ -84,6 +84,12 @@ export const stringifyHistoryAction = (type = '') => {
             return 'заавершение работы с колонкой';
         case 'addColumn':
             return 'добаление колонки';
+        case 'deleteColumn':
+            return 'удаление колонки';
+        case 'isolateColumn':
+            return 'списание колонки';
+        case 'changeColumn':
+            return 'изменение данных колонки';
         // case 'returnColumn':
         //     return 'заавершение работы с колонкой';
         case 'createOrder':

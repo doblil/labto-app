@@ -13,7 +13,8 @@ const changeColumnSlice = createSlice({
         },
         restSolvent: '',
         pressureLimit: '',
-        price: '',
+        price: 0,
+        passport: '',
 
     },
     reducers: {
@@ -23,6 +24,7 @@ const changeColumnSlice = createSlice({
         chColRestSolventCh: (state, action) => {state.restSolvent = action.payload},
         chColPressureLimitCh: (state, action) => {state.pressureLimit = action.payload},
         chColPriceCh: (state, action) => {state.price = action.payload},
+        chColPassportCh: (state, action) => {state.passport = action.payload},
         changeColFill: (state, action) => {
             const { passport, descr, mainProject, itemId, restSolvent, pressureLimit, price } = action.payload;
             state.itemId = itemId;
@@ -43,7 +45,8 @@ const changeColumnSlice = createSlice({
             state.warn = [];
             state.location = '';
             state.passport = '';
-            state.price = '';
+            state.price = 0;
+            state.restSolvent = '';
         }
 
 
@@ -51,7 +54,7 @@ const changeColumnSlice = createSlice({
     }
 });
 
-export const { chColDescrCh, chColMainProjectCh, chColPressureLimitCh, chColPriceCh, chColRestSolventCh, changeColFill, changeColReset } = changeColumnSlice.actions;
+export const { chColDescrCh, chColMainProjectCh, chColPressureLimitCh, chColPriceCh, chColRestSolventCh, changeColFill, changeColReset, chColPassportCh } = changeColumnSlice.actions;
 export default changeColumnSlice.reducer;
 
 

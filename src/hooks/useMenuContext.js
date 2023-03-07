@@ -1,6 +1,5 @@
 
 export  const useMenuContext = (params) => {
-    
     if(params?.type === 'reag' && params?.isolate === 'false') return 'reag'
     if(params?.type === 'reag' && params?.isolate === 'true') return 'reagIsol'
     if(params?.type === 'rs' && params?.isolate === 'false') return 'rs'

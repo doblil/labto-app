@@ -62,6 +62,15 @@ export const columnApi = api.injectEndpoints({
             invalidatesTags: ['Column'],
         }),
 
+        changeColumn: builder.mutation({ //////////done
+            query: ({target, body}) => ({
+                url: `/api/column/change/${target}`,
+                method: 'PATCH',
+                body
+            }) ,
+            invalidatesTags: ['Column'],
+        }),
+
         isolateColumn: builder.mutation({ //////////done
             query: (target) => ({
                 url: `/api/Column/isolate/${target}`,
@@ -69,14 +78,7 @@ export const columnApi = api.injectEndpoints({
             }) ,
             invalidatesTags: ['Column'],
         }),
-        changeColumn: builder.mutation({
-            query: ({target, body}) => ({ //////////done
-                url: `/api/Column/change/${target}`,
-                method: 'PATCH',
-                body,
-            }) ,
-            invalidatesTags: ['Column'],
-        }),
+        
         getColPassport: builder.mutation({
             query: (target)=> ({
                 url: `/api/column/getPassport/${target}`,

@@ -42,6 +42,8 @@ export const ColumnTable = (props) => {
                 handleActiveItem = {handleActiveItem}
                 key = { item._id }
                 item = {item}
+                activeItem = {activeItem === item._id}
+                favorite = {favorite}
             />
         })
         handleCurrentFavorite(data.columns);

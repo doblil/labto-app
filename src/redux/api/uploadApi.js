@@ -8,6 +8,7 @@ export const uploadApi = api.injectEndpoints({
                 method: 'PATCH',
                 body: formData,
             }),
+            invalidatesTags: ['Reagent']
             
         }),
         uploadCol: builder.mutation({
@@ -16,6 +17,7 @@ export const uploadApi = api.injectEndpoints({
                 method: 'PATCH',
                 body: formData,
             }),
+            invalidatesTags: ['Column']
             
         }),
        

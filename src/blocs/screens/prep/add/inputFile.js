@@ -18,7 +18,7 @@ export const InputFile = (props) => {
 
     return(
         <label className="add__document_form">
-        <input type="file" onChange={handleAddFile}/>
+        <input type="file" accept=".pdf,.jpg" onChange={handleAddFile}/>
             {!passportFile && <p className="add__file">Выбрать файл <br/> (до 5МВ) </p>}
             {passportFile && 
             <>

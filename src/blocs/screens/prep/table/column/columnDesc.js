@@ -7,9 +7,9 @@ import '../../../../../sass/sassTemplates/flow.scss'
 import '../../../../../sass/sassTemplates/overflow.scss'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useGetOneColumnQuery, useGetColPassportMutation } from '../../../../../redux/api/columnApi'
+import { useGetOneColumnQuery, useGetColPassportMutation, useDeleteColumnMutation, useIsolateColumnMutation, useFavoriteColumnMutation, useUnfavoriteColumnMutation } from '../../../../../redux/api/columnApi'
 import { sMessageCh } from '../../../../../redux/store/sMessageSlice'
-import { columnFill } from '../../../../../redux/store/activeColumnSlice'
+import { activeColumnCh, columnFill } from '../../../../../redux/store/activeColumnSlice'
 import { ColumnHistory } from './columnHistory'
 import { useNavigate } from 'react-router-dom'
 import { FormBusyColumn } from './formBusyColumn'
@@ -18,6 +18,9 @@ import { FormReturnColumn } from './formReturnColumn'
 import { ColumnOptions } from './columnOptions'
 import { changeColFill } from '../../../../../redux/store/changeColumnSlice'
 import { stringifyDate } from '../../../../../services/services'
+import { FormChangeColumn } from './formChangeColumn'
+import { addColCreateSame } from '../../../../../redux/store/addColumnSlise'
+import { favoriteCh } from '../../../../../redux/store/authSlice'
 
 
 export const ColumnDesc = () => {
@@ -35,12 +38,23 @@ export const ColumnDesc = () => {
     let content = <></>
     
     const {_id: target} = useSelector(state => state.activeColumn)
-
-
+    const {favorite} = useSelector(state => state.auth)
+    
+    let isFavorite = false;
+    if(favorite.includes(target)){isFavorite = true};
     ///////********RTQ Query hook
     const {data, isLoading, isSuccess} = useGetOneColumnQuery(target)
     const [passportLoader] = useGetColPassportMutation();
+    const [deleteColumn, {isLoading: deleteLoading}] = useDeleteColumnMutation();
+    const [isolateColumn, {isLoading: isolateLoading}] = useIsolateColumnMutation();
+    const [favoriteColumn, {isLoading: favoriteLoading}] = useFavoriteColumnMutation();
+    const [unfavoriteColumn, {isLoading: unfavoriteLoading}] = useUnfavoriteColumnMutation();
     //////********* HANDLERS
+
+    const handleLoaders = () => {
+        if(deleteLoading || isolateLoading || favoriteLoading || unfavoriteLoading) return true;
+        return false
+    }
 
     const handleIsURL = (str) =>  {
         const pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
@@ -53,21 +67,7 @@ export const ColumnDesc = () => {
     }
 
 
-    const handleAddSame = () => {
-      
-    }
-
-    const handleDelete = () => {
-      
-    }
-
-    const handleChange = () => {
-      
-    }
-
-    const handleIsolate = () => {
-      
-    }
+    
 
     // before fetching
 
@@ -108,11 +108,47 @@ export const ColumnDesc = () => {
             }
  
         }
+
+        // OPTIONS HANDLERS
+
+        const handleAddSame = () => {
+            dispatch(addColCreateSame(data.column));
+            navigate('/prep/addColumn');
+        }
+        const handleIsolate = async () => {
+            if (handleLoaders()) return dispatch(sMessageCh('Пожалуста подождите'))
+            await isolateColumn(_id).unwrap();
+            dispatch(activeColumnCh(''));
+        }
+        const handleDelete = async () => {
+            if (handleLoaders()) return dispatch(sMessageCh('Пожалуста подождите'))
+            await deleteColumn(_id).unwrap();
+            dispatch(activeColumnCh(''));
+        };
+
+        const handleFavorite = async () => {
+            if (handleLoaders()) return
+   
+           if(!favorite.includes(target)){
+               await favoriteColumn(target)
+               dispatch(favoriteCh(target))
+           }
+           if(favorite.includes(target)){
+               await unfavoriteColumn(target)
+               dispatch(favoriteCh(target))
+           }
+       }
+        
+
         dispatch(columnFill(data.column));
         dispatch(changeColFill({passport, descr, mainProject, itemId, restSolvent, pressureLimit, price}))
         const last = inUse[inUse.length - 1]
 
-        content = <>    
+        content = <>   
+            {showChange && <FormChangeColumn
+                setShowChange = {setShowChange}
+                
+            />} 
             {showHistory && <ColumnHistory 
                 setShowHistory = {setShowHistory} 
                 itemId = {itemId} 
@@ -127,7 +163,6 @@ export const ColumnDesc = () => {
                         handleAddSame = {handleAddSame}
                         handleDelete = {handleDelete}
                         handleIsolate = {handleIsolate}
-                        handleChange = {handleChange}
                         setShowChange = {setShowChange}
                     />
                 }
@@ -143,7 +178,8 @@ export const ColumnDesc = () => {
 
                 <div className="desc__status">
                     <div className="desc__favorite">
-                        <SVGstar style={{fill: "#ffb027", height:"25", width: "25"}}/>
+                    {isFavorite && <SVGstar handleFavorite = {handleFavorite} style={{fill: "#ffb027", height:"25", width: "25"}}/>}
+                        {!isFavorite && <SVGstar handleFavorite = {handleFavorite} style={{fill: "#cdcdcd", height:"25", width: "25"}}/>}
                     </div>
                 </div>
             </div>

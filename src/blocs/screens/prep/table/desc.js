@@ -46,9 +46,9 @@ export const Desc = (props) => {
     ///////********RTQ Query hooks
 
     const [deleteReagent, {isLoading: deleteLoading}] = useDeleteReagentMutation();
-    const [isolateReagent, {isLoading:isolateLoading}] = useIsolateReagentMutation()
-    const [favoriteReagent, {isLoading: favoriteLoading}] = useFavoriteReagentMutation()
-    const [unfavoriteReagent, {isLoading: unfavoriteLoading}] = useUnfavoriteReagentMutation()
+    const [isolateReagent, {isLoading:isolateLoading}] = useIsolateReagentMutation();
+    const [favoriteReagent, {isLoading: favoriteLoading}] = useFavoriteReagentMutation();
+    const [unfavoriteReagent, {isLoading: unfavoriteLoading}] = useUnfavoriteReagentMutation();
     const {data, isLoading, isSuccess} = useGetOneReagentQuery(target);
     const [passportLoader] = useGetPassportMutation();
 
@@ -82,14 +82,11 @@ export const Desc = (props) => {
     // options handlers
 
     const handleAddSame = async () => {
-        if (isSuccess && data.reagent);
+       
         dispatch(addCreateSame(data.reagent));
         navigate('/prep/addReagent');
     }
-    const handleChange = async () => {
-        if (isSuccess && data.reagent)
-        navigate('/prep/addReagent');
-    }
+
 
     const handleDelete = async () => {
         if (handleLoaders()) return
@@ -198,7 +195,6 @@ export const Desc = (props) => {
                         handleAddSame = {handleAddSame}
                         handleDelete = {handleDelete}
                         handleIsolate = {handleIsolate}
-                        handleChange = {handleChange}
                         setShowChange = {setShowChange}
                     />
                 
