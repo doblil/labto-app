@@ -35,7 +35,7 @@ export const ReagFilter = (props) => {
                                 </svg></button>
                     </div>
 
-                    <div className="filter__wrap" style={{marginBottom:'5px',marginRight:'0'}}>
+                    <div className="filter__wrap" style={{marginBottom:'5px', marginRight:'0'}}>
                         <div className="filter__label">Поиск по CAS-№</div>
                         <input type="text" className="filter__input" onChange={(e)=>{setCasSearch(e.target.value)} } value= {casSearch}/>
                         <button className="filter__btn"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="10" fill="white" class="bi bi-search" viewBox="0 0 16 16">

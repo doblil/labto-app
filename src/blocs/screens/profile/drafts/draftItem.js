@@ -66,7 +66,7 @@ export const DraftItem = (props) => {
                 <input value={quan || ''} onChange={(e)=> {setQuan(e.target.value)}} type="number" min={0} class="flow__input"/>
                 <div className="profile__value flow__measure" style={{display:'inline', marginLeft:'-2px'}}>{target.units}</div>
             </div>
-            <div className="profile__value profile__value-underlined">{decodeProjectName(projects, destination)}</div>
+            <div className="profile__value profile__value-underlined">{destination.name}</div>
             <div className="profile__value profile__value-underlined profile__value_text">{test}</div>
 
             <div className="profile__value" onClick={confirmTakeReagent}>
