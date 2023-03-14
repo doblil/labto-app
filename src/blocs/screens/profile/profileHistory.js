@@ -17,7 +17,7 @@ export const ProfileHistory = () => {
 	const bottomRef = useRef(null);
 	useEffect( () => {
         bottomRef.current?.scrollIntoView({behavior: 'smooth', block: "nearest"});
-    }, [])
+    }, [isLoading])
 
 
 	let content = <></>

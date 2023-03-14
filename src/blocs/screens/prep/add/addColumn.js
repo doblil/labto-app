@@ -12,13 +12,17 @@ import { useUploadColMutation, useUploadMutation } from '../../../../redux/api/u
 import { addColCatCh, addColDescrCh, addColFromDateCh, addColInitialDestinationCh, addColItemIdCh, addColLotCh, addColManufacturerCh, addColNameCh, addColPassportCh, addColPressureLimitCh, addColPriceCh, addColReset, addColRestSolventCh, addColSnCh, addColTotalInjCh, addColTypeCh } from '../../../../redux/store/addColumnSlise';
 import { useAddColumnMutation } from '../../../../redux/api/columnApi';
 import { useOutletContext } from 'react-router-dom';
+import { useRoleValidate } from '../../../../hooks/useRoleValidate';
+import { NotAllowed } from '../../../handleComponents/notAllowed';
 
 
 export const AddColumn = () => {
     const [initialise, setInitialise]=useState(false);
     const [passportType, setPassportType] = useState('link')
     const [passportFile, setPassportFile] = useState(null)
-    const {projects} = useSelector(state => state.project)
+    const {projects} = useSelector(state => state.project);
+
+    const roleValidation = useRoleValidate();
 
     const [activeNav, setActiveNav] = useOutletContext();
     useEffect(() => {
@@ -141,7 +145,7 @@ const options = [
         { value: 'hplc', label: 'для ВЭЖХ' },
     ]
     
-
+if(!roleValidation(['admin', 'prep', 'head', 'developer'])) return <NotAllowed/>
     return(
         <div className="page">
             <div className="add__top" style={{marginTop:'-10px'}}>
@@ -274,7 +278,7 @@ const options = [
                     </div>
                     <div className="add__destination">
                         <div className="add__label">Количество инжекций (для колонок бывших в употреблении)</div>
-                        <input type="number" class="add__input"
+                        <input type="number" min={0} step ={1} class="add__input"
                             placeholder='Тип колонки, фаза, для разделения каких веществ может подойти'
                             value={totalInj}
                             onChange={(e)=>{dispatch(addColTotalInjCh(e.target.value));}}
@@ -323,18 +327,7 @@ const options = [
                                 <div className="add__document-result">
                                     <input onChange={(e)=> dispatch(addColPassportCh(e.target.value))} type="text" class="add__input add__input-doc add__input-passport"/>
                                 </div>}            
-                            </div>
-                        
-
-                            <div className="add__document_window">
-                                <div className="add__document-title">Добавить SDS:</div>
-                                <input type="text" class="add__input add__input-doc"/>
-                            </div>             
-
-                            <div className="add__document_window">
-                                <div className="add__document-title">Добавить TDS:</div>
-                                <input type="text" class="add__input add__input-doc"/>
-                            </div>  
+                            </div> 
            
                         </div>
                     </div>

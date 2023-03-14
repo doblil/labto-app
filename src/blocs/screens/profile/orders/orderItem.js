@@ -7,6 +7,8 @@ import { stringifyDate, stringifyOrderStatus } from '../../../../services/servic
 
 export const OrderItem = (props) => {
     
+    
+
     const [showForm, setShowForm] = useState(false);
     const [comment, setComment] = useState('')
     
@@ -18,16 +20,19 @@ export const OrderItem = (props) => {
     const [messageOrder, {isLoading}] = useMessageOrderMutation()
     const [statusOrder, {isLoading: statusLoading}] = useStatusOrderMutation();
     const inputRef = useRef(null);
-
+    const bottomRef = useRef(null);
+    const topRef = useRef(null)
     
 
     const handleShowForm = () => {
         setShowForm(true);
-        inputRef.current.focus();
+        bottomRef.current?.scrollIntoView({behavior: 'smooth', block: "nearest"});
+
     }
     const hanleResetForm = () => {
         setComment('');
         setShowForm(false);
+        topRef.current?.scrollIntoView({behavior: 'smooth', block: "nearest"});
     }
 
     const handleMesageOrder = async () => {
@@ -47,7 +52,8 @@ export const OrderItem = (props) => {
     }
 
     return (
-        <>        
+        <>  
+                 
             <div className="profile__item">
                 <div className="profile__value ">{stringifyDate(fromDate)}</div>
                 <div className="profile__value " style={{fontWeight: 'bold'}}>{uniqueId}</div>
@@ -55,9 +61,11 @@ export const OrderItem = (props) => {
                 
                 <div className="profile__value profile__value_name"> <span>{name}</span> <br /> {manufacturer} <br /> {cat}</div>
                 <div className="profile__value profile__value_text overflow"  style={{maxHeight:'125px'}}>
+                    <div ref={topRef}></div> 
                     <p>{text}</p>
                     <br />
                     <p style={{fontWeight: 'bold'}}>Комментарии:</p>
+                    
                     {messageList}
 
                     <br />
@@ -77,8 +85,10 @@ export const OrderItem = (props) => {
                             style={{width:'52px',height:'33px', backgroundColor:'#00a0a0',marginRight:'7px', marginLeft:'7px', fontSize:'11px'}}
                             onClick = {handleMesageOrder}
                         > <img src="icons/send.svg" alt="send" /> </button>
+                         
                     </div>
                     }
+                    <div ref={bottomRef}></div>
                 </div>
                 <div className="profile__value profile__value_border">{stringifyOrderStatus(status)}</div>
                 <div className="profile__value">
@@ -86,6 +96,7 @@ export const OrderItem = (props) => {
                     <div className="profile__select" style={{ width:'105px', fontSize:'10px', marginLeft:'5px'}} onClick={handleShowForm}>+Kомментарий</div> 
                 </div>        
             </div>
+
             {/* <div className="profile__messages">
                 <span>Cообщения</span>
             </div>  */}

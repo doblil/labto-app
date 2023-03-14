@@ -36,13 +36,15 @@ export const ChangeUserData = (props) => {
     const handleSetDepartment = (target) => {
         setNewDepartment(target.value)
     } 
-    const handleSetPhone = (target) => {
-        setNewPhone(target.value)
+    const handleSetPhone = (e) => {
+        setNewPhone(e.target.value)
     } 
 
     const handleChangeUserData = async () => {
         if (isLoading) return
+        console.log({newName, newPosition, newDirection, newDepartment, newPhone});
         if(!(newName && newPosition && newDirection && newDepartment && newPhone)) return dispatch(sMessageCh('Заполните все поля'))
+        
         const body = {newName, newPosition, newDirection, newDepartment, newPhone};
         const target = id;
         if (!target) return dispatch(sMessageCh('Ошибка'));

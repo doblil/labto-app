@@ -6,12 +6,13 @@ import { reagentReset } from '../../../redux/store/activeReagSlice'
 import { useEffect, useState } from 'react'
 import { SVGpen } from '../../../svg/svg'
 import { columnReset } from '../../../redux/store/activeColumnSlice'
+import { useRoleValidate } from '../../../hooks/useRoleValidate'
 
 export const PrepMenu = (props) => {
 	const {activeNav, setActiveNav} = props
 	
-	console.log(activeNav)
 	const dispatch = useDispatch();
+	const roleValidation = useRoleValidate();
 
 
 	const handleReset = (tab) => {
@@ -67,7 +68,7 @@ export const PrepMenu = (props) => {
 					
 				</ul>
 				<div className="menu__stripe"></div>
-				<ul>
+				{roleValidation(['admin', 'developer', 'head']) && <ul>
 					<li><Link to='/prep/addReagent'className='link'>
 							<div className={`${handleClass('add')} menu__item-inner`} onClick ={() =>  handleReset('add')}>
 								<SVGpen fill={handleFill('add')}/>
@@ -86,7 +87,7 @@ export const PrepMenu = (props) => {
 							</div>
 						</Link>
 					</li>
-				</ul>
+				</ul>}
 			</div>
 			
 		</div>

@@ -1,17 +1,25 @@
 
 import '../admin.scss'
 import '../../profile/profile.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AddUser } from './addUser'
 import { useSelector } from 'react-redux'
 import { UserItem } from './userItem'
 import { useGetUnactiveUsersQuery } from '../../../../redux/api/userApi'
 import { UnactiveUserItem } from './unactiveUserItem'
 import { CustomSelect } from '../../../customSelect/customSelect'
+import { useOutletContext } from 'react-router-dom'
 
 
 
 export const Users = () => {
+
+
+    const [activeNav, setActiveNav] = useOutletContext();
+    useEffect(() => {
+        setActiveNav('users')
+    }, [])
+
     const [userActive, setUserActive] = useState(true)
     const [filterName, setFilterName] = useState('')
     const [showAddUser, setShowAddUser] = useState(false)

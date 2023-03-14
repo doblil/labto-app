@@ -29,6 +29,7 @@ export const useConfirm = (text) => {
             open={promise !== null} 
             confirmFunction = {handleConfirm}
             rejectFunction = {handleCancel} 
+            handleClose = {handleClose}
         />
       
     );

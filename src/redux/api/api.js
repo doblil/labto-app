@@ -42,7 +42,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
             api.dispatch(setCredentials({...refreshResult.data, email}))
             result = await baseQuery(args, api, extraOptions);
         } else {
-            api.dispatch(clearStore)
+            api.dispatch(clearStore())
         }
     };
     

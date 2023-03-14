@@ -1,49 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useOutletContext } from 'react-router-dom'
+import { useReactToPrint } from 'react-to-print'
 import { useProjectReportMutation } from '../../../redux/api/reportApi'
 import { sMessageCh } from '../../../redux/store/sMessageSlice'
 import { CustomSelect } from '../../customSelect/customSelect'
 import { ReportColumnItem, ReportReagItem } from './reportItem'
 
-
-
-export const ReportProjects = (props) => {
-    const [initialise, setInitialise] = useState(false)
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
-    const [project, setProject] = useState({
-        name: '',
-        code: '',
-    })
-    const [current, setCurrent] = useState('reag') // 'reag' | 'rs' | 'subst' | 'column' 
-
-    const {projects} = useSelector(state => state.project); 
-    const dispatch = useDispatch();
-
-    const [ createReport, {data, isLoading, isSuccess}] = useProjectReportMutation();
-
-    const handleCreateReport = () => {
-        if (!endDate || !startDate || !project.code) return dispatch(sMessageCh('Заполните все поля формы!'));
-        console.log('click trigger')
-        createReport({startDate, endDate, project});
-    }
-
-
-    const handleSelectProject = (target) => {
-        setProject(target.value)
-    }
-
-    const projectOptions = projects.map(item => {
-        return { value: {code: item.code, name: item.name}, label: `${item.code}, ${item.name}`}
-    });
-
-    const handleActive = (v) => {
-        if(v === current) return "filter__item filter__item_active"
-        return "filter__item"
-    }
-   
-    let ReagentTable = <>
+const  ReagentTable = (props) =>{
+    const {isSuccess, data, current} = props;
+    
+    return(
+        <>
         <table table className="table__wrap"> 
             <thead>     
                 <tr>
@@ -62,7 +30,7 @@ export const ReportProjects = (props) => {
 
                    return <ReportReagItem
                         index = {index}
-                        key = {itemId}
+                        key = {index}
                         date = {date}
                         userName = {userName}
                         test = {test}
@@ -77,7 +45,14 @@ export const ReportProjects = (props) => {
             
         </table>
     </>
-    let ColumnTable = <>
+    
+    )
+} 
+
+const ColumnTable = (props) => {
+    const {isSuccess, data} = props;
+    return(
+        <>
         <h6>Стоимость из рассчета pecypca колонки 40000 инжекций</h6>
         <table table className="table__wrap"> 
             <thead>     
@@ -115,6 +90,76 @@ export const ReportProjects = (props) => {
             
         </table>
     </>
+    )
+}
+
+export const ReportProjects = (props) => {
+    const [initialise, setInitialise] = useState(false)
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
+    const [project, setProject] = useState({
+        name: '',
+        code: '',
+    })
+    const [current, setCurrent] = useState('reag') // 'reag' | 'rs' | 'subst' | 'column' 
+
+    //start printing logic
+    const printRef = useRef(null)
+    const [printPrep, setPrintPrep] = useState(false)
+
+    const print = useReactToPrint({
+        content: () => printRef.current,
+    });
+
+    const handlePrint =  () => {
+        setPrintPrep(true)
+        const p = new Promise((resolve) => {
+            setTimeout(() => {
+                setPrintPrep(true)
+                print();
+                resolve(false)
+            }, 1000);
+        })
+
+        p.then((data) => {
+            setPrintPrep(data)
+        })
+    }
+    //******end printing logic
+
+
+    const [activeNav, setActiveNav] = useOutletContext();
+    useEffect(() => {
+        setActiveNav('project')
+    }, [setActiveNav])
+
+    const {projects} = useSelector(state => state.project); 
+    const dispatch = useDispatch();
+
+    const [ createReport, {data, isLoading, isSuccess}] = useProjectReportMutation();
+
+    const handleCreateReport = () => {
+        if (isLoading) return dispatch(sMessageCh('Дождитесь загрузки предыдущего отчета'));
+        if (!endDate || !startDate || !project.code) return dispatch(sMessageCh('Заполните все поля формы!'));
+        console.log('click trigger')
+        createReport({startDate, endDate, project});
+    }
+
+
+    const handleSelectProject = (target) => {
+        setProject(target.value)
+    }
+
+    const projectOptions = projects.map(item => {
+        return { value: {code: item.code, name: item.name}, label: `${item.code}, ${item.name}`}
+    });
+
+    const handleActive = (v) => {
+        if(v === current) return "filter__item filter__item_active"
+        return "filter__item"
+    }
+   
+    
 
     return(
         <div className="report">
@@ -124,7 +169,7 @@ export const ReportProjects = (props) => {
                 <div className="filter__wrap" style={{marginBottom:'5px'}}>
                     <div className="filter__inputs" >
                         <div className="filter__inner" style={{marginBottom:'10px', marginRight:'20px'}}>
-                            <div className="filter__label">От</div>
+                            <div className="filter__label">От (дд.мм.гггг 00:00)</div>
                             <input 
                                 type="date" 
                                 className="filter__input" 
@@ -135,7 +180,7 @@ export const ReportProjects = (props) => {
                         </div>
 
                         <div className="filter__inner" style={{marginBottom:'10px', marginRight:'20px'}}>
-                            <div className="filter__label">До</div>
+                            <div className="filter__label">До (дд.мм.гггг 00:00)</div>
                             <input 
                                 type="date" 
                                 className="filter__input" 
@@ -186,9 +231,12 @@ export const ReportProjects = (props) => {
                 <div className="filter__print">Распечатать</div>
             </div>
 
-            <div className="history overflow overflow__mt50"  style={{height: '60vh'}}>
-			 	{(data?.resultReags && current === 'column') && <ColumnTable/>}
-			 	{(data?.resultReags && current !== 'column') && <ReagentTable/>}
+            <div ref={printRef} className="history overflow overflow__mt50"  style={{height: '60vh'}}>
+                {printPrep && <>
+                    <h5 style={{lineHeight: '30px'}}>Отчет по проекту {project.code}, {project.name}. за период {startDate}(включительно) - {endDate}(не включая) </h5>
+                </>}
+			 	{(data?.resultReags && current === 'column') && <ColumnTable data = {data} isSuccess = {isSuccess} current = {current}/>}
+			 	{(data?.resultReags && current !== 'column') && <ReagentTable data = {data} isSuccess = {isSuccess} current = {current}/>}
                 {isLoading && <h5>Загрузка отчета...</h5>}
                 
 			</div>

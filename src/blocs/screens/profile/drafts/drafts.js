@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import { useGetDraftsQuery } from '../../../../redux/api/draftApi'
 import '../../../../sass/sassTemplates/menu.scss'
@@ -10,6 +10,11 @@ export const Drafts = () => {
 	const [activeNav, setActiveNav] = useOutletContext()
 	const {data, isLoading,  isSuccess, } = useGetDraftsQuery();
 	
+	const bottomRef = useRef(null);
+	useEffect( () => {
+        bottomRef.current?.scrollIntoView({behavior: 'smooth', block: "nearest"});
+    }, [isLoading])
+
 	useEffect(() => {
         setActiveNav('drafts')
     }, [setActiveNav])
@@ -19,7 +24,7 @@ export const Drafts = () => {
 
 	if(isLoading) content = <h5>Загрузка...</h5>
 	if(data?.drafts){
-		content = data.drafts.map(draft => {
+		content = <>{data.drafts.map(draft => {
 			return <DraftItem
 				key = {draft._id}
 				id = {draft._id}
@@ -29,7 +34,9 @@ export const Drafts = () => {
 				quan = {draft.quan}
 				destination = {draft.destination}
 			/>
-		})
+		})}
+		<div ref = {bottomRef}></div>
+		</> 
 	}
 	if (data?.drafts?.length === 0) content = <h5>У вас пока что нет ни одного черновика</h5>
 
@@ -53,6 +60,7 @@ export const Drafts = () => {
 				<div className="profile__value profile__value_5 profile__value_header"></div>
             </div>
 			<div className="overflow drafts">{content}</div>
+			
         </div>
     )
 }

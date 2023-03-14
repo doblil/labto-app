@@ -41,7 +41,7 @@ export const AddProject = (props) => {
         <>
             <div className="overlay">
                 <div className="overlay__window">
-                    <div className="close"></div>
+                    <div className="close" onClick={() => {setShowAddProject(false)}}></div>
                     <div className="overlay__heading"> <p>Новый проект</p>
                     </div>
 

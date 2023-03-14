@@ -1,17 +1,25 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Outlet, useOutletContext } from "react-router-dom"
+import { useRoleValidate } from "../../../hooks/useRoleValidate"
+import { NotAllowed } from "../../handleComponents/notAllowed"
 import { AdminMenu } from "./adminMenu"
 
 export const Admin = (props) => {
-    const {activeNav} = props
-    const [activeTab, setActiveTab] = useOutletContext()
+    const roleValidation = useRoleValidate();
+    const [activeTab, setActiveTab] = useOutletContext();
+
+    const [activeNav, setActiveNav] = useState('info')
+
     useEffect(() => {
-        setActiveTab('list')
-    }, [setActiveTab])
+        setActiveTab('admin')
+    }, [setActiveTab]);
+
+    if(!roleValidation(['admin', 'developer', 'head'])) return <NotAllowed/>
+
     return(
         <>
             <AdminMenu activeNav={activeNav}/>
-            <div className="page"><Outlet/></div>
+            <div className="page"><Outlet context={[activeNav, setActiveNav]}/></div>
         </>
     )
 }

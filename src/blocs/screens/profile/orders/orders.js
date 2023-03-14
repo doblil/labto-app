@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import { useGetMyOrdersQuery } from '../../../../redux/api/orderApi'
@@ -13,12 +13,18 @@ import { OrderItem } from './orderItem'
 export const Orders = () => {
     const [showOrderForm, setShowOrderForm] = useState(false)
     const {data, isLoading, isError} = useGetMyOrdersQuery();
-	const [activeNav, setActiveNav] = useOutletContext()
-	useEffect(() => {
+	const [activeNav, setActiveNav] = useOutletContext();
+    useEffect(() => {
         setActiveNav('orders')
     }, [setActiveNav])
+
     let content = <></>
-    
+
+
+    const bottomRef = useRef(null);
+	useEffect( () => {
+        bottomRef.current?.scrollIntoView({behavior: 'smooth', block: "nearest"});
+    }, [isLoading])
     
     if(isLoading){
         content = <h5>Загрузка заказов...</h5>
@@ -30,7 +36,9 @@ export const Orders = () => {
         content = <h5>Похоже, вы не создали ни одного зааказа</h5>
     }
     if(data && data?.myOrders?.length){
-        content = data.myOrders.map (item=> {
+        content = <>
+        
+        {data.myOrders.map (item=> {
             const {fromDate, name, manufacturer, cat, text, status, uniqueId, messages, _id} = item
             return <OrderItem
                 target = {_id}
@@ -44,7 +52,9 @@ export const Orders = () => {
                 key = {uniqueId}
                 uniqueId = {uniqueId}
             />
-        })
+        })}
+        <div ref = {bottomRef}></div>
+        </>
     }
 
 

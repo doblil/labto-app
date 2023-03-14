@@ -11,6 +11,8 @@ import { useConfirm } from '../../../../hooks/useConfirm'
 import { InputFile } from './inputFile';
 import { useUploadMutation } from '../../../../redux/api/uploadApi';
 import { useOutletContext } from 'react-router-dom';
+import { useRoleValidate } from '../../../../hooks/useRoleValidate';
+import { NotAllowed } from '../../../handleComponents/notAllowed';
 
 
 export const AddReag = () => {
@@ -19,6 +21,7 @@ export const AddReag = () => {
     const [passportFile, setPassportFile] = useState(null)
     const {projects} = useSelector(state => state.project)
     
+    const roleValidation = useRoleValidate();
 
     const { 
         itemId, CAS, name, location,
@@ -166,11 +169,12 @@ export const AddReag = () => {
     })
 
 
-const options = [
+    const options = [
         { value: 'reag', label: 'реактива' },
         { value: 'subst', label: 'субстанции' },
         { value: 'rs', label: 'стандартного образца' }
     ]
+    if(!roleValidation(['admin', 'prep', 'head', 'developer'])) return <NotAllowed/>
     
 
     return(
@@ -287,7 +291,7 @@ const options = [
                     <div className="add__destination">
                         <div className="add__label">Упаковка</div>
                         <div className="add__destination add__destination-mini">
-                            <input type="text" class="add__input add__input-mini"
+                            <input type="number" min={0} class="add__input add__input-mini"
                                 value={container}
                                 onChange={(e)=>{dispatch(addContainerCh(e.target.value))}}
                                 style={handleInputStyle(container)}
@@ -328,7 +332,7 @@ const options = [
 
                     <div className="add__destination add__destination_mt8">
                         <div className="add__label">Цена</div>
-                        <input type="text" class="add__input"
+                        <input type="number" min={0} class="add__input"
                             value={price}
                             onChange={(e)=>{dispatch(addPriceCh(e.target.value))}}
                         />

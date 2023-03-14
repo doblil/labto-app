@@ -31,8 +31,8 @@ const handleFilter = (arr = []) => {
     if (expSearch && expSearch === 'valid') arr = arr.filter(item => Date.parse(item.toDate) > Date.now()) ;
     if (expSearch && expSearch === 'invalid') arr = arr.filter(item => Date.parse(item.toDate) < Date.now()) ;
     if (favoriteSearch) arr = arr.filter(item => favorite.includes(item._id)) ;
-    if (restSearch && restSearch === 'null') arr = arr.filter(item => item.restUnits === 0);
-    if (restSearch && restSearch === 'instock') arr = arr.filter(item => item.restUnits > 0);
+    if (restSearch && restSearch === 'null') arr = arr.filter(item => Math.floor(item.restUnits/item.container*100) === 0);
+    if (restSearch && restSearch === 'instock') arr = arr.filter(item => Math.floor(item.restUnits/item.container*100) > 0);
     return arr
 } 
 

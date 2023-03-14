@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import QRCode from 'react-qr-code'
+import { useOutletContext } from 'react-router-dom';
 import c from '../../../../config.json'
 
 
 export const SetMobileApp = () => {
+    
+    const [activeNav, setActiveNav] = useOutletContext();
+    useEffect(() => {
+        setActiveNav('mobileApp')
+    }, [])
+    
     const baseApiUrl = c.baseApiUrl;
     
     return(

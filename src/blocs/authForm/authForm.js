@@ -10,7 +10,7 @@ import './authForm.scss'
 
 export const AuthForm = (props) => {
 
-    const [email, setEmail] = useState('3@mail.ru');
+    const [email, setEmail] = useState('1@mail.ru');
     const [password, setPassword] = useState('123123');
  
     const [login, ] = useLoginMutation();

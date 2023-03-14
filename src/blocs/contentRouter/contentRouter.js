@@ -16,7 +16,7 @@ import { Orders } from "../screens/profile/orders/orders"
 import { Rs } from "../screens/prep/table/rs/rs"
 import { ConfirmMessage } from "../confirmMessage/confirmMessage"
 import { ReportProjects } from "../screens/report/reportProjects"
-import { ReportDepartment } from "../screens/report/reportDepartment"
+import { ReportDirection } from "../screens/report/reportDirection"
 import { Users } from "../screens/admin/users/users"
 import { Admin } from "../screens/admin/admin"
 import { Projects } from "../screens/admin/projects/projects"
@@ -62,7 +62,7 @@ export const ContentRouter = () => {
 			</Route>
 			<Route path="/report" element={<Report/>}>
 				<Route path="/report/projects" element={<ReportProjects />}/>
-				<Route path="/report/department" element={<ReportDepartment />}/>
+				<Route path="/report/department" element={<ReportDirection />}/>
 			</Route>
 			<Route path="/prep" element ={<Prep/>}>
 				<Route path="/prep/reag" element = {<Reag reqParams = {{type: 'reag', isolate: 'false'}}/>}/>

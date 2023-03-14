@@ -9,6 +9,12 @@ import { sMessageCh } from '../../../../redux/store/sMessageSlice'
 
 
 export const Options = (props) => {
+
+    const [activeNav, setActiveNav] = useOutletContext();
+    useEffect(() => {
+        setActiveNav('options')
+    }, [])
+
     const [newRsType, setNewRsType] = useState('');
     const [newManufacturer, setNewManufacturer] = useState('')
     const [newPosition, setNewPosition] = useState('')

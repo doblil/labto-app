@@ -187,3 +187,18 @@ export const stringifyRole = (type = '') => {
             return ''
     }
 }
+
+export const stryngifyType = (type = '') => {
+    switch (type) {
+        case 'column':
+            return 'Колонки';
+        case 'reag':
+            return 'Реактивы';
+        case 'rs':
+            return 'Стандартные образцы';
+        case 'subst':
+            return 'Субстанции';
+        default:
+            return ''
+    }
+}

@@ -11,6 +11,12 @@ import { CustomSelect } from '../../../customSelect/customSelect'
 import { AddProject } from './addProject'
 
 export const Projects = (props) => {
+
+    const [activeNav, setActiveNav] = useOutletContext();
+    useEffect(() => {
+        setActiveNav('projects')
+    }, [])
+
     const [projectActive, setProjectActive] = useState('active')
     const [showAddProject, setShowAddProject] = useState(false);
 

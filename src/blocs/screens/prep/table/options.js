@@ -1,8 +1,11 @@
 import { useSelector } from "react-redux"
 import { useConfirm } from "../../../../hooks/useConfirm"
+import { useRoleValidate } from "../../../../hooks/useRoleValidate";
 
 export const Options = (props) => {
     
+    const roleValidation = useRoleValidate();
+
     const {itemId, name, isolate} = useSelector(state => state.activeReagent);
   
 
@@ -36,6 +39,8 @@ export const Options = (props) => {
             return
         }
     }
+
+    if(!roleValidation(['prep', 'head', 'admin', 'developer'])) return<></>
 
     console.log('isolate ',isolate)
     return (

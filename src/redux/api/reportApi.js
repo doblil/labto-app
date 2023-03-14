@@ -1,6 +1,6 @@
 import { api } from "./api";
 
-export const draftApi = api.injectEndpoints({
+export const reportApi = api.injectEndpoints({
     endpoints: builder => ({
         projectReport: builder.mutation({
             query: (body)=> ({
@@ -9,7 +9,14 @@ export const draftApi = api.injectEndpoints({
                 method: 'POST',
             }),
         }),
+        directionReport: builder.mutation({
+            query: (body)=> ({
+                url: `/api/report/direction/`,
+                body,
+                method: 'POST',
+            }),
+        }),
     })
 })
 
-export const { useProjectReportMutation } = draftApi
+export const { useProjectReportMutation, useDirectionReportMutation } = reportApi

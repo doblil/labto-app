@@ -6,6 +6,7 @@ export const CustomSelect = (props) => {
     const {options, width, height, fontSize, input, handleChange, initialise, setInitialise, selected} = props;
     const selectRef = useRef(null);
 
+
     const initialiseSelect = () => {
         selectRef.current.clearValue();
         setInitialise(false)
@@ -80,9 +81,7 @@ export const CustomSelect = (props) => {
     }
     return(
         <Select
-            value={options.filter((option) => {
-                return option.value === selected;
-            })[0]}
+            value={options.filter((option) => option.value === selected || option.label === selected)[0]}
             ref={selectRef}
             placeholder = {'Выберите...'}
             onChange = {handleChange}

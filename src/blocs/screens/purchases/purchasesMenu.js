@@ -5,6 +5,7 @@ import { useRoleValidate } from '../../../hooks/useRoleValidate'
 
 export const PurchasesMenu = (props) => {
   const roleValidation = useRoleValidate();
+
   const {activeNav, setActiveNav} = props
 
   const handleActiveNav = (navName) => {
@@ -29,7 +30,7 @@ export const PurchasesMenu = (props) => {
                 <li><Link to='/purchases/my/archiveMy'  className='link'><div onClick={()=>{setActiveNav('archiveMy')}} className={handleActiveNav('archiveMy')}>Архив</div></Link></li>
             </ul>
             <div className="menu__stripe"></div>
-            { <><div class="menu__subtitle">Все</div>
+            {roleValidation(['admin', 'head', 'developer']) && <><div class="menu__subtitle">Все</div>
             <ul>
                 <li><Link to='/purchases/all/all'  className='link'><div onClick={()=>{setActiveNav('all')}} className={handleActiveNav('all')}>Все</div></Link></li>
                 <li><Link to='/purchases/all/archive'  className='link'><div onClick={()=>{setActiveNav('archive')}} className={handleActiveNav('archive')}>Архив</div></Link></li>
