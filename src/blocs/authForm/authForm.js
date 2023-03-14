@@ -7,6 +7,7 @@ import { sMessageCh } from '../../redux/store/sMessageSlice';
 import { useNavigate } from 'react-router-dom';
 
 import './authForm.scss'
+import { NotAllowedPage } from '../notAllowedPage/notAllowedPage';
 
 export const AuthForm = (props) => {
 
@@ -46,9 +47,8 @@ export const AuthForm = (props) => {
     };
 
 
-    return(
-        
-        <div className="auth" >
+    return(<>
+            <div className="auth" >
             <img src="icons/main_logo.svg" alt="logo" />
             <div className="auth__wrapper">
                 <form className=" fadein" >
@@ -62,6 +62,10 @@ export const AuthForm = (props) => {
                 <button onClick={handleLogin} onEnter className="btn auth__btn" >Войти</button>
             </div>
         </div>
+        <NotAllowedPage/>
+        </>
+        
+
             
     );
 };

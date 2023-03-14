@@ -50,12 +50,12 @@ export const Drafts = () => {
     	<div>
 
 			<div className="profile__parameter">
-				<div className="profile__value profile__value_header">дата</div>
+				<div className="profile__value profile__value_header">Дата</div>
 				<div className="profile__value profile__value_5 profile__value_header">ID</div>
-				<div className="profile__value profile__value_header">вещество</div>
-				<div className="profile__value profile__value_header">количество</div>
-				<div className="profile__value profile__value_header">статья списания</div>
-				<div className="profile__value profile__value_text profile__value_header">вид испытания</div>
+				<div className="profile__value profile__value_header">Вещество</div>
+				<div className="profile__value profile__value_header">Количество</div>
+				<div className="profile__value profile__value_header">Статья списания</div>
+				<div className="profile__value profile__value_text profile__value_header">Вид испытания</div>
 				<div className="profile__value profile__value_header"></div>
 				<div className="profile__value profile__value_5 profile__value_header"></div>
             </div>
