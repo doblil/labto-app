@@ -1,0 +1,41 @@
+@import '../../../src/sass/base/variables.scss';
+
+
+.not-allowed{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__page{
+        background-color: $fond-color;
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+    &__pic{
+        height: 100px;
+        margin-bottom: 30px;
+        animation: infinite normal 2s shake;
+        img{
+            height: 100%;
+
+        }
+    }
+    &__text{
+        text-align: center;
+        color: white;
+        font-size: 18px;
+    }
+}
+
+@keyframes shake {
+    from {transform: rotate(7deg) translateX(8px);}
+    50%{transform: rotate(-7deg)translateX(-8px);}
+    to {transform: rotate(7deg)translateX(8px);}
+}
