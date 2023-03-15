@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux';
 
 import { ContentRouter } from '../blocs/contentRouter/contentRouter';
 
-import { ServerMessage } from '../blocs/serverMessage/serverMessage';
-
 import './app.scss'
 import '../sass/base/variables.scss'
 import '../sass/sassTemplates/btn.scss'

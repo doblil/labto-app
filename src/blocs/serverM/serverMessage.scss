@@ -7,7 +7,6 @@
     bottom: 5vh;
     display: flex;
     flex-direction: column-reverse;
-
     z-index: 999;
 }
 .server-message__item{
@@ -21,20 +20,14 @@
     color: white;
     border-radius: 10px;
     z-index: 999;
+    animation: slideIn 1s;
 }
-.server-message{
-    position: fixed;
-    padding: 10px 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 5vh;
 
-    font-size: 15px;
-    text-align: center;
-    font-weight: 700;
-
-    background-color: $utility-color;
-    color: white;
-    border-radius: 10px;
-    z-index: 999;
+@keyframes slideIn{
+    0%{
+        transform: translateY(100vh);
+    }
+    100%{
+        transform: translateY(0);
+    }
 }

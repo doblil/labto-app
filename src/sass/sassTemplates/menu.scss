@@ -50,4 +50,19 @@
         font-size: 12px;
         line-height: 9px;
     }
+    &__faq{
+        height: 40px;
+        width: 124px;
+        background-color: $fond-color;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        font-size: 11px;
+        color: white;
+        img{
+            height: 60%;
+        }
+    }
 }

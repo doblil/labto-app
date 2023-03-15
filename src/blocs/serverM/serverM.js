@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
-import '../serverMessage/serverMessage.scss'
+import './serverMessage.scss'
 import { ServerMItem } from "./serverMItem"
 export const ServerM = () => {
     

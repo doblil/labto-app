@@ -23,7 +23,10 @@ export const ProfileMenu = (props) => {
             <li><Link to='/profile/drafts'  className='link'><div className={handleActiveNav('drafts')}>Черновики</div></Link></li>
             <li><Link to='/profile/history'  className='link'><div className={handleActiveNav('history')}>История</div></Link></li>
             <li><Link to='/profile/orders'  className='link'><div className={handleActiveNav('orders')}>Заказы</div></Link></li>
+            <div className="menu__stripe" style={{marginBottom:'5px'}}></div>
+            <li><div className="menu__faq"><img src="icons/faq.svg" alt="faq" /> Помощь</div></li>
         </ul>
+        
       </div>
     )
   }
