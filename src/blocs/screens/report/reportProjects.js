@@ -126,7 +126,7 @@ export const ReportProjects = (props) => {
         })
     }
     //******end printing logic
-
+    
 
     const [activeNav, setActiveNav] = useOutletContext();
     useEffect(() => {
@@ -158,6 +158,7 @@ export const ReportProjects = (props) => {
         if(v === current) return "filter__item filter__item_active"
         return "filter__item"
     }
+
    
     
 
@@ -234,6 +235,8 @@ export const ReportProjects = (props) => {
             <div ref={printRef} className="history overflow overflow__mt50"  style={{height: '60vh'}}>
                 {printPrep && <>
                     <h5 style={{lineHeight: '30px'}}>Отчет по проекту {project.code}, {project.name}. за период {startDate}(включительно) - {endDate}(не включая) </h5>
+                    <h6 style={{lineHeight: '30px'}}>Всего пунктов отчета - {}. за период {startDate}(включительно) - {endDate}(не включая) </h6>
+                    
                 </>}
 			 	{(data?.resultReags && current === 'column') && <ColumnTable data = {data} isSuccess = {isSuccess} current = {current}/>}
 			 	{(data?.resultReags && current !== 'column') && <ReagentTable data = {data} isSuccess = {isSuccess} current = {current}/>}

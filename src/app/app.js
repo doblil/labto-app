@@ -14,6 +14,7 @@ import '../sass/sassTemplates/print.scss'
 import '../sass/sassTemplates/overlay.scss'
 import '../sass/sassTemplates/page.scss'
 import '../sass/sassTemplates/filter.scss'
+import { ServerM } from '../blocs/serverM/serverM';
 
 
 
@@ -21,7 +22,8 @@ function App() {
   return (
     <div className="App">
             <ContentRouter/>
-            <ServerMessage/>
+            {/* <ServerMessage/> */}
+            <ServerM/>
 
     </div>
   );

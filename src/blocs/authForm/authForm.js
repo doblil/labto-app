@@ -48,7 +48,7 @@ export const AuthForm = (props) => {
 
 
     return(<>
-            <div className="auth" >
+            <div className="auth">
             <img src="icons/main_logo.svg" alt="logo" />
             <div className="auth__wrapper">
                 <form className=" fadein" >
@@ -62,7 +62,6 @@ export const AuthForm = (props) => {
                 <button onClick={handleLogin} onEnter className="btn auth__btn" >Войти</button>
             </div>
         </div>
-        <NotAllowedPage/>
         </>
         
 
