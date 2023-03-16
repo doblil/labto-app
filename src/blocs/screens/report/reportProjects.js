@@ -242,7 +242,7 @@ export const ReportProjects = (props) => {
                             <input 
                                 type="date" 
                                 className="filter__input" 
-                                style={{height:'33px'}}
+                                style={{height:'38px'}}
                                 onChange = {(e) => {setStartDate(e.target.value)}}
                                 value = {startDate}
                             />
@@ -253,7 +253,7 @@ export const ReportProjects = (props) => {
                             <input 
                                 type="date" 
                                 className="filter__input" 
-                                style={{height:'33px'}}
+                                style={{height:'38px'}}
                                 onChange = {(e) => {setEndDate(e.target.value)}}
                                 value = {endDate}
                             />
@@ -272,7 +272,7 @@ export const ReportProjects = (props) => {
                             /> 
                         </div>
                     </div>
-                    <button className="btn" style={{height:'33px'}} onClick={handleCreateReport}>Создать отчет</button>  
+                    <button className="btn" style={{height:'38px'}} onClick={handleCreateReport}>Создать отчет</button>  
                 </div>
 
                 <div className="filter__wrap" style={{marginTop:'5px', marginBottom:'10px', marginRight:'120px'}}>

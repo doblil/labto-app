@@ -135,7 +135,7 @@ export const ReportDirection = (props) => {
                         <input 
                             type="date" 
                             className="filter__input" 
-                            style={{height:'33px'}}
+                            style={{height:'38px'}}
                             onChange = {(e) => {setStartDate(e.target.value)}}
                             value = {startDate}
                         />
@@ -147,7 +147,7 @@ export const ReportDirection = (props) => {
                         <input 
                             type="date" 
                             className="filter__input" 
-                            style={{height:'33px'}}
+                            style={{height:'38px'}}
                             onChange = {(e) => {setEndDate(e.target.value)}}
                             value = {endDate}
                         />
@@ -155,7 +155,7 @@ export const ReportDirection = (props) => {
 
                     <div className="filter__inner" style={{marginBottom:'10px', marginRight:'20px'}} >
                         <div className="filter__label">Отдел</div>
-                        <select value={direction} style={{width:'255px', height:'33px'}} onChange={(e) => {setDirection(e.target.value)}}>
+                        <select value={direction} style={{width:'255px', height:'38px'}} onChange={(e) => {setDirection(e.target.value)}}>
                             {allDirections.map(item => {
                                 return <option key = {item.value} value={item.value}> {item.label}</option>
                             })} 
@@ -163,7 +163,7 @@ export const ReportDirection = (props) => {
                         </select>
                     </div>
                 </div>
-                <button className="btn" style={{height:'33px'}} onClick={handleCreateReport}>Создать отчет</button>  
+                <button className="btn" style={{height:'38px'}} onClick={handleCreateReport}>Создать отчет</button>  
             </div>
 
             <div className="filter__wrap" style={{marginTop:'5px', marginBottom:'10px', marginRight:'120px'}}>
