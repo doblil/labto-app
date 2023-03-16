@@ -1,22 +1,29 @@
 import './header.scss';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { stringifyRole } from '../../services/services';
 import { useRoleValidate } from '../../hooks/useRoleValidate';
+import { useLogoutMutation } from '../../redux/api/authApi';
+import { sMessageCh } from '../../redux/store/sMessageSlice';
 
 export const Header = (props) => {
-  
-  const roleValidation = useRoleValidate();
-
+	const dispatch = useDispatch();
+  	const roleValidation = useRoleValidate();
+	const [logout] = useLogoutMutation();
 	const {isAuth, name, direction, department, position, role } = useSelector(state => state.auth);
-  const {activeTab} = props;
+  	const {activeTab} = props;
 
 	const handleActiveTab = (tabName) => {
-   if(activeTab === tabName){
-    return "title header__menu-item header__menu-item_active"
-   }
-   return "title header__menu-item"
-  }
+   		if(activeTab === tabName){
+   		 	return "title header__menu-item header__menu-item_active"
+   		}
+   		return "title header__menu-item"
+  	}	
+	
+	const handleLogout = async () => {
+		await logout().unwrap()
+		dispatch(sMessageCh('Выход из учетной записи'))
+	}
 
 	return (
     <div className="header">
@@ -37,7 +44,7 @@ export const Header = (props) => {
           	<span className="text header__info">{department} {direction}</span>
           	<span className="text header__info header__info-fz11">{position}/{stringifyRole(role)}</span>
         	</div>}
-        	<div className="header__exit" title='выйти'><div className="header__opening"><div className="header__door"></div></div></div>
+        	<div onClick={handleLogout} className="header__exit" title='выйти'><div className="header__opening"><div className="header__door"></div></div></div>
       	</div>
     </div>
   )

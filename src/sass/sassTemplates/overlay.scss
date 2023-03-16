@@ -43,6 +43,12 @@
             margin-right: 10px;
         }
     }
+    &__blur{
+        backdrop-filter: blur(7px); 
+        background: rgba(255,255,255,0.4);
+        color: $fond-color;
+        flex-direction: column; 
+    }
 
     &__btn{
         margin-top: 15px;
