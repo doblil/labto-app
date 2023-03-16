@@ -4,15 +4,40 @@ import { useOutletContext } from 'react-router-dom'
 import { useReactToPrint } from 'react-to-print'
 import { useProjectReportMutation } from '../../../redux/api/reportApi'
 import { sMessageCh } from '../../../redux/store/sMessageSlice'
+import { stringifyDate } from '../../../services/services'
 import { CustomSelect } from '../../customSelect/customSelect'
 import { ReportColumnItem, ReportReagItem } from './reportItem'
 
 const  ReagentTable = (props) =>{
     const {isSuccess, data, current} = props;
     
+    const printRef = useRef(null)
+    const [printPrep, setPrintPrep] = useState(true)
+
+    const print = useReactToPrint({
+        content: () => printRef.current,
+    });
+
+    const handlePrint =  () => {
+        setPrintPrep(true)
+        const p = new Promise((resolve) => {
+            setTimeout(() => {
+                setPrintPrep(true)
+                print();
+                resolve(false)
+            }, 1000);
+        })
+
+        p.then((data) => {
+            setPrintPrep(data)
+        })
+    }
+
     return(
         <>
-        <table table className="table__wrap"> 
+        <div className="filter__print" onClick={handlePrint}>Распечатать</div>
+        <div ref={printRef}>
+            <table table className="table__wrap"> 
             <thead>     
                 <tr>
                     <th>№</th>
@@ -44,16 +69,76 @@ const  ReagentTable = (props) =>{
             </tbody>
             
         </table>
+        </div>
+        
     </>
     
     )
 } 
 
 const ColumnTable = (props) => {
-    const {isSuccess, data} = props;
+    const {isSuccess, data,  startDate, endDate, project} = props;
+
+    const printRef = useRef(null)
+    const [printPrep, setPrintPrep] = useState(true)
+
+    const print = useReactToPrint({
+        content: () => printRef.current,
+    });
+
+    const handlePrint =  () => {
+        setPrintPrep(true)
+        const p = new Promise((resolve) => {
+            setTimeout(() => {
+                setPrintPrep(true)
+                print();
+                resolve(false)
+            }, 1000);
+        })
+
+        p.then((data) => {
+            setPrintPrep(data)
+        })
+    }
+
+    
+    const handleSummary = (data = []) => {
+        let totalInj, totalPrice;
+        const count = data.length;
+        const countWPrice = data.filter(item => item.price).length;
+        const countWOPrice = Math.round(count - countWPrice)
+        if(data.filter(item => item.price).length){
+            totalPrice = data.filter(item => item.price).map(item => item.price).reduce((a, b) => a+b)
+        } else {
+            totalPrice = 0
+        }
+        if(data.filter(item => item.countInj).length){
+            totalInj = data.filter(item => item.countInj).map(item => item.countInj).reduce((a,b)=> a+b);
+        } else {
+            totalInj = 0
+        }
+        
+        return {
+            count,
+            totalPrice,
+            totalInj,
+            countWPrice,
+            countWOPrice}
+    }
+
+    const summary = handleSummary(data.resultColumns)
+    
     return(
         <>
-        <h6>Стоимость из рассчета pecypca колонки 40000 инжекций</h6>
+        <div className="filter__print" onClick={handlePrint}>Распечатать</div>
+        <div ref={printRef}>
+        
+        {printPrep && <><h5>Отчет по проекту {project.name} за период c {stringifyDate(startDate)} по {stringifyDate(endDate)}</h5>
+        <h5>Отчет содержит {summary.count} пунктов </h5>
+        {summary.countWOPrice && <h5>Из них {summary.countWOPrice} с не указанной стоимостью</h5>}
+        <h5>Количество инжекций за указанный период: {summary.totalInj}</h5>
+        <h5>Приблизительная стоимость инжекций: {summary.totalPrice}</h5></>}
+        <h6>*Стоимость из рассчета pecypca колонки 40000 инжекций</h6>
         <table table className="table__wrap"> 
             <thead>     
                 <tr>
@@ -89,7 +174,9 @@ const ColumnTable = (props) => {
             </tbody>
             
         </table>
-    </>
+    </div>
+        </>
+        
     )
 }
 
@@ -104,28 +191,8 @@ export const ReportProjects = (props) => {
     const [current, setCurrent] = useState('reag') // 'reag' | 'rs' | 'subst' | 'column' 
 
     //start printing logic
-    const printRef = useRef(null)
-    const [printPrep, setPrintPrep] = useState(false)
+    
 
-    const print = useReactToPrint({
-        content: () => printRef.current,
-    });
-
-    const handlePrint =  () => {
-        setPrintPrep(true)
-        const p = new Promise((resolve) => {
-            setTimeout(() => {
-                setPrintPrep(true)
-                print();
-                resolve(false)
-            }, 1000);
-        })
-
-        p.then((data) => {
-            setPrintPrep(data)
-        })
-    }
-    //******end printing logic
     
 
     const [activeNav, setActiveNav] = useOutletContext();
@@ -159,8 +226,9 @@ export const ReportProjects = (props) => {
         return "filter__item"
     }
 
-   
     
+    
+
 
     return(
         <div className="report">
@@ -229,17 +297,29 @@ export const ReportProjects = (props) => {
                         onClick = {() => {setCurrent('column')}}
                     >ВЭЖХ/ГХ</div> </>}
                 </div>
-                <div className="filter__print">Распечатать</div>
+                
             </div>
 
-            <div ref={printRef} className="history overflow overflow__mt50"  style={{height: '60vh'}}>
-                {printPrep && <>
-                    <h5 style={{lineHeight: '30px'}}>Отчет по проекту {project.code}, {project.name}. за период {startDate}(включительно) - {endDate}(не включая) </h5>
-                    <h6 style={{lineHeight: '30px'}}>Всего пунктов отчета - {}. за период {startDate}(включительно) - {endDate}(не включая) </h6>
+            <div className="history overflow overflow__mt50"  style={{height: '60vh'}}>
+                
+			 	{(data?.resultReags && current === 'column') && <ColumnTable 
+                    data = {data} 
+                    isSuccess = {isSuccess} 
+                    current = {current}
+                    startDate = {startDate}
+                    endDate = {endDate}
+                    project = {project}
                     
-                </>}
-			 	{(data?.resultReags && current === 'column') && <ColumnTable data = {data} isSuccess = {isSuccess} current = {current}/>}
-			 	{(data?.resultReags && current !== 'column') && <ReagentTable data = {data} isSuccess = {isSuccess} current = {current}/>}
+                />}
+			 	{(data?.resultReags && current !== 'column') && <ReagentTable 
+                    data = {data} 
+                    isSuccess = {isSuccess} 
+                    current = {current}
+                    startDate = {startDate}
+                    endDate = {endDate}
+                    project = {project}
+                    
+                />}
                 {isLoading && <h5>Загрузка отчета...</h5>}
                 
 			</div>
