@@ -16,6 +16,11 @@ export const BackupItem = () => {
                     <img src="icons/cloud-arrow-up.svg" alt="cloud-arrow-up" />
                 </div>
             </div>
+            <div className="backup__value" style={{width:'10%'}}>
+                <div className="backup__icon">
+                    <img src="icons/restore.svg" alt="restore" />
+                </div>
+            </div>
         </div>
     )
 }

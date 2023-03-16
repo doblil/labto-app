@@ -35,7 +35,7 @@ const  ReagentTable = (props) =>{
 
     return(
         <>
-        <div className="filter__print" onClick={handlePrint}>Распечатать</div>
+        <div className="filter__print" onClick={handlePrint}> <img src="icons/printer_white.svg" alt="printer" /></div>
         <div ref={printRef}>
             <table table className="table__wrap"> 
             <thead>     
@@ -130,7 +130,7 @@ const ColumnTable = (props) => {
     
     return(
         <>
-        <div className="filter__print" onClick={handlePrint}>Распечатать</div>
+        <div className="filter__print" onClick={handlePrint}><img src="icons/printer_white.svg" alt="printer" /></div>
         <div ref={printRef}>
         
         {printPrep && <><h5>Отчет по проекту {project.name} за период c {stringifyDate(startDate)} по {stringifyDate(endDate)}</h5>
@@ -320,7 +320,7 @@ export const ReportProjects = (props) => {
                     project = {project}
                     
                 />}
-                {isLoading && <h5>Загрузка отчета...</h5>}
+                {isLoading && <h5 style={{marginTop:'25px'}}>Загрузка отчета...</h5>}
                 
 			</div>
         </div>

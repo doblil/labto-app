@@ -125,8 +125,9 @@ export const ReportDirection = (props) => {
 
     return(
         <div className="report">
+        <div className="filter__print"><img src="icons/printer_white.svg" alt="printer" /></div>
         <div className="filter"style={{padding:'15px', paddingBottom:'0px', position:'relative', width:'100%'}}>
-            <h5 style={{marginBottom:'30px'}}>Задайте период и интересующее управление</h5>
+            <h5 style={{marginBottom:'30px'}}>Задайте период и интересующий отдел</h5>
 
             <div className="filter__wrap" style={{marginBottom:'5px'}}>
                 <div className="filter__inputs" >
@@ -188,13 +189,13 @@ export const ReportDirection = (props) => {
                         onClick = {() => {setCurrent('column')}}
                 >ВЭЖХ/ГХ</div> </>}
             </div>
-            <div className="filter__print">Распечатать</div>
+            
         </div>
 
         <div className="history overflow overflow__mt50"  style={{height: '60vh'}}>
                 {(data?.resultReags && current === 'column') && <ColumnTable data = {data} isSuccess = {isSuccess} current = {current}/>}
 			 	{(data?.resultReags && current !== 'column') && <ReagentTable data = {data} isSuccess = {isSuccess} current = {current}/>}
-                {isLoading && <h5>Загрузка отчета...</h5>}
+                {isLoading && <h5 style={{marginTop:'25px'}}>Загрузка отчета...</h5>}
         </div>
     </div>
     )

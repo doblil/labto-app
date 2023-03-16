@@ -81,6 +81,7 @@ export const UserItem = (props) => {
                     <div className="profile__select profile__select_long" onClick={()=> setShowChCredentials(true)}>Изменить логин, пароль</div>
                     <div className="profile__select profile__select_long" onClick={()=>setShowChUserData(true)}>Изменить учетные данные</div>
                     <div className="profile__select profile__select_long" onClick={handleUnactiveUser}>Деактивировать пользователя</div>
+                    <div className="profile__select profile__select_long"><img src="icons/inboxes.svg" alt="inboxes" style={{height:'14px', marginRight:'10px'}}/>  История действий</div>
                 </div>
             </div>
         
