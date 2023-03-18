@@ -3,25 +3,37 @@ import { Header } from "../header/header"
 
 import './screen.scss'
 import { useGetProjectsQuery } from "../../redux/api/projectApi"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { projectsCh } from "../../redux/store/projectSlice"
-import { allDepartmentsCh, allDirectionsCh, allManufacturersCh, allPositionsCh, allRolesCh, allRsTypesCh, allUsersCh } from "../../redux/store/globalSlice"
+import { allDepartmentsCh, allDirectionsCh, allManufacturersCh, allPositionsCh, allRolesCh, allRsTypesCh, allUsersCh, serviceCh } from "../../redux/store/globalSlice"
 import { Outlet } from "react-router-dom"
 import { useState } from "react"
 import { useGetUsersQuery } from "../../redux/api/userApi"
 import { useGetOptionsQuery } from "../../redux/api/optionApi"
+import { useGetIsServiceQuery } from "../../redux/api/settingsApi"
+import { ServicePage } from "../servicePage/servicePage"
 export const Screen = () => {
+	
+	const {role} = useSelector(state => state.auth)
+	const {service} = useSelector(state => state.global)
+	
 	const dispatch = useDispatch();
 	const {data, isSuccess} = useGetProjectsQuery('false');
 	const {data: usersData, isSuccess: userSuccess} = useGetUsersQuery()
 	const {data: optionsData, isSuccess: optionsSuccess} = useGetOptionsQuery()
-
+	const {data: serviceData, isSuccess: serviceSuccess} = useGetIsServiceQuery();
+	
 	if(isSuccess && data.projects) {
 		dispatch(projectsCh(data.projects))
 	}
 	if(userSuccess && usersData.users) {
 		dispatch(allUsersCh(usersData.users))
 	}
+
+	if(serviceSuccess && serviceData?.serviceStatus) {
+		dispatch(serviceCh(serviceData.serviceStatus))
+	}
+
 	if(optionsSuccess && optionsData.options){
 		const manufacturers = optionsData.options.filter(item=>item.name === 'manufacturer')
 		const rsTypes = optionsData.options.filter(item=>item.name === 'rsType');
@@ -39,6 +51,10 @@ export const Screen = () => {
 		dispatch(allRolesCh(roles[0].options));
 	}
 	const [activeTab, setActiveTab] = useState('')
+
+	if (service && !['admin', 'developer'].includes(role)) {
+		return <ServicePage/>
+	}
 
 	return(
 		<>

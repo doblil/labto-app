@@ -13,7 +13,7 @@ import { addColCatCh, addColDescrCh, addColFromDateCh, addColInitialDestinationC
 import { useAddColumnMutation } from '../../../../redux/api/columnApi';
 import { useOutletContext } from 'react-router-dom';
 import { useRoleValidate } from '../../../../hooks/useRoleValidate';
-import { NotAllowed } from '../../../handleComponents/notAllowed';
+import { NotAllowedPage } from "../../../notAllowedPage/notAllowedPage.js"
 
 
 export const AddColumn = () => {
@@ -145,7 +145,7 @@ const options = [
         { value: 'hplc', label: 'для ВЭЖХ' },
     ]
     
-if(!roleValidation(['admin', 'prep', 'head', 'developer'])) return <NotAllowed/>
+if(!roleValidation(['admin', 'prep', 'head', 'developer'])) return <NotAllowedPage/>
     return(
         <div className="page">
             <div className="add__top" style={{marginTop:'-10px'}}>

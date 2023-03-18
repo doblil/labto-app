@@ -12,7 +12,7 @@ import { InputFile } from './inputFile';
 import { useUploadMutation } from '../../../../redux/api/uploadApi';
 import { useOutletContext } from 'react-router-dom';
 import { useRoleValidate } from '../../../../hooks/useRoleValidate';
-import { NotAllowed } from '../../../handleComponents/notAllowed';
+import { NotAllowedPage } from "../../../notAllowedPage/notAllowedPage.js"
 
 
 export const AddReag = () => {
@@ -174,7 +174,7 @@ export const AddReag = () => {
         { value: 'subst', label: 'субстанции' },
         { value: 'rs', label: 'стандартного образца' }
     ]
-    if(!roleValidation(['admin', 'prep', 'head', 'developer'])) return <NotAllowed/>
+    if(!roleValidation(['admin', 'prep', 'head', 'developer'])) return <NotAllowedPage/>
     
 
     return(

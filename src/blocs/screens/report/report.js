@@ -4,7 +4,8 @@ import { useEffect, useState } from "react"
 import { Outlet, useOutletContext } from "react-router-dom"
 import { ReportMenu } from "./reportMenu"
 import { useRoleValidate } from '../../../hooks/useRoleValidate'
-import { NotAllowed } from '../../handleComponents/notAllowed'
+import { NotAllowedPage } from '../../notAllowedPage/notAllowedPage'
+
 
 export const Report = (props) => {
     const roleValidation = useRoleValidate();
@@ -14,7 +15,7 @@ export const Report = (props) => {
         setActiveTab('report')
     }, [setActiveTab])
 
-    if (!roleValidation(['head', 'admin', 'developer'])) return <NotAllowed/>
+    if (!roleValidation(['head', 'admin', 'developer'])) return <NotAllowedPage/>
 
     return (
         <>
