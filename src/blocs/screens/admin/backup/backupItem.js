@@ -62,18 +62,18 @@ export const BackupItem = (props) => {
             <div className="backup__item">
                 <div className="backup__value">{name}</div>
                 <div className="backup__value" style={{width:'10%'}}>
-                    <div onClick={confirmDelete} className="backup__icon">
+                    <div onClick={confirmDelete} title="удалить" className="backup__icon">
                         <img src="icons/trash.svg" alt="trash" />
                     </div>
                 </div>
                 <div className="backup__value" style={{width:'10%'}}>
-                    <div onClick={handleDownload} className="backup__icon">
+                    <div onClick={handleDownload} title="Загрузить локально" className="backup__icon">
                         <img src="icons/cloud-arrow-up.svg" alt="cloud-arrow-up" />
                     </div>
                 </div>
                 <div className="backup__value" style={{width:'10%'}}>
-                    <div onClick={confirmRestoreDB} className="backup__icon">
-                        <img src="icons/cloud-arrow-up.svg" alt="cloud-arrow-up" />
+                    <div onClick={confirmRestoreDB} title="Восстановить" className="backup__icon">
+                        <img src="icons/restore.svg" alt="cloud-arrow-up" />
                     </div>
                 </div>
             </div>

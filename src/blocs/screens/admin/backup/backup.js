@@ -6,10 +6,18 @@ import { useConfirm } from '../../../../hooks/useConfirm'
 import { useDispatch } from 'react-redux'
 import { sMessageCh } from '../../../../redux/store/sMessageSlice'
 import { BackupLoading } from './backupLoading'
+import { useEffect } from 'react'
+import { useOutletContext } from 'react-router-dom'
 
 
 
 export const Backup = () => {
+	
+	const [activeNav, setActiveNav] = useOutletContext();
+    useEffect(() => {
+        setActiveNav('backup')
+    }, [])
+
 	// rtk queries hooks 
 	const {data, isLoading, isSuccess, isError} = useGetBackupsQuery();
 	const [deleteBackup, {isLoading: deleteLoading,}] = useDeleteBackupMutation();
@@ -63,7 +71,7 @@ export const Backup = () => {
   	return(
 		
     	<div>
-			{backupLoading && <BackupLoading text='Создание точки осстановления'/>}
+			{backupLoading && <BackupLoading text='Создание точки восстановления'/>}
 			{restoreLoading && <BackupLoading text='Восстановление базы данных'/>}
 
 			<BackupDialog/>

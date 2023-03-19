@@ -9,9 +9,11 @@ export const historyApi = api.injectEndpoints({
             cache: "no-cache",
         }),
 
-        getUserHistory: builder.query({
-            query: ()=> ({
+        getUserHistory: builder.mutation({
+            query: (body)=> ({
                 url: `/api/history/getUser/:target`,
+                body,
+                method: "GET"
             }),
         }),
 

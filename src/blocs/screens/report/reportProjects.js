@@ -132,12 +132,18 @@ const ColumnTable = (props) => {
         <>
         <div className="filter__print" onClick={handlePrint}><img src="icons/printer_white.svg" alt="printer" /></div>
         <div ref={printRef}>
+
+        {/* ЭТО НАДО СДЕЛАТЬ ПО-ЧЕЛОВЕЧЕСКИ */}
         
-        {printPrep && <><h5>Отчет по проекту {project.name} за период c {stringifyDate(startDate)} по {stringifyDate(endDate)}</h5>
+        <h5>Отчет по проекту {project.name} за период c {stringifyDate(startDate)} по {stringifyDate(endDate)}</h5>
         <h5>Отчет содержит {summary.count} пунктов </h5>
         {summary.countWOPrice && <h5>Из них {summary.countWOPrice} с не указанной стоимостью</h5>}
         <h5>Количество инжекций за указанный период: {summary.totalInj}</h5>
-        <h5>Приблизительная стоимость инжекций: {summary.totalPrice}</h5></>}
+        <h5>Приблизительная стоимость инжекций: {summary.totalPrice}</h5>
+
+        
+        {/* .  */}
+
         <h6>*Стоимость из рассчета pecypca колонки 40000 инжекций</h6>
         <table table className="table__wrap"> 
             <thead>     

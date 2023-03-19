@@ -12,8 +12,6 @@ export const AdminMenu = (props) => {
 	const dispatch = useDispatch()
 	const {service} = useSelector(state => state.global)
 
-//************ */\
-console.log('service', service);
 
 	const {activeNav} = props
 	const [startService, {isLoading: startLoading, isSuccess: startSuccess}] = useStartServiceMutation();
@@ -73,6 +71,7 @@ console.log('service', service);
                 <li><Link to='/admin/options'  className='link'><div className={handleActiveNav('options')}>Опции</div></Link></li>
                 <li><Link to='/admin/setMobileApp'  className='link'><div className={handleActiveNav('mobileApp')}>Активация приложения</div></Link></li>
                 <li><Link to='/admin/backup'  className='link'><div className={handleActiveNav('backup')}>Резервное копирование</div></Link></li>
+                <li><Link to='/admin/userHistory'  className='link'><div className={handleActiveNav('userHistory')}>Активность пользователей</div></Link></li>
                 
             </ul>
             <div className="menu__stripe"></div>

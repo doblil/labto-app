@@ -26,6 +26,7 @@ import { Column } from "../screens/prep/table/column/column"
 import { AddColumn } from "../screens/prep/add/addColumn"
 import { SetMobileApp } from "../screens/admin/setMobileApp/setMobileApp"
 import { Backup } from "../screens/admin/backup/backup"
+import { UserHistory } from "../screens/admin/userHistory/userHistory"
 
 
 export const ContentRouter = () => {
@@ -44,6 +45,7 @@ export const ContentRouter = () => {
 				<Route path="/admin/options" element={<Options/>}/>
 				<Route path="/admin/setMobileApp" element={<SetMobileApp/>}/>
 				<Route path="/admin/backup" element={<Backup/>}/>
+				<Route path="/admin/userHistory" element={<UserHistory/>}/>
 
 			</Route>
 			<Route path="/profile" element={<Profile/>}>
