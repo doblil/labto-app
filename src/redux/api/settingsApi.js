@@ -6,7 +6,14 @@ export const settingsApi = api.injectEndpoints({
             query: ()=> ({
                 url: `/api/settings/isService/`,
             }),
-            providesTags: ['Settings',]
+            providesTags: ['Settings',],
+            
+        }),
+        startGetIsService: builder.query({
+            query: ()=> ({
+                url: `/api/start/isService`,
+            }),
+            
         }),
         startService: builder.mutation({
             query: ()=> ({
@@ -26,4 +33,4 @@ export const settingsApi = api.injectEndpoints({
     })
 })
 
-export const { useGetIsServiceQuery, useStartServiceMutation, useStopServiceMutation } = settingsApi
+export const { useGetIsServiceQuery, useStartServiceMutation, useStopServiceMutation, useStartGetIsServiceQuery } = settingsApi

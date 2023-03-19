@@ -32,7 +32,7 @@ export const ProfileHistory = () => {
 		const {history} = data.history
 		content = (
 			<>
-			 	<table table className="table__wrap"> 
+			 	<table table className="table__wrap "> 
               		<thead>     
                   		<tr>
 							<th>Дата</th>

@@ -1,32 +1,50 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useOutletContext } from 'react-router-dom';
+import { useGetUserHistoryMutation } from '../../../../redux/api/historyApi';
+import { sMessageCh } from '../../../../redux/store/sMessageSlice';
 import { CustomSelect } from '../../../customSelect/customSelect';
+import { UserHistoryTable } from './userHistoryTable';
+
+import '../../../../sass/sassTemplates/menu.scss'
+
 
 export const UserHistory = () => {
     
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
+    const [targetUser, setTargetUser] = useState('')
     const [initialise, setInitialise] = useState(false)
+
+    const {allUsers} = useSelector(state=> state.global)    
+    const dispatch = useDispatch();
+    const [getUserHistory, {isLoading, isSuccess, data}] = useGetUserHistoryMutation();
 
     const [activeNav, setActiveNav] = useOutletContext();
     useEffect(() => {
         setActiveNav('userHistory')
     }, [])
     
-    const userOptions = [];
+    const userOptions = allUsers.map(item => {
+        return { value: item._id, label: `${item.name}, ${item.position}`}
+    });
 
-    const handleSelectUser = () => {
-        
+    const handleSelectUser = (target) => {
+        setTargetUser(target.value)
     }
 
-    const handleCreateReport = () => {
-        
+    const handleCreateReport = async () => {
+        if (isLoading) return dispatch(sMessageCh('Дождитесь загрузки предыдущего отчета'));
+        if (!endDate || !startDate || !targetUser) return dispatch(sMessageCh('Заполните все поля формы!'));
+        await getUserHistory({target: targetUser, body: {startDate, endDate}}).unwrap();
     }
+
+    if(isSuccess) console.log(data.history);
 
     return(
         <div className="report">
             <div className="filter"style={{padding:'15px', paddingBottom:'0px', position:'relative', width:'100%'}}>
-                <h5 style={{marginBottom:'30px'}}>Задайте период и интересующий проект</h5>
+                <h5 style={{marginBottom:'30px'}}>Задайте период и пользователя</h5>
 
                 <div className="filter__wrap" style={{marginBottom:'5px'}}>
                     <div className="filter__inputs" >
@@ -62,12 +80,16 @@ export const UserHistory = () => {
                                 fontSize = {'12px'}
                                 width = {'250px'}
                                 options = {userOptions}
+                                selected = {targetUser}
                             /> 
                         </div>
                     </div>
                     <button className="btn" style={{height:'38px'}} onClick={handleCreateReport}>Создать отчет</button>  
                 </div>
         </div>
+
+        {isSuccess && <UserHistoryTable history = {data.history}/>}
+
         </div>
     )
 }

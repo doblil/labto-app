@@ -10,14 +10,14 @@ export const historyApi = api.injectEndpoints({
         }),
 
         getUserHistory: builder.mutation({
-            query: (body)=> ({
-                url: `/api/history/getUser/:target`,
+            query: ({body, target})=> ({
+                url: `/api/history/getUser/${target}`,
                 body,
-                method: "GET"
+                method: "PATCH"
             }),
         }),
 
     })
 })
 
-export const { useGetHistoryQuery, useGetUserHistoryQuery } = historyApi
+export const { useGetHistoryQuery, useGetUserHistoryMutation } = historyApi

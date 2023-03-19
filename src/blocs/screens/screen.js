@@ -31,6 +31,7 @@ export const Screen = () => {
 	}
 
 	if(serviceSuccess && serviceData?.serviceStatus) {
+		console.log(service, role)
 		dispatch(serviceCh(serviceData.serviceStatus))
 	}
 
@@ -53,6 +54,7 @@ export const Screen = () => {
 	const [activeTab, setActiveTab] = useState('')
 
 	if (service && !['admin', 'developer'].includes(role)) {
+		
 		return <ServicePage/>
 	}
 

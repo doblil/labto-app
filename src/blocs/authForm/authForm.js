@@ -7,16 +7,23 @@ import { sMessageCh } from '../../redux/store/sMessageSlice';
 import { useNavigate } from 'react-router-dom';
 
 import './authForm.scss'
-import { NotAllowedPage } from '../notAllowedPage/notAllowedPage';
+import { useStartGetIsServiceQuery } from '../../redux/api/settingsApi';
+import { serviceCh } from '../../redux/store/globalSlice';
 
 export const AuthForm = (props) => {
 
     const [email, setEmail] = useState('1@mail.ru');
     const [password, setPassword] = useState('123123');
- 
-    const [login, ] = useLoginMutation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const [login, ] = useLoginMutation();
+    const {data, isSuccess} = useStartGetIsServiceQuery();
+    if(isSuccess && data?.serviceStatus) {
+        dispatch(serviceCh(data.serviceStatus))
+    }
+
+   
 
     const authRef = useRef(null)
 

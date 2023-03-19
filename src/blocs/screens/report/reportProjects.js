@@ -37,7 +37,7 @@ const  ReagentTable = (props) =>{
         <>
         <div className="filter__print" onClick={handlePrint}> <img src="icons/printer_white.svg" alt="printer" /></div>
         <div ref={printRef}>
-            <table table className="table__wrap"> 
+            <table  className="table__wrap"> 
             <thead>     
                 <tr>
                     <th>№</th>
@@ -214,7 +214,6 @@ export const ReportProjects = (props) => {
     const handleCreateReport = () => {
         if (isLoading) return dispatch(sMessageCh('Дождитесь загрузки предыдущего отчета'));
         if (!endDate || !startDate || !project.code) return dispatch(sMessageCh('Заполните все поля формы!'));
-        console.log('click trigger')
         createReport({startDate, endDate, project});
     }
 
