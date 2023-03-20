@@ -89,6 +89,10 @@
         transition: all 0.3s;
             &_history{
                 width: auto;
+                &_active{
+                    background-color: $main-color;
+                    color: white;
+                }
             }
             &_top{
                 background-color: transparent;

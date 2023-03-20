@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react'
 import { useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
-import { useGetMyOrdersQuery } from '../../../../redux/api/orderApi'
+import { useGetMyOrdersQuery, useLazyGetMyOrdersQuery } from '../../../../redux/api/orderApi'
+import { sassVariables } from '../../../../sass/base/variables'
 
 
 
@@ -11,15 +12,33 @@ import { OrderItem } from './orderItem'
 
 
 export const Orders = () => {
+    
+    const [filter, setFilter] = useState('all')
     const [showOrderForm, setShowOrderForm] = useState(false)
-    const {data, isLoading, isError} = useGetMyOrdersQuery();
+    const [getMyOrders, {data, isLoading, isError}] = useLazyGetMyOrdersQuery();
+    
 	const [activeNav, setActiveNav] = useOutletContext();
     useEffect(() => {
         setActiveNav('orders')
     }, [setActiveNav])
+    useEffect(() => {
+        getMyOrders();
+    }, [])
+
+    console.log(data)
 
     let content = <></>
 
+    const handleFilter = (arr) => {  
+        if (filter === 'all') return arr
+        if (filter === 'active')return arr.filter(item => ['created', 'processed', 'executed', 'completed', 'reviced', 'changed',].includes(item.status))
+        if (filter === 'archive') return arr.filter (item => item.archive)
+    }
+
+    const handleStyle = (status) => {
+        if(status === filter) return {backgroundColor: sassVariables.mainColor, color: 'white'}
+        return {color: ''}
+    }
 
     const bottomRef = useRef(null);
 	useEffect( () => {
@@ -38,7 +57,7 @@ export const Orders = () => {
     if(data && data?.myOrders?.length){
         content = <>
         
-        {data.myOrders.map (item=> {
+        {handleFilter(data.myOrders).length ? handleFilter(data.myOrders).map (item=> {
             const {fromDate, name, manufacturer, cat, text, status, uniqueId, messages, _id} = item
             return <OrderItem
                 target = {_id}
@@ -52,7 +71,7 @@ export const Orders = () => {
                 key = {uniqueId}
                 uniqueId = {uniqueId}
             />
-        })}
+        }) : <h5>В данной категории ничего нет</h5>}
         <div ref = {bottomRef}></div>
         </>
     }
@@ -63,8 +82,10 @@ export const Orders = () => {
             {showOrderForm && <OrderForm setShowOrderForm = {setShowOrderForm}/>}
             <div className="history__top">
                 <div className="profile__select profile__select_history" onClick={()=>setShowOrderForm(true)}>Создать заказ</div>
-                <div className="profile__select profile__select_history">Активные</div>
-                <div className="profile__select profile__select_history">Архив</div>
+                <div className="profile__select profile__select_history" style={handleStyle('all')} onClick={() => {setFilter('all')}}>Все</div>
+                <div className="profile__select profile__select_history" style={handleStyle('active')} onClick={() => {setFilter('active')}}>Активные</div>
+                <div className="profile__select profile__select_history" style={handleStyle('archive')} onClick={() => {setFilter('archive')}}>Архив</div>
+                <div className="refresh" title='Обновить' onClick={() => {getMyOrders()}}></div>
             </div>
             
             <div className="profile__parameter overflow">

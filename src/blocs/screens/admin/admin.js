@@ -11,7 +11,6 @@ export const Admin = (props) => {
     const [activeTab, setActiveTab] = useOutletContext();
 
     const [activeNav, setActiveNav] = useState('info')
-    console.log(activeNav)
     useEffect(() => {
         setActiveTab('admin')
     }, [setActiveTab]);

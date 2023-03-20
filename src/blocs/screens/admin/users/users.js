@@ -26,8 +26,7 @@ export const Users = () => {
 
     const {allUsers} = useSelector(state => state.global);
     const {data, isSuccess} = useGetUnactiveUsersQuery();
-    console.log( 'data?.unactiveUsers?.length = ', data?.unactiveUsers?.length)
-    console.log('user active = ', userActive)
+
     const options = [
         {value: true, label: 'Активные пользователии'},
         {value: false, label: 'Неактивные пользователи'},

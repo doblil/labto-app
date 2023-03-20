@@ -157,6 +157,7 @@ export const ReportDirection = (props) => {
                     <div className="filter__inner" style={{marginBottom:'10px', marginRight:'20px'}} >
                         <div className="filter__label">Отдел</div>
                         <select value={direction} style={{width:'255px', height:'38px'}} onChange={(e) => {setDirection(e.target.value)}}>
+                            <option value=""></option>
                             {allDirections.map(item => {
                                 return <option key = {item.value} value={item.value}> {item.label}</option>
                             })} 

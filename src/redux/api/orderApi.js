@@ -67,6 +67,8 @@ export const {
     useCreateOrderMutation,
     useDeleteOrderMutation,
     useGetMyOrdersQuery,
+    useLazyGetMyOrdersQuery,
+    useLazyGetOrdersQuery,
     useGetOrdersQuery,
     useMessageOrderMutation,
     useStatusOrderMutation,
