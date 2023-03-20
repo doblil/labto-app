@@ -1,7 +1,6 @@
-import { useState } from 'react'
 import { useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
-import { useGetMyOrdersQuery, useGetOrdersQuery } from '../../../redux/api/orderApi'
+import { useGetOrdersQuery } from '../../../redux/api/orderApi'
 import { PurchasesItem } from './purchasesItem'
 
 
@@ -10,11 +9,11 @@ import '../../../sass/sassTemplates/menu.scss'
 
 export const PurchasesList = (props) => {
     const {status} = props;
-  
-    const {data, isLoading, isError} = useGetOrdersQuery(status);
+ 
+    const {data, isLoading, isError} = useGetOrdersQuery(status, {pollingInterval: 10000});
     const [activeNav, setActiveNav] = useOutletContext();
     useEffect(() => {
-        setActiveNav(status)
+        setActiveNav(status);
     }, [])
     let content = <></>
     
@@ -52,7 +51,6 @@ export const PurchasesList = (props) => {
 	return(
         <>
             {status.includes('My') && <div className="profile__clarification">Адресованные Вам заказы</div>}
-            
             <div className="profile__parameter overflow">
                 <div className="profile__value profile__value_header">от</div>
                 <div className="profile__value profile__value_header">№ заказа</div>

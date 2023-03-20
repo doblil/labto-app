@@ -24,16 +24,18 @@ export const Screen = () => {
 	const {data: serviceData, isSuccess: serviceSuccess} = useGetIsServiceQuery();
 	
 	if(isSuccess && data.projects) {
+		console.log('projects')
 		dispatch(projectsCh(data.projects))
 	}
 	if(userSuccess && usersData.users) {
+		console.log('users dispatcher')
 		dispatch(allUsersCh(usersData.users))
 	}
-
-	if(serviceSuccess && serviceData?.serviceStatus) {
-		console.log(service, role)
+	if(serviceSuccess) {
+		console.log('service dispatcher')
 		dispatch(serviceCh(serviceData.serviceStatus))
 	}
+	
 
 	if(optionsSuccess && optionsData.options){
 		const manufacturers = optionsData.options.filter(item=>item.name === 'manufacturer')

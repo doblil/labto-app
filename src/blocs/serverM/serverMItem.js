@@ -8,13 +8,10 @@ export const ServerMItem = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-
         const timerId = setTimeout(() => {
             dispatch(filterArrM(text));
             clearTimeout(timerId);
         }, 5500);
-
-        
     })
 
     return (

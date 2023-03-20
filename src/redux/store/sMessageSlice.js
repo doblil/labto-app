@@ -11,7 +11,9 @@ const sMessageSlice = createSlice({
         //     state.sMessage = action.payload
         // },
         sMessageCh: (state, action) => {
-            state.arrM = [action.payload, ...state.arrM]
+            if (!state.arrM.includes(action.payload)){
+               state.arrM = [action.payload, ...state.arrM] 
+            }
         },
         filterArrM: (state, action) => {
             state.arrM = state.arrM.filter(item=> item !== action.payload)

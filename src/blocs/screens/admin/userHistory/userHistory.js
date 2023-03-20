@@ -71,7 +71,7 @@ export const UserHistory = () => {
                         </div>
 
                         <div className="filter__inner" style={{marginBottom:'10px', marginRight:'20px'}} >
-                            <div className="filter__label">Проект</div>
+                            <div className="filter__label">Сотрудник</div>
                             <CustomSelect
                                 initialise = {initialise}
                                 setInitialise = {setInitialise}
@@ -84,7 +84,7 @@ export const UserHistory = () => {
                             /> 
                         </div>
                     </div>
-                    <button className="btn" style={{height:'38px'}} onClick={handleCreateReport}>Создать отчет</button>  
+                    <button className="btn" style={{height:'38px'}} onClick={handleCreateReport}>Смотреть историю</button>  
                 </div>
         </div>
 

@@ -7,36 +7,57 @@ import { sMessageCh } from '../../../redux/store/sMessageSlice'
 import { stringifyDate } from '../../../services/services'
 import { CustomSelect } from '../../customSelect/customSelect'
 import { ReportColumnItem, ReportReagItem } from './reportItem'
+import { ReportTitleItem } from './reportTitleItem'
 
 const  ReagentTable = (props) =>{
-    const {isSuccess, data, current} = props;
+    const {isSuccess, data, current, project, startDate, endDate} = props;
     
     const printRef = useRef(null)
-    const [printPrep, setPrintPrep] = useState(true)
 
     const print = useReactToPrint({
         content: () => printRef.current,
     });
 
     const handlePrint =  () => {
-        setPrintPrep(true)
-        const p = new Promise((resolve) => {
-            setTimeout(() => {
-                setPrintPrep(true)
-                print();
-                resolve(false)
-            }, 1000);
-        })
-
-        p.then((data) => {
-            setPrintPrep(data)
-        })
+        print()
     }
+
+    const handleSummary = (data = []) => {
+        let totalPrice;
+        const count = data.length;
+        const countWPrice = data.filter(item => item.price).length;
+        const countWOPrice = Math.round(count - countWPrice)
+        if(data.filter(item => item.price).length){
+            totalPrice = data.filter(item => item.price).map(item => item.price).reduce((a, b) => a+b)
+        } else {
+            totalPrice = 0
+        }
+        
+        
+        return {
+            count,
+            totalPrice,
+            countWPrice,
+            countWOPrice}
+    }
+
+    const summary = handleSummary(data.resultReags.filter(item => item.type === current))
 
     return(
         <>
         <div className="filter__print" onClick={handlePrint}> <img src="icons/printer_white.svg" alt="printer" /></div>
         <div ref={printRef}>
+            {/* ЭТО НАДО СДЕЛАТЬ ПО-ЧЕЛОВЕЧЕСКИ */}
+        
+            <div className="report__title">
+                <span style={{textDecoration:'underline'}}>Отчет по проекту <span style={{fontWeight:'700'}}>"{project.name}"</span>  за период c {stringifyDate(startDate)} 00:00 по {stringifyDate(endDate)} 00:00</span> <br />
+                Отчет содержит {summary.count} пунктов <br />
+                {summary.countWOPrice && <span>Из них {summary.countWOPrice} с не указанной стоимостью</span>}<br />
+                Приблизительная стоимость : {summary.totalPrice}
+            </div>
+
+            
+            {/* .  */}
             <table  className="table__wrap"> 
             <thead>     
                 <tr>
@@ -135,16 +156,29 @@ const ColumnTable = (props) => {
 
         {/* ЭТО НАДО СДЕЛАТЬ ПО-ЧЕЛОВЕЧЕСКИ */}
         
-        <h5>Отчет по проекту {project.name} за период c {stringifyDate(startDate)} по {stringifyDate(endDate)}</h5>
-        <h5>Отчет содержит {summary.count} пунктов </h5>
-        {summary.countWOPrice && <h5>Из них {summary.countWOPrice} с не указанной стоимостью</h5>}
-        <h5>Количество инжекций за указанный период: {summary.totalInj}</h5>
-        <h5>Приблизительная стоимость инжекций: {summary.totalPrice}</h5>
+        <div className="report__title">
+            <div className="report__title-wrap">
+                <ReportTitleItem key = "Отчет по проекту" value = {project.name}/>
+                <ReportTitleItem key = "за период" value = {`c ${stringifyDate(startDate)} по ${stringifyDate(endDate)}`}/>
+                <ReportTitleItem key = "содержит" value = {`${summary.count} пунктов`}/>
+                <ReportTitleItem key = "с не указанной стоимостью" value = {`${summary.countWOPrice} пунктов`}/>
+                <ReportTitleItem key = "Количество инжекций за указанный период:" value = {`${summary.totalInj} инжекций`}/>
+                <ReportTitleItem key = "Приблизительная стоимость инжекций:" value = {`${summary.totalPrice} руб`}/>
+                
+                <h6>*Стоимость из рассчета pecypca колонки 40000 инжекций</h6>
+            </div>
+            {/* <span style={{textDecoration:'underline'}}>Отчет по проекту <span style={{fontWeight:'700'}}>"{project.name}"</span> за период c {stringifyDate(startDate)} по {stringifyDate(endDate)}</span> <br />
+            Отчет содержит {summary.count} пунктов<br />  
+            {summary.countWOPrice && <span>Из них {summary.countWOPrice} с не указанной стоимостью</span>}<br />  
+            Количество инжекций за указанный период: {summary.totalInj}<br />  
+            Приблизительная стоимость инжекций: {summary.totalPrice} */}
+            
+        </div>
 
         
         {/* .  */}
 
-        <h6>*Стоимость из рассчета pecypca колонки 40000 инжекций</h6>
+        
         <table table className="table__wrap"> 
             <thead>     
                 <tr>
@@ -325,7 +359,7 @@ export const ReportProjects = (props) => {
                     project = {project}
                     
                 />}
-                {isLoading && <h5 style={{marginTop:'25px'}}>Загрузка отчета...</h5>}
+                {isLoading && <h5 className='report__title'>Загрузка отчета...</h5>}
                 
 			</div>
         </div>
