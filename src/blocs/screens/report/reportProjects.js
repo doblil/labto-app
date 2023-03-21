@@ -50,10 +50,16 @@ const  ReagentTable = (props) =>{
             {/* ЭТО НАДО СДЕЛАТЬ ПО-ЧЕЛОВЕЧЕСКИ */}
         
             <div className="report__title">
-                <span style={{textDecoration:'underline'}}>Отчет по проекту <span style={{fontWeight:'700'}}>"{project.name}"</span>  за период c {stringifyDate(startDate)} 00:00 по {stringifyDate(endDate)} 00:00</span> <br />
-                Отчет содержит {summary.count} пунктов <br />
-                {summary.countWOPrice && <span>Из них {summary.countWOPrice} с не указанной стоимостью</span>}<br />
-                Приблизительная стоимость : {summary.totalPrice}
+                <div className="report__title-wrap">
+                    <ReportTitleItem descr = "Отчет по проекту" value = {project.name}/>
+                    <ReportTitleItem descr = "за период" value = {`c ${stringifyDate(startDate)} по ${stringifyDate(endDate)}`}/>
+                    <ReportTitleItem descr = "критерий" value = "Реактивы"/>
+                    <ReportTitleItem descr = "содержит" value = {`${summary.count} пунктов`}/>
+                    <ReportTitleItem descr = "с не указанной стоимостью" value = {`${summary.countWOPrice} пунктов`}/>
+                    <ReportTitleItem descr = "Приблизительная стоимость :" value = {`${summary.totalPrice} руб`}/>
+                </div>
+                <div className="report__logo"><img src="icons/report_logo.svg" alt="logo" /></div>
+
             </div>
 
             
@@ -158,21 +164,16 @@ const ColumnTable = (props) => {
         
         <div className="report__title">
             <div className="report__title-wrap">
-                <ReportTitleItem key = "Отчет по проекту" value = {project.name}/>
-                <ReportTitleItem key = "за период" value = {`c ${stringifyDate(startDate)} по ${stringifyDate(endDate)}`}/>
-                <ReportTitleItem key = "содержит" value = {`${summary.count} пунктов`}/>
-                <ReportTitleItem key = "с не указанной стоимостью" value = {`${summary.countWOPrice} пунктов`}/>
-                <ReportTitleItem key = "Количество инжекций за указанный период:" value = {`${summary.totalInj} инжекций`}/>
-                <ReportTitleItem key = "Приблизительная стоимость инжекций:" value = {`${summary.totalPrice} руб`}/>
+                <ReportTitleItem descr = "Отчет по проекту" value = {project.name}/>
+                <ReportTitleItem descr = "за период" value = {`c ${stringifyDate(startDate)} по ${stringifyDate(endDate)}`}/>
+                <ReportTitleItem descr = "содержит" value = {`${summary.count} пунктов`}/>
+                <ReportTitleItem descr = "с не указанной стоимостью" value = {`${summary.countWOPrice} пунктов`}/>
+                <ReportTitleItem descr = "Количество инжекций за указанный период:" value = {`${summary.totalInj} инжекций`}/>
+                <ReportTitleItem descr = "Приблизительная стоимость инжекций:" value = {`${summary.totalPrice} руб`}/>
                 
                 <h6>*Стоимость из рассчета pecypca колонки 40000 инжекций</h6>
             </div>
-            {/* <span style={{textDecoration:'underline'}}>Отчет по проекту <span style={{fontWeight:'700'}}>"{project.name}"</span> за период c {stringifyDate(startDate)} по {stringifyDate(endDate)}</span> <br />
-            Отчет содержит {summary.count} пунктов<br />  
-            {summary.countWOPrice && <span>Из них {summary.countWOPrice} с не указанной стоимостью</span>}<br />  
-            Количество инжекций за указанный период: {summary.totalInj}<br />  
-            Приблизительная стоимость инжекций: {summary.totalPrice} */}
-            
+            <div className="report__logo"><img src="icons/report_logo.svg" alt="logo" /></div>
         </div>
 
         
@@ -359,7 +360,7 @@ export const ReportProjects = (props) => {
                     project = {project}
                     
                 />}
-                {isLoading && <h5 className='report__title'>Загрузка отчета...</h5>}
+                {isLoading && <div className='report__title' style={{justifyContent:'start'}}> <img src="icons/loading.svg" alt="loading" className='report__load-img'/>    Загрузка отчета...</div>}
                 
 			</div>
         </div>

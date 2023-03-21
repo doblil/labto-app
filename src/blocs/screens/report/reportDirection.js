@@ -196,7 +196,7 @@ export const ReportDirection = (props) => {
         <div className="history overflow overflow__mt50"  style={{height: '60vh'}}>
                 {(data?.resultReags && current === 'column') && <ColumnTable data = {data} isSuccess = {isSuccess} current = {current}/>}
 			 	{(data?.resultReags && current !== 'column') && <ReagentTable data = {data} isSuccess = {isSuccess} current = {current}/>}
-                {isLoading && <h5 style={{marginTop:'25px'}}>Загрузка отчета...</h5>}
+                {isLoading && <div className='report__title' style={{justifyContent:'start'}}> <img src="icons/loading.svg" alt="loading" className='report__load-img'/>Загрузка отчета...</div>}
         </div>
     </div>
     )

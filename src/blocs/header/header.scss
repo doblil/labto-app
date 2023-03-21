@@ -65,7 +65,7 @@
         cursor: pointer;
         &:hover{
             .header__door{
-                transform: scaleX(0.5) translateX(9px);
+                transform: scaleX(0.4) translateX(11px);
             }
         }
     }
@@ -82,7 +82,7 @@
         width: 16px;
         background-color: white;
         position: relative;
-        transition: all 0.5s;
+        transition: all 0.7s;
         &::before{
             content:'';
             width: 2px;
