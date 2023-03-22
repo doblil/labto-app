@@ -9,7 +9,7 @@ import { activeReagentCh } from "../../../../../redux/store/activeReagSlice"
 export const RsTable = (props) => {
 
 
-    const {catSearch, nameSearch, casSearch, expSearch, favoriteSearch, restSearch, reqParams, setCurrentFavorite} = props
+    const {catSearch, nameSearch, casSearch, expSearch, favoriteSearch, restSearch, reqParams, setCurrentFavorite, setTotalCount} = props
 
 
     let content = <></>
@@ -41,15 +41,18 @@ export const RsTable = (props) => {
     } 
 
     if (isLoading) {return <div className="table__load">Загрузка...</div>}
-    if (isSuccess) {content = handleFilter(data.reagents)
-    .map(item => {
-        return <RsItem
-            activeItem = {activeItem === item._id}
-            handleActiveItem = {handleActiveItem}
-            favorite = {favorite}
-            key = { item._id }
-            item = {item}
-        />
+    if (isSuccess) {
+        const filteredArr = handleFilter(data.reagents)
+        setTotalCount(filteredArr.length)
+        content = filteredArr
+        .map(item => {
+            return <RsItem
+                activeItem = {activeItem === item._id}
+                handleActiveItem = {handleActiveItem}
+                favorite = {favorite}
+                key = { item._id }
+                item = {item}
+            />
     })
         handleCurrentFavorite(data.reagents)
         if (!data.reagents.length) {return <div className="table__load">Здесь пока что пусто...</div>}

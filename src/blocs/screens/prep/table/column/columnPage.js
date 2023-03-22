@@ -12,6 +12,7 @@ export const ColumnPage = (props) => {
     const [projectSearch, setProjectSearch] = useState('');
     const [iUse, setIUse] = useState(false);
     const [favoriteSearch, setFavoriteSearch] = useState(false)
+    const [totalCount, setTotalCount] = useState('')
 
     return(
         <div className="info">
@@ -30,6 +31,7 @@ export const ColumnPage = (props) => {
             <div className="overflow overflow__mt50 table">
                 <div className="table__line"></div>
                 <ColumnTable 
+                    setTotalCount = {setTotalCount}
                     reqParams = {props.reqParams}
                     nameSearch = {nameSearch}
                     projectSearch = {projectSearch}
@@ -38,7 +40,7 @@ export const ColumnPage = (props) => {
                     setCurrentFavorite = {setCurrentFavorite}
                 />
             </div>
-            <div className="info__count"> 200 наименований</div>
+            <div className="info__count"> {totalCount || 0} наименований</div>
         </div>
     )
   }

@@ -17,7 +17,7 @@ export const ReagPage = (props) => {
     const [restSearch, setRestSearch] = useState(''); // 'instock', 'null' 
     const [favoriteSearch, setFavoriteSearch] = useState(false);
     const [expSearch, setExpSearch] = useState(''); // 'valid', 'invalid'
-
+    const [totalCount, setTotalCount] = useState('');
 
 
     return(
@@ -40,6 +40,7 @@ export const ReagPage = (props) => {
             <div className="overflow overflow__mt50 table">
                 <div className="table__line"></div>
                 <ReagTable
+                    setTotalCount = {setTotalCount}
                     setCurrentFavorite = {setCurrentFavorite}
                     reqParams = {reqParams}
                     nameSearch = {nameSearch}
@@ -50,7 +51,7 @@ export const ReagPage = (props) => {
                     expSearch = {expSearch}
                 />
             </div>
-            <div className="info__count"> 200 наименований</div>
+            <div className="info__count"> {totalCount || 0} наименований</div>
           
         </div>
     )

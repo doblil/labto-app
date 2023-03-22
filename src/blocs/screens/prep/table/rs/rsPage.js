@@ -17,7 +17,7 @@ export const RsPage = (props) => {
     const [restSearch, setRestSearch] = useState(''); // 'instock', 'null' 
     const [favoriteSearch, setFavoriteSearch] = useState(false);
     const [expSearch, setExpSearch] = useState(''); // 'valid', 'invalid'
-
+    const [totalCount, setTotalCount] = useState('')
 
 
     return(
@@ -37,6 +37,7 @@ export const RsPage = (props) => {
             <div className="overflow table">
                 <div className="table__line"></div>
                 <RsTable
+                    setTotalCount = {setTotalCount}
                     setCurrentFavorite = {setCurrentFavorite}
                     reqParams = {reqParams}
                     nameSearch = {nameSearch}
@@ -47,7 +48,7 @@ export const RsPage = (props) => {
                     expSearch = {expSearch}
                 />
             </div>
-            <div className="info__count"> 200 наименований</div>
+            <div className="info__count"> {totalCount || 0} наименований</div>
         </div>
     )
   }

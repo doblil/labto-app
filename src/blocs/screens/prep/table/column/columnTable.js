@@ -9,7 +9,7 @@ import { ColumnItem } from './columnItem'
 export const ColumnTable = (props) => {
 
     const {favorite, userId} = useSelector(state => state.auth);
-    const {nameSearch, projectSearch, iUse, favoriteSearch, setCurrentFavorite} = props;
+    const {nameSearch, projectSearch, iUse, favoriteSearch, setCurrentFavorite, setTotalCount} = props;
 
     let content = <></>
     const dispatch = useDispatch()
@@ -36,7 +36,10 @@ export const ColumnTable = (props) => {
     }
 
     if (isLoading) {return <div className="table__load">Загрузка...</div>}
-    if (isSuccess) {content = handleFilter(data.columns)
+    if (isSuccess) {
+        const filteredArr = handleFilter(data.columns);
+        setTotalCount(filteredArr.length)
+        content = filteredArr
         .map(item => {
             return <ColumnItem
                 handleActiveItem = {handleActiveItem}
