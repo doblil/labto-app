@@ -54,24 +54,27 @@ export const AuthForm = (props) => {
     };
 
 
-    return(<>
-            <div className="auth">
-            <img src="icons/main_logo.svg" alt="logo" />
-            <div className="auth__wrapper">
-                <form className=" fadein" >
-                    <label >Логин</label>
-                    <input onKeyDown={(e) =>{if(e.key === 'Enter'){handleLogin()}}} ref={authRef} onChange={(e) => setEmail(e.target.value)}  type="email" className="auth__input" placeholder="email" value ={email}/>
-                    <label >Пароль</label>
-                    <input onKeyDown={(e) =>{if(e.key === 'Enter'){handleLogin()}}} onChange={(e) => setPassword(e.target.value)} type="password" className="auth__input" placeholder="Пароль" value = {password}/>
-                    <a href="/" className="auth__forgot">Забыли пароль?</a>
-                </form>
-                    
-                <button onClick={handleLogin} onEnter className="btn auth__btn" >Войти</button>
+    return(
+        <div className="auth overflow">
+            <div className="auth__settings">
+                <div className="auth__settings-pic"><img src="icons/settings.svg" alt="settings" /></div>
+                <div className="auth__settings-text">В данный момент проходят сервисные работы. Доступ открыт только для пользователей с правами "администратор" или "разработчик". Приносим извинения за временные неудобства</div>
+            </div>
+            <div className="auth__form">
+                <img src="icons/main_logo.svg" alt="logo" />
+                <div className="auth__wrapper">
+                    <form className=" fadein" >
+                        <label >Логин</label>
+                        <input onKeyDown={(e) =>{if(e.key === 'Enter'){handleLogin()}}} ref={authRef} onChange={(e) => setEmail(e.target.value)}  type="email" className="auth__input" placeholder="email" value ={email}/>
+                        <label >Пароль</label>
+                        <input onKeyDown={(e) =>{if(e.key === 'Enter'){handleLogin()}}} onChange={(e) => setPassword(e.target.value)} type="password" className="auth__input" placeholder="Пароль" value = {password}/>
+                        <a href="/" className="auth__forgot">Забыли пароль?</a>
+                    </form>
+                        
+                    <button onClick={handleLogin} onEnter className="btn auth__btn" >Войти</button>
+                </div>
             </div>
         </div>
-        </>
-        
-
             
     );
 };
