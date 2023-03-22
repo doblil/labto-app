@@ -6,14 +6,31 @@
         width: 100%;
         display: flex;
         padding: 5px;
-        background-color: $substrate-color;
+        border:1px solid gray;
         border-radius: 12px;
-        margin-top: 7px;
+        margin-top: 5px;
     }
     &__value{
-        padding: 10px;
-        font-size: 12px;
+        padding: 5px;
+        font-size: 11px;
         margin-right: 25px;
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+    &__history-head{
+        width: 100%;
+        display: flex;
+        padding: 2px 5px;
+        border-radius: 12px;
+        margin-top: 7px;
+        font-weight: 700;
+    }
+    &__value-head{
+        padding: 2px 5px;
+        font-size: 10px;
+        margin-right: 25px;
+        color: $utility-color;
         &:last-child{
             margin-right: 0;
         }
