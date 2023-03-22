@@ -50,6 +50,7 @@ export const ReagPage = (props) => {
                     expSearch = {expSearch}
                 />
             </div>
+            <div className="info__count"> 200 наименований</div>
           
         </div>
     )
