@@ -1,5 +1,5 @@
 import {  useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { isAuthCh, setCredentials, userIdCh } from '../../redux/store/authSlice';
 import { useLoginMutation } from '../../redux/api/authApi';
@@ -11,7 +11,7 @@ import { useStartGetIsServiceQuery } from '../../redux/api/settingsApi';
 import { serviceCh } from '../../redux/store/globalSlice';
 
 export const AuthForm = (props) => {
-
+    const {service} = useSelector(state => state.global)
     const [email, setEmail] = useState('3@mail.ru');
     const [password, setPassword] = useState('123123');
     const dispatch = useDispatch();
@@ -56,10 +56,10 @@ export const AuthForm = (props) => {
 
     return(
         <div className="auth overflow">
-            <div className="auth__settings">
+           {service && <div className="auth__settings">
                 <div className="auth__settings-pic"><img src="icons/settings.svg" alt="settings" /></div>
                 <div className="auth__settings-text">В данный момент проходят сервисные работы. Доступ открыт только для пользователей с правами "администратор" или "разработчик". Приносим извинения за временные неудобства</div>
-            </div>
+            </div>}
             <div className="auth__form">
                 <img src="icons/main_logo.svg" alt="logo" />
                 <div className="auth__wrapper">

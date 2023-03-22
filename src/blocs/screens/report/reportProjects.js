@@ -4,7 +4,7 @@ import { useOutletContext } from 'react-router-dom'
 import { useReactToPrint } from 'react-to-print'
 import { useProjectReportMutation } from '../../../redux/api/reportApi'
 import { sMessageCh } from '../../../redux/store/sMessageSlice'
-import { stringifyDate } from '../../../services/services'
+import { stringifyDate, stryngifyType } from '../../../services/services'
 import { CustomSelect } from '../../customSelect/customSelect'
 import { ReportColumnItem, ReportReagItem } from './reportItem'
 import { ReportTitleItem } from './reportTitleItem'
@@ -53,7 +53,7 @@ const  ReagentTable = (props) =>{
                 <div className="report__title-wrap">
                     <ReportTitleItem descr = "Отчет по проекту" value = {project.name}/>
                     <ReportTitleItem descr = "за период" value = {`c ${stringifyDate(startDate)} по ${stringifyDate(endDate)}`}/>
-                    <ReportTitleItem descr = "критерий" value = "Реактивы"/>
+                    <ReportTitleItem descr = "критерий" value = {stryngifyType(current)}/>
                     <ReportTitleItem descr = "содержит" value = {`${summary.count} пунктов`}/>
                     <ReportTitleItem descr = "с не указанной стоимостью" value = {`${summary.countWOPrice} пунктов`}/>
                     <ReportTitleItem descr = "Приблизительная стоимость :" value = {`${summary.totalPrice} руб`}/>
@@ -164,7 +164,7 @@ const ColumnTable = (props) => {
         
         <div className="report__title">
             <div className="report__title-wrap">
-                <ReportTitleItem descr = "Отчет по проекту" value = {project.name}/>
+                <ReportTitleItem descr = "Отчет по проекту (ВЭЖХ / ГХ)" value = {project.name}/>
                 <ReportTitleItem descr = "за период" value = {`c ${stringifyDate(startDate)} по ${stringifyDate(endDate)}`}/>
                 <ReportTitleItem descr = "содержит" value = {`${summary.count} пунктов`}/>
                 <ReportTitleItem descr = "с не указанной стоимостью" value = {`${summary.countWOPrice} пунктов`}/>
@@ -173,7 +173,9 @@ const ColumnTable = (props) => {
                 
                 <h6>*Стоимость из рассчета pecypca колонки 40000 инжекций</h6>
             </div>
-            <div className="report__logo"><img src="icons/report_logo.svg" alt="logo" /></div>
+            <div className="report__title-right">
+                <div className="report__logo"><img src="icons/report_logo.svg" alt="logo" /></div>
+            </div>
         </div>
 
         
