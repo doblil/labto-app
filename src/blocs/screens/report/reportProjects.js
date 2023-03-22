@@ -158,12 +158,12 @@ const ColumnTable = (props) => {
         
         <div className="report__title">
             <div className="report__title-wrap">
-                <ReportTitleItem key = "Отчет по проекту" value = {project.name}/>
-                <ReportTitleItem key = "за период" value = {`c ${stringifyDate(startDate)} по ${stringifyDate(endDate)}`}/>
-                <ReportTitleItem key = "содержит" value = {`${summary.count} пунктов`}/>
-                <ReportTitleItem key = "с не указанной стоимостью" value = {`${summary.countWOPrice} пунктов`}/>
-                <ReportTitleItem key = "Количество инжекций за указанный период:" value = {`${summary.totalInj} инжекций`}/>
-                <ReportTitleItem key = "Приблизительная стоимость инжекций:" value = {`${summary.totalPrice} руб`}/>
+                <ReportTitleItem descr = "Отчет по проекту" value = {project.name}/>
+                <ReportTitleItem descr = "за период" value = {`c ${stringifyDate(startDate)} по ${stringifyDate(endDate)}`}/>
+                <ReportTitleItem descr = "содержит" value = {`${summary.count} пунктов`}/>
+                <ReportTitleItem descr = "с не указанной стоимостью" value = {`${summary.countWOPrice} пунктов`}/>
+                <ReportTitleItem descr = "Количество инжекций за указанный период:" value = {`${summary.totalInj} инжекций`}/>
+                <ReportTitleItem descr = "Приблизительная стоимость инжекций:" value = {`${summary.totalPrice} руб`}/>
                 
                 <h6>*Стоимость из рассчета pecypca колонки 40000 инжекций</h6>
             </div>
