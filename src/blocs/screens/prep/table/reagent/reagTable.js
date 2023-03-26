@@ -40,7 +40,7 @@ const handleCurrentFavorite = (arr = []) => {
     return setCurrentFavorite(arr.filter(item => favorite.includes(item._id)).length)
 }
 
-if (isLoading) {return <div className="table__load">Загрузка...</div>}
+if (isLoading) {return <div className="table__load"><div className="spinner"></div>Загрузка...</div>}
 if (isSuccess) {
 const filteredArr = handleFilter(data.reagents);
 setTotalCount(filteredArr.length)

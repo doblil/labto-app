@@ -132,7 +132,7 @@ export const Desc = (props) => {
 
 
     if (isLoading){
-        content = <div className="desc__load">Загрузка...</div>
+        content = <div className="desc__load"><div className="spinner"></div>Загрузка...</div>
     }
 
     // after success fetching

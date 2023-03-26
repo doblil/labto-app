@@ -37,10 +37,10 @@ export const ProjectItem = (props) => {
 
                 <br />
                 <div className="profile__row">
-                    <div className="profile__select" onClick={()=>{setShowChangeProject(true)}}>Редактировать</div>
-                    {!closed && <div className="profile__select" onClick={() => {handleCloseProject(true)}}>Пренести в неактивные</div>}
-                    {!!closed && <div className="profile__select" onClick={() => {handleCloseProject(false)}}>Активировать</div>}
-                    {!!closed && <div className="profile__select" onClick={() => {handleDeleteProject()}}>Удалить</div>}
+                    <div className="profile__select" style={{width:'max-content'}} onClick={()=>{setShowChangeProject(true)}}>Редактировать</div>
+                    {!closed && <div className="profile__select" style={{width:'max-content'}}onClick={() => {handleCloseProject(true)}}>Пренести в неактивные</div>}
+                    {!!closed && <div className="profile__select" style={{width:'max-content'}} onClick={() => {handleCloseProject(false)}}>Активировать</div>}
+                    {!!closed && <div className="profile__select" style={{width:'max-content'}} onClick={() => {handleDeleteProject()}}>Удалить</div>}
                 </div>
             </div>
         </>

@@ -12,6 +12,8 @@ import '../sass/sassTemplates/print.scss'
 import '../sass/sassTemplates/overlay.scss'
 import '../sass/sassTemplates/page.scss'
 import '../sass/sassTemplates/filter.scss'
+import '../sass/sassTemplates/spinner.scss'
+import '../sass/sassTemplates/animate.scss'
 import { ServerM } from '../blocs/serverM/serverM';
 
 

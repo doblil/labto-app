@@ -2,8 +2,8 @@ import { stringifyDate, stringifyHistoryAction } from "../../../../services/serv
 
 export const UserHistoryTable = (props) => {
     const {history} = props;
-    if (!history) return <h5>Ошибка при загрузке истории пользователя</h5>
-    if(!history.length) return <h5>Пользователь не совершал никаких дествий за указанный период</h5>
+    if (!history) return <h5><br /> Ошибка при загрузке истории пользователя</h5>
+    if(!history.length) return <h5><br />Пользователь не совершал никаких дествий за указанный период</h5>
     return (
         <div className=" overflow overflow__mt50" style={{height:'63vh'}}>
             <table table className="table__wrap"> 

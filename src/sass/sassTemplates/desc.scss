@@ -24,6 +24,9 @@
         padding: 30px;
         font-size: 13px;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     &__action-wrap{
         position: absolute;

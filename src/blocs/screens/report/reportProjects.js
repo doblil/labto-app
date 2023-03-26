@@ -350,7 +350,7 @@ export const ReportProjects = (props) => {
                     project = {project}
                     
                 />}
-                {isLoading && <div className='report__title' style={{justifyContent:'start'}}> <img src="icons/loading.svg" alt="loading" className='report__load-img'/>    Загрузка отчета...</div>}
+                {isLoading && <div className='report__title' style={{justifyContent:'start'}}> <div className="spinner"></div><p>Загрузка отчета...</p></div>}
                 
 			</div>
         </div>
