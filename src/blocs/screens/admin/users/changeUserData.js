@@ -42,7 +42,7 @@ export const ChangeUserData = (props) => {
 
     const handleChangeUserData = async () => {
         if (isLoading) return
-        console.log({newName, newPosition, newDirection, newDepartment, newPhone});
+
         if(!(newName && newPosition && newDirection && newDepartment && newPhone)) return dispatch(sMessageCh('Заполните все поля'))
         
         const body = {newName, newPosition, newDirection, newDepartment, newPhone};

@@ -17,8 +17,7 @@ const [initialise, setInitialise] = useState(false)
     const {projects} = useSelector(state => state.project);
     const {name, type, text, addresseeName, initialDestination, manufacturer, cat} = useSelector(state => state.order)
     const [createOrder, {isLoading}] = useCreateOrderMutation()
-    
-    console.log(allUsers)
+
 
     const projectOptions = projects.map(item => {
         return { value: {code: item.code, name: item.name}, label: `${item.code}, ${item.name}`}

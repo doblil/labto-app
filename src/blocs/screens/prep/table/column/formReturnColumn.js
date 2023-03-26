@@ -9,7 +9,7 @@ export const FormReturnColumn = (props) => {
     const {current, itemId, setShowReturnForm } = props;
     const {_id:target, name, sn} = useSelector(state => state.activeColumn);
     const dispatch = useDispatch()
-    console.log('column _id: ', target)
+
 
     const [countInj, setCountInj] = useState(0);
     const [fromDate, setFromDate] = useState(stringifyDate(current.fromDate, false, true));

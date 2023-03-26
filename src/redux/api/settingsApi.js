@@ -11,7 +11,7 @@ export const settingsApi = api.injectEndpoints({
         }),
         startGetIsService: builder.query({
             query: ()=> ({
-                url: `/api/start/isService`,
+                url: `/api/settings/isService`,
             }),
             
         }),

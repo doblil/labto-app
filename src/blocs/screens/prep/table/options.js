@@ -42,7 +42,6 @@ export const Options = (props) => {
 
     if(!roleValidation(['prep', 'head', 'admin', 'developer'])) return<></>
 
-    console.log('isolate ',isolate)
     return (
         <div className="desc__action-inner">
             <ChangeDialog/>

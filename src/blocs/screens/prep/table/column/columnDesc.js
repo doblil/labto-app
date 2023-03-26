@@ -255,7 +255,7 @@ export const ColumnDesc = () => {
                                 {!last && <div className="grid__history">Похоже, никто не пользовался</div>}
                             </div>
                             <img className="grid__icon" src="icons/person.svg" alt="document" />
-                            <button className="grid__btn" onClick={() => {setShowHistory(true)} }>Смотреть развернутую историю списаний ❯❯</button>
+                            <button className="grid__btn" onClick={() => {setShowHistory(true)} }>Смотреть развернутую историю использования ❯❯</button>
                         </div>
                             
                         </div>

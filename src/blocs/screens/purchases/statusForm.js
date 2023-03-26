@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useRedirectOrderMutation, useStatusOrderMutation } from "../../../redux/api/orderApi";
-import { sMessageCh } from "../../../redux/store/sMessageSlice";
+import {  useStatusOrderMutation } from "../../../redux/api/orderApi";
 import { stringifyDate, stringifyOrderStatus } from "../../../services/services";
 import { CustomSelect } from "../../customSelect/customSelect";
 
 
 export const StatusForm = (props) => {
-    const {userId} = useSelector (state => state.auth)
     const {name, uniqueId, fromDate, ownerName, status, setShowStatusForm} = props
     const [newStatus,  setNewStatus] = useState(null);
 
@@ -43,7 +41,7 @@ export const StatusForm = (props) => {
             await statusOrder({target, status}).unwrap();
             handleCancel();
         } catch (error) {
-            console.log(error)
+            console.error(error)
         }
     }
 

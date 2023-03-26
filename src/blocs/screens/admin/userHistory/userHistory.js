@@ -26,7 +26,7 @@ export const UserHistory = () => {
     }, [])
     
     const userOptions = allUsers.map(item => {
-        return { value: item._id, label: `${item.name}, ${item.position}`}
+        return { value: item._id, label: `${item.name}, ${item.position}, ${item.direction}`}
     });
 
     const handleSelectUser = (target) => {
@@ -39,7 +39,6 @@ export const UserHistory = () => {
         await getUserHistory({target: targetUser, body: {startDate, endDate}}).unwrap();
     }
 
-    if(isSuccess) console.log(data.history);
 
     return(
         <div className="report">

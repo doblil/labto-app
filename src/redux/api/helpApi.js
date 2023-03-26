@@ -5,6 +5,7 @@ export const helpApi = api.injectEndpoints({
         getHelp: builder.query({
             query: ()=> ({
                 url: `/api/help/`,
+                responseHandler: async (response) => window.open(window.URL.createObjectURL(await response.blob()), '_blank'),
             }),
         }),
 

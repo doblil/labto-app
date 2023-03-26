@@ -5,6 +5,8 @@ const globalSlice = createSlice({
     initialState: {
         allUsers: [],
         allManufacturers: [],
+        allManufacturersCol: [],
+        allManufacturersSubst: [],
         allRsTypes:[],
         allDepartments:[],
         allDirections: [],
@@ -17,22 +19,28 @@ const globalSlice = createSlice({
             state.allUsers = action.payload;
         },
         allManufacturersCh: (state, action) => {
-            state.allManufacturers = action.payload;
+            if(action.payload)state.allManufacturers = action.payload;
+        } ,
+        allManufacturersColCh: (state, action) => {
+            if(action.payload)state.allManufacturersCol = action.payload;
+        } ,
+        allManufacturersSubstCh: (state, action) => {
+            if(action.payload)state.allManufacturersSubst = action.payload;
         } ,
         allRsTypesCh: (state, action) => {
-            state.allRsTypes = action.payload
+            if(action.payload)state.allRsTypes = action.payload
         },
         allDepartmentsCh: (state, action) => {
-            state.allDepartments = action.payload
+            if(action.payload)state.allDepartments = action.payload
         },
         allDirectionsCh: (state, action) => {
-            state.allDirections = action.payload
+            if(action.payload)state.allDirections = action.payload
         },
         allPositionsCh: (state, action) => {
-            state.allPositions = action.payload
+            if(action.payload)state.allPositions = action.payload
         },
         allRolesCh: (state, action) => {
-            state.allRoles = action.payload
+            if(action.payload)state.allRoles = action.payload
         },
         serviceCh: (state, action) => {
             state.service = action.payload
@@ -40,6 +48,6 @@ const globalSlice = createSlice({
     }
 });
 
-export const { allManufacturersCh, allUsersCh, allRsTypesCh, allDepartmentsCh, allDirectionsCh, allPositionsCh, allRolesCh, serviceCh } = globalSlice.actions;
+export const { allManufacturersCh, allUsersCh, allRsTypesCh, allDepartmentsCh, allDirectionsCh, allPositionsCh, allRolesCh, serviceCh, allManufacturersColCh, allManufacturersSubstCh } = globalSlice.actions;
 export default globalSlice.reducer;
 

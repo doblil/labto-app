@@ -17,11 +17,13 @@ export const Options = (props) => {
 
     const [newRsType, setNewRsType] = useState('');
     const [newManufacturer, setNewManufacturer] = useState('')
+    const [newManufacturerCol, setNewManufacturerCol] = useState('')
+    const [newManufacturerSubst, setNewManufacturerSubst] = useState('')
     const [newPosition, setNewPosition] = useState('')
     const [newDirection, setNewDirection] = useState('')
 
     const dispatch = useDispatch()
-    const {allDepartments, allPositions, allDirections, allManufacturers, allRsTypes, } = useSelector(state=> state.global)
+    const {allDepartments, allPositions, allDirections, allManufacturers, allRsTypes, allManufacturersCol, allManufacturersSubst} = useSelector(state=> state.global)
     
     const [addOption, {isLoading: addLoading}] = useAddOptionMutation();
     const [deleteOption, {isLoading: deleteLoading}] = useDeleteOptionsMutation();
@@ -43,7 +45,6 @@ export const Options = (props) => {
 
 
     
-    console.log(allPositions)
     let rsTypesList = allRsTypes.map(item => {
        return <div className="options__item" key={item._id}>
             <div className="options__name">{item.label}</div>
@@ -51,6 +52,18 @@ export const Options = (props) => {
         </div>
     })
     let manufacturersList = allManufacturers.map(item => {
+        return <div className="options__item" key={item._id}>
+             <div className="options__name">{item.label}</div>
+             <div className="options__delete" onClick={()=>handleDeleteOption('manufacturer', item, item._id)}><img src="icons/trash_white.svg" alt="trash" /></div>
+         </div>
+     })
+    let manufacturersColList = allManufacturersCol.map(item => {
+        return <div className="options__item" key={item._id}>
+             <div className="options__name">{item.label}</div>
+             <div className="options__delete" onClick={()=>handleDeleteOption('manufacturer', item, item._id)}><img src="icons/trash_white.svg" alt="trash" /></div>
+         </div>
+     })
+    let manufacturersSubstList = allManufacturersSubst.map(item => {
         return <div className="options__item" key={item._id}>
              <div className="options__name">{item.label}</div>
              <div className="options__delete" onClick={()=>handleDeleteOption('manufacturer', item, item._id)}><img src="icons/trash_white.svg" alt="trash" /></div>
@@ -94,7 +107,7 @@ export const Options = (props) => {
                 </div>
 
                 <div className="options__section">
-                    <div className="options__title">Производители</div>
+                    <div className="options__title">Производители реактивов/CO</div>
                     <div className="options__window overflow overflow__mb35">
                         <div className="options__list">
                             {manufacturersList}
@@ -106,6 +119,38 @@ export const Options = (props) => {
                                 value = {newManufacturer}
                             />
                             <button className="btn" onClick={()=>handleAddOption('manufacturer', newManufacturer, setNewManufacturer)}>+</button>
+                        </div>
+                    </div>
+                </div>
+                <div className="options__section">
+                    <div className="options__title">Производители колонок</div>
+                    <div className="options__window overflow overflow__mb35">
+                        <div className="options__list">
+                            {manufacturersColList}
+                        </div>
+                        <div className="options__add">
+                            <input 
+                                type="text" 
+                                onChange={(e) => {setNewManufacturerCol(e.target.value)}}
+                                value = {newManufacturerCol}
+                            />
+                            <button className="btn" onClick={()=>handleAddOption('manufacturerCol', newManufacturerCol, setNewManufacturerCol)}>+</button>
+                        </div>
+                    </div>
+                </div>
+                <div className="options__section">
+                    <div className="options__title">Производители субстанций</div>
+                    <div className="options__window overflow overflow__mb35">
+                        <div className="options__list">
+                            {manufacturersSubstList}
+                        </div>
+                        <div className="options__add">
+                            <input 
+                                type="text" 
+                                onChange={(e) => {setNewManufacturerSubst(e.target.value)}}
+                                value = {newManufacturerSubst}
+                            />
+                            <button className="btn" onClick={()=>handleAddOption('manufacturerSubst', newManufacturerSubst, setNewManufacturerSubst)}>+</button>
                         </div>
                     </div>
                 </div>

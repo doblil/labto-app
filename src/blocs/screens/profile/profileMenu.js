@@ -7,7 +7,7 @@ import { useLazyGetHelpQuery } from '../../../redux/api/helpApi'
 export const ProfileMenu = (props) => {
 
   	const {activeNav} = props
-	const [getHelp, {data}] = useLazyGetHelpQuery();
+	const [getHelp] = useLazyGetHelpQuery();
 
 	const handleActiveNav = (navName) => {
 		if(activeNav === navName){
@@ -16,9 +16,6 @@ export const ProfileMenu = (props) => {
 		return "menu__item"
 	}
 
-	const handleHelp = async () => {
-		await getHelp()
-	}
 
     return(
         <div className="menu">

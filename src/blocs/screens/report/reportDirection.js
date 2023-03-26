@@ -1,56 +1,159 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useOutletContext } from 'react-router-dom'
+import { useReactToPrint } from 'react-to-print';
 import { useDirectionReportMutation } from '../../../redux/api/reportApi';
 import { sMessageCh } from '../../../redux/store/sMessageSlice';
+import { stringifyDate, stryngifyType } from '../../../services/services';
 import { ReportColumnDirectionItem, ReportReagDirectionItem } from './reportItem';
+import { ReportTitleItem } from './reportTitleItem';
 
 
 const  ReagentTable = (props) =>{
-    const {isSuccess, data, current} = props;
-    return(
-        <table table className="table__wrap"> 
-                  <thead>     
-                      <tr>
-                        <th>№</th>
-                        <th>дата</th>
-                        <th>Пользователь</th>
-                        <th style={{minWidth:'120px'}}>Проект</th>
-                        <th style={{minWidth:'120px'}}>Анализ</th>
-                        <th>Вещество</th>
-                        <th>Количество</th>
-                        <th>Стоимость</th>
-                      </tr>
-                  </thead>
-                <tbody>
-                {isSuccess && data?.resultReags?.filter(item => item.type === current).map((item, index) => {
-                    const {name, userName, quan, units, test, date, price, destination,} = item;
+    const {isSuccess, data, current, direction, startDate, endDate} = props;
+    const printRef = useRef(null)
 
-                   return <ReportReagDirectionItem
-                        index = {index}
-                        key = {index}
-                        date = {date}
-                        userName = {userName}
-                        test = {test}
-                        name = {name}
-                        quan = {quan}
-                        units = {units}
-                        price = {price}
-                        destination = {destination}
-                    />
-                })}
-                </tbody>
-                
-              </table>
+    const print = useReactToPrint({
+        content: () => printRef.current,
+    });
+
+    const handlePrint =  () => {
+        print()
+    }
+
+    const handleSummary = (data = []) => {
+        let totalPrice;
+        const count = data.length;
+        const countWPrice = data.filter(item => item.price).length;
+        const countWOPrice = Math.round(count - countWPrice)
+        if(data.filter(item => item.price).length){
+            totalPrice = data.filter(item => item.price).map(item => item.price).reduce((a, b) => a+b)
+        } else {
+            totalPrice = 0
+        }
+
+        return {
+            count,
+            totalPrice,
+            countWPrice,
+            countWOPrice}
+    }
+
+    const summary = handleSummary(data.resultReags.filter(item => item.type === current))
+
+    return(
+        <>
+            <div className="filter__print" onClick={handlePrint}> <img src="icons/printer_white.svg" alt="printer" /></div>
+            <div ref={printRef}>
+                <div className="report__title">
+                    <div className="report__title-wrap">
+                        <ReportTitleItem descr = "Отчет по отделу" value = {direction}/>
+                        <ReportTitleItem descr = "за период" value = {`c ${stringifyDate(startDate)} по ${stringifyDate(endDate)}`}/>
+                        <ReportTitleItem descr = "критерий" value = {stryngifyType(current)}/>
+                        <ReportTitleItem descr = "содержит" value = {`${summary.count} пунктов`}/>
+                        <ReportTitleItem descr = "с не указанной стоимостью" value = {`${summary.countWOPrice} пунктов`}/>
+                        <ReportTitleItem descr = "Приблизительная стоимость :" value = {`${summary.totalPrice} руб`}/>
+                    </div>
+                    <div className="report__logo"><img src="icons/report_logo.svg" alt="logo" /></div>
+                </div>
+                <table table className="table__wrap"> 
+                    <thead>     
+                        <tr>
+                            <th>№</th>
+                            <th>дата</th>
+                            <th>Пользователь</th>
+                            <th style={{minWidth:'120px'}}>Проект</th>
+                            <th style={{minWidth:'120px'}}>Анализ</th>
+                            <th>Вещество</th>
+                            <th>Количество</th>
+                            <th>Стоимость</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {isSuccess && data?.resultReags?.filter(item => item.type === current).map((item, index) => {
+                        const {name, userName, quan, units, test, date, price, destination,} = item;
+
+                    return <ReportReagDirectionItem
+                            index = {index}
+                            key = {index}
+                            date = {date}
+                            userName = {userName}
+                            test = {test}
+                            name = {name}
+                            quan = {quan}
+                            units = {units}
+                            price = {price}
+                            destination = {destination}
+                        />
+                    })}
+                    </tbody>
+                </table>
+            </div>
+           
+        </>
     )
 }
 
 const ColumnTable = (props) => {
-    const {isSuccess, data} = props;
+    const {isSuccess, data, startDate, endDate, direction} = props;
+    
+    const printRef = useRef(null)
+
+    const print = useReactToPrint({
+        content: () => printRef.current,
+    });
+
+    const handlePrint =  () => {
+        print();
+    }
+    
+    const handleSummary = (data = []) => {
+        let totalInj, totalPrice;
+        const count = data.length;
+        const countWPrice = data.filter(item => item.price).length;
+        const countWOPrice = Math.round(count - countWPrice)
+        if(data.filter(item => item.price).length){
+            totalPrice = data.filter(item => item.price).map(item => item.price).reduce((a, b) => a+b)
+        } else {
+            totalPrice = 0
+        }
+        if(data.filter(item => item.countInj).length){
+            totalInj = data.filter(item => item.countInj).map(item => item.countInj).reduce((a,b)=> a+b);
+        } else {
+            totalInj = 0
+        }
+        
+        return {
+            count,
+            totalPrice,
+            totalInj,
+            countWPrice,
+            countWOPrice}
+    }
+
+    const summary = handleSummary(data.resultColumns)
+    
     return(
         <>
-        <h6>Стоимость из рассчета pecypca колонки 40000 инжекций</h6>
-        <table table className="table__wrap"> 
+        <div className="filter__print" onClick={handlePrint}><img src="icons/printer_white.svg" alt="printer" /></div>
+        <div ref={printRef}>
+            <div className="report__title">
+                <div className="report__title-wrap">
+                    <ReportTitleItem descr = "Отчет по отделу (ВЭЖХ / ГХ)" value = {direction}/>
+                    <ReportTitleItem descr = "за период" value = {`c ${stringifyDate(startDate)} по ${stringifyDate(endDate)}`}/>
+                    <ReportTitleItem descr = "содержит" value = {`${summary.count} пунктов`}/>
+                    <ReportTitleItem descr = "с не указанной стоимостью" value = {`${summary.countWOPrice} пунктов`}/>
+                    <ReportTitleItem descr = "Количество инжекций за указанный период:" value = {`${summary.totalInj} инжекций`}/>
+                    <ReportTitleItem descr = "Приблизительная стоимость инжекций:" value = {`${summary.totalPrice} руб`}/>
+                    
+                        <h6>*Стоимость из рассчета pecypca колонки 40000 инжекций</h6>
+                    </div>
+                    <div className="report__title-right">
+                        <div className="report__logo"><img src="icons/report_logo.svg" alt="logo" /></div>
+                    </div>
+            </div>
+
+            <table table className="table__wrap"> 
             <thead>     
                 <tr>
                     <th>№</th>
@@ -87,6 +190,9 @@ const ColumnTable = (props) => {
             </tbody>
             
         </table>
+
+        </div>
+        
     </>
     )
 }
@@ -112,9 +218,7 @@ export const ReportDirection = (props) => {
     
     const handleCreateReport = () => {
         if (isLoading) return dispatch(sMessageCh('Дождитесь загрузки предыдущего отчета'));
-        console.log({startDate, endDate, direction});
         if (!endDate || !startDate || !direction) return dispatch(sMessageCh('Заполните все поля формы!'));
-        console.log('click trigger')
         createReport({startDate, endDate, direction});
     }
 
@@ -194,8 +298,22 @@ export const ReportDirection = (props) => {
         </div>
 
         <div className="history overflow overflow__mt50"  style={{height: '60vh'}}>
-                {(data?.resultReags && current === 'column') && <ColumnTable data = {data} isSuccess = {isSuccess} current = {current}/>}
-			 	{(data?.resultReags && current !== 'column') && <ReagentTable data = {data} isSuccess = {isSuccess} current = {current}/>}
+                {(data?.resultReags && current === 'column') && <ColumnTable 
+                    data = {data} 
+                    isSuccess = {isSuccess} 
+                    current = {current}
+                    startDate = {startDate}
+                    endDate = {endDate}
+                    direction = {direction}
+                />}
+			 	{(data?.resultReags && current !== 'column') && <ReagentTable 
+                    data = {data} 
+                    isSuccess = {isSuccess} 
+                    current = {current}
+                    startDate = {startDate}
+                    endDate = {endDate}
+                    direction = {direction}
+                />}
                 {isLoading && <div className='report__title' style={{justifyContent:'start'}}> <img src="icons/loading.svg" alt="loading" className='report__load-img'/>Загрузка отчета...</div>}
         </div>
     </div>

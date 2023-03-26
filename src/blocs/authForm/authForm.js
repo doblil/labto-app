@@ -9,27 +9,58 @@ import { useNavigate } from 'react-router-dom';
 import './authForm.scss'
 import { useStartGetIsServiceQuery } from '../../redux/api/settingsApi';
 import { serviceCh } from '../../redux/store/globalSlice';
+import { useGetIsStartQuery, useStartAppMutation } from '../../redux/api/startApi';
 
 export const AuthForm = (props) => {
-    const {service} = useSelector(state => state.global)
-    const [email, setEmail] = useState('3@mail.ru');
-    const [password, setPassword] = useState('123123');
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-
-    const [login, ] = useLoginMutation();
-    const {data, isSuccess} = useStartGetIsServiceQuery();
-    if(isSuccess && data?.serviceStatus) {
-        dispatch(serviceCh(data.serviceStatus))
-    }
-
-   
 
     const authRef = useRef(null)
 
     useEffect(() => {
       authRef.current.focus();
     }, [])
+
+    const {service} = useSelector(state => state.global)
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [department, setDepartment] = useState('')
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const [login, ] = useLoginMutation();
+    const {data, isSuccess} = useStartGetIsServiceQuery();
+    const{data: startData, isSuccess: startSuccess} = useGetIsStartQuery();
+    const [startApp, {isLoading: startAppLoading}] = useStartAppMutation();
+    
+    const handleStartApp = async () => {
+        if(!startSuccess || startAppLoading) return dispatch(sMessageCh('Пожалуйста, подождите'));
+        await startApp({department}).unwrap();
+    }
+
+    if(startSuccess && startData.start){
+        return(
+            <div className="auth overflow">
+                    <div className="auth__form">
+                        <img src="icons/main_logo.svg" alt="logo" />
+                        <div className="auth__wrapper" style={{width:'600px'}}>
+                            <form className=" fadein" >
+                                <label style={{width:'400px'}}>Название компании и/или упраления</label>
+                                <input style={{width:'400px'}}  onChange={(e) => setDepartment(e.target.value)}  type="text" className="auth__input" placeholder={'например, "АО Фармпром", ОКК'}  value ={department}/>
+                            </form>
+                                
+                            <button style={{width:'400px'}} onClick={handleStartApp} onEnter className="btn auth__btn" >Запистить настройку приложения</button>
+                            {startAppLoading && <>
+                                <div className='spinner'></div>
+                                <h5>Запуск приложения...</h5>
+                            </>}
+                        </div>
+                    </div>
+                </div>
+        )
+    }
+    
+    if(isSuccess && data?.serviceStatus) {
+        dispatch(serviceCh(data.serviceStatus))
+    }
 
     const handleLogin = async () =>  {
         
@@ -68,7 +99,7 @@ export const AuthForm = (props) => {
                         <input onKeyDown={(e) =>{if(e.key === 'Enter'){handleLogin()}}} ref={authRef} onChange={(e) => setEmail(e.target.value)}  type="email" className="auth__input" placeholder="email" value ={email}/>
                         <label >Пароль</label>
                         <input onKeyDown={(e) =>{if(e.key === 'Enter'){handleLogin()}}} onChange={(e) => setPassword(e.target.value)} type="password" className="auth__input" placeholder="Пароль" value = {password}/>
-                        <a href="/" className="auth__forgot">Забыли пароль?</a>
+                        <p className="auth__forgot" onClick={() => dispatch(sMessageCh('Обратитесь к администратору для восстановления пароля'))}>Забыли пароль?</p>
                     </form>
                         
                     <button onClick={handleLogin} onEnter className="btn auth__btn" >Войти</button>

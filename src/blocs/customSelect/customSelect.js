@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, { useRef, useEffect} from 'react';
 import  Select from 'react-select' 
 
 export const CustomSelect = (props) => {
@@ -81,7 +81,7 @@ export const CustomSelect = (props) => {
     }
     return(
         <Select
-            value={options.filter((option) => option.value === selected || option.label === selected)[0]}
+            value={options.filter((option) => option?.value === selected || option?.label === selected )[0]}
             ref={selectRef}
             placeholder = {'Выберите...'}
             onChange = {handleChange}

@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
-import { useGetMyOrdersQuery, useLazyGetMyOrdersQuery } from '../../../../redux/api/orderApi'
+import { useLazyGetMyOrdersQuery } from '../../../../redux/api/orderApi'
 import { sassVariables } from '../../../../sass/base/variables'
 
 
@@ -25,7 +25,6 @@ export const Orders = () => {
         getMyOrders();
     }, [])
 
-    console.log(data)
 
     let content = <></>
 

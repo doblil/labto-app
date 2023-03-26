@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect,  useState } from "react";
 import { useSelector } from "react-redux"
 import { useTakeReagentMutation } from "../../../../redux/api/reagentApi";
 import { sMessageCh } from "../../../../redux/store/sMessageSlice";
 import { stringifyDate } from "../../../../services/services";
-import { Link } from 'react-router-dom';
 import { useConfirm } from "../../../../hooks/useConfirm";
 import { useDraftReagentMutation } from "../../../../redux/api/draftApi";
 import { CustomSelect } from "../../../customSelect/customSelect";
@@ -35,7 +34,6 @@ export const FlowForm = () => {
 
     const handleTakeReagent = async () => {
         if(!(date && quan && test && destination && name )){
-            console.log('all fields required')
             return sMessageCh('Заполните все поля формы или обновите страницу')
         }
         if(isLoading){
@@ -53,7 +51,7 @@ export const FlowForm = () => {
 
     const handleDraftReagent = async () => {
         if(!(date && test && destination && name )){
-            console.log(date, test, destination, name)
+
             return sMessageCh('Заполните необходимые поля формы или обновите страницу')
         }
         if(isLoading || draftLoading){
@@ -119,7 +117,7 @@ export const FlowForm = () => {
 
                         <div className="flow__inner">
                             <div className="flow__label">Дата</div>
-                            <input value={date}  onChange={(e)=> {setDate(e.target.value); console.log(typeof e.target.value, e.target.value)}} type="datetime-local" class="flow__input flow__input-mini"/>
+                            <input value={date}  onChange={(e)=> setDate(e.target.value)} type="datetime-local" class="flow__input flow__input-mini"/>
                         </div>
                     </div>
                 </div>

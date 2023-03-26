@@ -107,25 +107,13 @@ const ColumnTable = (props) => {
     const {isSuccess, data,  startDate, endDate, project} = props;
 
     const printRef = useRef(null)
-    const [printPrep, setPrintPrep] = useState(true)
 
     const print = useReactToPrint({
         content: () => printRef.current,
     });
 
     const handlePrint =  () => {
-        setPrintPrep(true)
-        const p = new Promise((resolve) => {
-            setTimeout(() => {
-                setPrintPrep(true)
-                print();
-                resolve(false)
-            }, 1000);
-        })
-
-        p.then((data) => {
-            setPrintPrep(data)
-        })
+        print();
     }
 
     

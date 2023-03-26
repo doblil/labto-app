@@ -21,7 +21,7 @@ export const AddColumn = () => {
     const [passportType, setPassportType] = useState('link')
     const [passportFile, setPassportFile] = useState(null)
     const {projects} = useSelector(state => state.project);
-
+    const {allManufacturersCol} = useSelector(state => state.global)
     const roleValidation = useRoleValidate();
 
     const [activeNav, setActiveNav] = useOutletContext();
@@ -189,11 +189,20 @@ if(!roleValidation(['admin', 'prep', 'head', 'developer'])) return <NotAllowedPa
 
                     <div className="add__destination">
                         <div className="add__label">Производитель</div>
-                        <input type="text" class="add__input"
+                        <input 
+                            list="manufacturers-list"
+                            class="add__input"
                             value={manufacturer}
                             onChange={(e)=>{ dispatch(addColManufacturerCh(e.target.value))}}
                             style={handleInputStyle(manufacturer)}
+                            placeholder = "Начните вводить"
                         />
+                            
+                        <datalist id="manufacturers-list">
+                            {[{_id:'000', value: '', label: ''},...allManufacturersCol].map(item=>{
+                            return <option  value={item.value} key={item._id}>{item.label}</option>
+                            })}
+                        </datalist>
                             
                         {handleInputIcons(manufacturer)}
                     </div>

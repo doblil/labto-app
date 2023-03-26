@@ -38,7 +38,7 @@ export const ChangeProject = (props) => {
         <>
             <div className="overlay">
                 <div className="overlay__window">
-                    <div className="close"></div>
+                    <div className="close" onClick={handleCancel}></div>
                     <div className="overlay__heading">Изменение описания проекта "{name}, {code}"</div>
                     <div className="overlay__heading"> <p style={{fontSize:'10px'}}>В данной форме Вы можете поменять только описание проекта <br/> Если вы совершили ошибку при создании проекта (неправильное наименование или код), мы рекомендуем удалить проект и внести его заново либо обратиться к администратору баз данных</p>
                     </div>

@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useRedirectOrderMutation } from "../../../redux/api/orderApi";
-import { useChangeCredentialsMutation } from "../../../redux/api/userApi";
-import { sMessageCh } from "../../../redux/store/sMessageSlice";
 import { stringifyDate, stringifyOrderStatus } from "../../../services/services";
 import { CustomSelect } from "../../customSelect/customSelect";
 
@@ -28,7 +26,6 @@ export const RedirectForm = (props) => {
 
     const handleSelectAdressee = (target) => {
         setNewAdressee(target.value)
-        console.log(newAdressee)
     }
 
     const handleRedirect = async () => {
@@ -40,7 +37,7 @@ export const RedirectForm = (props) => {
             await redirectOrder({target, targetUser}).unwrap();
             handleCancel();
         } catch (error) {
-            console.log(error)
+            console.error(error)
         }
     }
 

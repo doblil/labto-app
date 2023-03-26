@@ -30,7 +30,7 @@ export const AddReag = () => {
         SDS, standartType, TDS, toDate,
         type, units, warn, initialDestination,
     } = useSelector(state => state.addItem);
-    const {allManufacturers} = useSelector(state => state.global);
+    const {allManufacturers, allManufacturersSubst} = useSelector(state => state.global);
     const {allRsTypes} = useSelector(state => state.global);
 
     const [AddDialog, addConfirm] = useConfirm(`Внести реактив ID: ${itemId}, ${name}?`);
@@ -250,21 +250,30 @@ export const AddReag = () => {
                             placeholder = "Начните вводить"
                         />
                             
-                            <datalist id="manufacturers-list">
-                                {[{_id:'000', value: '', label: ''},...allManufacturers].map(item=>{
-                                return <option  value={item.value} key={item._id}>{item.label}</option>
-                                })}
-                            </datalist>
+                        <datalist id="manufacturers-list">
+                            {[{_id:'000', value: '', label: ''},...allManufacturers].map(item=>{
+                            return <option  value={item.value} key={item._id}>{item.label}</option>
+                            })}
+                        </datalist>
                         
                         {handleInputIcons(manufacturer)}
                     </div>}
                     {type === 'subst' && <div className="add__destination">
                         <div className="add__label">Производитель</div>
-                        <input type="text" class="add__input"
+                        <input 
+                            list="manufacturers-list"
+                            class="add__input"
                             value={manufacturer}
                             onChange={(e)=>{ dispatch(addManufacturerCh(e.target.value))}}
                             style={handleInputStyle(manufacturer)}
-                        />                   
+                            placeholder = "Начните вводить"
+                        />
+                            
+                        <datalist id="manufacturers-list">
+                            {[{_id:'000', value: '', label: ''},...allManufacturersSubst].map(item=>{
+                            return <option  value={item.value} key={item._id}>{item.label}</option>
+                            })}
+                        </datalist>                 
                         {handleInputIcons(manufacturer)}
                     </div>}
 
