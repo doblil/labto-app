@@ -45,10 +45,9 @@ export const ColumnHistory = (props) => {
                     <div className="close close_big" style={{top: '5px', right: '5px'}} onClick={() => {setShowHistory(false)}}></div>
                     <div className="print" onClick={handlePrint} style={{top: '5px', right: '35px'}}></div>
 
-                        <div className="overflow" style={{height: '70vh', width:'100%'}}>
+                        <div className="overflow overflow__mt50" style={{height: '70vh', width:'100%'}}>
                             <div className="" ref={printRef}>
-
-                                <div className="overlay__heading"> 
+                                <div className="overlay__heading" style={{position: 'sticky'}}> 
                                     История использования колонки ID: <b>{itemId}</b>,   <b>{name}</b>,   серийный номер: <b>{sn}</b>,   каталожный номер: <b>{cat}</b> 
                                 </div>
                                 <table className="table__wrap table__wrap_low" >

@@ -163,8 +163,8 @@ const [initialise, setInitialise] = useState(false)
                 </div>
                 
                 <div className="flow__btn-wrap">
-                    <button className="btn btn_white flow__btn " onClick={hanleCreateOrder}>Заказать</button>
-                    <button className="btn flow__btn" onClick={handleHideForm}>Отменить</button>
+                    <button className="btn btn_white flow__btn "onClick={handleHideForm}>Отменить</button>
+                    <button className="btn flow__btn"  onClick={hanleCreateOrder}>Заказать</button>
                 </div>
             </div>
         </div>
