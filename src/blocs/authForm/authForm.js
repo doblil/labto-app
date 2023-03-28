@@ -20,8 +20,8 @@ export const AuthForm = (props) => {
     }, [])
 
     const {service} = useSelector(state => state.global)
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('1@mail.ru');
+    const [password, setPassword] = useState('123123');
     const [department, setDepartment] = useState('')
     const dispatch = useDispatch();
     const navigate = useNavigate();

@@ -43,7 +43,7 @@ const  ReagentTable = (props) =>{
 
     return(
         <>
-            <div className="filter__print" onClick={handlePrint}> <img src="icons/printer_white.svg" alt="printer" /></div>
+            {isSuccess && <div className="filter__print" onClick={handlePrint}> <img src="icons/printer_white.svg" alt="printer" /></div>}
             <div ref={printRef}>
                 <div className="report__title">
                     <div className="report__title-wrap">

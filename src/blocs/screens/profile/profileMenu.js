@@ -7,7 +7,7 @@ import { useLazyGetHelpQuery } from '../../../redux/api/helpApi'
 export const ProfileMenu = (props) => {
 
   	const {activeNav} = props
-	const [getHelp] = useLazyGetHelpQuery();
+	const [getHelp, {isLoading}] = useLazyGetHelpQuery();
 
 	const handleActiveNav = (navName) => {
 		if(activeNav === navName){
@@ -18,7 +18,7 @@ export const ProfileMenu = (props) => {
 
 
     return(
-        <div className="menu">
+        <div className="menu"> 
         <div className="menu__title">Профиль</div>
         <div className="menu__stripe"></div>
         <ul>
@@ -27,7 +27,10 @@ export const ProfileMenu = (props) => {
             <li><Link to='/profile/history'  className='link'><div className={handleActiveNav('history')}>История</div></Link></li>
             <li><Link to='/profile/orders'  className='link'><div className={handleActiveNav('orders')}>Заказы</div></Link></li>
             <div className="menu__stripe" style={{marginBottom:'5px'}}></div>
-            <li><div className="menu__faq " onClick={() => getHelp()}><img src="icons/faq.svg" alt="faq" /> Помощь</div></li>
+            <li><div className="menu__faq " onClick={() => getHelp()}>
+              {! isLoading && <img src="icons/faq.svg" alt="faq" />} 
+              {isLoading && <div className='spinner'></div>}
+            Помощь</div></li> 
         </ul>
         
       </div>
