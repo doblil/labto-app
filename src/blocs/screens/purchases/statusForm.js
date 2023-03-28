@@ -70,8 +70,8 @@ export const StatusForm = (props) => {
 
                     
                     <div className="flow__btn-wrap">
-                        <button className="btn btn_white flow__btn" onClick={handleChangeStatus}>Изменить</button>
-                        <button className="btn flow__btn" onClick={handleCancel}>Отменить</button>
+                        <button className="btn btn_white flow__btn" onClick={handleCancel}>Отменить</button>
+                        <button className="btn flow__btn" onClick={handleChangeStatus}>Изменить</button>
                     </div>
                 </div>
             </div>

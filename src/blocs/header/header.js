@@ -38,7 +38,7 @@ export const Header = (props) => {
         	</ul>
       	</nav>
 
-      	<div style={{display:'flex'}}>
+      	<div style={{display:'flex'}}  className="header__profile_wrap">
         	{isAuth && <div className="header__profile">
           	<span className="text header__info">{name}</span>
           	<span className="text header__info">{department} {direction}</span>

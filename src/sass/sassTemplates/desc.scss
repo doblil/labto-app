@@ -326,6 +326,14 @@
             "f f g g "
             "e e e e"
             "h h h h ";
+            &_columns{
+                grid-template: 77px 125px 120px 90px/ 1fr 2fr 2fr 1fr;
+                grid-template-areas:
+                    "a b c d "
+                    "f f r r"
+                    "g g g g"
+                    "h h h h ";
+            }
         &__jar{
             right: 10px;
         }
