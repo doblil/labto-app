@@ -17,7 +17,6 @@ export const FlowForm = () => {
     const {name} = useSelector(state => state.auth);
     const {projects} = useSelector(state => state.project)
     const {_id: target, name: reagName, units, itemId} = useSelector(state => state.activeReagent);
-    
 
     useEffect(() => {
         setDate(stringifyDate(Date.now(), false, true))
