@@ -70,7 +70,7 @@ export const Backup = () => {
 
   	return(
 		
-    	<div>
+    	<div style={{height:'100%'}}>
 			{backupLoading && <BackupLoading text='Создание точки восстановления'/>}
 			{restoreLoading && <BackupLoading text='Восстановление базы данных'/>}
 
@@ -85,7 +85,7 @@ export const Backup = () => {
 				<div className="backup__value" style={{width:'10%'}}></div>
 				<div className="backup__value" style={{width:'10%'}}></div>
             </div>
-			<div className="overflow backup">
+			<div className="overflow backup" style={{height:'calc(100% - 100px)'}}>
 				{content}
 			</div>
 			

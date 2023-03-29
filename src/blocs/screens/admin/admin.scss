@@ -27,11 +27,10 @@
         margin-bottom: 15px;
         text-align: center;
         cursor: pointer;
-        transition: all 0.2s;
+        transition: all 0.3s;
         &:hover{
             // transform: scale(1.02);
             box-shadow: $minor-shadow;
-            font-size: 12px;
         }
     }
 }

@@ -101,7 +101,7 @@ export const Projects = (props) => {
                 </div>
             </div>
 
-            <div className="list overflow" style={{marginTop:'10px'}}>
+            <div className="list overflow" style={{marginTop:'10px', height:'calc(100% - 80px)'}} >
 
                {content}
 

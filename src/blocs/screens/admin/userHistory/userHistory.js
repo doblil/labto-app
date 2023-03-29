@@ -85,7 +85,30 @@ export const UserHistory = () => {
                     </div>
                     <button className="btn" style={{height:'38px'}} onClick={handleCreateReport}>Смотреть историю</button>  
                 </div>
-        </div>
+                <div className="filter__wrap" style={{marginTop:'13px'}}>
+                    <div className="filter__item filter__item_mini filter__item_mini_active">
+                        Все действия
+                    </div>
+                    <div className="filter__item filter__item_mini">
+                        Входы в систему
+                    </div>
+                    <div className="filter__item filter__item_mini">
+                        Списания
+                    </div>
+                    <div className="filter__item filter__item_mini">
+                        Использования колонок
+                    </div>
+                    <div className="filter__item filter__item_mini">
+                        Действия препаратора
+                    </div>
+                    <div className="filter__item filter__item_mini">
+                        Администрирование
+                    </div>
+                    <div className="filter__item filter__item_mini">
+                        Отчетность
+                    </div>
+                </div>                
+            </div>
 
         {isSuccess && <UserHistoryTable history = {data.history}/>}
 
