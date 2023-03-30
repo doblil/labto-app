@@ -50,6 +50,23 @@
                 border:1px solid transparent;
             }
         }
+        &_mini{
+            font-size: 9px;
+            padding: 3px;
+            border: 1px solid $substrate-color;
+            background-color: white;
+            color: black;
+            margin-right: 13.5px;
+            margin-top: -10px;
+            &_active{
+                border: 1px solid $main-color;
+                background-color: $main-color;
+                color: white;
+                &:hover{
+                    border: 1px solid $main-color;
+                }
+            }
+        }
     }
     &__print{
         position: absolute;

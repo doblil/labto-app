@@ -267,7 +267,7 @@ export const ReportProjects = (props) => {
 
                 <div className="filter__wrap" style={{marginBottom:'5px'}}>
                     <div className="filter__inputs" >
-                        <div className="filter__inner" style={{marginBottom:'10px', marginRight:'20px'}}>
+                        <div className="filter__inner" style={{marginBottom:'10px', marginRight:'15px'}}>
                             <div className="filter__label">От (дд.мм.гггг 00:00)</div>
                             <input 
                                 type="date" 
@@ -278,7 +278,7 @@ export const ReportProjects = (props) => {
                             />
                         </div>
 
-                        <div className="filter__inner" style={{marginBottom:'10px', marginRight:'20px'}}>
+                        <div className="filter__inner" style={{marginBottom:'10px', marginRight:'15px'}}>
                             <div className="filter__label">До (дд.мм.гггг 00:00)</div>
                             <input 
                                 type="date" 
@@ -289,7 +289,7 @@ export const ReportProjects = (props) => {
                             />
                         </div>
 
-                        <div className="filter__inner" style={{marginBottom:'10px', marginRight:'20px'}} >
+                        <div className="filter__inner" style={{marginBottom:'10px', marginRight:'15px'}} >
                             <div className="filter__label">Проект</div>
                             <CustomSelect
                                 initialise = {initialise}
@@ -303,6 +303,18 @@ export const ReportProjects = (props) => {
                         </div>
                     </div>
                     <button className="btn" style={{height:'38px'}} onClick={handleCreateReport}>Создать отчет</button>  
+                </div>
+
+                <div className="filter__wrap" style={{marginBottom:'5px'}}>
+                    <div className="filter__item filter__item_mini">
+                        за последнюю неделю
+                    </div>
+                    <div className="filter__item filter__item_mini">
+                        за последний месяц
+                    </div>
+                    <div className="filter__item filter__item_mini">
+                        с 1 января
+                    </div>
                 </div>
 
                 <div className="filter__wrap" style={{marginTop:'5px', marginBottom:'10px', marginRight:'120px'}}>
@@ -330,7 +342,7 @@ export const ReportProjects = (props) => {
                 
             </div>
 
-            <div className="history overflow overflow__mt50"  style={{height: '60vh'}}>
+            <div className="history overflow overflow__mt50"  style={{height:'calc(100% - 180px)'}}>
                 
 			 	{(data?.resultReags && current === 'column') && <ColumnTable 
                     data = {data} 

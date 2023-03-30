@@ -38,7 +38,7 @@ export const ChangeCredentials = (props) => {
                     <div className="close" onClick={handleCancel}></div>
                     <div className="overlay__heading">Изменение данных сотрудника
                     </div>
-                    <div className="confirm__text">{name}, {position}, {direction}</div>
+                    <div className="confirm__text" style={{marginBottom:'3px'}}>{name}, {position}, {direction}</div>
                     
 
                     

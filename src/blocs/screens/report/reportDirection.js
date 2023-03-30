@@ -235,7 +235,7 @@ export const ReportDirection = (props) => {
 
             <div className="filter__wrap" style={{marginBottom:'5px'}}>
                 <div className="filter__inputs" >
-                    <div className="filter__inner" style={{marginBottom:'10px', marginRight:'20px'}}>
+                    <div className="filter__inner" style={{marginBottom:'10px', marginRight:'15px'}}>
                         <div className="filter__label">От (дд.мм.гггг 00:00)</div>
                         <input 
                             type="date" 
@@ -246,7 +246,7 @@ export const ReportDirection = (props) => {
                         />
                     </div>
 
-                    <div className="filter__inner" style={{marginBottom:'10px', marginRight:'20px'}}>
+                    <div className="filter__inner" style={{marginBottom:'10px', marginRight:'15px'}}>
                         <div className="filter__label">До (дд.мм.гггг 00:00)</div>
 
                         <input 
@@ -258,9 +258,9 @@ export const ReportDirection = (props) => {
                         />
                     </div>
 
-                    <div className="filter__inner" style={{marginBottom:'10px', marginRight:'20px'}} >
+                    <div className="filter__inner" style={{marginBottom:'10px', marginRight:'15px'}} >
                         <div className="filter__label">Отдел</div>
-                        <select value={direction} style={{width:'255px', height:'38px'}} onChange={(e) => {setDirection(e.target.value)}}>
+                        <select value={direction} style={{width:'250px', height:'38px'}} onChange={(e) => {setDirection(e.target.value)}}>
                             <option value=""></option>
                             {allDirections.map(item => {
                                 return <option key = {item.value} value={item.value}> {item.label}</option>
@@ -272,6 +272,18 @@ export const ReportDirection = (props) => {
                 <button className="btn" style={{height:'38px'}} onClick={handleCreateReport}>Создать отчет</button>  
             </div>
 
+            <div className="filter__wrap" style={{marginBottom:'5px'}}>
+                    <div className="filter__item filter__item_mini">
+                        за последнюю неделю
+                    </div>
+                    <div className="filter__item filter__item_mini">
+                        за последний месяц
+                    </div>
+                    <div className="filter__item filter__item_mini">
+                        с 1 января
+                    </div>
+                </div>
+                
             <div className="filter__wrap" style={{marginTop:'5px', marginBottom:'10px', marginRight:'120px'}}>
                 {(isSuccess && data?.resultReags && data.resultColumns) && <><div 
                         className = {handleActive('reag')}  
@@ -297,7 +309,7 @@ export const ReportDirection = (props) => {
             
         </div>
 
-        <div className="history overflow overflow__mt50"  style={{height: '60vh'}}>
+        <div className="history overflow overflow__mt50"  style={{height:'calc(100% - 180px)'}}>
                 {(data?.resultReags && current === 'column') && <ColumnTable 
                     data = {data} 
                     isSuccess = {isSuccess} 
@@ -314,7 +326,7 @@ export const ReportDirection = (props) => {
                     endDate = {endDate}
                     direction = {direction}
                 />}
-                {isLoading && <div className='report__title' style={{justifyContent:'start'}}> <img src="icons/loading.svg" alt="loading" className='report__load-img'/>Загрузка отчета...</div>}
+                {isLoading && <div className='report__title' style={{justifyContent:'start'}}> <div className="spinner"></div>Загрузка отчета...</div>}
         </div>
     </div>
     )

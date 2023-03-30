@@ -83,11 +83,11 @@ export const Options = (props) => {
      })
 
     return(
-        <>
+        <div style={{height:'100%'}}>
             <h6 style={{marginTop:'-10px'}}>В этом разделе можно добавить или удалить определенные данные, которые используются в сервисе. Любые изменения отображаются у абсолютно всех пользователей</h6>
             <h6>Перед проведением администрирования необходимо отключить всех пользователей от системы</h6>
 
-            <div className="options__wrapper overflow">
+            <div className="options__wrapper overflow overflow__mt29" style={{height:'calc(100% - 20px)'}}>
                 <div className="options__section">
                     <div className="options__title">Типы стандартов</div>
                     <div className="options__window overflow overflow__mb35">
@@ -189,6 +189,6 @@ export const Options = (props) => {
                     </div>
                 </div>
             </div>       
-        </>
+        </div>
     )
   }
