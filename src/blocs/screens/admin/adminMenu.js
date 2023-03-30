@@ -60,26 +60,29 @@ export const AdminMenu = (props) => {
    }
 
     return(
-        <div className="menu">
+        <div className="menu" style={{paddingRight: '30px'}}>
 			<StartDialog/>
 			<StopDialog/>
             <div className="menu__title">Управление</div>
             <div className="menu__stripe"></div>
-            <ul>
-                <li><Link to='/admin/list' className='link'><div className={handleActiveNav('users')}>Сотрудники</div></Link></li>
-                <li><Link to='/admin/projects'  className='link'><div className={handleActiveNav('projects')}>Проекты</div></Link></li>
-                <li><Link to='/admin/options'  className='link'><div className={handleActiveNav('options')}>Опции</div></Link></li>
-                <li><Link to='/admin/setMobileApp'  className='link'><div className={handleActiveNav('mobileApp')}>Активация приложения</div></Link></li>
-                <li><Link to='/admin/backup'  className='link'><div className={handleActiveNav('backup')}>Резервное копирование</div></Link></li>
-                <li><Link to='/admin/userHistory'  className='link'><div className={handleActiveNav('userHistory')}>Активность сотрудников</div></Link></li>
-                
-            </ul>
-            <div className="menu__stripe"></div>
-            <div className="menu__subtitle">Технический<br />режим</div>
+            <div className="overflow" style={{height:'calc(100% - 20px)'}}>
+            
+                <ul>
+                    <li><Link to='/admin/list' className='link'><div className={handleActiveNav('users')}>Сотрудники</div></Link></li>
+                    <li><Link to='/admin/projects'  className='link'><div className={handleActiveNav('projects')}>Проекты</div></Link></li>
+                    <li><Link to='/admin/options'  className='link'><div className={handleActiveNav('options')}>Опции</div></Link></li>
+                    <li><Link to='/admin/setMobileApp'  className='link'><div className={handleActiveNav('mobileApp')}>Активация приложения</div></Link></li>
+                    <li><Link to='/admin/backup'  className='link'><div className={handleActiveNav('backup')}>Резервное копирование</div></Link></li>
+                    <li><Link to='/admin/userHistory'  className='link'><div className={handleActiveNav('userHistory')}>Активность сотрудников</div></Link></li>
+                    
+                </ul>
+                <div className="menu__stripe"></div>
+                <div className="menu__subtitle">Технический<br />режим</div>
 
-            <div style={{ display:'flex', alignItems:'center'}}>
-                <SwitchToggle checked = {service}  onEnable= {confirmStartService} onDisable = {confirmStopService}/> 
-                <p style={{marginLeft:'5px', fontSize:'11px', color:'white'}}>{service ? 'Активен' : 'Не активен'}</p>   
+                <div style={{ display:'flex', alignItems:'center'}}>
+                    <SwitchToggle checked = {service}  onEnable= {confirmStartService} onDisable = {confirmStopService}/> 
+                    <p style={{marginLeft:'5px', fontSize:'11px', color:'white'}}>{service ? 'Активен' : 'Не активен'}</p>   
+                </div>
             </div>
       </div>
     )

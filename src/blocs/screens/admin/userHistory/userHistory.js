@@ -41,13 +41,13 @@ export const UserHistory = () => {
 
 
     return(
-        <div className="report">
+        <div className="report" >
             <div className="filter"style={{padding:'15px', paddingBottom:'0px', position:'relative', width:'100%'}}>
                 <h5 style={{marginBottom:'30px'}}>Задайте период и пользователя</h5>
 
-                <div className="filter__wrap" style={{marginBottom:'5px'}}>
+                <div className="filter__wrap" style={{marginBottom:'5px', marginRight:'0'}}>
                     <div className="filter__inputs" >
-                        <div className="filter__inner" style={{marginBottom:'10px', marginRight:'20px'}}>
+                        <div className="filter__inner" style={{marginBottom:'10px', marginRight:'15px'}}>
                             <div className="filter__label">От (дд.мм.гггг 00:00)</div>
                             <input 
                                 type="date" 
@@ -58,7 +58,7 @@ export const UserHistory = () => {
                             />
                         </div>
 
-                        <div className="filter__inner" style={{marginBottom:'10px', marginRight:'20px'}}>
+                        <div className="filter__inner" style={{marginBottom:'10px', marginRight:'15px'}}>
                             <div className="filter__label">До (дд.мм.гггг 00:00)</div>
                             <input 
                                 type="date" 
@@ -69,7 +69,7 @@ export const UserHistory = () => {
                             />
                         </div>
 
-                        <div className="filter__inner" style={{marginBottom:'10px', marginRight:'20px'}} >
+                        <div className="filter__inner" style={{marginBottom:'10px', marginRight:'15px'}} >
                             <div className="filter__label">Сотрудник</div>
                             <CustomSelect
                                 initialise = {initialise}
@@ -77,7 +77,7 @@ export const UserHistory = () => {
                                 handleChange = {handleSelectUser}
                                 height = {'25px'}
                                 fontSize = {'12px'}
-                                width = {'250px'}
+                                width = {'200px'}
                                 options = {userOptions}
                                 selected = {targetUser}
                             /> 
@@ -93,10 +93,10 @@ export const UserHistory = () => {
                         Входы в систему
                     </div>
                     <div className="filter__item filter__item_mini">
-                        Списания
+                        Реактивы
                     </div>
                     <div className="filter__item filter__item_mini">
-                        Использования колонок
+                        Колонки
                     </div>
                     <div className="filter__item filter__item_mini">
                         Действия препаратора
@@ -104,7 +104,7 @@ export const UserHistory = () => {
                     <div className="filter__item filter__item_mini">
                         Администрирование
                     </div>
-                    <div className="filter__item filter__item_mini">
+                    <div className="filter__item filter__item_mini" style={{marginRight:'0px'}}>
                         Отчетность
                     </div>
                 </div>                
