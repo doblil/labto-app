@@ -27,6 +27,7 @@ import { AddColumn } from "../screens/prep/add/addColumn"
 import { SetMobileApp } from "../screens/admin/setMobileApp/setMobileApp"
 import { Backup } from "../screens/admin/backup/backup"
 import { UserHistory } from "../screens/admin/userHistory/userHistory"
+import { Equipment } from "../screens/equipment/equipment"
 
 
 export const ContentRouter = () => {
@@ -80,6 +81,9 @@ export const ContentRouter = () => {
 				<Route path="/prep/column/isolate" element = {<Column reqParams = {{type: 'all', isolate: 'true'}}/>}/>
 				<Route path="/prep/addReagent" element = {<AddReag/>}/>
 				<Route path="/prep/addColumn" element = {<AddColumn/>}/>
+			</Route>
+			<Route path="/equipment" element ={<Equipment/>}>
+				<Route path="/equipment" element = {0}/>
 			</Route>
 			<Route path="/confirm" element={<ConfirmMessage/>}/>
 		</Route>
