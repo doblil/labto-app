@@ -6,6 +6,7 @@ import { useProjectReportMutation } from '../../../redux/api/reportApi'
 import { sMessageCh } from '../../../redux/store/sMessageSlice'
 import { stringifyDate, stryngifyType } from '../../../services/services'
 import { CustomSelect } from '../../customSelect/customSelect'
+import { DateAutocomplete } from './dateAutocomplete'
 import { ReportColumnItem, ReportReagItem } from './reportItem'
 import { ReportTitleItem } from './reportTitleItem'
 
@@ -305,17 +306,7 @@ export const ReportProjects = (props) => {
                     <button className="btn" style={{height:'38px'}} onClick={handleCreateReport}>Создать отчет</button>  
                 </div>
 
-                <div className="filter__wrap" style={{marginBottom:'5px'}}>
-                    <div className="filter__item filter__item_mini">
-                        за последнюю неделю
-                    </div>
-                    <div className="filter__item filter__item_mini">
-                        за последний месяц
-                    </div>
-                    <div className="filter__item filter__item_mini">
-                        с 1 января
-                    </div>
-                </div>
+                <DateAutocomplete startSetter = {setStartDate} endSetter = {setEndDate}/>
 
                 <div className="filter__wrap" style={{marginTop:'5px', marginBottom:'10px', marginRight:'120px'}}>
                     {(isSuccess && data?.resultReags && data.resultColumns) && <><div 

@@ -202,3 +202,63 @@ export const stryngifyType = (type = '') => {
             return ''
     }
 }
+
+export const fillInDates = () => {
+    
+    const needZero = (num) => {
+        if(num < 10){
+            return `0${num}`
+        }
+        return `${num}`
+    }
+
+    const handleYear = (date) =>  date.getFullYear();
+    const handleMonth = (date) =>  needZero(date.getMonth() + 1);
+    const handleDay = (date) =>  needZero(date.getDate());
+    const handleDayWeek = (date) =>  date.getDay();
+
+    // period day, week, month, yearBegin
+    const dateNow = new Date()
+    
+    const periodInMs = {
+        day: 1000*60*60*24,
+        week: 1000*60*60*24*7,
+    }
+
+    const handleInputDate = (startDate, endDate) => {
+        const startInputDate = `${handleYear(startDate)}-${handleMonth(startDate)}-${handleDay(startDate)}`;
+        const endInputDate = `${handleYear(endDate)}-${handleMonth(endDate)}-${handleDay(endDate)}`;
+        return { startInputDate, endInputDate } 
+    }
+
+    const handlePeriodWeek = () => {
+        const substructDate = Math.round((handleDayWeek(dateNow) - 1)*periodInMs.day);
+        const startDate = new Date(dateNow - substructDate);
+        const endDate = new Date(Date.parse(dateNow) + periodInMs.day+1);
+        return handleInputDate(startDate, endDate)
+    }
+    
+    const handlePeriodDay = () => {   
+        const startDate = new Date(dateNow);
+        const endDate = new Date(Date.parse(dateNow) + periodInMs.day+1);
+        return handleInputDate(startDate, endDate)
+    }
+    
+    const handlePeriodMonth = () => {
+        const substructDate = Math.round((handleDay(dateNow) - 1)*periodInMs.day);
+        const startDate = new Date(dateNow - substructDate);
+        const endDate = new Date(Date.parse(dateNow) + periodInMs.day);
+        return handleInputDate(startDate, endDate)
+    }
+    const handlePeriodYear = () => {
+        const startDate = new Date(`${handleYear(dateNow)}-01-01`);
+        const endDate = new Date(Date.parse(dateNow) + periodInMs.day);
+ 
+        return handleInputDate(startDate, endDate)
+    }
+
+    return { handlePeriodDay, handlePeriodMonth, handlePeriodWeek, handlePeriodYear }
+
+};
+
+

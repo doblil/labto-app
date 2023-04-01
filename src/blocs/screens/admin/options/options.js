@@ -60,13 +60,13 @@ export const Options = (props) => {
     let manufacturersColList = allManufacturersCol.map(item => {
         return <div className="options__item" key={item._id}>
              <div className="options__name">{item.label}</div>
-             <div className="options__delete" onClick={()=>handleDeleteOption('manufacturer', item, item._id)}><img src="icons/trash_white.svg" alt="trash" /></div>
+             <div className="options__delete" onClick={()=>handleDeleteOption('manufacturerCol', item, item._id)}><img src="icons/trash_white.svg" alt="trash" /></div>
          </div>
      })
     let manufacturersSubstList = allManufacturersSubst.map(item => {
         return <div className="options__item" key={item._id}>
              <div className="options__name">{item.label}</div>
-             <div className="options__delete" onClick={()=>handleDeleteOption('manufacturer', item, item._id)}><img src="icons/trash_white.svg" alt="trash" /></div>
+             <div className="options__delete" onClick={()=>handleDeleteOption('manufacturerSubst', item, item._id)}><img src="icons/trash_white.svg" alt="trash" /></div>
          </div>
      })
     let positionsList = allPositions.map(item => {

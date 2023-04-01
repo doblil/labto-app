@@ -5,6 +5,7 @@ import { useReactToPrint } from 'react-to-print';
 import { useDirectionReportMutation } from '../../../redux/api/reportApi';
 import { sMessageCh } from '../../../redux/store/sMessageSlice';
 import { stringifyDate, stryngifyType } from '../../../services/services';
+import { DateAutocomplete } from './dateAutocomplete';
 import { ReportColumnDirectionItem, ReportReagDirectionItem } from './reportItem';
 import { ReportTitleItem } from './reportTitleItem';
 
@@ -12,7 +13,7 @@ import { ReportTitleItem } from './reportTitleItem';
 const  ReagentTable = (props) =>{
     const {isSuccess, data, current, direction, startDate, endDate} = props;
     const printRef = useRef(null)
-
+    
     const print = useReactToPrint({
         content: () => printRef.current,
     });
@@ -205,17 +206,19 @@ export const ReportDirection = (props) => {
     const [current, setCurrent] = useState('reag')
 
     const dispatch = useDispatch()
+    const {allDirections} = useSelector(state => state.global)
+    const [createReport, {data, isLoading, isSuccess}] = useDirectionReportMutation()
 
     const [activeNav, setActiveNav] = useOutletContext();
     useEffect(() => {
         setActiveNav('direction')
     }, [setActiveNav])
 
+    
+    
+    
+    
 
-    const [createReport, {data, isLoading, isSuccess}] = useDirectionReportMutation()
-    
-    const {allDirections} = useSelector(state => state.global)
-    
     const handleCreateReport = () => {
         if (isLoading) return dispatch(sMessageCh('Дождитесь загрузки предыдущего отчета'));
         if (!endDate || !startDate || !direction) return dispatch(sMessageCh('Заполните все поля формы!'));
@@ -272,17 +275,7 @@ export const ReportDirection = (props) => {
                 <button className="btn" style={{height:'38px'}} onClick={handleCreateReport}>Создать отчет</button>  
             </div>
 
-            <div className="filter__wrap" style={{marginBottom:'5px'}}>
-                    <div className="filter__item filter__item_mini">
-                        за последнюю неделю
-                    </div>
-                    <div className="filter__item filter__item_mini">
-                        за последний месяц
-                    </div>
-                    <div className="filter__item filter__item_mini">
-                        с 1 января
-                    </div>
-                </div>
+            <DateAutocomplete startSetter = {setStartDate} endSetter = {setEndDate  }/>
                 
             <div className="filter__wrap" style={{marginTop:'5px', marginBottom:'10px', marginRight:'120px'}}>
                 {(isSuccess && data?.resultReags && data.resultColumns) && <><div 
