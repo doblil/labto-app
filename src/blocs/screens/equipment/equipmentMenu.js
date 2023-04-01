@@ -28,10 +28,13 @@ export const EquipmentMenu = (props) => {
                     <li><Link to='/equipment/'  className='link'><div onClick={()=>{setActiveNav('activeMy')}} className={handleActiveNav('activeMy')}>ГХ системы</div></Link></li>
                     <li><Link to='/equipment/'  className='link'><div onClick={()=>{setActiveNav('comletedMy')}} className={handleActiveNav('comletedMy')}>Весы</div></Link></li>
                     <li><Link to='/equipment/'  className='link'><div onClick={()=>{setActiveNav('archiveMy')}} className={handleActiveNav('archiveMy')}>Спектрометры</div></Link></li>
+                    <li><Link to='/equipment/'  className='link'><div onClick={()=>{setActiveNav('archiveMy')}} className={handleActiveNav('archiveMy')}>Титраторы</div></Link></li>
+                    <li><Link to='/equipment/'  className='link'><div onClick={()=>{setActiveNav('archiveMy')}} className={handleActiveNav('archiveMy')}>Вспомогательные</div></Link></li>
+                    <li><Link to='/equipment/'  className='link'><div onClick={()=>{setActiveNav('archiveMy')}} className={handleActiveNav('archiveMy')}>Прочее</div></Link></li>
                 </ul>
                 <div className="menu__stripe"></div>
                 <ul>
-                    <li><Link to='/equipment/'  className='link'><div onClick={()=>{setActiveNav('all')}} className={handleActiveNav('all')}>Списанные</div></Link></li>
+                    <li><Link to='/equipment/'  className='link'><div onClick={()=>{setActiveNav('all')}} className={handleActiveNav('all')}>Списанное</div></Link></li>
                 </ul>
               </div>
       </div>

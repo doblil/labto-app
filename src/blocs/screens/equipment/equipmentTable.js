@@ -2,7 +2,6 @@
 import { useGetReagentsQuery } from "../../../redux/api/reagentApi"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { favoriteCh } from "../../../../../redux/store/authSlice"
 import { activeReagentCh } from "../../../redux/store/activeReagSlice"
 import { EquipmentItem } from "./equipmentItem"
 
@@ -68,11 +67,9 @@ return(
         <tr>
             <th>ID</th>
             <th>Наименование</th>
-            <th>Партия</th>
-            <th>CAS-№</th>
-            <th>Остаток</th>
-            <th>%</th>
-            <th>Годен до</th>
+            <th>Серийный номер</th>
+            <th>Инвентарный номер</th>
+            <th>Следующая поверка</th>
         </tr>
     </thead>
 
