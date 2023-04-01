@@ -11,7 +11,7 @@
         align-items: center;
         img{
             height: 25px;
-            margin-right: 45px;
+            margin-right: 25px;
         }
         ul{
             display: flex;
@@ -19,8 +19,8 @@
         }
         &-item{
             font-size: 13px;
-            margin: 0 10px;
-            padding: 10px;
+            margin: 0 7px;
+            padding: 9px;
             border-radius: 10px;
             color: white;
             cursor: pointer;
@@ -104,7 +104,14 @@
 }
 
 @media (max-width: 1200px) {
-    .header__profile{
-        width: 200px;
+    .header{
+        &__profile{
+            width: 200px;
+        }
+        &__menu-item{
+            font-size: 12px;
+            padding: 8px;
+            margin:0 3px;
+        }
     }
 }
