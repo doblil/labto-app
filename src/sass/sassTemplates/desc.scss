@@ -146,6 +146,13 @@
             "f f f g g"
             "h h h h h";
     }
+    &_equipment{
+        grid-template: 82px 135px 70px/ 1fr 1fr 2fr 1fr 1fr;
+        grid-template-areas:
+            "a b c d r"
+            "f f g g g"
+            "h h h h h";
+    }
     &__box{
         border: 1px solid $main-color;
         border-radius: 5px;
@@ -229,6 +236,10 @@
         &:hover{
             box-shadow: $minor-shadow;
             transition: all 0.4s;
+        }
+        &_white{
+            color:white ;
+            background-color:$utility-color ;
         }
     }
     &__doc{
@@ -331,6 +342,14 @@
                 grid-template-areas:
                     "a b c d "
                     "f f r r"
+                    "g g g g"
+                    "h h h h ";
+            }
+            &_equipment{
+                grid-template: 77px 125px 130px 90px/ 1fr 2fr 2fr 1fr;
+                grid-template-areas:
+                    "a b d r "
+                    "f f c c"
                     "g g g g"
                     "h h h h ";
             }
