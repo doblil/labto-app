@@ -1,5 +1,5 @@
 {   
     "baseApiUrl" : "http://46.229.213.229:8000/",
     "baseLocalApiUrl": "http://localhost:8000",
-    "mode": "dev"
+    "mode": "prod"
 }
