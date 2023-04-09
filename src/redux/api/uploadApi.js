@@ -20,8 +20,35 @@ export const uploadApi = api.injectEndpoints({
             invalidatesTags: ['Column']
             
         }),
+        uploadEqPassport: builder.mutation({
+            query: ({itemId, formData}) => ({
+                url: `/api/uploadEquipment/passport/${itemId}`,
+                method: 'PATCH',
+                body: formData,
+            }),
+            invalidatesTags: ['Equipment']
+            
+        }),
+        uploadEqManual: builder.mutation({
+            query: ({itemId, formData}) => ({
+                url: `/api/uploadEquipment/manual/${itemId}`,
+                method: 'PATCH',
+                body: formData,
+            }),
+            invalidatesTags: ['Equipment']
+            
+        }),
+        uploadEqCert: builder.mutation({
+            query: ({itemId, formData}) => ({
+                url: `/api/uploadEquipment/cert/${itemId}`,
+                method: 'PATCH',
+                body: formData,
+            }),
+            invalidatesTags: ['Equipment']
+            
+        }),
        
     }),
 });
 
-export const { useUploadMutation, useUploadColMutation } = uploadApi;
+export const { useUploadMutation, useUploadColMutation, useUploadEqCertMutation, useUploadEqManualMutation, useUploadEqPassportMutation } = uploadApi;

@@ -66,7 +66,7 @@ const addItemSlice = createSlice({
         },
 
         addItemReset: (state) => {
-            state.type = ''; // 'rs', 'subst', 'reag';
+            state.type = 'reag'; // 'rs', 'subst', 'reag';
             state.standartType = '';
             state.itemId = '';
             state.name = '';

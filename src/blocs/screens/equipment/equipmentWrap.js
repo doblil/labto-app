@@ -8,9 +8,8 @@ export const EquipmentWrap = (props) => {
     
     const {reqParams} = props
 	const [activeNav, setActiveNav] = useOutletContext();
-	const active = useMenuContext(reqParams)
 	useEffect(() => {
-        setActiveNav(active)
+        setActiveNav(reqParams)
     }, [reqParams])
 
     return(

@@ -28,6 +28,7 @@ import { SetMobileApp } from "../screens/admin/setMobileApp/setMobileApp"
 import { Backup } from "../screens/admin/backup/backup"
 import { UserHistory } from "../screens/admin/userHistory/userHistory"
 import { Equipment } from "../screens/equipment/equipment"
+import { EquipmentWrap } from "../screens/equipment/equipmentWrap"
 
 
 export const ContentRouter = () => {
@@ -82,8 +83,18 @@ export const ContentRouter = () => {
 				<Route path="/prep/addReagent" element = {<AddReag/>}/>
 				<Route path="/prep/addColumn" element = {<AddColumn/>}/>
 			</Route>
-			<Route path="/equipment" element ={<Equipment/>}>
-				<Route path="/equipment" element = {0}/>
+			<Route path="/equipment/" element ={<Equipment/>}>
+				<Route path="/equipment/all" element = {<EquipmentWrap reqParams='all'/>}/>
+				<Route path="/equipment/hplc" element = {<EquipmentWrap reqParams='hplc'/>}/>
+				<Route path="/equipment/gc" element = {<EquipmentWrap reqParams='gc'/>}/>
+				<Route path="/equipment/scales" element = {<EquipmentWrap reqParams='scales'/>}/>
+				<Route path="/equipment/spectometer" element = {<EquipmentWrap reqParams='spectometer'/>}/>
+				<Route path="/equipment/titrator" element = {<EquipmentWrap reqParams='titrator'/>}/>
+				<Route path="/equipment/climate" element = {<EquipmentWrap reqParams='climate'/>}/>
+				<Route path="/equipment/termal" element = {<EquipmentWrap reqParams='termal'/>}/>
+				<Route path="/equipment/handle" element = {<EquipmentWrap reqParams='handle'/>}/>
+				<Route path="/equipment/other" element = {<EquipmentWrap reqParams='other'/>}/>
+				<Route path="/equipment/isolate" element = {<EquipmentWrap reqParams='isolate'/>}/>
 			</Route>
 			<Route path="/confirm" element={<ConfirmMessage/>}/>
 		</Route>

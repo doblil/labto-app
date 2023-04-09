@@ -4,36 +4,37 @@ import { SVGstar } from "../../../svg/svg"
 
 export const EquipmentItem = (props) => {
   
+  const {handleActiveItem, item, activeItem} = props
+
   const {favorite} = useSelector(state => state.auth)
-  const { itemId, name, CAS, cat, lot, manufacturer, toDate, units, restUnits, container, _id } = props.item;
-  const handleDateWarn = () => {
-    if((Date.parse(toDate) - Date.now()) > (1000*60*60*24*10)){
-      return 'table__item'
-    } else {
-      return 'table__item table__item_warn'
-    }
-  }
+  const { itemId, eqName, manufacturer, model, nextVerification, sn, invn,  _id } = item
+    const handleDateWarn = () => {
+		if((Date.parse(nextVerification) - Date.now()) > (1000*60*60)){
+				return 'table__item'
+		} else {
+				return 'table__item table__item_warn'
+		} 
+    } 
+    
 
 
   return(
-    <tr className={props.activeItem ? "table__row table__row_active" : "table__row"} onClick = {() => props.handleActiveItem(_id)}>
+    <tr className={activeItem ? "table__row table__row_active" : "table__row"} onClick = {() => handleActiveItem(_id)}>
         <td className="table__item">{itemId}</td>
         <td className="table__item">
 			{(favorite.includes(_id)) && <SVGstar style={{
-				fill: `${props.activeItem ? "white" : "#ffb027"}`,
+				fill: `${activeItem ? "white" : "#ffb027"}`,
 				position: 'absolute',
 				top: '9px',
 				left: '-9px'
 			}}/>}
-			<span className="table__name">{name}</span> 
+			<span className="table__name">{eqName}</span> 
 			<br /> 
-			<span className="prep__producer">{manufacturer} | {cat}</span>
+			<span className="prep__producer">{manufacturer} | {model}</span>
         </td>
-        <td className="table__item">{lot}</td>
-        <td className="table__item">{CAS}</td>
-        <td className="table__item">{restUnits} {units}</td>
-        <td className="table__item">{Math.floor(restUnits/container*100)}%</td>
-        <td className={handleDateWarn()}>{stringifyDate(Date.parse(toDate))}</td>
+        <td className="table__item">{sn}</td>
+        <td className="table__item">{invn}</td>
+        <td className={handleDateWarn()}>{stringifyDate(Date.parse(nextVerification))}</td>
     </tr>
 )
 }

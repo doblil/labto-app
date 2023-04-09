@@ -147,11 +147,13 @@
             "h h h h h";
     }
     &_equipment{
-        grid-template: 82px 135px 70px/ 1fr 1fr 2fr 1fr 1fr;
+        grid-template: 82px 120px 95px 75px 75px/ 2fr 2fr 3fr 2fr 2fr;
         grid-template-areas:
             "a b c d r"
             "f f g g g"
-            "h h h h h";
+            "i i i i i"
+            "j j j j j"
+            "k k k k k";
     }
     &__box{
         border: 1px solid $main-color;
@@ -205,6 +207,9 @@
         position: absolute;
         right: 9px;
         height: 52px;
+    }
+    &__equipment{
+        height: 69px;
     }
     &__jar-scale{
         height: 56%;
@@ -324,6 +329,21 @@
     background-color:  $utility-color;
     border: none;
 }
+.item-i{
+    grid-area: i;
+    background-color:  $fond-color;
+    border: none;
+}
+.item-j{
+    grid-area: j;
+    background-color:  $utility-color;
+    border: none;
+}
+.item-k{
+    grid-area: k;
+    background-color:  gray;
+    border: none;
+}
 .item-r{
     grid-area: r;
 }
@@ -346,12 +366,14 @@
                     "h h h h ";
             }
             &_equipment{
-                grid-template: 77px 125px 130px 90px/ 1fr 2fr 2fr 1fr;
+                grid-template: 77px 125px 120px 90px 90px 90px/ 1fr 1fr 1fr 1fr;
                 grid-template-areas:
                     "a b d r "
                     "f f c c"
                     "g g g g"
-                    "h h h h ";
+                    "i i i i"
+                    "j j j j"
+                    "k k k k";
             }
         &__jar{
             right: 10px;

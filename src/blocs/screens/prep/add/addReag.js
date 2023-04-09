@@ -122,6 +122,7 @@ export const AddReag = () => {
         setPassportFile(null);
         setPassportType('link')
         dispatch(addItemReset())
+        
 
     }
 

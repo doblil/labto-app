@@ -21,7 +21,7 @@ import { stringifyDate } from '../../../../../services/services'
 import { FormChangeColumn } from './formChangeColumn'
 import { addColCreateSame } from '../../../../../redux/store/addColumnSlise'
 import { favoriteCh } from '../../../../../redux/store/authSlice'
-
+import { handleIsURL } from '../../../../../services/handleIsURL'
 
 export const ColumnDesc = () => {
     
@@ -42,7 +42,7 @@ export const ColumnDesc = () => {
     
     let isFavorite = false;
     if(favorite.includes(target)){isFavorite = true};
-    ///////********RTQ Query hook
+    ///////********RTQ Query hooks
     const {data, isLoading, isSuccess} = useGetOneColumnQuery(target)
     const [passportLoader] = useGetColPassportMutation();
     const [deleteColumn, {isLoading: deleteLoading}] = useDeleteColumnMutation();
@@ -56,15 +56,6 @@ export const ColumnDesc = () => {
         return false
     }
 
-    const handleIsURL = (str) =>  {
-        const pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-          '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-          '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-          '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-          '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-          '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-        return !!pattern.test(str);
-    }
 
 
     
@@ -179,7 +170,7 @@ export const ColumnDesc = () => {
                 <div className="desc__status">
                     <div className="desc__favorite">
                     {isFavorite && <SVGstar handleFavorite = {handleFavorite} style={{fill: "#ffb027", height:"25", width: "25"}}/>}
-                        {!isFavorite && <SVGstar handleFavorite = {handleFavorite} style={{fill: "#cdcdcd", height:"25", width: "25"}}/>}
+                    {!isFavorite && <SVGstar handleFavorite = {handleFavorite} style={{fill: "#cdcdcd", height:"25", width: "25"}}/>}
                     </div>
                 </div>
             </div>

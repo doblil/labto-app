@@ -1,3 +1,5 @@
+import { sassVariables } from "../sass/base/variables";
+
 export const handleWarnImg = (arr) => {
     const imgs = {
         'corrosive': './icons/danger/corrosive.svg',
@@ -260,5 +262,48 @@ export const fillInDates = () => {
     return { handlePeriodDay, handlePeriodMonth, handlePeriodWeek, handlePeriodYear }
 
 };
+
+export const stringifyEquipmentStatus = (status) => {
+    switch (status) {
+        case 'ready':
+            return {
+                name: 'Готов',
+                color: 'rgb(0, 172, 127)'
+            };
+        case 'broken':
+            return {
+                name: 'Сломан',
+                color: 'crimson'
+            };
+        case 'repair':
+            return {
+                name: 'В ремонте',
+                color: sassVariables.mainColor,
+            };
+        case 'storage':
+            return {
+                name: 'На хранении',
+                color: sassVariables.mainColor,
+            };
+        case 'verification':
+            return {
+                name: 'На поверке',
+                color: sassVariables.mainColor,
+            };
+        case 'verificationExpired':
+            return {
+                name: 'Не поверен',
+                color: 'crimson'
+            };
+        case 'verificationFail':
+            return {
+                name: 'Поверка не продена',
+                color: 'crimson'
+            };
+        
+        default:
+            return ''
+    }
+}
 
 

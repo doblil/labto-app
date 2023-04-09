@@ -13,7 +13,7 @@ export const Equipment = (props) => {
     return(
         <>
             <EquipmentMenu activeNav={activeNav} setActiveNav={setActiveNav}/>
-            <EquipmentWrap/>
+            <Outlet context={[activeNav, setActiveNav]}/>
         </>
     )
 }

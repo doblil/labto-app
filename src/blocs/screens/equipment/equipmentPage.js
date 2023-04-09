@@ -8,47 +8,48 @@ import { EquipmentFilter } from './equipmentFilter'
 
 export const EquipmentPage = (props) => {
     
-    // const {reqParams} = props
-    
-    // const [currentFavorite, setCurrentFavorite] = useState(0)
-    // const [nameSearch, setNameSearch] = useState('');
-    // const [casSearch, setCasSearch] = useState('');
-    // const [catSearch, setCatSearch] = useState('');
-    // const [restSearch, setRestSearch] = useState(''); // 'instock', 'null' 
-    // const [favoriteSearch, setFavoriteSearch] = useState(false);
-    // const [expSearch, setExpSearch] = useState(''); // 'valid', 'invalid'
+    const {reqParams} = props
+    console.log(reqParams)
+    const [currentFavorite, setCurrentFavorite] = useState(0)
+    const [nameSearch, setNameSearch] = useState('');
+    const [snSearch, setSnSearch] = useState('');
+    const [invnSearch, setInvnSearch] = useState('');
+    const [favoriteSearch, setFavoriteSearch] = useState(false);
+    const [statusSearch, setStatusSearch] = useState('') // 'all', 'ready' , 'unready'
+    const [verifySearch, setVerifySearch] = useState('') // 'all', 'verified' , 'unverified'
     const [totalCount, setTotalCount] = useState('');
 
-
+    console.log('current favorite: ', currentFavorite);
     return(
         <div className="info">
             <EquipmentFilter 
-                // currentFavorite = {currentFavorite}
-                // exp = {expSearch}
-                // rest = {restSearch}
-                // favorite = {favoriteSearch} 
-                // setNameSearch = {setNameSearch}
-                // setCasSearch = {setCasSearch}
-                // setCatSearch = {setCatSearch}
-                // setRestSearch = {setRestSearch}
-                // setFavoriteSearch = {setFavoriteSearch}
-                // setExpSearch = {setExpSearch}
-                // nameSearch = {nameSearch}
-                // catSearch = {catSearch}
-                // casSearch = {casSearch}
+                currentFavorite = {currentFavorite}
+                favoriteSearch = {favoriteSearch}
+                setFavoriteSearch = {setFavoriteSearch}
+                nameSearch = {nameSearch}
+                setNameSearch = {setNameSearch}
+                snSearch = {snSearch}
+                setSnSearch = {setSnSearch}
+                invnSearch = {invnSearch}
+                setInvnSearch = {setInvnSearch} 
+                statusSearch = {statusSearch}
+                setStatusSearch = {setStatusSearch}
+                verifySearch = {verifySearch}
+                setVerifySearch = {setVerifySearch}
+                
             />
             <div className="overflow overflow__mt50 table">
                 <div className="table__line"></div>
                 <EquipmentTable
                     setTotalCount = {setTotalCount}
-                    // setCurrentFavorite = {setCurrentFavorite}
-                    // reqParams = {reqParams}
-                    // nameSearch = {nameSearch}
-                    // casSearch = {casSearch}
-                    // catSearch = {catSearch}
-                    // restSearch = {restSearch}
-                    // favoriteSearch = {favoriteSearch}
-                    // expSearch = {expSearch}
+                    setCurrentFavorite = {setCurrentFavorite}
+                    reqParams = {reqParams}
+                    nameSearch = {nameSearch}
+                    snSearch = {snSearch}
+                    invnSearch = {invnSearch}
+                    statusSearch = {statusSearch}
+                    verifySearch = {verifySearch}
+                    favoriteSearch = {favoriteSearch}   
                 />
             </div>
             <div className="info__count"> {totalCount || 0} наименований</div>
