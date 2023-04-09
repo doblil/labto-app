@@ -31,7 +31,7 @@ export const EquipmentMenu = (props) => {
                     <li><Link to='/equipment/titrator'  className='link'><div onClick={()=>{setActiveNav('titrator')}} className={handleActiveNav('titrator')}>Титраторы</div></Link></li>
                     <li><Link to='/equipment/climate'  className='link'><div onClick={()=>{setActiveNav('climate')}} className={handleActiveNav('climate')}>Климатическое</div></Link></li>
                     <li><Link to='/equipment/termal'  className='link'><div onClick={()=>{setActiveNav('termal')}} className={handleActiveNav('termal')}>Термическое</div></Link></li>
-                    <li><Link to='/equipment/handle'  className='link'><div onClick={()=>{setActiveNav('handle')}} className={handleActiveNav('handle')}>Вспомогательное</div></Link></li>
+                    <li><Link to='/equipment/handle'  className='link'><div onClick={()=>{setActiveNav('handle')}} className={handleActiveNav('handle')} style={{fontSize:'10px'}}>Вспомогательное</div></Link></li>
                     <li><Link to='/equipment/other'  className='link'><div onClick={()=>{setActiveNav('other')}} className={handleActiveNav('other')}>Прочее</div></Link></li>
                 </ul>
                 <div className="menu__stripe"></div>

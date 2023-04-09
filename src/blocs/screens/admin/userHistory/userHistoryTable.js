@@ -7,7 +7,7 @@ export const UserHistoryTable = (props) => {
     return (
         <div className=" overflow overflow__mt50" style={{height:'calc(100% - 150px)'}}>
             <table table className="table__wrap"> 
-                <thead>     
+                <thead style={{zIndex:0}}>     
                     <tr>
                         <th>Дата</th>
                         <th>Действие</th>

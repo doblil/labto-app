@@ -68,23 +68,19 @@ export const PrepMenu = (props) => {
 					
 				</ul>
 				<div className="menu__stripe"></div>
+				<div className="menu__subtitle" style={{display:'flex', alignItems:'bottom'}}>
+					Внесение
+					<SVGpen fill='black' height={11}/>
+
+				</div>
+
 				{roleValidation(['admin', 'developer', 'head']) && <ul>
 					<li><Link to='/prep/addReagent'className='link'>
-							<div className={`${handleClass('add')} menu__item-inner`} onClick ={() =>  handleReset('add')}>
-								<SVGpen fill={handleFill('add')}/>
-								<br />
-								<p>Внесение</p>
-						
-							</div>
+							<div className={`${handleClass('add')} menu__item`} onClick ={() =>  handleReset('add')}>Вещества</div>
 						</Link>
 					</li>
 					<li><Link to='/prep/addColumn'className='link'>
-							<div className={`${handleClass('addColumn')} menu__item-inner`} onClick ={() =>  handleReset('addColumn')}>
-								<SVGpen fill={handleFill('addColumn')}/>
-								<br />
-								<p style={{textAlign: 'center'}}>Внесение колонок</p>
-						
-							</div>
+							<div className={`${handleClass('addColumn')} menu__item`} onClick ={() =>  handleReset('addColumn')}>Колонки</div>
 						</Link>
 					</li>
 				</ul>}

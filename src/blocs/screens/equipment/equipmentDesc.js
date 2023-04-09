@@ -107,7 +107,7 @@ export const EquipmentDesc = (props) => {
 
         const handlePassport = async () => {
             if(passportIsURL) return
-            if(!passport) return dispatch(sMessageCh('Похоже вы не добавили паспорт для этого оборудования'))
+            if(!passport) return dispatch(sMessageCh('Похоже, вы не добавили паспорт для этого оборудования'))
             try {
                 await getEqPassport(target)
             } catch (error) {
@@ -116,7 +116,7 @@ export const EquipmentDesc = (props) => {
         }
         const handleCert = async () => {
             if(certIsURL) return
-            if(!cert) return dispatch(sMessageCh('Похоже вы не добавили сертификат поверки для этого оборудования'))
+            if(!cert) return dispatch(sMessageCh('Похоже, вы не добавили сертификат поверки для этого оборудования'))
             try {
                 await getEqCert(target)
             } catch (error) {
@@ -125,7 +125,7 @@ export const EquipmentDesc = (props) => {
         }
         const handleManual = async () => {
             if(manualIsURL) return
-            if(!manual) return dispatch(sMessageCh('Похоже вы не добавили инструкцию для этого оборудования'))
+            if(!manual) return dispatch(sMessageCh('Похоже, вы не добавили инструкцию для этого оборудования'))
             try {
                 await getEqManual(target)
             } catch (error) {
@@ -230,7 +230,7 @@ export const EquipmentDesc = (props) => {
                         <div className="grid__box item-d" >
                             <div className="grid__heading">Текущая версия СОП</div>
                             <div className="grid__value">{currentSop?.version}</div>
-                            <img className="grid__icon" src="icons/date.svg" alt="date" />
+                            <img className="grid__icon" src="icons/gear.svg" alt="gear" />
                         </div>
                         <div className="grid__box item-r">
                             <div className="grid__heading">Расположение</div>
@@ -265,16 +265,16 @@ export const EquipmentDesc = (props) => {
                                     <div className="grid__history" style={{textAlign: 'start'}}>{currentSop.sopName}</div>
                                     <div className="grid__history" style={{marginLeft: '5px', }}>версия: {currentSop.version}</div>
                             </div>
-                            <img className="grid__icon" src="icons/person.svg" alt="document" />
+                            <img className="grid__icon" src="icons/person.svg" alt="person" />
                             <button className="grid__btn" onClick={() => setShowTrainingList(true)}>Смотреть список ознакомления&#10095;&#10095;</button>
-                            <button className="grid__btn" onClick={() => setShowTrainingForm(true)} style={{right: '25px', width:'120px'}}>Ознакомиться</button>
+                            <button className="grid__btn" onClick={() => setShowTrainingForm(true)} style={{right: '25px', width:'140px'}}>Ознакомиться</button>
                         </div>
                         <div className="grid__box item-j" >
                             <div className="grid__heading grid__heading_white">Данные о поверках</div>
-                                <img className="grid__icon" src="icons/person.svg" alt="document" />
+                                <img className="grid__icon" src="icons/mapcase.svg" alt="mapcase" />
                                 
                                 <div className="grid__btn" onClick={() => setShowVerificationList(true)}>Смотреть историю поверок и результаты&#10095;&#10095;</div>
-                                <button className="grid__btn" onClick={() => setShowVerificationForm(true)} style={{right: '25px', width:'120px'}}>Внести поверку</button>
+                                <button className="grid__btn" onClick={() => setShowVerificationForm(true)} style={{right: '25px', width:'140px'}}>Внести поверку</button>
                                 
         
                             </div>
@@ -286,10 +286,11 @@ export const EquipmentDesc = (props) => {
                                     
                                 </>} 
                                 {!troubleshooting?.length && <div className="grid__history">Похоже, логов пока что нет</div>}
-                                <img className="grid__icon" src="icons/person.svg" alt="document" />
                                 <button className="grid__btn" onClick={0}>Смотреть историю логов&#10095;&#10095;</button>
+                                <button className="grid__btn" onClick={0} style={{right: '25px', width:'140px'}}>Добавить событие</button>
+                                <img className="grid__icon" src="icons/document.svg" alt="document" />
 
-                        </div>
+                            </div>
                     </div>
                 </div>
         </>
