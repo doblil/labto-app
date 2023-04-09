@@ -17,6 +17,7 @@ import { TrainingForm } from './forms/trainingForm'
 import { TrainingList } from './forms/tarainingList'
 import { VerificationForm } from './forms/verificationForm'
 import { StatusForm } from './forms/statusForm'
+import { VerificationList } from './forms/verifycationList'
 
 
 
@@ -30,7 +31,7 @@ export const EquipmentDesc = (props) => {
     const [showBarcode, setShowBarcode] = useState(false);
     const [showTrainingList, setShowTrainingList] = useState(false);
     const [showTrainingForm, setShowTrainingForm] = useState(false);
-    const [showVerList, setShowVerList] = useState(false)
+    const [showVerificationList, setShowVerificationList] = useState(false)
     const [showVerificationForm, setShowVerificationForm] = useState(false)
     const [showChangeForm, setShowChangeForm] = useState(false)
     const [showStatusForm, setShowStatusForm] = useState(false)
@@ -92,7 +93,7 @@ export const EquipmentDesc = (props) => {
     }
 
     if (dataSuccess && data.equipment){
-        const {_id, itemId, eqName, model, manufacturer, sn,
+        const { itemId, eqName, model, manufacturer, sn,
         invn, respUser, deputyRespUser, status, lastVerification,
         nextVerification, verificationList, passport, cert, manual,
         troubleshooting, currentSop, trainigList, location, sopVersions
@@ -138,6 +139,15 @@ export const EquipmentDesc = (props) => {
                 {showVerificationForm && <VerificationForm
                     target = {target}
                     setShowVerificationForm = {setShowVerificationForm}
+                    eqName = {eqName}
+                    model = {model}
+                    manufacturer = {manufacturer}
+                    sn = {sn}
+                    itemId = {itemId}
+                />}
+                {showVerificationList && <VerificationList
+                    verificationList = {verificationList}
+                    setShowVerificationList = {setShowVerificationList}
                     eqName = {eqName}
                     model = {model}
                     manufacturer = {manufacturer}
@@ -263,7 +273,7 @@ export const EquipmentDesc = (props) => {
                             <div className="grid__heading grid__heading_white">Данные о поверках</div>
                                 <img className="grid__icon" src="icons/person.svg" alt="document" />
                                 
-                                <div className="grid__btn" onClick={0}>Смотреть историю поверок и результаты&#10095;&#10095;</div>
+                                <div className="grid__btn" onClick={() => setShowVerificationList(true)}>Смотреть историю поверок и результаты&#10095;&#10095;</div>
                                 <button className="grid__btn" onClick={() => setShowVerificationForm(true)} style={{right: '25px', width:'120px'}}>Внести поверку</button>
                                 
         
