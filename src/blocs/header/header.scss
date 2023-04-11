@@ -70,7 +70,7 @@
         cursor: pointer;
         &:hover{
             .header__door{
-                transform: scaleX(0.4) translateX(13px);
+                transform: scaleX(0.4) translateX(12px);
             }
         }
     }
@@ -79,14 +79,14 @@
         width: 20px;
         border: 1px solid white;
         background: linear-gradient(rgb(82, 109, 118), black);
-        border: 1.5px solid rgb(80, 80, 80);
+        border: 1px solid rgb(80, 80, 80);
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 1px;
     }
     &__door{
-        height: 28px;
+        height: 29px;
         width: 20px;
         background-color: white;
         border-radius: 1px;

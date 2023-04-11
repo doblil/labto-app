@@ -19,7 +19,7 @@ export const EquipmentItem = (props) => {
 
 
   return(
-    <tr className={activeItem ? "table__row table__row_active" : "table__row"} onClick = {() => handleActiveItem(_id)}>
+    <tr className={activeItem ? "table__row table__row__equipment_active" : "table__row"} onClick = {() => handleActiveItem(_id)}>
         <td className="table__item">{itemId}</td>
         <td className="table__item">
 			{(favorite.includes(_id)) && <SVGstar style={{
