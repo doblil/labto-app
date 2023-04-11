@@ -15,7 +15,7 @@ export const UserHistory = () => {
     const [endDate, setEndDate] = useState(null);
     const [targetUser, setTargetUser] = useState('')
     const [initialise, setInitialise] = useState(false)
-
+    const [filter, setFilter] = useState('all') // 'all', 'reag', 'column', 'enter', 'other'
     const {allUsers} = useSelector(state=> state.global)    
     const dispatch = useDispatch();
     const [getUserHistory, {isLoading, isSuccess, data}] = useGetUserHistoryMutation();
@@ -39,6 +39,19 @@ export const UserHistory = () => {
         await getUserHistory({target: targetUser, body: {startDate, endDate}}).unwrap();
     }
 
+    const handleFilterHistory = (arr) => {
+        if(filter === 'all') return arr
+        if(filter === 'enter') return arr.filter(item => item.action.includes('enter'))
+        if(filter === 'reag') return arr.filter(item => item.action.includes('reag'))
+        if(filter === 'column') return arr.filter(item => item.action.includes('column'))
+        if(filter === 'other') return arr.filter(item => !(item.action.includes('column') || !item.action.includes('reag')) || !item.action.includes('enter'))
+        return arr
+    }
+
+    const handleFilterStyle = (currentFilter) => {
+        if(filter === currentFilter) return "filter__item filter__item_mini filter__item_mini_active"
+        return "filter__item filter__item_mini"
+    }
 
     return(
         <div className="report" >
@@ -86,31 +99,49 @@ export const UserHistory = () => {
                     <button className="btn" style={{height:'38px'}} onClick={handleCreateReport}>Смотреть историю</button>  
                 </div>
                 <div className="filter__wrap" style={{marginTop:'13px'}}>
-                    <div className="filter__item filter__item_mini filter__item_mini_active">
+                    <div 
+                        className={handleFilterStyle('all')}
+                        onClick={() => setFilter('all')}
+                    >
                         Все действия
                     </div>
-                    <div className="filter__item filter__item_mini">
+                    <div 
+                        className={handleFilterStyle('enter')}
+                        onClick={() => setFilter('enter')}
+                    >
                         Входы в систему
                     </div>
-                    <div className="filter__item filter__item_mini">
+                    <div 
+                        className={handleFilterStyle('reag')}
+                        onClick={() => setFilter('reag')}
+                    >
                         Реактивы
                     </div>
-                    <div className="filter__item filter__item_mini">
+                    <div 
+                        className={handleFilterStyle('column')}
+                        onClick={() => setFilter('column')}
+                    >
                         Колонки
                     </div>
-                    <div className="filter__item filter__item_mini">
+                    <div 
+                        className={handleFilterStyle('other')}
+                        onClick={() => setFilter('other')}
+                    >
+                        Прочее
+                    </div>
+                    {/* <div className={handleFilterStyle('all')}>
                         Действия препаратора
                     </div>
-                    <div className="filter__item filter__item_mini">
+                    <div className={handleFilterStyle('all')}>
                         Администрирование
                     </div>
-                    <div className="filter__item filter__item_mini" style={{marginRight:'0px'}}>
+                    <div className={handleFilterStyle('all')} style={{marginRight:'0px'}}>
                         Отчетность
-                    </div>
+                    </div> */}
                 </div>                
             </div>
 
-        {isSuccess && <UserHistoryTable history = {data.history}/>}
+        {isSuccess && <UserHistoryTable history = {handleFilterHistory(data.history)}/>}
 
         </div>
     )

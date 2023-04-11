@@ -2,7 +2,7 @@ import { fillInDates } from "../../../services/services"
 
 export const DateAutocomplete = (props) => {
    
-    const {startSetter, endSetter} = props
+    const {startSetter, endSetter, handler } = props
     const {handlePeriodDay, handlePeriodMonth, handlePeriodWeek, handlePeriodYear} = fillInDates()
     
     const handleSetPeriod = (period) => {
@@ -12,6 +12,7 @@ export const DateAutocomplete = (props) => {
             console.log(endInputDate, startInputDate)
             startSetter(startInputDate);
             endSetter(endInputDate);
+            
         }
         if (period === 'week') {
             const { endInputDate, startInputDate } = handlePeriodWeek()
@@ -28,6 +29,9 @@ export const DateAutocomplete = (props) => {
             startSetter(startInputDate);
             endSetter(endInputDate);
         }
+
+        handler();
+    
     }
 
     return(

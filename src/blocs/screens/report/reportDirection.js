@@ -53,7 +53,7 @@ const  ReagentTable = (props) =>{
                         <ReportTitleItem descr = "критерий" value = {stryngifyType(current)}/>
                         <ReportTitleItem descr = "содержит" value = {`${summary.count} пунктов`}/>
                         <ReportTitleItem descr = "с не указанной стоимостью" value = {`${summary.countWOPrice} пунктов`}/>
-                        <ReportTitleItem descr = "Приблизительная стоимость :" value = {`${summary.totalPrice} руб`}/>
+                        <ReportTitleItem descr = "Приблизительная стоимость :" value = {`${(Math.round(summary.totalPrice*100))/100} руб`}/>
                     </div>
                     <div className="report__logo"><img src="icons/report_logo.svg" alt="logo" /></div>
                 </div>
@@ -204,7 +204,7 @@ export const ReportDirection = (props) => {
     const [endDate, setEndDate] = useState('');
     const [direction, setDirection] = useState('')
     const [current, setCurrent] = useState('reag')
-
+    const [showTable, setShowTable] = useState(false)
     const dispatch = useDispatch()
     const {allDirections} = useSelector(state => state.global)
     const [createReport, {data, isLoading, isSuccess}] = useDirectionReportMutation()
@@ -214,15 +214,19 @@ export const ReportDirection = (props) => {
         setActiveNav('direction')
     }, [setActiveNav])
 
-    
+    const handleHide = () => {
+        setShowTable(false);
+    }
     
     
     
 
-    const handleCreateReport = () => {
+    const handleCreateReport = async () => {
         if (isLoading) return dispatch(sMessageCh('Дождитесь загрузки предыдущего отчета'));
         if (!endDate || !startDate || !direction) return dispatch(sMessageCh('Заполните все поля формы!'));
-        createReport({startDate, endDate, direction});
+        setShowTable(true)
+        await createReport({startDate, endDate, direction});
+        
     }
 
     const handleActive = (v) => {
@@ -232,7 +236,7 @@ export const ReportDirection = (props) => {
 
     return(
         <div className="report">
-        <div className="filter__print"><img src="icons/printer_white.svg" alt="printer" /></div>
+        {isSuccess && <div className="filter__print"><img src="icons/printer_white.svg" alt="printer" /></div>}
         <div className="filter"style={{padding:'15px', paddingBottom:'0px', position:'relative', width:'100%'}}>
             <h5 style={{marginBottom:'30px'}}>Задайте период и интересующий отдел</h5>
 
@@ -244,7 +248,7 @@ export const ReportDirection = (props) => {
                             type="date" 
                             className="filter__input" 
                             style={{height:'38px'}}
-                            onChange = {(e) => {setStartDate(e.target.value)}}
+                            onChange = {(e) => {setStartDate(e.target.value); setShowTable(false);}}
                             value = {startDate}
                         />
                     </div>
@@ -256,14 +260,14 @@ export const ReportDirection = (props) => {
                             type="date" 
                             className="filter__input" 
                             style={{height:'38px'}}
-                            onChange = {(e) => {setEndDate(e.target.value)}}
+                            onChange = {(e) => {setEndDate(e.target.value); setShowTable(false);}}
                             value = {endDate}
                         />
                     </div>
 
                     <div className="filter__inner" style={{marginBottom:'10px', marginRight:'15px'}} >
                         <div className="filter__label">Отдел</div>
-                        <select value={direction} style={{width:'250px', height:'38px'}} onChange={(e) => {setDirection(e.target.value)}}>
+                        <select value={direction} style={{width:'250px', height:'38px'}} onChange={(e) => {setDirection(e.target.value); setShowTable(false);}}>
                             <option value=""></option>
                             {allDirections.map(item => {
                                 return <option key = {item.value} value={item.value}> {item.label}</option>
@@ -275,7 +279,7 @@ export const ReportDirection = (props) => {
                 <button className="btn" style={{height:'38px'}} onClick={handleCreateReport}>Создать отчет</button>  
             </div>
 
-            <DateAutocomplete startSetter = {setStartDate} endSetter = {setEndDate  }/>
+            <DateAutocomplete handler = {handleHide} startSetter = {setStartDate} endSetter = {setEndDate}/>
                 
             <div className="filter__wrap" style={{marginTop:'5px', marginBottom:'10px', marginRight:'120px'}}>
                 {(isSuccess && data?.resultReags && data.resultColumns) && <><div 
@@ -302,7 +306,7 @@ export const ReportDirection = (props) => {
             
         </div>
 
-        <div className="history overflow overflow__mt50"  style={{height:'calc(100% - 180px)'}}>
+        {showTable && <div className="history overflow overflow__mt50"  style={{height:'calc(100% - 180px)'}}>
                 {(data?.resultReags && current === 'column') && <ColumnTable 
                     data = {data} 
                     isSuccess = {isSuccess} 
@@ -320,7 +324,7 @@ export const ReportDirection = (props) => {
                     direction = {direction}
                 />}
                 {isLoading && <div className='report__title' style={{justifyContent:'start'}}> <div className="spinner"></div>Загрузка отчета...</div>}
-        </div>
+        </div>}
     </div>
     )
   }

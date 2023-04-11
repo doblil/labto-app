@@ -13,6 +13,8 @@ import { ReportTitleItem } from './reportTitleItem'
 const  ReagentTable = (props) =>{
     const {isSuccess, data, current, project, startDate, endDate} = props;
     
+    const [showTable, setShowTable] = useState(false)
+
     const printRef = useRef(null)
 
     const print = useReactToPrint({
@@ -57,7 +59,7 @@ const  ReagentTable = (props) =>{
                     <ReportTitleItem descr = "критерий" value = {stryngifyType(current)}/>
                     <ReportTitleItem descr = "содержит" value = {`${summary.count} пунктов`}/>
                     <ReportTitleItem descr = "с не указанной стоимостью" value = {`${summary.countWOPrice} пунктов`}/>
-                    <ReportTitleItem descr = "Приблизительная стоимость :" value = {`${summary.totalPrice} руб`}/>
+                    <ReportTitleItem descr = "Приблизительная стоимость :" value = {`${(Math.round(summary.totalPrice*100))/100} руб`}/>
                 </div>
                 <div className="report__logo"><img src="icons/report_logo.svg" alt="logo" /></div>
 
@@ -215,6 +217,7 @@ const ColumnTable = (props) => {
 export const ReportProjects = (props) => {
     const [initialise, setInitialise] = useState(false)
     const [startDate, setStartDate] = useState('');
+    const [showTable, setShowTable] = useState(false)
     const [endDate, setEndDate] = useState('');
     const [project, setProject] = useState({
         name: '',
@@ -237,15 +240,18 @@ export const ReportProjects = (props) => {
 
     const [ createReport, {data, isLoading, isSuccess}] = useProjectReportMutation();
 
-    const handleCreateReport = () => {
+    const handleCreateReport = async () => {
         if (isLoading) return dispatch(sMessageCh('Дождитесь загрузки предыдущего отчета'));
         if (!endDate || !startDate || !project.code) return dispatch(sMessageCh('Заполните все поля формы!'));
-        createReport({startDate, endDate, project});
+        setShowTable(true);
+        await createReport({startDate, endDate, project}).unwrap();
+        
     }
 
 
     const handleSelectProject = (target) => {
         setProject(target.value)
+        setShowTable(false);
     }
 
     const projectOptions = projects.map(item => {
@@ -257,7 +263,9 @@ export const ReportProjects = (props) => {
         return "filter__item"
     }
 
-    
+    const handleHide = () => {
+        setShowTable(false)
+    }
     
 
 
@@ -274,7 +282,7 @@ export const ReportProjects = (props) => {
                                 type="date" 
                                 className="filter__input" 
                                 style={{height:'38px'}}
-                                onChange = {(e) => {setStartDate(e.target.value)}}
+                                onChange = {(e) => {setStartDate(e.target.value); setShowTable(false);}}
                                 value = {startDate}
                             />
                         </div>
@@ -285,7 +293,7 @@ export const ReportProjects = (props) => {
                                 type="date" 
                                 className="filter__input" 
                                 style={{height:'38px'}}
-                                onChange = {(e) => {setEndDate(e.target.value)}}
+                                onChange = {(e) => {setEndDate(e.target.value); setShowTable(false);}}
                                 value = {endDate}
                             />
                         </div>
@@ -306,7 +314,7 @@ export const ReportProjects = (props) => {
                     <button className="btn" style={{height:'38px'}} onClick={handleCreateReport}>Создать отчет</button>  
                 </div>
 
-                <DateAutocomplete startSetter = {setStartDate} endSetter = {setEndDate}/>
+                <DateAutocomplete handler = {handleHide}  startSetter = {setStartDate} endSetter = {setEndDate}/>
 
                 <div className="filter__wrap" style={{marginTop:'5px', marginBottom:'10px', marginRight:'120px'}}>
                     {(isSuccess && data?.resultReags && data.resultColumns) && <><div 
@@ -333,7 +341,7 @@ export const ReportProjects = (props) => {
                 
             </div>
 
-            <div className="history overflow overflow__mt50"  style={{height:'calc(100% - 180px)'}}>
+            {showTable && <div className="history overflow overflow__mt50"  style={{height:'calc(100% - 180px)'}}>
                 
 			 	{(data?.resultReags && current === 'column') && <ColumnTable 
                     data = {data} 
@@ -355,7 +363,7 @@ export const ReportProjects = (props) => {
                 />}
                 {isLoading && <div className='report__title' style={{justifyContent:'start'}}> <div className="spinner"></div><p>Загрузка отчета...</p></div>}
                 
-			</div>
+			</div>}
         </div>
     )
   }
