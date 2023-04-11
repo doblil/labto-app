@@ -26,7 +26,7 @@ export const stringifyDate = (value, exact = false, input = false) => {
     const day = date.getDate()
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    
+    if (isNaN(year)) return '-'
     const needZero = (num) => {
         if(num < 10){
             return `0${num}`

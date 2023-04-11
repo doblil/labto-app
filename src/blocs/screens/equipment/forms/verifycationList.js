@@ -29,7 +29,7 @@ export const VerificationList = (props) => {
                 <tr key={index} className="table__row">
                     <td style={{fontSize: '10px'}} className="table__item"> {index+1}</td>
                     <td style={{fontSize: '10px'}} className="table__item"> {stringifyDate(fromDate)}</td>
-                    <td style={{fontSize: '10px'}} className="table__item">{stringifyDate(toDate)} версия</td>
+                    <td style={{fontSize: '10px'}} className="table__item">{stringifyDate(toDate)}</td>
                     <td style={{fontSize: '10px'}} className="table__item">{verificator}</td>
                     <td style={{fontSize: '10px'}} className="table__item">{handleResult(result)}</td>
                     <td style={{fontSize: '10px'}} className="table__item">{comment}</td>
@@ -56,11 +56,11 @@ export const VerificationList = (props) => {
                         <div className="overflow overflow__mt50" style={{height: '70vh', width:'100%'}}>
                             <div className="" ref={printRef}>
                                 <div className="overlay__heading" style={{position: 'sticky'}}> 
-                                    История поверки оборудования: {eqName}, {model}, {manufacturer}, <br/>S/N:{sn} ID:{itemId}
+                                    История поверки оборудования: {eqName}, {manufacturer}, {model},  <br/>S/N:{sn} | ID:{itemId}
                                 </div>
                                 <table className="table__wrap table__wrap_low" >
 
-                                <thead  className="table__shadow">
+                                <thead  className="table__shadow">0
                                     <tr>
                                         <th style={{fontSize: '12px'}} >№</th>
                                         <th style={{fontSize: '12px'}} >Дата поверки</th>

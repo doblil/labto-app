@@ -32,7 +32,7 @@ export const Header = (props) => {
         	<ul>
 				<li><Link to="/profile/info" className="link"><div className={handleActiveTab('profile')}>Профиль</div></Link></li>
 				<li><Link to="/prep/reag" className="link"><div className={handleActiveTab('prep')}>Препараторская</div></Link></li>
-				<li><Link to="/equipment/all" className="link"><div className={handleActiveTab('equipment')}>Оборудование</div></Link></li>
+				{/* <li><Link to="/equipment/all" className="link"><div className={handleActiveTab('equipment')}>Оборудование</div></Link></li> */}
 				{roleValidation(['head', 'developer', 'admin']) &&
 				<li><Link to="/report/projects" className="link"><div className={handleActiveTab('report')}>Отчётность</div></Link></li>}
 				<li><Link to="/purchases/my/allMy" className="link"><div className={handleActiveTab('purchases')}>Закупки</div></Link></li>

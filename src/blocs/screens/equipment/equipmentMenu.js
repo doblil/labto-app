@@ -38,6 +38,10 @@ export const EquipmentMenu = (props) => {
                 <ul>
                     <li><Link to='/equipment/isolate'  className='link'><div onClick={()=>{setActiveNav('isolate')}} className={handleActiveNav('isolate')}>Списанное</div></Link></li>
                 </ul>
+                <div className="menu__stripe"></div>
+                <ul>
+                    <li><Link to='/equipment/add'  className='link'><div onClick={()=>{setActiveNav('add')}} className={handleActiveNav('add')}>Списанное</div></Link></li>
+                </ul>
               </div>
       </div>
     )

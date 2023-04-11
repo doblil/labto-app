@@ -423,19 +423,18 @@ export const AddReag = () => {
 
                             <div className="add__document_window">
                                 <div className="add__document-title">Добавить SDS:</div>
-                                <input type="text" class="add__input add__input-doc"/>
+                                <input type="text" class="add__input add__input-doc" onChange={(e) => dispatch(addSDSCh(e.target.value))}/>
                             </div>             
 
                             <div className="add__document_window">
                                 <div className="add__document-title">Добавить TDS:</div>
-                                <input type="text" class="add__input add__input-doc"/>
+                                <input type="text" class="add__input add__input-doc" onChange={(e) => dispatch(addTDSCh(e.target.value))}/>
                             </div>  
           
                         </div>
                     </div>
                     
                     <div className="add__btn-wrap">
-                        <button  className="btn btn_white add__btn">В черновик</button>
                         <button onClick={handleAddConfirm} className="btn add__btn">Внести</button>
                     </div>
                 </div>

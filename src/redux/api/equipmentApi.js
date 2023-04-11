@@ -99,6 +99,14 @@ export const equipmentApi = api.injectEndpoints({
             }),
             invalidatesTags: ['Equipment'],
         }),
+        addEquipment: builder.mutation({
+            query: (body)=> ({
+                url: `/api/equipment/add/`,
+                body,
+                method: 'POST',
+            }),
+            invalidatesTags: ['Equipment'],
+        }),
 
         
         
@@ -106,6 +114,7 @@ export const equipmentApi = api.injectEndpoints({
 })
 
 export const { 
+    useAddEquipmentMutation,
     useGetEquipmentsQuery, 
     useGetOneEquipmentQuery, 
     useGetEqCertMutation, 

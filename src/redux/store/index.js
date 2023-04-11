@@ -9,6 +9,7 @@ import activeEquipmentReducer from './activeEquipmentSlice';
 import projectReducer from './projectSlice'
 import addItemReducer from './addItemSlice'
 import addColumnReducer from './addColumnSlise'
+import addEquipmentReducer from './addEquipmentSlice'
 import changeItemReducer from './changeItemSlice'
 import changeColumnReducer from './changeColumnSlice';
 import orderReducer from './orderSlice'
@@ -18,6 +19,7 @@ const store = configureStore({
     reducer: {
         addItem: addItemReducer,
         addColumn: addColumnReducer,
+        addEquipment: addEquipmentReducer,
         project: projectReducer,
         global: globalReducer,
         auth: authReducer,

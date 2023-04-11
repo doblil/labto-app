@@ -13,11 +13,11 @@ const activeEquipmentSlice = createSlice({
         sn: '',
         invn: '',
         respUser: {
-            userID: '',
+            userId: '',
             userName: '',
         },
         deputyRespUser: {
-            userID: '',
+            userId: '',
             userName: '',
         },
         status: '', // 'ready' | 'broken' | 'repair' | 'storage' | 'verification' | 'verificationExpired'

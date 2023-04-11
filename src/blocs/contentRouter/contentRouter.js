@@ -29,6 +29,7 @@ import { Backup } from "../screens/admin/backup/backup"
 import { UserHistory } from "../screens/admin/userHistory/userHistory"
 import { Equipment } from "../screens/equipment/equipment"
 import { EquipmentWrap } from "../screens/equipment/equipmentWrap"
+import { EquipmentAdd } from "../screens/equipment/equipmentAdd"
 
 
 export const ContentRouter = () => {
@@ -95,6 +96,7 @@ export const ContentRouter = () => {
 				<Route path="/equipment/handle" element = {<EquipmentWrap reqParams='handle'/>}/>
 				<Route path="/equipment/other" element = {<EquipmentWrap reqParams='other'/>}/>
 				<Route path="/equipment/isolate" element = {<EquipmentWrap reqParams='isolate'/>}/>
+				<Route path="/equipment/add" element = {<EquipmentAdd/>}/>
 			</Route>
 			<Route path="/confirm" element={<ConfirmMessage/>}/>
 		</Route>
